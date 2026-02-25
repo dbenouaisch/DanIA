@@ -1462,6 +1462,20 @@ const revealObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+/* ── Fix : révèle les éléments déjà visibles au chargement (navigation par ancre #section) ── */
+function revealAlreadyVisible() {
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight * 0.98 && r.bottom > 0) {
+      el.classList.add('visible');
+      revealObserver.unobserve(el);
+    }
+  });
+}
+// Double délai : couvre les navigateurs rapides et lents sur le scroll vers l'ancre
+setTimeout(revealAlreadyVisible, 50);
+setTimeout(revealAlreadyVisible, 350);
+
 /* ── Counter animation ── */
 function animateCounter(el) {
   const target = parseInt(el.dataset.target);
