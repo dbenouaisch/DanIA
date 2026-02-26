@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pragma IA — Conseil en Intelligence Artificielle pour PME et ETI</title>
+<title>Pragma IA — Conseil en Intelligence Artificielle pour TPE, PME et ETI</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' rx='8' fill='%230E1520'/%3E%3Crect x='7' y='7' width='18' height='18' rx='4' fill='none' stroke='%2300C27A' stroke-width='1.5'/%3E%3Ccircle cx='16' cy='11' r='2' fill='%2300C27A'/%3E%3Ccircle cx='11' cy='16' r='1.5' fill='%2300C27A' opacity='.7'/%3E%3Ccircle cx='21' cy='16' r='1.5' fill='%2300C27A' opacity='.7'/%3E%3Ccircle cx='16' cy='21' r='2' fill='%2300C27A'/%3E%3Ccircle cx='16' cy='16' r='1.5' fill='%2300C27A'/%3E%3C/svg%3E">
-<meta name="description" content="Pragma IA accompagne les dirigeants de PME et ETI à intégrer l'IA dans leurs opérations. Audit, POC, formation. Résultats concrets dès le premier mois.">
+<meta name="description" content="Pragma IA accompagne les dirigeants de TPE, PME et ETI à intégrer l'IA dans leurs opérations. Formation, audit, conseil. Résultats concrets dès le premier mois.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -463,10 +463,132 @@ section { padding: 100px 24px; }
 .mini-stat-l { font-size: .74rem; color: var(--text-dim); margin-top: 2px; }
 
 /* ─── OFFRES ─── */
+.offers-intro {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
 .offers-wrap {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+}
+.offer-entry {
+  background: linear-gradient(135deg, #0E1520 0%, #1a2d45 100%);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1.5px solid var(--green);
+  box-shadow: 0 0 0 1px rgba(0,194,122,.15), 0 8px 40px rgba(0,194,122,.08);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  transition: transform .3s, box-shadow .3s;
+}
+.offer-entry:hover { transform: translateY(-4px); box-shadow: 0 0 0 1px rgba(0,194,122,.3), 0 20px 60px rgba(0,194,122,.12); }
+.offer-entry-left {
+  padding: 36px 32px;
+  border-right: 1px solid rgba(255,255,255,.07);
+}
+.offer-entry-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0,194,122,.12);
+  color: var(--green);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 100px;
+  border: 1px solid rgba(0,194,122,.25);
+  margin-bottom: 16px;
+}
+.offer-entry-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.offer-entry-target {
+  font-size: .82rem;
+  color: rgba(255,255,255,.55);
+  margin-bottom: 20px;
+}
+.offer-entry-price-block {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.offer-entry-price {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--green);
+  font-family: 'Manrope', sans-serif;
+  line-height: 1;
+}
+.offer-entry-price-unit {
+  font-size: .9rem;
+  color: rgba(255,255,255,.55);
+  font-weight: 500;
+}
+.offer-entry-duration {
+  font-size: .78rem;
+  color: rgba(255,255,255,.38);
+  margin-bottom: 24px;
+}
+.offer-entry-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green);
+  color: var(--ink);
+  font-weight: 800;
+  font-size: .88rem;
+  padding: 13px 24px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition: background .2s, transform .2s;
+}
+.offer-entry-btn:hover { background: #00d987; transform: translateX(3px); }
+.offer-entry-right {
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+.offer-entry-desc {
+  font-size: .88rem;
+  color: rgba(255,255,255,.65);
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+.offer-entry-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.offer-entry-features li {
+  font-size: .84rem;
+  color: rgba(255,255,255,.82);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.offer-entry-features li::before {
+  content: '';
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='8' fill='%2300C27A' opacity='.2'/%3E%3Cpath d='M5 8l2 2 4-4' stroke='%2300C27A' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/cover no-repeat;
+  flex-shrink: 0;
+  margin-top: 1px;
 }
 .offer {
   background: var(--cream);
@@ -885,6 +1007,8 @@ footer {
   }
   .hamburger { display: flex; flex-direction: column; justify-content: center; }
   .offers-wrap { grid-template-columns: 1fr; }
+  .offer-entry { grid-template-columns: 1fr; }
+  .offer-entry-left { border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); }
   .timeline { grid-template-columns: 1fr; }
   .hero { min-height: auto; }
   .hero-content { padding: 120px 20px 80px; }
@@ -940,9 +1064,9 @@ footer {
   <div class="hero-noise"></div>
   <div class="hero-content">
     <div>
-      <div class="hero-eyebrow"><span class="blink"></span>Conseil IA pour PME & ETI françaises</div>
+      <div class="hero-eyebrow"><span class="blink"></span>Conseil IA pour TPE, PME &amp; ETI françaises</div>
       <h1 class="hero-title">Vos concurrents utilisent<br>déjà l'IA. <em>Et vous&nbsp;?</em></h1>
-      <p class="hero-sub">Nous accompagnons les dirigeants de PME et ETI à intégrer l'IA dans leurs opérations — sans jargon, sans usine à gaz, avec des résultats mesurables dès le premier mois.</p>
+      <p class="hero-sub">Nous accompagnons les dirigeants de TPE, PME et ETI à intégrer l'IA dans leurs opérations — sans jargon, sans usine à gaz, avec des résultats mesurables dès le premier mois.</p>
       <div class="hero-actions">
         <a href="https://calendly.com/dbenouaisch-urfw/30min" target="_blank" class="btn-primary">
           Je veux mon diagnostic gratuit
@@ -1107,9 +1231,38 @@ footer {
   <div class="container">
     <div class="s-header center reveal">
       <div class="s-eyebrow" style="color:#2563EB">Nos offres</div>
-      <h2 class="s-title">Un parcours clair,<br>adapté à votre maturité</h2>
-      <p class="s-sub">Que vous en soyez à la réflexion ou déjà en action, nous avons l'offre qui correspond à votre étape.</p>
+      <h2 class="s-title">Un parcours clair,<br>adapté à votre réalité</h2>
+      <p class="s-sub">TPE, artisan, dirigeant de PME ou ETI — nous avons l'offre qui correspond exactement à votre étape et votre budget.</p>
     </div>
+
+    <!-- ── Offre entrée : Conseil & Formation ── -->
+    <div class="offers-intro">
+      <div class="offer-entry reveal">
+        <div class="offer-entry-left">
+          <div class="offer-entry-badge">✦ Idéal TPE &amp; primo-démarrant</div>
+          <div class="offer-entry-name">Conseil &amp; Formation IA</div>
+          <div class="offer-entry-target">Pour TPE, artisans, commerçants, professions libérales et dirigeants qui veulent comprendre et utiliser l'IA dès maintenant.</div>
+          <div class="offer-entry-price-block">
+            <span class="offer-entry-price">800 €</span>
+            <span class="offer-entry-price-unit">/ jour</span>
+          </div>
+          <div class="offer-entry-duration">Sur site ou visio · Demi-journée possible · Sans engagement</div>
+          <a href="https://calendly.com/dbenouaisch-urfw/30min" target="_blank" class="offer-entry-btn">Réserver une journée →</a>
+        </div>
+        <div class="offer-entry-right">
+          <p class="offer-entry-desc">En une journée, vous repartez avec des outils concrets, des réflexes IA et une vision claire de ce que l'IA peut changer dans votre quotidien professionnel.</p>
+          <ul class="offer-entry-features">
+            <li>Maîtriser le prompting — ChatGPT, Claude, Copilot : posez les bonnes questions, obtenez les bons résultats</li>
+            <li>Explorer le potentiel de l'IA dans votre métier et vos tâches quotidiennes</li>
+            <li>Identifier vos 3 gains immédiats et chiffrés (temps gagné, coûts réduits)</li>
+            <li>Mise en pratique sur vos vrais sujets du moment</li>
+            <li>30 jours de support par email inclus</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Les 3 offres structurées ── -->
     <div class="offers-wrap">
       <!-- Découverte -->
       <div class="offer reveal reveal-delay-1">
@@ -1121,12 +1274,12 @@ footer {
         <div class="offer-body">
           <div class="offer-name">Audit Flash IA</div>
           <div class="offer-price">À partir de 1 500 €</div>
-          <div class="offer-duration">1 à 2 jours · Sur site</div>
-          <p class="offer-desc">L'état des lieux de votre potentiel IA. Vos 3 à 5 cas d'usage prioritaires avec estimation de ROI. Une feuille de route claire.</p>
+          <div class="offer-duration">1 à 2 jours · Sur site · PME 10–80 sal.</div>
+          <p class="offer-desc">L'état des lieux complet de votre potentiel IA. Vos 3 à 5 cas d'usage prioritaires avec estimation de ROI. Une feuille de route claire pour agir.</p>
           <ul class="offer-features">
             <li>Diagnostic de maturité sur 5 axes</li>
             <li>Entretiens avec vos équipes clés</li>
-            <li>3 à 5 cas d'usage chiffrés</li>
+            <li>3 à 5 cas d'usage chiffrés et priorisés</li>
             <li>Rapport + restitution au CODIR</li>
           </ul>
           <a href="https://calendly.com/dbenouaisch-urfw/30min" target="_blank" class="offer-btn offer-btn-outline">Réserver mon audit →</a>
@@ -1142,19 +1295,19 @@ footer {
           <span class="offer-tier tier-2">Structuration</span>
         </div>
         <div class="offer-body">
-          <div class="offer-name">Roadmap & POC IA</div>
+          <div class="offer-name">Roadmap &amp; POC IA</div>
           <div class="offer-price">À partir de 5 000 €</div>
-          <div class="offer-duration">5 à 15 jours · Hybride</div>
-          <p class="offer-desc">On passe à l'action. Stratégie IA complète et prototype de votre premier cas d'usage en conditions réelles.</p>
+          <div class="offer-duration">5 à 15 jours · Hybride · PME–ETI</div>
+          <p class="offer-desc">On passe à l'action. Stratégie IA complète et prototype fonctionnel de votre premier cas d'usage en conditions réelles.</p>
           <ul class="offer-features">
-            <li>Roadmap Data & IA sur 6-12 mois</li>
+            <li>Roadmap Data &amp; IA sur 6–12 mois</li>
             <li>Prototype fonctionnel sur votre cas prioritaire</li>
             <li>Chiffrage détaillé (build, run, ROI)</li>
             <li>Cahier des charges prestataires</li>
             <li>Plan de conduite du changement</li>
           </ul>
           <a href="https://calendly.com/dbenouaisch-urfw/30min" target="_blank" class="offer-btn offer-btn-fill">Construire ma roadmap →</a>
-          <p class="offer-mention">L'offre la plus demandée</p>
+          <p class="offer-mention">L'offre la plus choisie par nos clients</p>
         </div>
       </div>
       <!-- Accélération -->
@@ -1165,14 +1318,14 @@ footer {
           <span class="offer-tier tier-3">Accélération</span>
         </div>
         <div class="offer-body">
-          <div class="offer-name">Direction IA & Formation</div>
+          <div class="offer-name">Direction IA &amp; Formation</div>
           <div class="offer-price">À partir de 2 000 €/mois</div>
-          <div class="offer-duration">Engagement 6 mois · Mensuel</div>
+          <div class="offer-duration">Engagement 6 mois · ETI &amp; PME ambitieuses</div>
           <p class="offer-desc">Votre Directeur IA à temps partagé. Pilotage de vos projets, formation de vos équipes, garantie de résultats.</p>
           <ul class="offer-features">
             <li>Pilotage stratégique et opérationnel</li>
-            <li>COPIL IA mensuel</li>
-            <li>Formation équipes (3 parcours)</li>
+            <li>COPIL IA mensuel avec votre direction</li>
+            <li>Formation équipes (3 parcours personnalisés)</li>
             <li>Veille technologique continue</li>
             <li>Support illimité par email</li>
           </ul>
@@ -1210,9 +1363,9 @@ footer {
           <div class="stat-detail">Grossiste B2B · +8 pts de conversion</div>
         </div>
         <div class="stat-block reveal reveal-delay-4">
-          <div class="stat-n">380K€</div>
+          <div class="stat-n">110K€</div>
           <div class="stat-label">Gains identifiés dès le 1er audit</div>
-          <div class="stat-detail">Entreprise services · 200 salariés</div>
+          <div class="stat-detail">Transporteur routier · 35 sal. · Facturation &amp; suivi automatisés</div>
         </div>
       </div>
       <div class="reveal reveal-delay-2">
@@ -1249,8 +1402,8 @@ footer {
         <div class="founder-role-tag">Fondateur · Pragma IA</div>
         <p class="founder-bio">
           <strong>25 ans chez IBM en tant que Sales Engineer</strong>, j'ai accompagné des centaines d'entreprises dans leur transformation digitale à travers toute l'Europe. J'ai vu de l'intérieur ce qui fonctionne — et ce qui finit dans les tiroirs.<br><br>
-          Pragma IA est né d'un constat simple&nbsp;: <strong>les PME françaises ont un potentiel immense avec l'IA</strong>, mais elles manquent d'un guide de confiance qui parle leur langue, pas celle des ingénieurs.<br><br>
-          Ma mission&nbsp;: rendre l'IA accessible, concrète et rentable pour les entreprises qui font tourner l'économie réelle.
+          Pragma IA est né d'un constat simple&nbsp;: <strong>les TPE, PME et ETI françaises ont un potentiel immense avec l'IA</strong>, mais elles manquent d'un guide de confiance qui parle leur langue, pas celle des ingénieurs.<br><br>
+          Ma mission&nbsp;: rendre l'IA accessible, concrète et rentable pour toutes les entreprises qui font tourner l'économie réelle — du commerçant de 3 personnes à l'ETI de 500 salariés.
         </p>
         <div class="creds">
           <span class="cred">🏢 25 ans chez IBM</span>
@@ -1389,7 +1542,7 @@ footer {
             <text x="150" y="31" font-family="Playfair Display, serif" font-size="22" font-weight="700" fill="#00C27A" letter-spacing="-0.5"> IA</text>
           </svg>
         </a>
-      <p>Conseil en Intelligence Artificielle pour PME et ETI françaises. Des résultats concrets, sans jargon.</p>
+      <p>Conseil en Intelligence Artificielle pour TPE, PME et ETI françaises. Des résultats concrets, sans jargon.</p>
       <div class="footer-social">
         <a href="#" class="soc-btn" aria-label="LinkedIn">in</a>
         <a href="/cdn-cgi/l/email-protection#83e7e1e6edecf6e2eaf0e0ebc3ebecf7eee2eaefade0ecee" class="soc-btn" aria-label="Email">@</a>
