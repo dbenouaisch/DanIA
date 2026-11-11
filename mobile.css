@@ -1,0 +1,126 @@
+/* DAN-IA — couche responsive mobile (320–480px) et menu hamburger.
+   Le style desktop reste intact : toutes les règles sont dans des media queries. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+img, video, svg, iframe { max-width: 100%; }
+img, video { height: auto; }
+a, button { box-sizing: border-box; }
+.nav-toggle { display: none; }
+
+/* ---------- Menu hamburger (tablette et mobile) ---------- */
+@media (max-width: 900px) {
+  header { position: sticky; top: 0; z-index: 50; }
+  header > div { flex-wrap: wrap !important; padding: 12px 20px !important; row-gap: 0 !important; }
+  .js .nav-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 48px; height: 48px; margin-right: -8px; padding: 0;
+    background: transparent; border: 0; border-radius: 8px; color: #FFFFFF; cursor: pointer;
+  }
+  .nav-toggle:focus-visible { outline: 3px solid #E8833A; outline-offset: 2px; }
+  .nav-toggle .bars, .nav-toggle .bars::before, .nav-toggle .bars::after {
+    display: block; width: 24px; height: 2px; background: currentColor; border-radius: 2px;
+    position: relative; transition: transform .2s ease, background .2s ease;
+  }
+  .nav-toggle .bars::before, .nav-toggle .bars::after { content: ""; position: absolute; left: 0; }
+  .nav-toggle .bars::before { top: -7px; }
+  .nav-toggle .bars::after { top: 7px; }
+  .nav-open .nav-toggle .bars { background: transparent; }
+  .nav-open .nav-toggle .bars::before { transform: translateY(7px) rotate(45deg); }
+  .nav-open .nav-toggle .bars::after { transform: translateY(-7px) rotate(-45deg); }
+
+  header > div[style] > * { flex-basis: auto !important; }
+  header > div > a:first-child { display: inline-flex; align-items: center; min-height: 48px; }
+  .js header nav { display: none !important; }
+  .js.nav-open header > div[style] > nav {
+    display: flex !important; flex-direction: column !important; align-items: stretch !important;
+    flex-basis: 100% !important; width: 100%; gap: 0 !important; padding: 8px 0 16px; margin-top: 4px;
+    border-top: 1px solid #22356B;
+  }
+  header nav a {
+    display: flex !important; align-items: center; min-height: 48px; padding: 0 4px !important;
+    font-size: 1.0625rem !important; border-bottom: 1px solid #22356B;
+  }
+  header nav a[href*="devis"], header nav a[href$="#contact"]:last-child {
+    justify-content: center; margin-top: 12px; padding: 0 20px !important; border-bottom: 0;
+  }
+}
+
+/* ---------- Smartphones ---------- */
+@media (max-width: 600px) {
+  html, body { overflow-x: hidden; }
+  body > div { font-size: 1rem !important; line-height: 1.6 !important; }
+  * { min-width: 0 !important; }
+
+  /* Conteneurs : marges latérales et respirations verticales adaptées */
+  [style*="max-width: 1240px"] { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+  [style*="padding: 120px 32px"], [style*="padding: 112px 32px"], [style*="padding: 104px 32px"],
+  [style*="padding: 96px 32px"], [style*="padding: 80px 32px"], [style*="padding: 120px 32px 72px"] {
+    padding-top: 3.5rem !important; padding-bottom: 3.5rem !important;
+  }
+  [style*="padding: 0 32px 104px"] { padding-bottom: 3.5rem !important; }
+  [style*="padding: 28px 32px"], [style*="padding: 36px 32px"], [style*="padding: 40px 32px"] {
+    padding-top: 1.75rem !important; padding-bottom: 1.75rem !important;
+  }
+
+  /* Grilles et rangées : une seule colonne */
+  [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+  [style*="flex-wrap: wrap"] > * { flex-basis: 100% !important; }
+  [style*="flex-wrap: wrap"] > [style*="flex: 0 0 64px"] { flex-basis: auto !important; }
+  [style*="flex-wrap: wrap"] > [style*="flex: 0 0 160px"] { flex-basis: auto !important; }
+  [style*="flex-wrap: wrap"] > span, [style*="flex-wrap: wrap"] > strong { flex-basis: auto !important; }
+  [style*="gap: 64px"], [style*="gap: 56px"], [style*="gap: 48px"] { gap: 2rem !important; }
+  [style*="gap: 44px"], [style*="gap: 40px"] { gap: 1.75rem !important; }
+  [style*="gap: 36px 40px"], [style*="gap: 40px 32px"], [style*="gap: 36px 32px"] { gap: 1.75rem !important; }
+
+  /* Cartes et blocs : rembourrage resserré */
+  [style*="padding: 56px 48px"] { padding: 2rem 1.25rem !important; }
+  [style*="padding: 48px 40px"], [style*="padding: 40px"] { padding: 1.75rem 1.25rem !important; }
+  [style*="padding: 36px 40px"], [style*="padding: 36px 32px"], [style*="padding: 36px;"] { padding: 1.5rem 1.25rem !important; }
+  [style*="padding: 32px;"], [style*="padding: 32px\""], [style*="padding: 30px"], [style*="padding: 32px 32px"] { padding: 1.5rem 1.25rem !important; }
+  [style*="padding: 28px;"], [style*="padding: 28px 24px"], [style*="padding: 28px 26px"] { padding: 1.25rem !important; }
+  [style*="padding: 16px 32px"] { padding: 1rem 1.25rem !important; }
+
+  /* Bloc contact : panneau et formulaire empilés */
+  [style*="border-radius: 10px 0 0 10px"] { border-radius: 10px 10px 0 0 !important; }
+  [style*="border-radius: 0 10px 10px 0"] { border-radius: 0 0 10px 10px !important; border-left: 1px solid #D9DFEA !important; }
+
+  /* Typographie fluide */
+  h1 { font-size: clamp(2rem, 9.5vw, 2.6rem) !important; line-height: 1.1 !important; }
+  h2 { font-size: clamp(1.625rem, 7.5vw, 2.1rem) !important; line-height: 1.15 !important; }
+  h3 { font-size: clamp(1.375rem, 6vw, 1.625rem) !important; }
+  [style*="font-size: 44px"], [style*="font-size: 42px"] { font-size: clamp(1.875rem, 9vw, 2.25rem) !important; }
+  [style*="font-size: 40px"], [style*="font-size: 36px"] { font-size: clamp(1.75rem, 8vw, 2rem) !important; }
+  [style*="font-size: clamp(30px"], [style*="font-size: clamp(32px"] { font-size: clamp(1.625rem, 7.5vw, 2rem) !important; }
+  [style*="font-size: 28px"] { font-size: clamp(1.375rem, 6vw, 1.625rem) !important; }
+  [style*="font-size: 26px"], [style*="font-size: 24px"] { font-size: clamp(1.25rem, 5.5vw, 1.5rem) !important; }
+  [style*="font-size: 22px"], [style*="font-size: 21px"], [style*="font-size: 20px"], [style*="font-size: 19px"] { font-size: 1.0625rem !important; }
+  [style*="font-size: 18px"], [style*="font-size: 17px"] { font-size: 1rem !important; }
+  [style*="font-size: 16px"], [style*="font-size: 15px"] { font-size: 0.9375rem !important; }
+  [style*="font-size: 14px"], [style*="font-size: 13px"] { font-size: 0.8125rem !important; }
+  [style*="letter-spacing: 0.16em"] { letter-spacing: 0.1em !important; }
+
+  /* Éléments tactiles : 44 x 44 px minimum */
+  a[style*="min-height: 54px"], button[style*="min-height: 54px"], #send-mail {
+    width: 100%; justify-content: center; min-height: 52px !important; padding: 0 1.25rem !important; text-align: center;
+  }
+  footer a, section a[href*="formation"], [style*="Programme détaillé"] a {
+    display: inline-flex; align-items: center; min-height: 44px;
+  }
+  article a, footer a { display: inline-flex; align-items: center; min-height: 44px; }
+  summary { min-height: 44px; display: flex; align-items: center; padding-right: 8px; }
+  input, select, textarea { font-size: 1rem !important; width: 100%; box-sizing: border-box; }
+  input[type="checkbox"] { width: 24px !important; height: 24px !important; flex: none; }
+  a[href^="mailto:"] { display: inline-flex; align-items: center; min-height: 44px; }
+  label[for="f-call"] { min-height: 44px; display: flex; align-items: center; }
+
+  /* Médias et tableaux : jamais de débordement */
+  img { max-width: 100% !important; height: auto; }
+  img[style*="border-radius: 50%"] { width: 120px !important; height: 120px !important; }
+  img[style*="aspect-ratio: 4 / 5"] { width: 100% !important; flex-basis: auto !important; }
+  table { min-width: 0 !important; width: 100% !important; font-size: 0.9375rem !important; }
+  th, td { padding: 10px 12px !important; word-break: break-word; }
+  [style*="overflow-x: auto"] { overflow-x: visible !important; }
+
+  /* Barre outils : liste plus compacte */
+  [style*="font-size: 22px; color: #22356B"] { font-size: 1.0625rem !important; gap: 8px 18px !important; }
+  [style*="width: 96px; height: 6px"] { width: 72px !important; }
+}
