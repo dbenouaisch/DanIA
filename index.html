@@ -1,1663 +1,307 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DanIA — Conseil en Intelligence Artificielle pour TPE, PME et ETI</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' rx='8' fill='%230E1520'/%3E%3Crect x='7' y='7' width='18' height='18' rx='4' fill='none' stroke='%2300C27A' stroke-width='1.5'/%3E%3Ccircle cx='16' cy='11' r='2' fill='%2300C27A'/%3E%3Ccircle cx='11' cy='16' r='1.5' fill='%2300C27A' opacity='.7'/%3E%3Ccircle cx='21' cy='16' r='1.5' fill='%2300C27A' opacity='.7'/%3E%3Ccircle cx='16' cy='21' r='2' fill='%2300C27A'/%3E%3Ccircle cx='16' cy='16' r='1.5' fill='%2300C27A'/%3E%3C/svg%3E">
-<meta name="description" content="DanIA accompagne les dirigeants de TPE, PME et ETI à intégrer l'IA dans leurs opérations. Formation, audit, conseil. Résultats concrets dès le premier mois.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DAN-IA — Formations IA et bureautique</title>
+<meta name="description" content="DAN-IA : formations IA et bureautique pour dirigeants, managers et indépendants. Des gains mesurables dès lundi matin.">
+<link rel="canonical" href="https://dan-ia.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DAN-IA — Formations IA et bureautique">
+<meta property="og:description" content="DAN-IA : formations IA et bureautique pour dirigeants, managers et indépendants. Des gains mesurables dès lundi matin.">
+<meta property="og:url" content="https://dan-ia.vercel.app/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>html{scroll-behavior:smooth}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caladea:wght@400;700&amp;family=Carlito:wght@400;700&amp;display=swap" rel="stylesheet">
 <style>
-/* ─── RESET & TOKENS ─── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
-
-:root {
-  --ink: #080C14;
-  --ink-2: #0E1520;
-  --ink-3: #141D2B;
-  --ink-4: #1C2838;
-  --green: #00C27A;
-  --green-glow: rgba(0,194,122,.18);
-  --green-dim: rgba(0,194,122,.08);
-  --blue-mid: #2563EB;
-  --ice: #F0F6FF;
-  --cream: #FAF9F7;
-  --mist: rgba(255,255,255,.06);
-  --mist-2: rgba(255,255,255,.10);
-  --border-dark: rgba(255,255,255,.08);
-  --border-light: rgba(0,0,0,.07);
-  --text-hero: #FFFFFF;
-  --text-dim: rgba(255,255,255,.55);
-  --text-dimmer: rgba(255,255,255,.32);
-  --text-body: #2D3748;
-  --text-muted: #718096;
-  --radius: 16px;
-  --radius-sm: 10px;
-  --radius-pill: 100px;
-}
-
-body {
-  font-family: 'Manrope', sans-serif;
-  background: var(--ink);
-  color: var(--text-hero);
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-
-/* ─── CURSOR GLOW ─── */
-.cursor-glow {
-  position: fixed;
-  width: 400px; height: 400px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,194,122,.06) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-  transform: translate(-50%,-50%);
-  transition: transform .1s linear;
-}
-
-/* ─── NAV ─── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  background: rgba(8,12,20,.72);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255,255,255,.05);
-  transition: all .4s cubic-bezier(.16,1,.3,1);
-}
-nav.scrolled {
-  background: rgba(8,12,20,.94);
-  backdrop-filter: blur(28px);
-  border-bottom: 1px solid var(--border-dark);
-}
-.nav-inner {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 0 32px;
-  height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #fff;
-  text-decoration: none;
-  letter-spacing: -.02em;
-  display: flex;
-  align-items: center;
-  gap: 2px;
-}
-.logo-accent { color: var(--green); }
-.nav-links {
-  display: flex; align-items: center; gap: 4px; list-style: none;
-}
-.nav-links a {
-  font-size: .875rem;
-  font-weight: 500;
-  color: var(--text-dim);
-  text-decoration: none;
-  padding: 7px 14px;
-  border-radius: var(--radius-sm);
-  transition: color .2s, background .2s;
-  letter-spacing: .01em;
-}
-.nav-links a:hover { color: #fff; background: var(--mist); }
-.btn-cta-nav {
-  background: var(--green) !important;
-  color: var(--ink) !important;
-  font-weight: 700 !important;
-  padding: 9px 20px !important;
-  border-radius: var(--radius-pill) !important;
-  transition: transform .2s, box-shadow .2s, background .2s !important;
-  box-shadow: 0 0 20px var(--green-glow);
-}
-.btn-cta-nav:hover { background: #00d987 !important; transform: translateY(-1px); box-shadow: 0 4px 24px rgba(0,194,122,.4) !important; }
-.hamburger { display: none; background: none; border: none; cursor: pointer; }
-.hamburger span { display: block; width: 20px; height: 1.5px; background: #fff; margin: 5px 0; border-radius: 2px; transition: .3s; }
-
-/* ─── HERO ─── */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background-image: url('./images/hero-bg.jpg'), linear-gradient(135deg, #0E1520 0%, #1C2838 50%, #0E1520 100%);
-  background-size: cover;
-  background-position: center 30%;
-  transform: scale(1.06);
-  transition: transform 12s ease-out;
-}
-.hero-bg.loaded { transform: scale(1); }
-.hero-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(105deg, rgba(8,12,20,.92) 0%, rgba(8,12,20,.75) 50%, rgba(8,12,20,.5) 100%);
-}
-.hero-noise {
-  position: absolute; inset: 0;
-  opacity: .025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-}
-.hero-content {
-  position: relative; z-index: 1;
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 0 32px;
-  padding-top: 96px;
-  display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 80px;
-  align-items: center;
-  width: 100%;
-}
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid rgba(0,194,122,.3);
-  background: rgba(0,194,122,.08);
-  color: var(--green);
-  font-size: .75rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  padding: 6px 16px;
-  border-radius: var(--radius-pill);
-  margin-bottom: 32px;
-}
-.blink { width: 5px; height: 5px; border-radius: 50%; background: var(--green); animation: blink 2s infinite; }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
-
-h1.hero-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.08;
-  letter-spacing: -.03em;
-  margin-bottom: 28px;
-}
-h1.hero-title em { color: var(--green); font-style: italic; }
-.hero-sub {
-  font-size: 1.1rem;
-  color: var(--text-dim);
-  max-width: 520px;
-  line-height: 1.75;
-  margin-bottom: 44px;
-  font-weight: 400;
-}
-.hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-bottom: 56px;
-}
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--green);
-  color: var(--ink);
-  font-family: 'Manrope', sans-serif;
-  font-size: .95rem;
-  font-weight: 700;
-  padding: 15px 30px;
-  border-radius: var(--radius-pill);
-  text-decoration: none;
-  transition: transform .25s, box-shadow .25s, background .2s;
-  box-shadow: 0 4px 24px var(--green-glow), 0 0 60px rgba(0,194,122,.12);
-  letter-spacing: .01em;
-}
-.btn-primary:hover { background: #00d987; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,194,122,.45); }
-.btn-primary svg { transition: transform .2s; }
-.btn-primary:hover svg { transform: translateX(3px); }
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: rgba(255,255,255,.7);
-  font-size: .875rem;
-  font-weight: 500;
-  text-decoration: none;
-  padding: 13px 20px;
-  border-radius: var(--radius-pill);
-  border: 1px solid rgba(255,255,255,.12);
-  transition: color .2s, border-color .2s, background .2s;
-}
-.btn-ghost:hover { color: #fff; border-color: rgba(255,255,255,.3); background: var(--mist); }
-.hero-proof {
-  display: flex;
-  gap: 28px;
-  flex-wrap: wrap;
-}
-.proof-pill {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: .8rem;
-  color: var(--text-dimmer);
-  font-weight: 500;
-}
-.proof-pill-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--green); }
-
-/* Hero card flottante */
-.hero-card {
-  background: rgba(255,255,255,.04);
-  backdrop-filter: blur(32px);
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: var(--radius);
-  padding: 28px 24px;
-  animation: floatCard 6s ease-in-out infinite;
-}
-@keyframes floatCard { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-.hc-label { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--green); margin-bottom: 16px; }
-.hc-stat { display: flex; align-items: flex-end; gap: 12px; margin-bottom: 16px; }
-.hc-number { font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 700; color: #fff; line-height: 1; letter-spacing: -.03em; }
-.hc-desc { font-size: .78rem; color: var(--text-dim); line-height: 1.4; max-width: 120px; margin-bottom: 6px; }
-.hc-divider { height: 1px; background: var(--border-dark); margin: 16px 0; }
-.hc-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-.hc-row:last-child { margin-bottom: 0; }
-.hc-key { font-size: .78rem; color: var(--text-dimmer); font-weight: 500; }
-.hc-val { font-size: .82rem; color: var(--text-dim); font-weight: 600; }
-.hc-badge { display: inline-flex; align-items: center; gap: 5px; background: var(--green-dim); border: 1px solid rgba(0,194,122,.2); color: var(--green); font-size: .72rem; font-weight: 700; padding: 4px 10px; border-radius: var(--radius-pill); margin-top: 14px; }
-.hc-arrow { display: inline-block; color: var(--green); font-size: .9rem; }
-
-/* ─── MARQUEE ─── */
-.marquee-wrap {
-  background: var(--ink-2);
-  border-top: 1px solid var(--border-dark);
-  border-bottom: 1px solid var(--border-dark);
-  padding: 16px 0;
-  overflow: hidden;
-}
-.marquee-track {
-  display: flex;
-  gap: 48px;
-  animation: marquee 22s linear infinite;
-  width: max-content;
-}
-.marquee-item {
-  font-size: .8rem;
-  font-weight: 600;
-  color: var(--text-dimmer);
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.marquee-item::before { content: '◆'; font-size: .5rem; color: var(--green); opacity: .6; }
-@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-
-/* ─── LIGHT SECTIONS ─── */
-.light { background: var(--cream); color: var(--text-body); }
-.light-alt { background: var(--ice); color: var(--text-body); }
-
-/* ─── SECTION ANATOMY ─── */
-section { padding: 100px 24px; }
-.container { max-width: 1240px; margin: 0 auto; }
-
-.s-eyebrow {
-  font-size: .72rem;
-  font-weight: 800;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--green);
-  margin-bottom: 14px;
-}
-.s-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.9rem, 3.5vw, 2.9rem);
-  font-weight: 700;
-  letter-spacing: -.03em;
-  line-height: 1.15;
-  margin-bottom: 16px;
-}
-.dark .s-title { color: #fff; }
-.light .s-title, .light-alt .s-title { color: #0E1520; }
-.s-sub {
-  font-size: 1rem;
-  line-height: 1.75;
-  max-width: 540px;
-}
-.dark .s-sub { color: var(--text-dim); }
-.light .s-sub, .light-alt .s-sub { color: var(--text-muted); }
-.s-header { margin-bottom: 64px; }
-.s-header.center { text-align: center; }
-.s-header.center .s-sub { margin: 0 auto; }
-.dark { background: var(--ink); }
-
-/* ─── PROBLÈME — SPLIT ─── */
-#probleme .inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-#probleme .img-side {
-  position: relative;
-  border-radius: var(--radius);
-  overflow: hidden;
-  aspect-ratio: 4/5;
-}
-#probleme .img-side img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  filter: grayscale(10%) contrast(1.03);
-  transition: transform .6s ease;
-}
-#probleme .img-side:hover img { transform: scale(1.03); }
-.img-badge {
-  position: absolute;
-  bottom: 24px; left: 24px;
-  background: rgba(8,12,20,.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border-dark);
-  border-radius: var(--radius-sm);
-  padding: 14px 18px;
-  color: #fff;
-}
-.img-badge strong { display: block; font-size: 1.5rem; font-family: 'Playfair Display', serif; color: var(--green); margin-bottom: 2px; }
-.img-badge span { font-size: .78rem; color: var(--text-dim); }
-.pain-list { display: flex; flex-direction: column; gap: 20px; margin-top: 8px; }
-.pain-item {
-  display: flex;
-  gap: 18px;
-  padding: 22px;
-  background: rgba(255,255,255,.03);
-  border: 1px solid var(--border-dark);
-  border-radius: var(--radius-sm);
-  transition: background .2s, border-color .2s;
-  cursor: default;
-}
-.pain-item:hover { background: rgba(255,255,255,.055); border-color: rgba(255,255,255,.14); }
-.pain-icon {
-  flex-shrink: 0;
-  width: 40px; height: 40px;
-  border-radius: var(--radius-sm);
-  background: var(--green-dim);
-  border: 1px solid rgba(0,194,122,.15);
-  display: flex; align-items: center; justify-content: center;
-}
-.pain-icon svg { width: 18px; height: 18px; stroke: var(--green); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.pain-title { font-size: .92rem; font-weight: 700; color: #fff; margin-bottom: 5px; letter-spacing: -.01em; }
-.pain-text { font-size: .83rem; color: var(--text-dim); line-height: 1.65; }
-
-/* ─── VALEUR — BENTO ─── */
-#valeur { background: var(--ink-2); }
-.bento {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: auto auto;
-  gap: 16px;
-}
-.bento-card {
-  background: var(--ink-3);
-  border: 1px solid var(--border-dark);
-  border-radius: var(--radius);
-  padding: 32px;
-  transition: border-color .25s, transform .25s;
-  overflow: hidden;
-  position: relative;
-}
-.bento-card:hover { border-color: rgba(0,194,122,.25); transform: translateY(-2px); }
-.bento-1 { grid-column: span 5; }
-.bento-2 { grid-column: span 7; }
-.bento-3 { grid-column: span 4; }
-.bento-4 { grid-column: span 8; }
-.bento-img {
-  width: 100%; height: 200px;
-  object-fit: cover;
-  border-radius: var(--radius-sm);
-  margin-bottom: 20px;
-  filter: brightness(.85) saturate(.9);
-}
-.bento-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--green);
-  line-height: 1;
-  margin-bottom: 8px;
-  letter-spacing: -.04em;
-}
-.bento-title { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 8px; letter-spacing: -.02em; }
-.bento-text { font-size: .84rem; color: var(--text-dim); line-height: 1.7; }
-.bento-tag {
-  display: inline-block;
-  background: var(--green-dim);
-  border: 1px solid rgba(0,194,122,.2);
-  color: var(--green);
-  font-size: .7rem;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: var(--radius-pill);
-  margin-bottom: 16px;
-}
-.bento-large-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: #fff;
-  line-height: 1.3;
-  letter-spacing: -.02em;
-}
-.bento-large-text em { color: var(--green); font-style: italic; }
-.bento-grid-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
-.mini-stat { background: rgba(255,255,255,.04); border-radius: var(--radius-sm); padding: 14px; border: 1px solid var(--border-dark); }
-.mini-stat-n { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--green); }
-.mini-stat-l { font-size: .74rem; color: var(--text-dim); margin-top: 2px; }
-
-/* ─── OFFRES ─── */
-.offers-intro {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-.offers-wrap {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  max-width: 860px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.offer-entry {
-  background: linear-gradient(135deg, #0E1520 0%, #1a2d45 100%);
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1.5px solid var(--green);
-  box-shadow: 0 0 0 1px rgba(0,194,122,.15), 0 8px 40px rgba(0,194,122,.08);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  transition: transform .3s, box-shadow .3s;
-}
-.offer-entry:hover { transform: translateY(-4px); box-shadow: 0 0 0 1px rgba(0,194,122,.3), 0 20px 60px rgba(0,194,122,.12); }
-.offer-entry-left {
-  padding: 36px 32px;
-  border-right: 1px solid rgba(255,255,255,.07);
-}
-.offer-entry-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(0,194,122,.12);
-  color: var(--green);
-  font-size: .72rem;
-  font-weight: 800;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  padding: 5px 12px;
-  border-radius: 100px;
-  border: 1px solid rgba(0,194,122,.25);
-  margin-bottom: 16px;
-}
-.offer-entry-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.7rem;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 8px;
-  line-height: 1.2;
-}
-.offer-entry-target {
-  font-size: .82rem;
-  color: rgba(255,255,255,.55);
-  margin-bottom: 20px;
-}
-.offer-entry-price-block {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  margin-bottom: 6px;
-}
-.offer-entry-price {
-  font-size: 2.4rem;
-  font-weight: 800;
-  color: var(--green);
-  font-family: 'Manrope', sans-serif;
-  line-height: 1;
-}
-.offer-entry-price-unit {
-  font-size: .9rem;
-  color: rgba(255,255,255,.55);
-  font-weight: 500;
-}
-.offer-entry-duration {
-  font-size: .78rem;
-  color: rgba(255,255,255,.38);
-  margin-bottom: 24px;
-}
-.offer-entry-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--green);
-  color: var(--ink);
-  font-weight: 800;
-  font-size: .88rem;
-  padding: 13px 24px;
-  border-radius: var(--radius-pill);
-  text-decoration: none;
-  transition: background .2s, transform .2s;
-}
-.offer-entry-btn:hover { background: #00d987; transform: translateX(3px); }
-.offer-entry-right {
-  padding: 36px 32px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 12px;
-}
-.offer-entry-desc {
-  font-size: .88rem;
-  color: rgba(255,255,255,.65);
-  line-height: 1.7;
-  margin-bottom: 8px;
-}
-.offer-entry-features {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.offer-entry-features li {
-  font-size: .84rem;
-  color: rgba(255,255,255,.82);
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-}
-.offer-entry-features li::before {
-  content: '';
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='8' fill='%2300C27A' opacity='.2'/%3E%3Cpath d='M5 8l2 2 4-4' stroke='%2300C27A' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/cover no-repeat;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-.offer {
-  background: var(--cream);
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1.5px solid transparent;
-  transition: transform .3s, box-shadow .3s, border-color .3s;
-  display: flex;
-  flex-direction: column;
-}
-.offer:hover { transform: translateY(-5px); box-shadow: 0 20px 60px rgba(0,0,0,.12); }
-.offer.featured { border-color: #2563EB; box-shadow: 0 0 0 1px #2563EB; }
-.offer-img { position: relative; height: 180px; overflow: hidden; }
-.offer-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
-.offer:hover .offer-img img { transform: scale(1.05); }
-.offer-img-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(8,12,20,.6)); }
-.offer-tier {
-  position: absolute;
-  top: 14px; left: 14px;
-  font-size: .7rem;
-  font-weight: 800;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  padding: 5px 12px;
-  border-radius: var(--radius-pill);
-  color: #fff;
-}
-.tier-1 { background: rgba(37,99,235,.85); backdrop-filter: blur(8px); }
-.tier-2 { background: rgba(14,21,32,.8); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.2); }
-.tier-3 { background: rgba(0,194,122,.85); color: var(--ink); backdrop-filter: blur(8px); }
-.offer-body { padding: 28px 26px; flex: 1; display: flex; flex-direction: column; color: var(--text-body); }
-.offer-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: #0E1520; margin-bottom: 6px; }
-.offer-price { font-size: 1.5rem; font-weight: 800; font-family: 'Manrope', sans-serif; color: #2563EB; margin-bottom: 3px; }
-.offer.featured .offer-price { color: #2563EB; }
-.offer-duration { font-size: .78rem; color: var(--text-muted); margin-bottom: 14px; }
-.offer-desc { font-size: .85rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--border-light); }
-.offer-features { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 24px; flex: 1; }
-.offer-features li { font-size: .83rem; color: var(--text-body); display: flex; gap: 10px; align-items: flex-start; }
-.offer-features li::before { content: ''; width: 16px; height: 16px; border-radius: 50%; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='8' fill='%2300C27A' opacity='.15'/%3E%3Cpath d='M5 8l2 2 4-4' stroke='%2300C27A' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/cover no-repeat; flex-shrink: 0; margin-top: 1px; }
-.offer-btn {
-  display: block;
-  text-align: center;
-  padding: 13px 20px;
-  border-radius: var(--radius-pill);
-  font-size: .875rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: .2s;
-  letter-spacing: .01em;
-}
-.offer-btn-outline { background: #fff; color: #0E1520; border: 1.5px solid #E2E8F0; }
-.offer-btn-outline:hover { background: #F0F6FF; border-color: #2563EB; color: #2563EB; }
-.offer-btn-fill { background: #2563EB; color: #fff; }
-.offer-btn-fill:hover { background: #1d4ed8; }
-.offer-btn-green { background: var(--green); color: var(--ink); }
-.offer-btn-green:hover { background: #00d987; }
-.offer-mention { font-size: .74rem; color: var(--text-muted); text-align: center; margin-top: 10px; font-style: italic; }
-.featured-flag {
-  background: #2563EB;
-  color: #fff;
-  text-align: center;
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  padding: 6px;
-}
-
-/* ─── STATS ─── */
-#resultats { background: var(--ink-2); }
-.stats-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: start;
-}
-.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.stat-block {
-  background: var(--ink-3);
-  border: 1px solid var(--border-dark);
-  border-radius: var(--radius);
-  padding: 28px 24px;
-  transition: border-color .2s, transform .2s;
-}
-.stat-block:hover { border-color: rgba(0,194,122,.3); transform: translateY(-2px); }
-.stat-n {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.6rem;
-  font-weight: 700;
-  color: var(--green);
-  letter-spacing: -.04em;
-  line-height: 1;
-  margin-bottom: 8px;
-}
-.stat-label { font-size: .88rem; font-weight: 600; color: #fff; margin-bottom: 4px; }
-.stat-detail { font-size: .76rem; color: var(--text-dimmer); line-height: 1.5; }
-
-.testimonial-card {
-  background: var(--ink-3);
-  border: 1px solid var(--border-dark);
-  border-radius: var(--radius);
-  padding: 36px 32px;
-  position: relative;
-  overflow: hidden;
-}
-.testimonial-card::before {
-  content: '\201C';
-  position: absolute;
-  top: -10px; left: 24px;
-  font-family: 'Playfair Display', serif;
-  font-size: 8rem;
-  color: var(--green);
-  opacity: .12;
-  line-height: 1;
-}
-.testi-text {
-  font-size: 1rem;
-  color: rgba(255,255,255,.75);
-  line-height: 1.8;
-  font-style: italic;
-  margin-bottom: 28px;
-  position: relative;
-  z-index: 1;
-}
-.testi-author { display: flex; align-items: center; gap: 14px; }
-.testi-avatar {
-  width: 48px; height: 48px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #2563EB, var(--green));
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700;
-  font-size: .9rem;
-  color: #fff;
-  flex-shrink: 0;
-}
-.testi-name { font-weight: 700; font-size: .9rem; color: #fff; }
-.testi-role { font-size: .78rem; color: var(--text-dimmer); margin-top: 2px; }
-.stars { color: #FCD34D; font-size: .8rem; margin-bottom: 6px; }
-
-/* ─── FONDATEUR ─── */
-.founder-grid {
-  display: grid;
-  grid-template-columns: 420px 1fr;
-  gap: 80px;
-  align-items: center;
-}
-.founder-img-wrap {
-  position: relative;
-}
-.founder-img {
-  width: 100%;
-  aspect-ratio: 3/4;
-  object-fit: cover;
-  border-radius: var(--radius);
-  filter: grayscale(15%) contrast(1.05);
-}
-.founder-img-placeholder {
-  width: 100%;
-  aspect-ratio: 3/4;
-  border-radius: var(--radius);
-  background: var(--ink-3);
-  border: 1px solid var(--border-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 16px;
-}
-.founder-initials {
-  font-family: 'Playfair Display', serif;
-  font-size: 5rem;
-  font-weight: 700;
-  color: var(--green);
-  opacity: .8;
-}
-.founder-img-wrap::after {
-  content: '';
-  position: absolute;
-  inset: 12px -12px -12px 12px;
-  border: 1px solid rgba(0,194,122,.2);
-  border-radius: var(--radius);
-  z-index: -1;
-}
-.founder-quote {
-  position: absolute;
-  bottom: 24px; right: -20px;
-  background: var(--ink-2);
-  border: 1px solid var(--border-dark);
-  border-radius: var(--radius-sm);
-  padding: 14px 18px;
-  max-width: 200px;
-  backdrop-filter: blur(8px);
-}
-.fq-text { font-size: .8rem; color: var(--text-dim); line-height: 1.5; font-style: italic; }
-.fq-name { font-size: .72rem; color: var(--green); font-weight: 700; margin-top: 8px; }
-.founder-name-big {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -.03em;
-  margin-bottom: 4px;
-}
-.founder-role-tag { color: var(--green); font-size: .85rem; font-weight: 600; margin-bottom: 28px; }
-.founder-bio { font-size: .92rem; color: var(--text-dim); line-height: 1.8; margin-bottom: 32px; }
-.founder-bio strong { color: #fff; font-weight: 600; }
-.creds { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
-.cred {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: var(--mist);
-  border: 1px solid var(--border-dark);
-  padding: 7px 14px;
-  border-radius: var(--radius-pill);
-  font-size: .78rem;
-  font-weight: 600;
-  color: var(--text-dim);
-  transition: border-color .2s, color .2s;
-}
-.cred:hover { border-color: rgba(0,194,122,.3); color: var(--green); }
-
-/* ─── MÉTHODE TIMELINE ─── */
-#methode { background: var(--ink-3); }
-.timeline {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  position: relative;
-}
-.timeline::after {
-  content: '';
-  position: absolute;
-  top: 28px;
-  left: 28px;
-  right: 28px;
-  height: 1px;
-  background: linear-gradient(90deg, var(--green) 0%, rgba(0,194,122,.3) 100%);
-}
-.step-card {
-  padding: 0 24px 0 0;
-  position: relative;
-  z-index: 1;
-}
-.step-card:last-child { padding-right: 0; }
-.step-dot {
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  background: var(--ink-3);
-  border: 1px solid rgba(0,194,122,.35);
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 24px;
-  transition: background .25s, border-color .25s, box-shadow .25s;
-}
-.step-card:hover .step-dot { background: var(--green-dim); border-color: var(--green); box-shadow: 0 0 20px var(--green-glow); }
-.step-dot svg { width: 20px; height: 20px; stroke: var(--green); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.step-n { font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--text-dimmer); margin-bottom: 8px; }
-.step-title { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 10px; letter-spacing: -.02em; }
-.step-desc { font-size: .82rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 10px; }
-.step-time { font-size: .74rem; font-weight: 700; color: var(--green); letter-spacing: .04em; }
-
-/* ─── FAQ ─── */
-.faq-wrap { max-width: 800px; margin: 0 auto; }
-.faq-item {
-  border-bottom: 1px solid var(--border-dark);
-  overflow: hidden;
-}
-.faq-item:first-child { border-top: 1px solid var(--border-dark); }
-.faq-btn {
-  width: 100%;
-  background: none;
-  border: none;
-  text-align: left;
-  padding: 22px 0;
-  color: #fff;
-  font-family: 'Manrope', sans-serif;
-  font-size: .92rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  transition: color .2s;
-  letter-spacing: -.01em;
-}
-.faq-btn:hover { color: var(--green); }
-.faq-indicator {
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  border: 1px solid var(--border-dark);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-  transition: background .2s, border-color .2s;
-}
-.faq-indicator::after { content: '+'; font-size: .9rem; color: var(--text-dim); transition: transform .3s; }
-.faq-item.open .faq-indicator { background: var(--green); border-color: var(--green); }
-.faq-item.open .faq-indicator::after { content: '−'; color: var(--ink); transform: rotate(180deg); }
-.faq-answer { max-height: 0; overflow: hidden; transition: max-height .35s cubic-bezier(.16,1,.3,1); }
-.faq-item.open .faq-answer { max-height: 400px; }
-.faq-answer-inner { padding: 0 0 22px; font-size: .88rem; color: var(--text-dim); line-height: 1.8; max-width: 680px; }
-
-/* ─── CTA FINALE ─── */
-#cta-final {
-  position: relative;
-  padding: 120px 24px;
-  overflow: hidden;
-  text-align: center;
-}
-.cta-bg {
-  position: absolute; inset: 0;
-  background-image: url('./images/bureau-cta.jpg'), linear-gradient(135deg, #0E1520 0%, #141D2B 100%);
-  background-size: cover;
-  background-position: center;
-  filter: brightness(.25) saturate(.7);
-}
-.cta-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(8,12,20,.5) 0%, rgba(8,12,20,.85) 100%);
-}
-#cta-final .container { position: relative; z-index: 1; }
-.cta-inner { max-width: 680px; margin: 0 auto; }
-#cta-final .s-title { color: #fff; }
-#cta-final .s-sub { color: rgba(255,255,255,.6); margin: 0 auto 44px; }
-.cta-actions { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
-.reassurance { font-size: .78rem; color: rgba(255,255,255,.3); margin-top: 18px; }
-
-/* ─── FOOTER ─── */
-footer {
-  background: #060A10;
-  padding: 72px 32px 40px;
-  border-top: 1px solid rgba(255,255,255,.05);
-}
-.footer-top {
-  max-width: 1240px;
-  margin: 0 auto 56px;
-  display: grid;
-  grid-template-columns: 1.8fr 1fr 1fr 1fr;
-  gap: 48px;
-}
-.footer-brand .logo { font-size: 1.4rem; display: inline-flex; margin-bottom: 12px; }
-.footer-brand p { font-size: .83rem; color: rgba(255,255,255,.35); line-height: 1.7; max-width: 280px; margin-bottom: 20px; }
-.footer-social { display: flex; gap: 10px; }
-.soc-btn {
-  width: 36px; height: 36px;
-  border-radius: var(--radius-sm);
-  background: var(--mist);
-  border: 1px solid var(--border-dark);
-  display: flex; align-items: center; justify-content: center;
-  text-decoration: none;
-  color: var(--text-dim);
-  font-size: .75rem;
-  transition: background .2s, border-color .2s, color .2s;
-}
-.soc-btn:hover { background: var(--green-dim); border-color: rgba(0,194,122,.3); color: var(--green); }
-.footer-col h4 {
-  font-size: .72rem;
-  font-weight: 800;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.25);
-  margin-bottom: 18px;
-}
-.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.footer-col a { font-size: .85rem; color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
-.footer-col a:hover { color: var(--green); }
-.footer-bottom {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding-top: 28px;
-  border-top: 1px solid rgba(255,255,255,.05);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.footer-bottom p { font-size: .77rem; color: rgba(255,255,255,.2); }
-
-/* ─── REVEAL ANIMATION ─── */
-/* Par défaut visible — JS ajoute js-reveal au body pour activer l'animation */
-.reveal { transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
-.js-reveal .reveal { opacity: 0; transform: translateY(28px); }
-.js-reveal .reveal.visible { opacity: 1; transform: none; }
-.reveal-delay-1 { transition-delay: .08s; }
-.reveal-delay-2 { transition-delay: .16s; }
-.reveal-delay-3 { transition-delay: .24s; }
-.reveal-delay-4 { transition-delay: .32s; }
-
-/* ─── RESPONSIVE ─── */
-@media (max-width: 1024px) {
-  .bento-1, .bento-2 { grid-column: span 12; }
-  .bento-3 { grid-column: span 12; }
-  .bento-4 { grid-column: span 12; }
-  .timeline { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .timeline::after { display: none; }
-  .founder-grid { grid-template-columns: 1fr; }
-  .founder-img-wrap { max-width: 380px; }
-  .stats-layout { grid-template-columns: 1fr; }
-  #probleme .inner { grid-template-columns: 1fr; }
-  .hero-content { grid-template-columns: 1fr; }
-  .hero-card { display: none; }
-}
-@media (max-width: 768px) {
-  nav .nav-links { display: none; }
-  nav .nav-links.open {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 72px; left: 0; right: 0;
-    background: rgba(8,12,20,.97);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border-dark);
-    padding: 20px 24px;
-    gap: 4px;
-  }
-  .hamburger { display: flex; flex-direction: column; justify-content: center; }
-  .offers-wrap { grid-template-columns: 1fr; }
-  .offer-entry { grid-template-columns: 1fr; }
-  .offer-entry-left { border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); }
-  .timeline { grid-template-columns: 1fr; }
-  .hero { min-height: auto; }
-  .hero-content { padding: 120px 20px 80px; }
-  section { padding: 72px 20px; }
-  .footer-top { grid-template-columns: 1fr 1fr; }
-  .stats-grid { grid-template-columns: 1fr; }
-}
-@media (max-width: 480px) {
-  .footer-top { grid-template-columns: 1fr; }
-  h1.hero-title { font-size: 2.2rem; }
-}
+body{margin:0}
+a{color:#6D4AFF}a:hover{color:#22356B}
+input,select,textarea,button{font:inherit}
 </style>
 </head>
 <body>
+<div style="font-family: Calibri, Carlito, 'Segoe UI', Arial, sans-serif; color: #0E1B3D; background: #FFFFFF; line-height: 1.55; font-size: 18px">
 
-<!-- GLOW CURSOR -->
-<div class="cursor-glow" id="cursorGlow"></div>
-
-<!-- ─── NAV ─── -->
-<nav id="navbar">
-  <div class="nav-inner">
-    <a href="#" class="logo">
-        <svg width="160" height="36" viewBox="0 0 220 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="0" y="12" width="24" height="24" rx="6" fill="#00C27A" opacity=".15"/>
-          <rect x="3" y="15" width="18" height="18" rx="4" fill="none" stroke="#00C27A" stroke-width="1.5"/>
-          <line x1="12" y1="15" x2="12" y2="33" stroke="#00C27A" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
-          <line x1="3" y1="24" x2="21" y2="24" stroke="#00C27A" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
-          <circle cx="12" cy="19" r="2" fill="#00C27A"/>
-          <circle cx="8" cy="24" r="1.5" fill="#00C27A" opacity=".7"/>
-          <circle cx="16" cy="24" r="1.5" fill="#00C27A" opacity=".7"/>
-          <circle cx="12" cy="29" r="2" fill="#00C27A"/>
-          <text x="36" y="31" font-family="Playfair Display, serif" font-size="22" font-weight="700" fill="#FFFFFF" letter-spacing="-0.5">Dan</text>
-          <text x="80" y="31" font-family="Playfair Display, serif" font-size="22" font-weight="700" fill="#00C27A" letter-spacing="-0.5">IA</text>
-        </svg>
-      </a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#offres">Offres</a></li>
-      <li><a href="#methode">Méthode</a></li>
-      <li><a href="#resultats">Résultats</a></li>
-      <li><a href="#fondateur">À propos</a></li>
-      <li><a href="https://calendly.com/dbenouaisch-urfw/30min" target="_blank" class="btn-cta-nav">Réserver un échange</a></li>
-    </ul>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+<!-- NAV -->
+<header style="background: #0E1B3D; border-bottom: 1px solid #22356B">
+<div style="max-width: 1240px; margin: 0 auto; padding: 18px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#top" style="text-decoration: none; color: #FFFFFF; font-family: Cambria, Caladea, Georgia, serif; font-size: 28px; font-weight: 700; letter-spacing: 0.01em">DAN<span style="color: #E8833A">-IA</span></a>
+<nav aria-label="Navigation principale" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 16px">
+<a href="#formations" style="color: #D9DFEA; text-decoration: none">Formations</a>
+<a href="#methode" style="color: #D9DFEA; text-decoration: none">Méthode</a>
+<a href="#kit" style="color: #D9DFEA; text-decoration: none">Ce que vous emportez</a>
+<a href="#formateur" style="color: #D9DFEA; text-decoration: none">Le formateur</a>
+<a href="#contact" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; background: #E8833A; color: #0E1B3D; text-decoration: none; font-weight: 700; border-radius: 6px">Demander un devis</a>
 </nav>
+</div>
+</header>
 
-<!-- ─── HERO ─── -->
-<section class="hero" id="accueil">
-  <div class="hero-bg" id="heroBg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-noise"></div>
-  <div class="hero-content">
-    <div>
-      <div class="hero-eyebrow"><span class="blink"></span>Conseil IA pour TPE, PME &amp; ETI françaises</div>
-      <h1 class="hero-title">Vos concurrents utilisent<br>déjà l'IA. <em>Et vous&nbsp;?</em></h1>
-      <p class="hero-sub">Nous accompagnons les dirigeants de TPE, PME et ETI à intégrer l'IA dans leurs opérations — sans jargon, sans usine à gaz, avec des résultats mesurables dès le premier mois.</p>
-      <div class="hero-actions">
-        <a href="https://calendly.com/dbenouaisch-urfw/30min" target="_blank" class="btn-primary">
-          Je veux mon diagnostic gratuit
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#offres" class="btn-ghost">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="8 12 12 16 16 12"/><line x1="12" y1="8" x2="12" y2="16"/></svg>
-          Voir les offres
-        </a>
-      </div>
-      <div class="hero-proof">
-        <span class="proof-pill"><span class="proof-pill-dot"></span>25 ans IBM</span>
-        <span class="proof-pill"><span class="proof-pill-dot"></span>ROI dès 4 mois</span>
-        <span class="proof-pill"><span class="proof-pill-dot"></span>100% français</span>
-        <span class="proof-pill"><span class="proof-pill-dot"></span>Intervention sur toute la France</span>
-      </div>
-    </div>
-    <!-- Carte flottante -->
-    <div class="hero-card">
-      <div class="hc-label">Cas client — PME transport / 65 sal.</div>
-      <div class="hc-stat">
-        <div class="hc-number">68K€</div>
-        <div class="hc-desc">économisés par an sur la saisie administrative</div>
-      </div>
-      <div class="hc-divider"></div>
-      <div class="hc-row">
-        <span class="hc-key">Secteur</span>
-        <span class="hc-val">Transport & Logistique</span>
-      </div>
-      <div class="hc-row">
-        <span class="hc-key">Durée audit</span>
-        <span class="hc-val">2 jours</span>
-      </div>
-      <div class="hc-row">
-        <span class="hc-key">ROI atteint en</span>
-        <span class="hc-val">4,5 mois</span>
-      </div>
-      <div class="hc-row">
-        <span class="hc-key">Temps libéré</span>
-        <span class="hc-val">14h / semaine</span>
-      </div>
-      <div class="hc-badge"><span class="hc-arrow">↑</span> −80% de saisie manuelle</div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── MARQUEE ─── -->
-<div class="marquee-wrap">
-  <div class="marquee-track" id="marqueeTrack">
-    <span class="marquee-item">Audit Flash IA</span>
-    <span class="marquee-item">Roadmap Data & IA</span>
-    <span class="marquee-item">POC en 6 semaines</span>
-    <span class="marquee-item">Direction IA à temps partagé</span>
-    <span class="marquee-item">Formation équipes</span>
-    <span class="marquee-item">Conformité RGPD</span>
-    <span class="marquee-item">Solutions souveraines</span>
-    <span class="marquee-item">ROI garanti ou on vous le dit</span>
-    <span class="marquee-item">PME & ETI françaises</span>
-    <span class="marquee-item">Audit Flash IA</span>
-    <span class="marquee-item">Roadmap Data & IA</span>
-    <span class="marquee-item">POC en 6 semaines</span>
-    <span class="marquee-item">Direction IA à temps partagé</span>
-    <span class="marquee-item">Formation équipes</span>
-    <span class="marquee-item">Conformité RGPD</span>
-    <span class="marquee-item">Solutions souveraines</span>
-    <span class="marquee-item">ROI garanti ou on vous le dit</span>
-    <span class="marquee-item">PME & ETI françaises</span>
-  </div>
+<!-- HERO -->
+<section id="top" style="background: #0E1B3D; color: #FFFFFF">
+<div style="max-width: 1240px; margin: 0 auto; padding: 96px 32px 112px; display: flex; flex-wrap: wrap; gap: 64px; align-items: center">
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
+<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #E8833A">Formations IA · dirigeants, managers, indépendants</p>
+<h1 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(44px, 5.4vw, 70px); line-height: 1.06; letter-spacing: -0.01em">L’IA, concrètement.<br>Des gains mesurables<br>dès lundi matin.</h1>
+<div aria-hidden="true" style="width: 96px; height: 6px; background: #E8833A; border-radius: 3px"></div>
+<p style="margin: 0; font-size: 21px; color: #D9DFEA; max-width: 600px">Trois journées de formation pensées comme une mission de conseil : chaque chapitre apporte une valeur claire, illustrée par un business case que tout le monde reconnaît.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; padding-top: 4px">
+<a href="#contact" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 30px; background: #E8833A; color: #0E1B3D; text-decoration: none; font-weight: 700; border-radius: 6px">Demander un devis</a>
+<a href="#formations" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 30px; border: 1px solid #5A6478; color: #FFFFFF; text-decoration: none; font-weight: 700; border-radius: 6px">Voir les formations</a>
+</div>
 </div>
 
-<!-- ─── PROBLÈME ─── -->
-<section id="probleme" class="dark">
-  <div class="container">
-    <div class="inner">
-      <div class="img-side reveal">
-        <img src="./images/mecanisme.jpg" alt="Mécanisme et diagnostic IA" loading="lazy" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#1C2838,#0E1520)'">
-        <div class="img-badge">
-          <strong>90%</strong>
-          <span>des PME sous-utilisent<br>le potentiel de l'IA</span>
-        </div>
-      </div>
-      <div>
-        <div class="s-eyebrow reveal">Le diagnostic</div>
-        <h2 class="s-title reveal">Vous vous<br>reconnaissez&nbsp;?</h2>
-        <p class="s-sub reveal" style="margin-bottom:36px">Ces freins sont réels. Nous les entendons chaque semaine. Et nous avons une réponse concrète à chacun.</p>
-        <div class="pain-list">
-          <div class="pain-item reveal reveal-delay-1">
-            <div class="pain-icon">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            </div>
-            <div>
-              <div class="pain-title">«&nbsp;L'IA, c'est pour les grandes boîtes&nbsp;»</div>
-              <div class="pain-text">Les PME sont celles qui tirent le ROI le plus rapide de l'IA. Là où le CAC40 rame dans ses processus, vous pouvez déployer en semaines.</div>
-            </div>
-          </div>
-          <div class="pain-item reveal reveal-delay-2">
-            <div class="pain-icon">
-              <svg viewBox="0 0 24 24"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/><circle cx="12" cy="12" r="10"/></svg>
-            </div>
-            <div>
-              <div class="pain-title">«&nbsp;On ne sait pas par où commencer&nbsp;»</div>
-              <div class="pain-text">Le jargon vous noie. Notre audit de 2 jours vous donne une feuille de route claire, avec les 3 à 5 cas d'usage les plus rentables pour votre entreprise.</div>
-            </div>
-          </div>
-          <div class="pain-item reveal reveal-delay-3">
-            <div class="pain-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <div>
-              <div class="pain-title">«&nbsp;On a peur d'investir pour rien&nbsp;»</div>
-              <div class="pain-text">C'est exactement pour ça que le POC existe. On prouve avant d'investir massivement. Si ce n'est pas rentable, on vous le dit honnêtement.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<aside aria-label="Exemple de business case" style="flex: 1 1 380px; min-width: 0; background: #FFFFFF; color: #0E1B3D; border-radius: 10px; padding: 32px; display: flex; flex-direction: column; gap: 18px; box-shadow: 0 24px 60px rgba(0,0,0,0.35)">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5A6478">Business case</span>
+<span style="font-size: 13px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: #F3F5F9; color: #0E1B3D">Bureautique · Module 4</span>
+</div>
+<p style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 26px; line-height: 1.2">Repérer les commandes en retard en 5 minutes au lieu de 2 heures.</p>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<div style="border: 1px solid #D9DFEA; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<span style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #D1433F"></span>Avant</span>
+<span style="font-size: 16px; color: #5A6478">2 heures chaque lundi, commande par commande.</span>
+</div>
+<div style="border: 1px solid #D9DFEA; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<span style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #15936B"></span>Après</span>
+<span style="font-size: 16px; color: #5A6478">5 minutes : les urgences sautent aux yeux.</span>
+</div>
+</div>
+<p style="margin: 0; padding-top: 16px; border-top: 1px solid #D9DFEA; font-size: 16px; color: #5A6478"><strong style="color: #0E1B3D">Le bénéfice :</strong> on relance le jour même, plus la semaine suivante.</p>
+</aside>
+</div>
 </section>
 
-<!-- ─── VALEUR — BENTO ─── -->
-<section id="valeur">
-  <div class="container">
-    <div class="s-header center reveal">
-      <div class="s-eyebrow">Notre philosophie</div>
-      <h2 class="s-title">L'IA qui rapporte,<br>pas l'IA qui impressionne</h2>
-      <p class="s-sub">Trois piliers. Une seule obsession&nbsp;: votre retour sur investissement.</p>
-    </div>
-    <div class="bento">
-      <div class="bento-card bento-1 reveal">
-        <img src="./images/dashboard-analytics.jpg" alt="Dashboard analytique" loading="lazy" class="bento-img" onerror="this.style.background='linear-gradient(135deg,#141D2B,#1a2d45)';this.src=''">
-        <div class="bento-tag">Pragmatique</div>
-        <div class="bento-title">Résultats avant la technologie</div>
-        <div class="bento-text">On identifie les cas d'usage à ROI rapide dans votre contexte. Pas de slides — des actions concrètes dès la première semaine.</div>
-      </div>
-      <div class="bento-card bento-2 reveal reveal-delay-1">
-        <div class="bento-large-text">On commence<br>petit, on <em>prouve</em>,<br>puis on scale.</div>
-        <div class="bento-grid-mini">
-          <div class="mini-stat"><div class="mini-stat-n">2j</div><div class="mini-stat-l">Audit Flash</div></div>
-          <div class="mini-stat"><div class="mini-stat-n">6w</div><div class="mini-stat-l">Premier POC</div></div>
-          <div class="mini-stat"><div class="mini-stat-n">4m</div><div class="mini-stat-l">ROI moyen</div></div>
-          <div class="mini-stat"><div class="mini-stat-n">∞</div><div class="mini-stat-l">Accompagnement</div></div>
-        </div>
-      </div>
-      <div class="bento-card bento-3 reveal reveal-delay-2">
-        <div class="bento-tag">Progressif</div>
-        <div class="bento-num">×3</div>
-        <div class="bento-title">Plus vite sur vos appels d'offres</div>
-        <div class="bento-text">Résultat client réel — grossiste B2B, 80 salariés.</div>
-      </div>
-      <div class="bento-card bento-4 reveal reveal-delay-1">
-        <img src="./images/collaboration.jpg" alt="Collaboration professionnelle" loading="lazy" class="bento-img" style="height:160px" onerror="this.style.background='linear-gradient(135deg,#141D2B,#1a2d45)';this.src=''">
-        <div class="bento-tag">Partenarial</div>
-        <div class="bento-title">Votre Directeur IA à temps partagé</div>
-        <div class="bento-text">On ne disparaît pas après la mission. On reste dans la durée, comme un membre de votre équipe de direction. Votre succès est notre référence.</div>
-      </div>
-    </div>
-  </div>
+<!-- TOOLS STRIP -->
+<section aria-label="Outils couverts" style="background: #F3F5F9; border-bottom: 1px solid #D9DFEA">
+<div style="max-width: 1240px; margin: 0 auto; padding: 28px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 40px">
+<span style="font-size: 15px; color: #5A6478">Indépendant des éditeurs : on travaille sur l’outil validé par votre entreprise.</span>
+<div style="display: flex; flex-wrap: wrap; gap: 12px 36px; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 22px; color: #22356B">
+<span>ChatGPT</span><span>Claude</span><span>Copilot</span><span>Gemini</span><span>Microsoft 365</span><span>Google Workspace</span>
+</div>
+</div>
 </section>
 
-<!-- ─── OFFRES ─── -->
-<section id="offres" class="light-alt">
-  <div class="container">
-    <div class="s-header center reveal">
-      <div class="s-eyebrow" style="color:#2563EB">Nos offres</div>
-      <h2 class="s-title">Un parcours clair,<br>adapté à votre réalité</h2>
-      <p class="s-sub">TPE, artisan, dirigeant de PME ou ETI — nous avons l'offre qui correspond exactement à votre étape et votre budget.</p>
-    </div>
+<!-- FORMATIONS -->
+<section id="formations" style="max-width: 1240px; margin: 0 auto; padding: 120px 32px 72px; display: flex; flex-direction: column; gap: 56px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+<div style="flex: 1 1 560px; display: flex; flex-direction: column; gap: 16px; max-width: 760px">
+<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #6D4AFF">Les formations</p>
+<h2 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(34px, 3.6vw, 48px); line-height: 1.12">Trois journées, une progression : de l’usage à l’automatisation.</h2>
+</div>
+<p style="flex: 0 1 360px; margin: 0; color: #5A6478">Chaque formation dure une journée (7 h) et se suit seule. Ensemble, elles forment un parcours complet.</p>
+</div>
 
-    <!-- ── Offre entrée : Conseil & Formation ── -->
-    <div class="offers-intro">
-      <div class="offer-entry reveal">
-        <div class="offer-entry-left">
-          <div class="offer-entry-badge">✦ Idéal TPE &amp; primo-démarrant</div>
-          <div class="offer-entry-name">Conseil &amp; Formation IA</div>
-          <div class="offer-entry-target">Pour TPE, artisans, commerçants, professions libérales et dirigeants qui veulent comprendre et utiliser l'IA dès maintenant.</div>
-          <div class="offer-entry-price-block">
-            <span class="offer-entry-price">800 €</span>
-            <span class="offer-entry-price-unit">/ jour</span>
-          </div>
-          <div class="offer-entry-duration">Sur site ou visio · Demi-journée possible · Sans engagement</div>
-          <a href="https://calendly.com/dbenouaisch-urfw/30min" target="_blank" class="offer-entry-btn">Réserver une journée →</a>
-        </div>
-        <div class="offer-entry-right">
-          <p class="offer-entry-desc">En une journée, vous repartez avec des outils concrets, des réflexes IA et une vision claire de ce que l'IA peut changer dans votre quotidien professionnel.</p>
-          <ul class="offer-entry-features">
-            <li>Maîtriser le prompting — ChatGPT, Claude, Copilot : posez les bonnes questions, obtenez les bons résultats</li>
-            <li>Explorer le potentiel de l'IA dans votre métier et vos tâches quotidiennes</li>
-            <li>Identifier vos 3 gains immédiats et chiffrés (temps gagné, coûts réduits)</li>
-            <li>Mise en pratique sur vos vrais sujets du moment</li>
-            <li>30 jours de support par email inclus</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 24px">
 
-    <!-- ── Les 3 offres structurées ── -->
-    <div class="offers-wrap">
-      <!-- Découverte -->
-      <div class="offer reveal reveal-delay-1">
-        <div class="offer-img">
-          <img src="./images/audit-analyse.jpg" alt="Audit et analyse" loading="lazy" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#1a2744,#0E1520)'">
-          <div class="offer-img-overlay"></div>
-          <span class="offer-tier tier-1">Découverte</span>
-        </div>
-        <div class="offer-body">
-          <div class="offer-name">Audit Flash IA</div>
-          <div class="offer-price">À partir de 1 500 €</div>
-          <div class="offer-duration">1 à 2 jours · Sur site · PME 10–80 sal.</div>
-          <p class="offer-desc">L'état des lieux complet de votre potentiel IA. Vos 3 à 5 cas d'usage prioritaires avec estimation de ROI. Une feuille de route claire pour agir.</p>
-          <ul class="offer-features">
-            <li>Diagnostic de maturité sur 5 axes</li>
-            <li>Entretiens avec vos équipes clés</li>
-            <li>3 à 5 cas d'usage chiffrés et priorisés</li>
-            <li>Rapport + restitution au CODIR</li>
-          </ul>
-          <a href="https://calendly.com/dbenouaisch-urfw/30min" target="_blank" class="offer-btn offer-btn-outline">Réserver mon audit →</a>
-          <p class="offer-mention">80% de nos clients poursuivent avec nous</p>
-        </div>
-      </div>
-      <!-- Structuration -->
-      <div class="offer featured reveal reveal-delay-2">
-        <div class="featured-flag">⭐ Le plus demandé</div>
-        <div class="offer-img">
-          <img src="./images/strategie-roadmap.jpg" alt="Stratégie et roadmap" loading="lazy" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#0E1520,#1a2744)'">
-          <div class="offer-img-overlay"></div>
-          <span class="offer-tier tier-2">Structuration</span>
-        </div>
-        <div class="offer-body">
-          <div class="offer-name">Roadmap &amp; POC IA</div>
-          <div class="offer-price">À partir de 5 000 €</div>
-          <div class="offer-duration">5 à 15 jours · Hybride · PME–ETI</div>
-          <p class="offer-desc">On passe à l'action. Stratégie IA complète et prototype fonctionnel de votre premier cas d'usage en conditions réelles.</p>
-          <ul class="offer-features">
-            <li>Roadmap Data &amp; IA sur 6–12 mois</li>
-            <li>Prototype fonctionnel sur votre cas prioritaire</li>
-            <li>Chiffrage détaillé (build, run, ROI)</li>
-            <li>Cahier des charges prestataires</li>
-            <li>Plan de conduite du changement</li>
-          </ul>
-          <a href="https://calendly.com/dbenouaisch-urfw/30min" target="_blank" class="offer-btn offer-btn-fill">Construire ma roadmap →</a>
-          <p class="offer-mention">L'offre la plus choisie par nos clients</p>
-        </div>
-      </div>
-    </div>
-  </div>
+<article style="border: 1px solid #D9DFEA; border-radius: 10px; overflow: hidden; display: flex; flex-direction: column">
+<div aria-hidden="true" style="height: 6px; background: #E8833A"></div>
+<div style="padding: 32px; display: flex; flex-direction: column; gap: 18px; flex: 1">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px"><span style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 40px; color: #0E1B3D">01</span><span style="font-size: 14px; color: #5A6478">Niveau découverte</span></div>
+<h3 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 28px; line-height: 1.2">L’IA au quotidien</h3>
+<p style="margin: 0; color: #5A6478">Comprendre, choisir et utiliser un assistant IA avec méthode, en toute sécurité.</p>
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase">Vous saurez</p>
+<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 17px">
+<li>Choisir le bon outil en quatre questions</li>
+<li>Structurer une demande utilisable du premier coup</li>
+<li>Vérifier les réponses et protéger vos données</li>
+<li>Poser les bases d’une charte d’usage de l’IA</li>
+</ul>
+<div style="margin-top: auto; background: #F3F5F9; border-radius: 8px; padding: 16px 18px; font-size: 16px"><strong>Business case :</strong> <span style="color: #5A6478">débloquer un client en litige sans le perdre, avec une relance juste.</span></div>
+</div>
+<div style="border-top: 1px solid #D9DFEA; padding: 16px 32px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 15px; color: #5A6478"><span>1 jour · 7 h · 17 exercices</span><a href="/ia-au-quotidien" style="color: #6D4AFF; font-weight: 700">Programme détaillé →</a></div>
+</article>
+
+<article style="border: 1px solid #D9DFEA; border-radius: 10px; overflow: hidden; display: flex; flex-direction: column">
+<div aria-hidden="true" style="height: 6px; background: #6D4AFF"></div>
+<div style="padding: 32px; display: flex; flex-direction: column; gap: 18px; flex: 1">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px"><span style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 40px; color: #0E1B3D">02</span><span style="font-size: 14px; color: #5A6478">Niveau opérationnel</span></div>
+<h3 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 28px; line-height: 1.2">Bureautique boostée par l’IA</h3>
+<p style="margin: 0; color: #5A6478">Organisation, emails et Excel : les gestes qui font gagner des heures chaque semaine.</p>
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase">Vous saurez</p>
+<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 17px">
+<li>Organiser, nommer et partager vos fichiers</li>
+<li>Maîtriser votre messagerie, sur Outlook comme sur Gmail</li>
+<li>Fiabiliser, calculer et signaler dans Excel</li>
+<li>Construire un tableau de bord interactif</li>
+</ul>
+<div style="margin-top: auto; background: #F3F5F9; border-radius: 8px; padding: 16px 18px; font-size: 16px"><strong>Business case :</strong> <span style="color: #5A6478">le reporting mensuel d’une PME, d’une journée à une heure.</span></div>
+</div>
+<div style="border-top: 1px solid #D9DFEA; padding: 16px 32px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 15px; color: #5A6478"><span>1 jour · 7 h · 14 exercices</span><a href="/bureautique" style="color: #6D4AFF; font-weight: 700">Programme détaillé →</a></div>
+</article>
+
+<article style="border: 1px solid #D9DFEA; border-radius: 10px; overflow: hidden; display: flex; flex-direction: column">
+<div aria-hidden="true" style="height: 6px; background: #0E1B3D"></div>
+<div style="padding: 32px; display: flex; flex-direction: column; gap: 18px; flex: 1">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px"><span style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 40px; color: #0E1B3D">03</span><span style="font-size: 14px; color: #5A6478">Niveau avancé</span></div>
+<h3 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 28px; line-height: 1.2">Créer son agent IA</h3>
+<p style="margin: 0; color: #5A6478">Concevoir et mettre en service un agent qui travaille pour vous, en gardant la main.</p>
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase">Vous saurez</p>
+<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 17px">
+<li>Concevoir un agent avant de le construire</li>
+<li>Le construire sans code, sur emails et agenda</li>
+<li>Le tester sur des pièges réels et le fiabiliser</li>
+<li>Préparer son branchement sur vos vrais comptes</li>
+</ul>
+<div style="margin-top: auto; background: #F3F5F9; border-radius: 8px; padding: 16px 18px; font-size: 16px"><strong>Business case :</strong> <span style="color: #5A6478">un agent qui prépare chaque matin votre briefing emails et agenda.</span></div>
+</div>
+<div style="border-top: 1px solid #D9DFEA; padding: 16px 32px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 15px; color: #5A6478"><span>1 jour · 7 h · 15 exercices</span><a href="/agent-ia" style="color: #6D4AFF; font-weight: 700">Programme détaillé →</a></div>
+</article>
+</div>
+
+<div style="background: #0E1B3D; color: #FFFFFF; border-radius: 10px; padding: 36px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px">
+<div style="flex: 1 1 460px; display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #E8833A">Parcours complet</p>
+<p style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 28px">Les trois journées, à votre rythme, à conditions préférentielles.</p>
+</div>
+<a href="#contact" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 30px; background: #E8833A; color: #0E1B3D; text-decoration: none; font-weight: 700; border-radius: 6px">Recevoir une proposition</a>
+</div>
 </section>
 
-<!-- ─── RÉSULTATS ─── -->
-<section id="resultats">
-  <div class="container">
-    <div class="s-header reveal">
-      <div class="s-eyebrow">Résultats prouvés</div>
-      <h2 class="s-title">Des chiffres,<br>pas des promesses</h2>
-      <p class="s-sub">Voici ce que nos clients ont obtenu concrètement. Remplacez par vos vrais chiffres dès que vous en avez.</p>
-    </div>
-    <div class="stats-layout">
-      <div class="stats-grid">
-        <div class="stat-block reveal reveal-delay-1">
-          <div class="stat-n" data-target="72" data-suffix="%−">0%</div>
-          <div class="stat-label">Temps de traitement emails</div>
-          <div class="stat-detail">PME distribution · 150 sal. · ROI en 3 mois</div>
-        </div>
-        <div class="stat-block reveal reveal-delay-2">
-          <div class="stat-n" data-target="96" data-suffix="%">0%</div>
-          <div class="stat-label">Extraction automatique factures</div>
-          <div class="stat-detail">ETI industrielle · Économie 1,5 ETP</div>
-        </div>
-        <div class="stat-block reveal reveal-delay-3">
-          <div class="stat-n">×3</div>
-          <div class="stat-label">Plus rapide sur les appels d'offres</div>
-          <div class="stat-detail">Grossiste B2B · +8 pts de conversion</div>
-        </div>
-        <div class="stat-block reveal reveal-delay-4">
-          <div class="stat-n">110K€</div>
-          <div class="stat-label">Gains identifiés dès le 1er audit</div>
-          <div class="stat-detail">Transporteur routier · 35 sal. · Facturation &amp; suivi automatisés</div>
-        </div>
-      </div>
-      <div class="reveal reveal-delay-2">
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p class="testi-text">«&nbsp;On pensait que l'IA c'était pour les startups tech. DanIA nous a prouvé le contraire en 2 mois. Aujourd'hui, nos équipes ne pourraient plus s'en passer.&nbsp;»</p>
-          <div class="testi-author">
-            <div class="testi-avatar">JM</div>
-            <div>
-              <div class="testi-name">Client anonyme</div>
-              <div class="testi-role">Dirigeant · PME Transport &amp; Logistique</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- METHODE -->
+<section id="methode" style="background: #F3F5F9">
+<div style="max-width: 1240px; margin: 0 auto; padding: 120px 32px; display: flex; flex-direction: column; gap: 56px">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 780px">
+<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #6D4AFF">La méthode</p>
+<h2 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(34px, 3.6vw, 48px); line-height: 1.12">Chaque module est construit comme une recommandation de cabinet.</h2>
+<p style="margin: 0; color: #5A6478; font-size: 19px">Une même architecture, du concept au chiffre : vous savez toujours pourquoi vous apprenez, et ce que vous y gagnez.</p>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px">
+<li style="background: #FFFFFF; border: 1px solid #D9DFEA; border-radius: 10px; padding: 28px 24px; display: flex; flex-direction: column; gap: 12px"><span style="display: inline-flex; width: 40px; height: 40px; border-radius: 50%; background: #0E1B3D; color: #FFFFFF; align-items: center; justify-content: center; font-weight: 700">1</span><strong style="font-family: Cambria, Caladea, Georgia, serif; font-size: 22px">Concept</strong><span style="color: #5A6478; font-size: 16px">L’idée clé et la valeur qu’elle apporte, en une page.</span></li>
+<li style="background: #FFFFFF; border: 1px solid #D9DFEA; border-radius: 10px; padding: 28px 24px; display: flex; flex-direction: column; gap: 12px"><span style="display: inline-flex; width: 40px; height: 40px; border-radius: 50%; background: #0E1B3D; color: #FFFFFF; align-items: center; justify-content: center; font-weight: 700">2</span><strong style="font-family: Cambria, Caladea, Georgia, serif; font-size: 22px">Méthode</strong><span style="color: #5A6478; font-size: 16px">La démarche pas à pas, montrée en direct.</span></li>
+<li style="background: #FFFFFF; border: 1px solid #D9DFEA; border-radius: 10px; padding: 28px 24px; display: flex; flex-direction: column; gap: 12px"><span style="display: inline-flex; width: 40px; height: 40px; border-radius: 50%; background: #15936B; color: #FFFFFF; align-items: center; justify-content: center; font-weight: 700">3</span><strong style="font-family: Cambria, Caladea, Georgia, serif; font-size: 22px">À vous</strong><span style="color: #5A6478; font-size: 16px">Un exercice chronométré, avec un critère de réussite clair.</span></li>
+<li style="background: #FFFFFF; border: 1px solid #D9DFEA; border-radius: 10px; padding: 28px 24px; display: flex; flex-direction: column; gap: 12px"><span style="display: inline-flex; width: 40px; height: 40px; border-radius: 50%; background: #6D4AFF; color: #FFFFFF; align-items: center; justify-content: center; font-weight: 700">4</span><strong style="font-family: Cambria, Caladea, Georgia, serif; font-size: 22px">Plus loin</strong><span style="color: #5A6478; font-size: 16px">Le niveau pro, et le prompt qui fait gagner du temps.</span></li>
+<li style="background: #FFFFFF; border: 1px solid #D9DFEA; border-radius: 10px; padding: 28px 24px; display: flex; flex-direction: column; gap: 12px"><span style="display: inline-flex; width: 40px; height: 40px; border-radius: 50%; background: #E8833A; color: #0E1B3D; align-items: center; justify-content: center; font-weight: 700">5</span><strong style="font-family: Cambria, Caladea, Georgia, serif; font-size: 22px">Business case</strong><span style="color: #5A6478; font-size: 16px">Avant, après, et le gain chiffré en heures et en euros.</span></li>
+</ol>
+
+<!-- avant / après -->
+<div style="background: #FFFFFF; border: 1px solid #D9DFEA; border-radius: 10px; padding: 40px; display: flex; flex-wrap: wrap; gap: 48px">
+<div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5A6478">Extrait · Module emails</p>
+<p style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 28px; line-height: 1.2">Un objet d’email qui dit qui fait quoi, et avant quand.</p>
+<div style="background: #FDF1E8; border-radius: 8px; padding: 16px 18px; font-size: 16px"><strong>À retenir :</strong> le préfixe, l’action concrète, puis l’échéance.</div>
+</div>
+<div style="flex: 999 1 520px; min-width: 0; overflow-x: auto">
+<table style="width: 100%; border-collapse: collapse; font-size: 17px; min-width: 460px">
+<thead><tr><th scope="col" style="text-align: left; padding: 12px 16px; background: #F3F5F9; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Avant · flou</th><th scope="col" style="text-align: left; padding: 12px 16px; background: #0E1B3D; color: #FFFFFF; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Après · structuré</th></tr></thead>
+<tbody>
+<tr><td style="padding: 14px 16px; border-bottom: 1px solid #D9DFEA; color: #5A6478">Question sur le fichier</td><td style="padding: 14px 16px; border-bottom: 1px solid #D9DFEA"><strong>[DÉCISION]</strong> Version A ou B du rapport ?</td></tr>
+<tr><td style="padding: 14px 16px; border-bottom: 1px solid #D9DFEA; color: #5A6478">Urgent !!!</td><td style="padding: 14px 16px; border-bottom: 1px solid #D9DFEA"><strong>[URGENT]</strong> Corriger la colonne E avant 15 h</td></tr>
+<tr><td style="padding: 14px 16px; color: #5A6478">Re: Re: Fwd: projet</td><td style="padding: 14px 16px"><strong>[ACTION]</strong> Valider le devis avant lundi</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </section>
 
-<!-- ─── FONDATEUR ─── -->
-<section id="fondateur" class="dark" style="background:var(--ink-3)">
-  <div class="container">
-    <div class="founder-grid">
-      <div class="founder-img-wrap reveal">
-        <img src="./images/dan-fondateur.jpg" alt="Dan Benouaisch — Fondateur DanIA" style="width:100%;border-radius:16px;object-fit:cover;display:block;">
-        <div class="founder-quote">
-          <p class="fq-text">«&nbsp;Ma mission&nbsp;: rendre l'IA accessible, concrète et rentable pour l'économie réelle.&nbsp;»</p>
-          <p class="fq-name">Dan Benouaisch</p>
-        </div>
-      </div>
-      <div class="reveal reveal-delay-2">
-        <div class="s-eyebrow">Le fondateur</div>
-        <div class="founder-name-big">Dan Benouaisch</div>
-        <div class="founder-role-tag">Fondateur · DanIA</div>
-        <p class="founder-bio">
-          <strong>25 ans chez IBM en tant que Sales Engineer</strong>, j'ai accompagné des centaines d'entreprises dans leur transformation digitale à travers toute l'Europe. J'ai vu de l'intérieur ce qui fonctionne — et ce qui finit dans les tiroirs.<br><br>
-          DanIA est né d'un constat simple&nbsp;: <strong>les TPE, PME et ETI françaises ont un potentiel immense avec l'IA</strong>, mais elles manquent d'un guide de confiance qui parle leur langue, pas celle des ingénieurs.<br><br>
-          Ma mission&nbsp;: rendre l'IA accessible, concrète et rentable pour toutes les entreprises qui font tourner l'économie réelle — du commerçant de 3 personnes à l'ETI de 500 salariés.
-        </p>
-        <div class="creds">
-          <span class="cred">🏢 25 ans chez IBM</span>
-          <span class="cred">🎯 Expert IA appliquée</span>
-          <span class="cred">🇫🇷 Basé en France</span>
-          <span class="cred">🔒 Certifié RGPD</span>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- KIT -->
+<section id="kit" style="max-width: 1240px; margin: 0 auto; padding: 120px 32px; display: flex; flex-direction: column; gap: 56px">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px">
+<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #6D4AFF">Ce que vous emportez</p>
+<h2 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(34px, 3.6vw, 48px); line-height: 1.12">Un kit complet pour continuer seul, dès le lendemain.</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px 32px">
+<div style="display: flex; flex-direction: column; gap: 10px"><svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E8833A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg><strong style="font-family: Cambria, Caladea, Georgia, serif; font-size: 22px">Le support de cours</strong><span style="color: #5A6478">Toutes les notions, méthodes et business cases de la journée.</span></div>
+<div style="display: flex; flex-direction: column; gap: 10px"><svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E8833A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg><strong style="font-family: Cambria, Caladea, Georgia, serif; font-size: 22px">Le cahier d’exercices</strong><span style="color: #5A6478">Chaque exercice avec sa consigne, sa durée et son critère de réussite.</span></div>
+<div style="display: flex; flex-direction: column; gap: 10px"><svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E8833A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M3 15h18M9 3v18"></path></svg><strong style="font-family: Cambria, Caladea, Georgia, serif; font-size: 22px">Les fichiers pratiques</strong><span style="color: #5A6478">Des données réalistes d’entreprise, pour refaire chaque manipulation.</span></div>
+<div style="display: flex; flex-direction: column; gap: 10px"><svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E8833A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9z"></path></svg><strong style="font-family: Cambria, Caladea, Georgia, serif; font-size: 22px">Les prompts prêts à l’emploi</strong><span style="color: #5A6478">Les demandes qui fonctionnent, à copier et adapter.</span></div>
+<div style="display: flex; flex-direction: column; gap: 10px"><svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E8833A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><strong style="font-family: Cambria, Caladea, Georgia, serif; font-size: 22px">Quiz et auto-évaluation</strong><span style="color: #5A6478">Pour mesurer vos acquis, avant et après la journée.</span></div>
+<div style="display: flex; flex-direction: column; gap: 10px"><svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E8833A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6l-9.5 9.5-5-5L1 18"></path><path d="M17 6h6v6"></path></svg><strong style="font-family: Cambria, Caladea, Georgia, serif; font-size: 22px">Votre gain calculé</strong><span style="color: #5A6478">Vous repartez avec votre propre estimation, en heures et en euros, revue au bilan à 30 jours.</span></div>
+</div>
 </section>
 
-<!-- ─── MÉTHODE ─── -->
-<section id="methode">
-  <div class="container">
-    <div class="s-header center reveal">
-      <div class="s-eyebrow">Notre méthode</div>
-      <h2 class="s-title">4 étapes,<br>0 surprise</h2>
-      <p class="s-sub">Simple, progressive, sans engagement inutile.</p>
-    </div>
-    <div class="timeline">
-      <div class="step-card reveal">
-        <div class="step-dot">
-          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.46a16 16 0 0 0 7.62 7.62l1.21-1.21a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/></svg>
-        </div>
-        <div class="step-n">Étape 01</div>
-        <div class="step-title">Échange découverte</div>
-        <p class="step-desc">Un appel de 30 min gratuit. On comprend votre contexte et on vous dit honnêtement si l'IA peut vous aider.</p>
-        <div class="step-time">30 min · Gratuit</div>
-      </div>
-      <div class="step-card reveal reveal-delay-1">
-        <div class="step-dot">
-          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        </div>
-        <div class="step-n">Étape 02</div>
-        <div class="step-title">Audit Flash</div>
-        <p class="step-desc">On vient chez vous. On rencontre vos équipes et on identifie les cas d'usage à fort ROI dans votre contexte.</p>
-        <div class="step-time">1-2 jours</div>
-      </div>
-      <div class="step-card reveal reveal-delay-2">
-        <div class="step-dot">
-          <svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg>
-        </div>
-        <div class="step-n">Étape 03</div>
-        <div class="step-title">Prototype & Preuve</div>
-        <p class="step-desc">Un prototype fonctionnel sur votre cas prioritaire. Vous voyez les résultats avant d'investir davantage.</p>
-        <div class="step-time">6-8 semaines</div>
-      </div>
-      <div class="step-card reveal reveal-delay-3">
-        <div class="step-dot">
-          <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-        </div>
-        <div class="step-n">Étape 04</div>
-        <div class="step-title">Déploiement continu</div>
-        <p class="step-desc">On déploie, on forme vos équipes et on pilote vos projets IA dans la durée. Votre transformation entre de bonnes mains.</p>
-        <div class="step-time">En continu</div>
-      </div>
-    </div>
-  </div>
+<!-- POUR QUI / FORMATS -->
+<section id="pourqui" style="background: #0E1B3D; color: #FFFFFF">
+<div style="max-width: 1240px; margin: 0 auto; padding: 120px 32px; display: flex; flex-direction: column; gap: 56px">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px">
+<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #E8833A">Pour qui, et comment</p>
+<h2 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(34px, 3.6vw, 48px); line-height: 1.12">Pensé pour ceux qui décident et qui livrent.</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px">
+<div style="border-top: 2px solid #E8833A; padding-top: 20px; display: flex; flex-direction: column; gap: 8px"><strong style="font-family: Cambria, Caladea, Georgia, serif; font-size: 26px">Dirigeants</strong><span style="color: #D9DFEA">Comprendre ce que l’IA change pour votre entreprise, et l’utiliser vous-même.</span></div>
+<div style="border-top: 2px solid #E8833A; padding-top: 20px; display: flex; flex-direction: column; gap: 8px"><strong style="font-family: Cambria, Caladea, Georgia, serif; font-size: 26px">Managers</strong><span style="color: #D9DFEA">Gagner du temps sur le reporting et les réunions, et entraîner votre équipe.</span></div>
+<div style="border-top: 2px solid #E8833A; padding-top: 20px; display: flex; flex-direction: column; gap: 8px"><strong style="font-family: Cambria, Caladea, Georgia, serif; font-size: 26px">Indépendants</strong><span style="color: #D9DFEA">Faire le travail d’une petite équipe, sans rien perdre en qualité.</span></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px">
+<div style="background: #22356B; border-radius: 10px; padding: 32px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #D9DFEA">Intra-entreprise</span>
+<strong style="font-family: Cambria, Caladea, Georgia, serif; font-size: 26px">Pour vos équipes, sur vos cas métiers</strong>
+<span style="color: #D9DFEA">Programme et business cases adaptés à votre activité et aux outils déjà en place.</span>
+</div>
+<div style="background: #22356B; border-radius: 10px; padding: 32px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #D9DFEA">Inter-entreprises</span>
+<strong style="font-family: Cambria, Caladea, Georgia, serif; font-size: 26px">Des sessions ouvertes, en petit groupe</strong>
+<span style="color: #D9DFEA">Pour les indépendants et les particuliers. Prochaines dates communiquées sur demande.</span>
+</div>
+</div>
+</div>
 </section>
 
-<!-- ─── FAQ ─── -->
-<section id="faq" class="dark" style="background:var(--ink-2)">
-  <div class="container">
-    <div class="s-header center reveal">
-      <div class="s-eyebrow">FAQ</div>
-      <h2 class="s-title">Vos questions,<br>nos réponses</h2>
-    </div>
-    <div class="faq-wrap" id="faqList">
-      <div class="faq-item reveal">
-        <button class="faq-btn">L'IA, c'est vraiment utile pour une PME de 5 à 300 salariés ?<span class="faq-indicator"></span></button>
-        <div class="faq-answer"><div class="faq-answer-inner">Oui — et c'est même là que le ROI est le plus rapide. Une PME de 20 salariés qui automatise sa saisie de commandes économise en moyenne <strong style="color:#fff">1 200 h/an</strong>, soit l'équivalent d'un mi-temps. Vous pouvez déployer en <strong style="color:#fff">6 semaines</strong> et mesurer les résultats avant la fin du trimestre — les grands groupes mettent 18 mois pour faire la même chose.</div></div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-btn">On n'a pas de data scientist ni d'équipe data. C'est un problème ?<span class="faq-indicator"></span></button>
-        <div class="faq-answer"><div class="faq-answer-inner">C'est le cas de <strong style="color:#fff">90% de nos clients</strong> — et ce n'est pas un obstacle. Les outils IA d'aujourd'hui (ChatGPT, Copilot, n8n…) s'utilisent sans coder, comme Excel. Notre rôle est de choisir les bons outils pour votre contexte, de les configurer, et de former vos équipes en place pour qu'elles soient autonomes en <strong style="color:#fff">4 semaines</strong>.</div></div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-btn">Combien ça coûte concrètement ?<span class="faq-indicator"></span></button>
-        <div class="faq-answer"><div class="faq-answer-inner">L'audit Flash démarre à <strong style="color:#fff">1 500 €</strong> — soit moins qu'une journée de conseil en stratégie classique — et vous revenez avec une feuille de route chiffrée. Un premier POC coûte entre <strong style="color:#fff">7 000 et 15 000 €</strong> et se rembourse en 3 à 5 mois en moyenne. On ne vous propose aucun projet sans vous montrer d'abord le ROI attendu, noir sur blanc.</div></div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-btn">Est-ce que nos données sont en sécurité ?<span class="faq-indicator"></span></button>
-        <div class="faq-answer"><div class="faq-answer-inner">Vos données ne quittent pas l'Europe : nous utilisons en priorité des solutions <strong style="color:#fff">hébergées en France ou en UE</strong>, conformes RGPD. Aucun fichier client, aucune donnée sensible n'est envoyée à des modèles IA américains sans votre accord explicite. Nous livrons également une <strong style="color:#fff">charte IA interne</strong> pour encadrer les usages de vos équipes.</div></div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-btn">Et si le POC ne donne pas de résultats ?<span class="faq-indicator"></span></button>
-        <div class="faq-answer"><div class="faq-answer-inner">Le POC existe précisément pour <strong style="color:#fff">valider avant d'investir massivement</strong>. Si les résultats ne sont pas au rendez-vous, nous vous le disons clairement et recommandons d'arrêter — quitte à perdre la suite du contrat. Sur 100 PME qui font un audit avec nous, <strong style="color:#fff">moins de 10%</strong> ont un cas d'usage non rentable : on identifie les projets perdants dès le diagnostic.</div></div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-btn">On est basés en province, c'est un problème ?<span class="faq-indicator"></span></button>
-        <div class="faq-answer"><div class="faq-answer-inner">Aucun problème. L'audit sur site se fait en <strong style="color:#fff">1 à 2 jours</strong> — nous nous déplaçons partout en France. Le reste de l'accompagnement (suivi, formation, COPIL) fonctionne très bien en visio. <strong style="color:#fff">60% de nos clients</strong> sont hors Île-de-France et le format hybride n'a jamais impacté les résultats.</div></div>
-      </div>
-    </div>
-  </div>
+<!-- FORMATEUR -->
+<section id="formateur" style="max-width: 1240px; margin: 0 auto; padding: 120px 32px; display: flex; flex-wrap: wrap; gap: 64px; align-items: center">
+<img src="/dan.webp" alt="Portrait illustré de Dan, formateur DAN-IA" style="flex: 0 1 380px; aspect-ratio: 4 / 5; min-width: 260px; max-width: 100%; object-fit: cover; border-radius: 10px; border-bottom: 6px solid #E8833A">
+<div style="flex: 999 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #6D4AFF">Le formateur</p>
+<h2 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(34px, 3.6vw, 48px); line-height: 1.12">Dan, 25 ans au cœur des technologies d’entreprise.</h2>
+<p style="margin: 0; font-size: 20px; color: #5A6478">Senior Solution Engineer et fondateur de DAN-IA, qui forme et accompagne les PME, les ETI et les indépendants dans la mise en œuvre de l’IA. Il forme comme il conseille : en partant de vos enjeux, jamais de la technologie.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<span style="padding: 8px 14px; border-radius: 999px; background: #F3F5F9; font-size: 15px">Français · English</span>
+<span style="padding: 8px 14px; border-radius: 999px; background: #F3F5F9; font-size: 15px">Expérience EMEA</span>
+</div>
+</div>
 </section>
 
-<!-- ─── CTA FINALE ─── -->
-<section id="cta-final">
-  <div class="cta-bg"></div>
-  <div class="cta-overlay"></div>
-  <div class="container">
-    <div class="cta-inner reveal">
-      <div class="s-eyebrow" style="text-align:center;margin-bottom:16px">Passez à l'action</div>
-      <h2 class="s-title" style="color:#fff;text-align:center;margin-bottom:14px">Prêt à découvrir ce que l'IA<br>peut faire pour vous&nbsp;?</h2>
-      <p class="s-sub" style="text-align:center;margin:0 auto 40px;color:rgba(255,255,255,.6)">Réservez un échange de 30 minutes — gratuit, concret, sans engagement.</p>
-      <div class="cta-actions">
-        <a href="https://calendly.com/dbenouaisch-urfw/30min" target="_blank" class="btn-primary" style="font-size:1rem;padding:16px 34px">
-          Discutons 30 min — c'est gratuit
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="/cdn-cgi/l/email-protection#214543444f4e54404852424961494e554c40484d0f424e4c" class="btn-ghost">
-          Écrire un email
-        </a>
-      </div>
-      <p class="reassurance">Pas de spam, pas de relance agressive. Juste un échange entre professionnels.</p>
-    </div>
-  </div>
+<!-- FAQ -->
+<section aria-labelledby="faq-t" style="background: #F3F5F9">
+<div style="max-width: 1240px; margin: 0 auto; padding: 120px 32px; display: flex; flex-wrap: wrap; gap: 64px">
+<div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #6D4AFF">Questions fréquentes</p>
+<h2 id="faq-t" style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(34px, 3.6vw, 44px); line-height: 1.12">Avant de nous écrire.</h2>
+</div>
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
+<details open="" style="border-top: 1px solid #D9DFEA; padding: 22px 0"><summary style="cursor: pointer; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 22px">Sur quels outils travaille-t-on ?</summary><p style="margin: 12px 0 0; color: #5A6478">Sur celui que votre entreprise a validé : ChatGPT, Claude, Copilot ou Gemini. Les méthodes enseignées valent pour tous.</p></details>
+<details style="border-top: 1px solid #D9DFEA; padding: 22px 0"><summary style="cursor: pointer; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 22px">Faut-il un profil technique ?</summary><p style="margin: 12px 0 0; color: #5A6478">Non. Aucune compétence technique n’est requise. Pour « Créer son agent IA », utiliser déjà un assistant IA est un plus : « L’IA au quotidien » y prépare.</p></details>
+<details style="border-top: 1px solid #D9DFEA; border-bottom: 1px solid #D9DFEA; padding: 22px 0"><summary style="cursor: pointer; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 22px">Peut-on adapter le programme à notre activité ?</summary><p style="margin: 12px 0 0; color: #5A6478">Oui, en intra-entreprise : les business cases sont construits à partir de vos situations de travail.</p></details>
+</div>
+</div>
 </section>
 
-<!-- ─── FOOTER ─── -->
-<footer id="contact">
-  <div class="footer-top">
-    <div class="footer-brand">
-      <a href="#" class="logo" style="margin-bottom:14px;display:inline-flex">
-          <svg width="140" height="32" viewBox="0 0 220 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0" y="12" width="24" height="24" rx="6" fill="#00C27A" opacity=".15"/>
-            <rect x="3" y="15" width="18" height="18" rx="4" fill="none" stroke="#00C27A" stroke-width="1.5"/>
-            <line x1="12" y1="15" x2="12" y2="33" stroke="#00C27A" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
-            <line x1="3" y1="24" x2="21" y2="24" stroke="#00C27A" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
-            <circle cx="12" cy="19" r="2" fill="#00C27A"/>
-            <circle cx="8" cy="24" r="1.5" fill="#00C27A" opacity=".7"/>
-            <circle cx="16" cy="24" r="1.5" fill="#00C27A" opacity=".7"/>
-            <circle cx="12" cy="29" r="2" fill="#00C27A"/>
-            <text x="36" y="31" font-family="Playfair Display, serif" font-size="22" font-weight="700" fill="#FFFFFF" letter-spacing="-0.5">Pragma</text>
-            <text x="150" y="31" font-family="Playfair Display, serif" font-size="22" font-weight="700" fill="#00C27A" letter-spacing="-0.5"> IA</text>
-          </svg>
-        </a>
-      <p>Conseil en Intelligence Artificielle pour TPE, PME et ETI françaises. Des résultats concrets, sans jargon.</p>
-      <div class="footer-social">
-        <a href="#" class="soc-btn" aria-label="LinkedIn">in</a>
-        <a href="/cdn-cgi/l/email-protection#83e7e1e6edecf6e2eaf0e0ebc3ebecf7eee2eaefade0ecee" class="soc-btn" aria-label="Email">@</a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>Services</h4>
-      <ul>
-        <li><a href="#offres">Audit Flash IA</a></li>
-        <li><a href="#offres">Roadmap & POC</a></li>
-        <li><a href="#offres">Direction IA</a></li>
-        <li><a href="#offres">Formation équipes</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>À propos</h4>
-      <ul>
-        <li><a href="#methode">Notre méthode</a></li>
-        <li><a href="#resultats">Résultats</a></li>
-        <li><a href="#fondateur">Le fondateur</a></li>
-        <li><a href="#">Mentions légales</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="/cdn-cgi/l/email-protection#4f2b2d2a21203a2e263c2c270f27203b222e2623612c2022"><span class="__cf_email__" data-cfemail="a7c3c5c2c9c8d2c6ced4c4cfe7cfc8d3cac6cecb89c4c8ca">[email&#160;protected]</span></a></li>
-        <li><a href="tel:+33677047354">06 77 04 73 54</a></li>
-        <li><a href="#">Paris, France</a></li>
-        <li><a href="#cta-final">Prendre RDV →</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 DanIA — SASU — SIRET [À compléter]</p>
-    <p>Conseil en Intelligence Artificielle pour PME & ETI françaises</p>
-  </div>
+<!-- CONTACT -->
+<section id="contact" style="max-width: 1240px; margin: 0 auto; padding: 120px 32px; display: flex; flex-wrap: wrap; gap: 0; align-items: stretch">
+<div style="flex: 1 1 360px; min-width: 0; background: #0E1B3D; color: #FFFFFF; border-radius: 10px 0 0 10px; padding: 48px 40px; display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #E8833A">Devis &amp; rappel</p>
+<h2 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(32px, 3.2vw, 44px); line-height: 1.12">Parlons de vos besoins.</h2>
+<p style="margin: 0; color: #D9DFEA">Remplissez le formulaire : votre messagerie s’ouvre avec un email prêt à envoyer. Vous recevez ensuite le programme détaillé et une proposition adaptée.</p>
+<div aria-hidden="true" style="width: 72px; height: 5px; background: #E8833A; border-radius: 3px"></div>
+<p style="margin: 0; color: #D9DFEA; font-size: 16px">Ou directement : <a href="mailto:dbenouaisch@gmail.com" style="color: #FFFFFF">dbenouaisch@gmail.com</a></p>
+</div>
+<form aria-label="Demande de devis" onsubmit="return false" style="flex: 999 1 560px; min-width: 0; border: 1px solid #D9DFEA; border-left: 0; border-radius: 0 10px 10px 0; padding: 48px 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="f-nom" style="font-size: 15px; font-weight: 700">Nom et prénom</label><input id="f-nom" type="text" autocomplete="name" style="min-height: 48px; padding: 0 14px; border: 1px solid #A9B3C6; border-radius: 6px; background: #FFFFFF; color: #0E1B3D"></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="f-ent" style="font-size: 15px; font-weight: 700">Entreprise</label><input id="f-ent" type="text" autocomplete="organization" style="min-height: 48px; padding: 0 14px; border: 1px solid #A9B3C6; border-radius: 6px; background: #FFFFFF; color: #0E1B3D"></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="f-mail" style="font-size: 15px; font-weight: 700">Email professionnel</label><input id="f-mail" type="email" autocomplete="email" style="min-height: 48px; padding: 0 14px; border: 1px solid #A9B3C6; border-radius: 6px; background: #FFFFFF; color: #0E1B3D"></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="f-tel" style="font-size: 15px; font-weight: 700">Téléphone</label><input id="f-tel" type="tel" autocomplete="tel" style="min-height: 48px; padding: 0 14px; border: 1px solid #A9B3C6; border-radius: 6px; background: #FFFFFF; color: #0E1B3D"></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="f-form" style="font-size: 15px; font-weight: 700">Formation souhaitée</label><select id="f-form" style="min-height: 48px; padding: 0 12px; border: 1px solid #A9B3C6; border-radius: 6px; background: #FFFFFF; color: #0E1B3D"><option>L’IA au quotidien</option><option>Bureautique boostée par l’IA</option><option>Créer son agent IA</option><option>Le parcours complet</option><option>Je ne sais pas encore</option></select></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="f-fmt" style="font-size: 15px; font-weight: 700">Format</label><select id="f-fmt" style="min-height: 48px; padding: 0 12px; border: 1px solid #A9B3C6; border-radius: 6px; background: #FFFFFF; color: #0E1B3D"><option>Intra-entreprise (mon équipe)</option><option>Inter-entreprises (session ouverte)</option></select></div>
+<div style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 6px"><label for="f-msg" style="font-size: 15px; font-weight: 700">Votre besoin en quelques lignes</label><textarea id="f-msg" rows="4" style="padding: 12px 14px; border: 1px solid #A9B3C6; border-radius: 6px; background: #FFFFFF; color: #0E1B3D; resize: vertical"></textarea></div>
+<div style="grid-column: 1 / -1; display: flex; align-items: center; gap: 10px"><input id="f-call" type="checkbox" style="width: 22px; height: 22px; margin: 0; accent-color: #0E1B3D"><label for="f-call" style="font-size: 16px">Je souhaite être rappelé</label></div>
+<div style="grid-column: 1 / -1"><a id="send-mail" href="mailto:dbenouaisch@gmail.com?subject=Demande%20de%20devis%20DAN-IA" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 34px; border-radius: 6px; background: #E8833A; color: #0E1B3D; font-weight: 700; font-size: 17px; text-decoration: none">Envoyer ma demande par email</a></div>
+</form>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: #0E1B3D; color: #D9DFEA">
+<div style="max-width: 1240px; margin: 0 auto; padding: 36px 32px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 15px">
+<span><span style="font-family: Cambria, Caladea, Georgia, serif; font-size: 22px; color: #FFFFFF; font-weight: 700">DAN<span style="color: #E8833A">-IA</span></span> · © 2026</span>
+<div style="display: flex; flex-wrap: wrap; gap: 24px"><a href="#top" style="color: #D9DFEA">Mentions légales</a><a href="#top" style="color: #D9DFEA">Confidentialité</a><a href="#contact" style="color: #D9DFEA">Contact</a></div>
+</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-/* ── Cursor glow ── */
-const glow = document.getElementById('cursorGlow');
-document.addEventListener('mousemove', e => {
-  glow.style.left = e.clientX + 'px';
-  glow.style.top = e.clientY + 'px';
-});
-
-/* ── Nav scroll ── */
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
-
-/* ── Hero parallax + bg loaded ── */
-const heroBg = document.getElementById('heroBg');
-const img = new Image();
-img.src = './images/hero-bg.jpg';
-img.onerror = () => heroBg.classList.add('loaded');
-img.onload = () => heroBg.classList.add('loaded');
-window.addEventListener('scroll', () => {
-  heroBg.style.transform = `scale(1) translateY(${window.scrollY * .25}px)`;
-}, { passive: true });
-
-/* ── Hamburger ── */
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
-hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
-
-/* ── Reveal on scroll ── */
-/* Active l'animation uniquement si JS tourne (évite le flash invisible sur #ancre) */
-document.body.classList.add('js-reveal');
-
-/* Révèle immédiatement les éléments déjà dans le viewport (navigation directe #ancre) */
-function revealInViewport() {
-  document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
-    const r = el.getBoundingClientRect();
-    if (r.top < window.innerHeight && r.bottom > 0) {
-      el.classList.add('visible');
-    }
-  });
-}
-
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      revealObserver.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.08 });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-/* Révèle les éléments déjà visibles après que le navigateur a scrollé vers l'ancre */
-revealInViewport();
-requestAnimationFrame(() => requestAnimationFrame(revealInViewport));
-
-/* ── Counter animation ── */
-function animateCounter(el) {
-  const target = parseInt(el.dataset.target);
-  const suffix = el.dataset.suffix || '';
-  const duration = 1600;
-  const start = performance.now();
-  const update = now => {
-    const t = Math.min((now - start) / duration, 1);
-    const ease = 1 - Math.pow(1 - t, 3);
-    const val = Math.round(ease * target);
-    if (suffix === '%−') el.textContent = '−' + val + '%';
-    else el.textContent = val + suffix;
-    if (t < 1) requestAnimationFrame(update);
-  };
-  requestAnimationFrame(update);
-}
-const counterObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting && e.target.dataset.target) { animateCounter(e.target); counterObserver.unobserve(e.target); } });
-}, { threshold: .5 });
-document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
-
-/* ── FAQ accordion ── */
-document.getElementById('faqList').querySelectorAll('.faq-item').forEach(item => {
-  item.querySelector('.faq-btn').addEventListener('click', () => {
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-
-  });
-});
-</script>
-
-<!-- ─── WIDGET FLOTTANT CONTACT ─── -->
-<div id="contact-widget" style="position:fixed;bottom:28px;right:28px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
-  <a href="https://wa.me/33677047354?text=Bonjour%20Dan%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20DanIA" target="_blank" rel="noopener" title="Écrire sur WhatsApp" style="width:52px;height:52px;border-radius:50%;background:#25D366;box-shadow:0 4px 20px rgba(37,211,102,.45);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.859L.054 23.454a.75.75 0 00.918.919l5.701-1.496A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.7-.504-5.25-1.385l-.376-.217-3.885 1.02 1.004-3.793-.233-.386A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-  </a>
-  <a href="tel:+33677047354" title="Appeler Dan" style="width:52px;height:52px;border-radius:50%;background:#00C27A;box-shadow:0 4px 20px rgba(0,194,122,.4);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform .2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.46a16 16 0 0 0 7.62 7.62l1.21-1.21a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17z"/></svg>
-  </a>
 </div>
-</body>
+<script>
+(function(){var a=document.getElementById('send-mail');if(!a)return;
+a.addEventListener('click',function(e){var v=function(id){var el=document.getElementById(id);return el?el.value.trim():'';};
+var body=['Nom : '+v('f-nom'),'Entreprise : '+v('f-ent'),'Email : '+v('f-mail'),'Téléphone : '+v('f-tel'),'Formation souhaitée : '+v('f-form'),'Format : '+v('f-fmt'),'Rappel souhaité : '+(document.getElementById('f-call')&&document.getElementById('f-call').checked?'oui':'non'),'','Besoin :',v('f-msg')].join('\n');
+a.href='mailto:dbenouaisch@gmail.com?subject='+encodeURIComponent('Demande de devis DAN-IA'+(v('f-ent')?' – '+v('f-ent'):''))+'&body='+encodeURIComponent(body);});})();
+</script></body>
 </html>

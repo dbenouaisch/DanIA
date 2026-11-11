@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://dan-ia.vercel.app/</loc>
-    <lastmod>2026-02-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://dan-ia.vercel.app/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://dan-ia.vercel.app/ia-au-quotidien</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://dan-ia.vercel.app/bureautique</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://dan-ia.vercel.app/agent-ia</loc><lastmod>2026-11-11</lastmod></url>
 </urlset>
