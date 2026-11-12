@@ -36,31 +36,33 @@ tabs.forEach(function(t,i){t.addEventListener("click",function(){selTab(t)});t.a
 
 
 var form=document.getElementById("leadForm");if(!form)return;
-var done=document.getElementById("done"),call=document.getElementById("f-call"),phone=document.getElementById("phoneField");
+var DAN_MAIL="dbenouaisch@gmail.com",done=document.getElementById("done"),call=document.getElementById("f-call"),phone=document.getElementById("phoneField"),last=null;
 call.addEventListener("change",function(){phone.hidden=!call.checked;if(call.checked)document.getElementById("f-tel").focus()});
 function preselect(need,fmt){form.hidden=false;done.hidden=true;var s=document.getElementById("f-need");if(need&&[].some.call(s.options,function(o){return o.value===need}))s.value=need;if(fmt){var r=form.querySelector('input[name=format][value="'+fmt+'"]');if(r)r.checked=true}}
 document.addEventListener("click",function(e){var a=e.target.closest("a[data-need]");if(a)preselect(a.dataset.need,a.dataset.format)});
 var q=new URLSearchParams(location.search);if(q.get("besoin"))preselect(q.get("besoin"),q.get("format"));
 function err(id,eid,bad){document.getElementById(id).setAttribute("aria-invalid",bad?"true":"false");document.getElementById(eid).hidden=!bad;return bad}
-var ENDPOINT=form.getAttribute("action"),btn=document.getElementById("sendBtn"),sendErr=document.getElementById("sendErr"),busy=false;
-form.addEventListener("submit",function(e){e.preventDefault();if(busy)return;
+form.addEventListener("submit",function(e){e.preventDefault();
   var name=document.getElementById("f-name").value.trim(),mail=document.getElementById("f-mail").value.trim(),need=document.getElementById("f-need").value,tel=document.getElementById("f-tel").value.trim();
   var bad=[err("f-name","e-name",!name)&&"f-name",err("f-mail","e-mail",!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail))&&"f-mail",err("f-need","e-need",!need)&&"f-need",err("f-tel","e-tel",call.checked&&!tel)&&"f-tel"].filter(Boolean);
   if(bad.length){document.getElementById(bad[0]).focus();return}
   var sel=document.getElementById("f-need"),fmt=form.querySelector("input[name=format]:checked");
   var needTxt=sel.options[sel.selectedIndex].text,fmtTxt=fmt?fmt.nextElementSibling.textContent:"À voir ensemble",msg=document.getElementById("f-msg").value.trim();
   var subject="Demande DAN-IA · "+needTxt.replace("Atelier · ","")+" · "+name;
-  var data={"Nom":name,"email":mail,"Besoin":needTxt,"Format envisagé":fmtTxt,"Message":msg||"(pas de message)","Rappel souhaité":call.checked?"Oui, au "+tel:"Non","Page":location.pathname,"_subject":subject,"_gotcha":form.querySelector("input[name=_gotcha]").value};
-  busy=true;sendErr.hidden=true;btn.disabled=true;btn.textContent="Envoi en cours…";
-  fetch(ENDPOINT,{method:"POST",headers:{"Accept":"application/json","Content-Type":"application/json"},body:JSON.stringify(data)})
-  .then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);
-    document.getElementById("doneTxt").textContent="Merci "+name.split(" ")[0]+". Dan a bien reçu votre demande et vous répond sous 48 h ouvrées"+(call.checked?", ou vous rappelle au "+tel:" à "+mail)+".";
-    var rc=document.getElementById("recap");rc.innerHTML="";[["Besoin",needTxt],["Format",fmtTxt]].forEach(function(p){var dt=document.createElement("dt"),dd=document.createElement("dd");dt.textContent=p[0];dd.textContent=p[1];rc.appendChild(dt);rc.appendChild(dd)});
-    form.hidden=true;done.hidden=false;done.focus();})
-  .catch(function(){sendErr.hidden=false;sendErr.focus();})
-  .then(function(){busy=false;btn.disabled=false;btn.textContent="Envoyer ma demande";});
+  var body=["Bonjour Dan,","","Besoin : "+needTxt,"Format envisagé : "+fmtTxt,"",msg||"(pas de message)","","Nom : "+name,"E-mail : "+mail];
+  if(call.checked)body.push("Merci de me rappeler au "+tel+".");
+  body.push("","Envoyé depuis le formulaire du site DAN-IA");body=body.join("\n");
+  last={subject:subject,body:body,href:"mailto:"+DAN_MAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body)};
+  document.getElementById("mailAgain").href=last.href;document.getElementById("mailAgain").removeAttribute("target");
+  document.getElementById("doneTxt").textContent="Merci "+name.split(" ")[0]+". Votre messagerie s’ouvre avec la demande déjà rédigée, adressée à "+DAN_MAIL+". Relisez-la, puis cliquez sur Envoyer : Dan vous répond sous 48 h ouvrées"+(call.checked?", ou vous rappelle au "+tel:"")+".";
+  var rc=document.getElementById("recap");rc.innerHTML="";[["Objet",subject],["Besoin",needTxt],["Format",fmtTxt]].forEach(function(p){var dt=document.createElement("dt"),dd=document.createElement("dd");dt.textContent=p[0];dd.textContent=p[1];rc.appendChild(dt);rc.appendChild(dd)});
+  document.getElementById("copyOk").textContent="";
+  form.hidden=true;done.hidden=false;done.focus();
+  window.location.href=last.href;
 });
-document.getElementById("again").addEventListener("click",function(){form.reset();sendErr.hidden=true;phone.hidden=true;form.hidden=false;done.hidden=true;document.getElementById("f-name").focus()});
+document.getElementById("copyMail").addEventListener("click",function(){var ok=document.getElementById("copyOk"),txt="À : "+DAN_MAIL+"\nObjet : "+last.subject+"\n\n"+last.body;
+  if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){ok.textContent="Demande copiée. Collez-la dans un nouvel e-mail."},function(){ok.textContent="La copie automatique est bloquée par le navigateur : sélectionnez le récapitulatif ci-dessus."})}else{ok.textContent="La copie automatique est bloquée par le navigateur : sélectionnez le récapitulatif ci-dessus."}});
+document.getElementById("again").addEventListener("click",function(){form.reset();phone.hidden=true;form.hidden=false;done.hidden=true;document.getElementById("f-name").focus()});
 })();
 moveInd();addEventListener("load",moveInd);
 
@@ -203,3 +205,44 @@ const DEMOS_UNUSED=[
 function demo(i){A=DEMOS_UNUSED[i].a.slice();why=true;if(location.hash!=="#diagnostic")location.hash="diagnostic";setTimeout(()=>go(10),30)}
 
 if(document.getElementById("diagRoot"))render();
+(function(){
+  const tabs=[...document.querySelectorAll('.cs-tabs [role="tab"]')];
+  if(!tabs.length)return;
+  const wrap=document.getElementById("cs-offres");
+  function select(tab,focus){
+    tabs.forEach(b=>{const on=b===tab;b.setAttribute("aria-selected",on);b.tabIndex=on?0:-1;document.getElementById(b.getAttribute("aria-controls")).hidden=!on});
+    if(focus)tab.focus();
+  }
+  tabs.forEach((b,i)=>{
+    b.addEventListener("click",()=>{select(b);const top=wrap.getBoundingClientRect().top;if(top<0||top>innerHeight*.4)wrap.scrollIntoView({behavior:"smooth",block:"start"})});
+    b.addEventListener("keydown",e=>{let k=null;if(e.key==="ArrowRight")k=tabs[(i+1)%tabs.length];if(e.key==="ArrowLeft")k=tabs[(i-1+tabs.length)%tabs.length];if(e.key==="Home")k=tabs[0];if(e.key==="End")k=tabs[tabs.length-1];if(k){e.preventDefault();select(k,true)}});
+  });
+  function toggle(btn,open){
+    const box=document.getElementById(btn.getAttribute("aria-controls"));
+    open=open===undefined?box.hidden:open;
+    box.hidden=!open;btn.setAttribute("aria-expanded",open);
+    btn.querySelector(".cs-more-t").textContent=open?"Masquer le détail":"Voir le détail";
+  }
+  document.querySelectorAll(".cs-more-btn").forEach(b=>b.addEventListener("click",()=>toggle(b)));
+  function reveal(el){
+    const panel=el.closest(".cs-panel");
+    if(!panel)return el;
+    const tab=tabs.find(b=>b.getAttribute("aria-controls")===panel.id);if(tab)select(tab);
+    const more=el.closest(".cs-more");
+    if(more){const btn=document.querySelector('[aria-controls="'+more.id+'"]');if(btn)toggle(btn,true);return el}
+    return wrap;
+  }
+  function go(id,smooth){
+    const el=id&&document.getElementById(id);if(!el)return false;
+    const to=reveal(el);
+    requestAnimationFrame(()=>to.scrollIntoView({behavior:smooth?"smooth":"auto",block:"start"}));
+    return true;
+  }
+  document.addEventListener("click",e=>{
+    const a=e.target.closest('a[href^="#cs-"]');if(!a)return;
+    const id=a.getAttribute("href").slice(1);
+    if(go(id,true)){e.preventDefault();history.pushState(null,"","#"+id)}
+  });
+  window.addEventListener("hashchange",()=>go(location.hash.slice(1),true));
+  if(location.hash.startsWith("#cs-"))go(location.hash.slice(1),false);
+})();

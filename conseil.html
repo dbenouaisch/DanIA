@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caladea:wght@400;700&family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/site.css?v=7">
+<link rel="stylesheet" href="/site.css?v=8">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "DAN-IA", "url": "https://dan-ia.vercel.app", "email": "dbenouaisch@gmail.com", "founder": {"@type": "Person", "name": "Dan Benouaisch"}, "description": "Formation et conseil en IA et données pour dirigeants, managers et indépendants."}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Conseil en données et IA", "serviceType": "Conseil en organisation, qualité et exploitation des données, stratégie IA", "description": "Vos données sont votre or noir : organiser, fiabiliser et exploiter vos données pour décider sur des chiffres sûrs et lancer des projets IA utiles.", "areaServed": "FR", "url": "https://dan-ia.vercel.app/conseil", "provider": {"@type": "Organization", "name": "DAN-IA", "url": "https://dan-ia.vercel.app"}}</script>
 </head>
@@ -99,7 +99,14 @@
 </article>
 </div>
 </div></section>
-<section aria-labelledby="h-data" class="sec on-surface" id="cs-data"><div class="wrap">
+<div class="cs-tabs-wrap" id="cs-offres"><div class="wrap">
+<p class="kick">Nos deux accompagnements</p>
+<div aria-label="Nos deux accompagnements" class="cs-tabs" role="tablist">
+<button aria-controls="cs-data" aria-selected="true" id="tab-data" role="tab" type="button"><span class="cs-tab-n">1</span><span><b>Données et pilotage</b><small>Organiser, fiabiliser, exploiter</small></span></button>
+<button aria-controls="cs-strategie" aria-selected="false" id="tab-strat" role="tab" tabindex="-1" type="button"><span class="cs-tab-n">2</span><span><b>Stratégie IA</b><small>Premier projet et feuille de route</small></span></button>
+</div>
+</div></div>
+<section aria-labelledby="tab-data" class="sec on-surface cs-panel" id="cs-data" role="tabpanel"><div class="wrap">
 <p class="kick">Accompagnement 1 · Données</p>
 <h2 class="h2 oil-h2" id="h-data">Une donnée brute ne vaut rien. <span>Raffinée, elle devient votre premier actif.</span></h2>
 <p class="sub">Fichiers clients en double, exports retouchés à la main, chiffres qui changent d’un service à l’autre : la plupart des entreprises possèdent déjà un gisement. Ce qui leur manque, c’est la raffinerie.</p>
@@ -114,6 +121,8 @@
 </ol>
 <p class="oil-quote">Une IA nourrie de données fausses se trompe, plus vite et avec aplomb. <b>La qualité de vos données décide de la qualité de vos décisions.</b></p>
 </div>
+<button aria-controls="more-data" aria-expanded="false" class="cs-more-btn" type="button"><span class="cs-more-t">Voir le détail</span><span class="cs-more-s">Les trois chantiers, un exemple de tableau de bord et un cas client</span><i aria-hidden="true"></i></button>
+<div class="cs-more" hidden="" id="more-data">
 <h3 class="cs-h3 oil-h3">Trois chantiers pour faire de vos données un actif</h3>
 <div class="pillars">
 <article class="pillar">
@@ -170,12 +179,13 @@
 <div class="ba"><div class="ba-col"><h3>Avant</h3><ul><li>Trois fichiers clients qui se contredisent.</li><li>Un chiffre d’affaires par client différent d’un service à l’autre.</li><li>Un reporting mensuel monté à la main.</li></ul></div><div class="ba-col after"><h3>Après</h3><ul><li>Un fichier client unique, avec un responsable.</li><li>Un tableau de bord qui se met à jour chaque nuit.</li><li>Les clients les plus rentables identifiés et suivis.</li></ul></div></div>
 <p class="cs-gain">Mesuré sur le cas : 22 % de doublons supprimés, deux jours de reporting par mois récupérés.</p>
 </div>
+</div>
 <div class="cs-cta-row">
 <p><b>Vous avez des fichiers, un CRM ou des tableaux de bord ?</b> C’est un bon point de départ.</p>
 <div class="hero-ctas"><a class="btn btn-primary" href="https://calendly.com/dbenouaisch" rel="noopener" target="_blank">Parler de mes données avec Dan<span class="vh"> (nouvel onglet)</span></a><a class="btn btn-quiet" href="/formations?besoin=conseil-data#contact">Écrire à Dan</a></div>
 </div>
 </div></section>
-<section aria-labelledby="h-strat" class="sec" id="cs-strategie"><div class="wrap">
+<section aria-labelledby="tab-strat" class="sec cs-panel" hidden="" id="cs-strategie" role="tabpanel"><div class="wrap">
 <div class="strat-top">
 <div>
 <p class="kick">Accompagnement 2 · Stratégie IA</p>
@@ -189,6 +199,8 @@
 <figcaption>Un exemple de feuille de route : un premier assistant pour les relances, puis l’agenda, la veille et le reporting.</figcaption>
 </figure>
 </div>
+<button aria-controls="more-strat" aria-expanded="false" class="cs-more-btn" type="button"><span class="cs-more-t">Voir le détail</span><span class="cs-more-s">La feuille de route à 12 mois et des exemples de quick wins</span><i aria-hidden="true"></i></button>
+<div class="cs-more" hidden="" id="more-strat">
 <div class="road" role="list">
 <div class="road-step s1" role="listitem"><p class="road-when">Le premier mois</p><h3>Quick wins</h3><p>Deux à quatre usages simples, mis en place avec l’équipe. Ils rassurent et donnent le rythme.</p></div>
 <div class="road-step s2" role="listitem"><p class="road-when">À 3 mois</p><h3>Premier projet en service</h3><p>Le projet cadré touche un processus entier : relances, devis ou reporting. Les personnes concernées sont formées.</p></div>
@@ -196,6 +208,7 @@
 </div>
 <h3 class="cs-h3">Exemples de quick wins</h3>
 <ul class="chips"><li>Réponses types du service client</li><li>Comptes rendus de réunion résumés</li><li>Relances clients préparées</li><li>Contrôle des factures fournisseurs</li><li>Veille concurrentielle hebdomadaire</li><li>Fiches produits rédigées</li></ul>
+</div>
 <div class="cs-cta-row">
 <p><b>Une idée d’usage, ou seulement une intuition ?</b> Les deux suffisent pour en parler.</p>
 <div class="hero-ctas"><a class="btn btn-primary" href="https://calendly.com/dbenouaisch" rel="noopener" target="_blank">Parler de mon projet IA avec Dan<span class="vh"> (nouvel onglet)</span></a><a class="btn btn-quiet" href="/formations?besoin=conseil-strategie#contact">Écrire à Dan</a></div>
@@ -255,6 +268,6 @@
 </footer>
 <div class="mcta"><a class="btn btn-primary" href="https://calendly.com/dbenouaisch" target="_blank" rel="noopener">Parler de mon projet avec Dan<span class="vh"> (nouvel onglet)</span></a></div>
 </div>
-<script src="/site.js?v=7" defer></script>
+<script src="/site.js?v=8" defer></script>
 </body>
 </html>
