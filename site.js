@@ -1,3 +1,19 @@
+const ddEl=document.querySelector(".dd"),ddBtn=ddEl.querySelector(".dd-btn"),navInd=document.querySelector(".nav-ind");
+const mobileNav=()=>getComputedStyle(document.getElementById("menuBtn")).display!=="none";
+function ddSet(o){ddEl.classList.toggle("open",o);ddBtn.setAttribute("aria-expanded",o)}
+ddBtn.addEventListener("click",e=>{e.stopPropagation();if(!mobileNav())ddSet(!ddEl.classList.contains("open"))});
+ddEl.addEventListener("mouseenter",()=>{if(!mobileNav()&&matchMedia("(hover:hover)").matches)ddSet(true)});
+ddEl.addEventListener("mouseleave",()=>{if(!mobileNav())ddSet(false)});
+document.addEventListener("click",e=>{if(!e.target.closest(".dd"))ddSet(false)});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&ddEl.classList.contains("open")){ddSet(false);ddBtn.focus()}});
+ddEl.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>ddSet(false)));
+function moveInd(){const nv=document.getElementById("nav"),el=nv.querySelector('[data-nav][aria-current="true"]:not(.nav-cta)');if(!el||mobileNav()){navInd.style.opacity=0;return}const r=el.getBoundingClientRect(),n=nv.getBoundingClientRect();navInd.style.opacity=1;navInd.style.left=(r.left-n.left+12)+"px";navInd.style.width=(r.width-24)+"px"}
+addEventListener("resize",moveInd);
+const mcta=document.querySelector(".mcta");
+if(mcta&&"IntersectionObserver" in window){const seen=new Set();const mctaObs=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?seen.add(e.target):seen.delete(e.target));mcta.classList.toggle("off",seen.size>0)});document.querySelectorAll(".hero-ctas,.dbox.aside,.endcta,#contact,.res-main").forEach(el=>mctaObs.observe(el))}
+
+function onScr(){document.getElementById("site").classList.toggle("scrolled",scrollY>16)}
+addEventListener("scroll",onScr,{passive:true});onScr();
 (function(){
 var site=document.getElementById("site"),btn=document.getElementById("menuBtn"),nav=document.getElementById("nav"),lbl=document.getElementById("menuLbl");
 function setMenu(o,f){site.classList.toggle("menu-open",o);btn.setAttribute("aria-expanded",o);lbl.textContent=o?"Fermer":"Menu";if(o){nav.querySelector("a").focus()}else if(f){btn.focus()}}
@@ -5,20 +21,20 @@ btn.addEventListener("click",function(){setMenu(!site.classList.contains("menu-o
 document.addEventListener("keydown",function(e){if(e.key==="Escape"&&site.classList.contains("menu-open"))setMenu(false,true)});
 document.addEventListener("click",function(e){if(!site.classList.contains("menu-open"))return;if(!e.target.closest(".hdr")||e.target.closest("#nav a"))setMenu(false)});
 
-/* Section active sur l’accueil */
+
 var MAP={"formations":"formations","en-entreprise":"formations","cas-pratiques":"cas-pratiques","methode":"cas-pratiques","a-propos":"a-propos","contact":"contact"};
 if(document.getElementById("formations")){
   var spy=function(){var act="";Object.keys(MAP).forEach(function(id){var el=document.getElementById(id);if(!el)return;var r=el.getBoundingClientRect();if(r.top<=120&&r.bottom>120)act=MAP[id]});
-    nav.querySelectorAll("a").forEach(function(a){a.setAttribute("aria-current",a.dataset.nav===act?"true":"false")})};
+    nav.querySelectorAll("[data-nav]").forEach(function(a){a.setAttribute("aria-current",a.dataset.nav===act?"true":"false")});moveInd()};
   addEventListener("scroll",spy,{passive:true});spy();
 }
 
-/* Onglets des cas pratiques */
+
 var tabs=[].slice.call(document.querySelectorAll(".tab"));
 function selTab(t){tabs.forEach(function(x){var on=x===t;x.setAttribute("aria-selected",on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute("aria-controls")).hidden=!on})}
 tabs.forEach(function(t,i){t.addEventListener("click",function(){selTab(t)});t.addEventListener("keydown",function(e){var j=null;if(e.key==="ArrowRight")j=(i+1)%tabs.length;if(e.key==="ArrowLeft")j=(i-1+tabs.length)%tabs.length;if(e.key==="Home")j=0;if(e.key==="End")j=tabs.length-1;if(j!==null){e.preventDefault();selTab(tabs[j]);tabs[j].focus()}})});
 
-/* Formulaire : prépare un e-mail dans la messagerie du visiteur */
+
 var form=document.getElementById("leadForm");if(!form)return;
 var DAN_MAIL="dbenouaisch@gmail.com",done=document.getElementById("done"),call=document.getElementById("f-call"),phone=document.getElementById("phoneField"),last=null;
 call.addEventListener("change",function(){phone.hidden=!call.checked;if(call.checked)document.getElementById("f-tel").focus()});
@@ -48,8 +64,8 @@ document.getElementById("copyMail").addEventListener("click",function(){var ok=d
   if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){ok.textContent="Demande copiée. Collez-la dans un nouvel e-mail."},function(){ok.textContent="La copie automatique est bloquée par le navigateur : sélectionnez le récapitulatif ci-dessus."})}else{ok.textContent="La copie automatique est bloquée par le navigateur : sélectionnez le récapitulatif ci-dessus."}});
 document.getElementById("again").addEventListener("click",function(){form.reset();phone.hidden=true;form.hidden=false;done.hidden=true;document.getElementById("f-name").focus()});
 })();
+moveInd();addEventListener("load",moveInd);
 
-/* ================= Diagnostic « Quel atelier IA est fait pour vous ? » ================= */
 const DQ=[
  {q:"Vous utilisez l’IA pour préparer un rendez-vous client. Que lui donnez-vous comme consigne ?",d:"q",o:[["Je lui demande des idées pour le rendez-vous.",0],["Je lui indique le sujet et le type de client.",1],["Je lui précise le contexte, mon objectif et ce que je veux obtenir.",2]]},
  {q:"L’IA vous donne un chiffre à reprendre dans une présentation. Que faites-vous ?",d:"q",o:[["Je vérifie le chiffre dans la source d’origine.",2],["Je demande à l’IA de confirmer le chiffre.",1],["Je le reprends s’il me paraît plausible.",0]]},
@@ -65,15 +81,15 @@ const DQ=[
 const DOM={q:{name:"Préparer, rédiger, vérifier",k:"ia-au-quotidien",qs:[0,1,2]},b:{name:"Organisation et suivi",k:"bureautique",qs:[3,4,5]},a:{name:"Assistant IA",k:"agent-ia",qs:[6,7,8]}};
 const TITLE={"ia-au-quotidien":"L’IA au quotidien","bureautique":"Bureautique boostée par l’IA","agent-ia":"Créer son agent IA"};
 const STRONG=[
- ["Vous précisez déjà le sujet et le type de client à l’IA : c’est une bonne base.","Vous donnez déjà à l’IA le contexte et l’objectif de votre demande : c’est le réflexe le plus utile."],
- ["Vous ne reprenez pas un chiffre sans le questionner : c’est un bon début.","Vous vérifiez les chiffres à la source avant de les reprendre : un réflexe que beaucoup n’ont pas encore."],
- ["Vous pensez déjà à masquer les noms de vos clients avant de confier un document.","Vous vérifiez qu’un outil est autorisé avant de lui confier des données clients : c’est exactement la bonne prudence."],
- ["Vous classez déjà vos e-mails à traiter.","Vos relances sont suivies avec une échéance visible : votre organisation est déjà solide."],
- ["Vous vérifiez la formule quand un total vous surprend.","Vous remontez au fichier source quand un total vous surprend : un vrai réflexe de contrôle."],
- ["Vous nommez vos fichiers pour retrouver la bonne version.","Vous travaillez à partir d’un document de référence : la base d’un travail à plusieurs serein."],
- ["Vous avez déjà en tête une tâche régulière à confier à un assistant.","Vous savez déjà ce qu’un assistant devrait vous fournir et les décisions que vous gardez : c’est le cœur de la conception d’un agent."],
- ["Vous réutilisez déjà vos bonnes consignes.","Vous avez déjà configuré un assistant avec ses consignes : vous partez avec une longueur d’avance."],
- ["Vous testez déjà votre assistant sur des messages typiques.","Vous testez les cas ambigus et gardez la validation finale : la bonne méthode pour fiabiliser un agent."]
+ ["Vous précisez déjà à l’IA le sujet et le type de client. Bonne base.","Vous donnez déjà à l’IA le contexte et votre objectif. C’est le réflexe qui change le plus la qualité des réponses."],
+ ["Vous ne reprenez pas un chiffre sans le questionner. C’est un bon début.","Vous vérifiez les chiffres à la source avant de les reprendre. Peu de gens le font."],
+ ["Vous pensez déjà à masquer les noms de vos clients.","Avant de confier des données clients, vous vérifiez que l’outil est autorisé. Exactement la bonne prudence."],
+ ["Vous classez déjà vos e-mails à traiter.","Vos relances sont suivies, échéance comprise. Votre organisation tient la route."],
+ ["Quand un total vous surprend, vous vérifiez la formule.","Quand un total vous surprend, vous remontez au fichier source. Un vrai réflexe de contrôle."],
+ ["Vous nommez vos fichiers pour retrouver la bonne version.","Vous partez toujours du document de référence. C’est ce qui rend le travail à plusieurs serein."],
+ ["Vous avez déjà en tête une tâche à confier à un assistant.","Vous savez ce que l’assistant devrait vous fournir, et ce que vous gardez pour vous. C’est le cœur de la conception d’un agent."],
+ ["Vous réutilisez déjà vos bonnes consignes.","Vous avez déjà configuré un assistant avec ses consignes. Vous partez avec une longueur d’avance."],
+ ["Vous testez déjà votre assistant sur des messages typiques.","Vous testez les cas ambigus et gardez la validation finale. C’est la bonne méthode."]
 ];
 let A=Array(10).fill(null),step=-1,why=false;
 const root2=()=>document.getElementById("diagRoot");

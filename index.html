@@ -21,20 +21,31 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caladea:wght@400;700&family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/site.css?v=3">
+<link rel="stylesheet" href="/site.css?v=4">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "DAN-IA", "url": "https://dan-ia.vercel.app", "email": "dbenouaisch@gmail.com", "founder": {"@type": "Person", "name": "Dan Benouaisch"}, "description": "Ateliers pratiques d’IA pour dirigeants, managers et indépendants."}</script>
 </head>
 <body>
 <div class="site" id="site">
 <a class="skip" href="#contenu">Aller au contenu</a>
-<header class="hdr">
+<header class="hdr" id="hdr">
 <div class="hdr-in">
 <a aria-label="DAN-IA, accueil" class="logo" href="/">DAN<span>-IA</span></a>
 <button aria-controls="nav" aria-expanded="false" class="menu-btn" id="menuBtn" type="button"><span aria-hidden="true" class="bars"><i></i></span><span id="menuLbl">Menu</span></button>
 <nav aria-label="Navigation principale" class="nav" id="nav">
-<a aria-current="false" data-nav="formations" href="#formations">Formations</a>
-<a aria-current="false" data-nav="cas-pratiques" href="#cas-pratiques">Cas pratiques</a>
-<a aria-current="false" data-nav="a-propos" href="#a-propos">À propos de Dan</a>
-<a aria-current="false" class="nav-cta" data-nav="contact" href="#contact">Échanger avec Dan</a>
+<div class="dd">
+<button aria-controls="ddForm" aria-expanded="false" class="dd-btn" data-nav="formations" type="button">Formations<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></button>
+<div class="dd-panel" id="ddForm">
+<a href="/ia-au-quotidien"><b>L’IA au quotidien</b><span>Préparer, rédiger, vérifier</span></a>
+<a href="/bureautique"><b>Bureautique et IA</b><span>E-mails, documents, tableaux de suivi</span></a>
+<a href="/agent-ia"><b>Créer son agent IA</b><span>Un assistant pour une tâche qui revient</span></a>
+<a class="dd-diag" href="/diagnostic"><b>Vous hésitez ?</b><span>Faites le diagnostic, dix questions</span></a>
+<a class="dd-all" href="#formations">Comparer les trois ateliers</a>
+</div>
+</div>
+<a data-nav="cas-pratiques" href="#cas-pratiques">Cas pratiques</a>
+<a data-nav="a-propos" href="#a-propos">À propos de Dan</a>
+<a class="nav-cta" data-nav="contact" href="#contact">Échanger avec Dan</a>
+<span aria-hidden="true" class="nav-ind" style="opacity: 0;"></span>
 </nav>
 </div>
 </header>
@@ -56,7 +67,7 @@
 <a class="btn btn-ghost" href="/diagnostic">Faire mon diagnostic IA</a>
 </div>
 </div>
-<aside aria-labelledby="brief-t" class="brief-wrap">
+<div aria-labelledby="brief-t" class="brief-wrap" role="group">
 <p class="brief-label" id="brief-t"><span aria-hidden="true" class="live"></span>Exemple de briefing créé en atelier</p>
 <div class="brief">
 <div class="brief-head">
@@ -71,7 +82,7 @@
 </ul>
 <div class="brief-foot"><span>Lu sur mobile avant la première réunion</span><a href="/agent-ia">Voir l’atelier</a></div>
 </div>
-</aside>
+</div>
 </div>
 </section>
 <section aria-labelledby="h-prof" class="sec" id="par-ou-commencer">
@@ -151,9 +162,9 @@
 <button aria-controls="p-2" aria-selected="false" class="tab" id="t-2" role="tab" tabindex="-1">Reporting des ventes</button>
 <button aria-controls="p-3" aria-selected="false" class="tab" id="t-3" role="tab" tabindex="-1">Briefing du matin</button>
 </div>
-<div aria-labelledby="t-1" class="panel" id="p-1" role="tabpanel"><div class="case-meta"><h3>Ateliers Marchand : le client qui menace de partir</h3><span class="status">Cas d’exercice · données fictives</span></div><p class="sub" style="margin:0 0 18px;max-width:70ch">Un client clé a reçu 32 armoires sur 40, dont deux abîmées, mais il est facturé pour 40. Il parle de changer de fournisseur.</p><div class="ba"><div class="ba-col"><h4>Avant</h4><ul><li>Une relance de paiement automatique part, sans un mot sur la livraison.</li><li>Personne ne relit les six e-mails : l’engagement du 12 juin est oublié.</li></ul></div><div class="ba-col after"><h4>Après l’atelier</h4><ul><li>Le fil est résumé en deux minutes, engagements compris.</li><li>La relance reconnaît le problème et propose une facture corrigée, sans exposer de donnée client.</li></ul></div><div class="cap"><div class="cap-t"><span>Livrable de l’exercice</span><span>Synthèse du fil</span></div><h5>Ateliers Marchand · ce qu’il faut savoir</h5><ul><li>8 armoires manquantes, 2 abîmées</li><li>Livraison du solde promise pour le 12 juin</li><li>Facture à corriger avant toute relance</li></ul><p class="q">« Vous avez raison : la livraison n’est pas complète. Je vous adresse une facture corrigée et je vous confirme la date du solde… »</p></div></div><details class="calc"><summary>Voir le calcul et ses hypothèses <span class="status est">Estimation du support de formation</span></summary><div class="in"><p>Coût horaire chargé de 35 €, 210 jours travaillés par an, gain divisé par trois par prudence.</p><table><tbody><tr><td>Préparer ses rendez-vous</td><th scope="row">101 h / an</th></tr><tr><td>Rédiger et lire</td><th scope="row">87 h / an</th></tr><tr><td>Bien demander du premier coup</td><th scope="row">52 h / an</th></tr><tr><td>Automatiser les tâches répétitives</td><th scope="row">48 h / an</th></tr></tbody></table><p>Environ 96 heures par personne et par an après division par trois, soit environ 3 360 €.</p><p><b>Statut :</b> estimation issue du support, pas un résultat mesuré chez un client. Chaque participant refait le calcul avec ses propres chiffres en fin d’atelier.</p></div></details><p style="margin:14px 0 0"><a class="link" href="/ia-au-quotidien" style="color:#B9A9FF">Voir l’atelier L’IA au quotidien</a></p></div>
-<div aria-labelledby="t-2" class="panel" hidden="" id="p-2" role="tabpanel"><div class="case-meta"><h3>Verdier Distribution : un reporting qui sous-estime les ventes</h3><span class="status">Cas d’exercice · données fictives</span></div><p class="sub" style="margin:0 0 18px;max-width:70ch">La direction trouve le semestre décevant et envisage de geler les achats. Le chiffre vient d’un export de 500 commandes utilisé tel quel.</p><div class="ba"><div class="ba-col"><h4>Avant</h4><ul><li>La SOMME ignore les montants saisis en texte, sans aucun message.</li><li>Chaque lundi, les commandes en retard sont cherchées une par une.</li></ul></div><div class="ba-col after"><h4>Après l’atelier</h4><ul><li>Les montants sont nettoyés dans une colonne dédiée, la source reste intacte.</li><li>Un tableau de bord filtrable remplace le fichier refait chaque mois.</li></ul></div><div class="cap"><div class="cap-t"><span>Avant / après</span><span>Reporting du semestre</span></div><table class="mini-tbl"><tbody><tr><th>Commande</th><th>Montant</th></tr><tr><td>C-1042</td><td>1 280 €</td></tr><tr><td>C-1043</td><td class="bad">« 2 450,00 » ignoré</td></tr><tr><td>C-1044</td><td>860 €</td></tr></tbody></table><div aria-hidden="true" class="chart"><i style="height:45%"></i><i style="height:62%"></i><i style="height:55%"></i><i class="hl" style="height:88%"></i><i style="height:70%"></i><i style="height:76%"></i></div><small>Le tableau de bord recalcule le total réel, par mois et par client.</small></div></div><details class="calc"><summary>Voir le calcul et ses hypothèses <span class="status est">Estimation du support de formation</span></summary><div class="in"><p>Coût horaire chargé de 35 €, 210 jours travaillés par an, gain divisé par trois par prudence.</p><table><tbody><tr><td>Repérer les urgences</td><th scope="row">86 h / an</th></tr><tr><td>Préparer le reporting</td><th scope="row">72 h / an</th></tr><tr><td>Traiter ses e-mails</td><th scope="row">70 h / an</th></tr><tr><td>Retrouver ses fichiers</td><th scope="row">35 h / an</th></tr><tr><td>Retraiter un export</td><th scope="row">20 h / an</th></tr></tbody></table><p>Environ 94 heures par personne et par an après division par trois, soit environ 3 300 €.</p><p><b>Statut :</b> estimation issue du support, pas un résultat mesuré chez un client. Chaque participant refait le calcul avec ses propres chiffres en fin d’atelier.</p></div></details><p style="margin:14px 0 0"><a class="link" href="/bureautique" style="color:#B9A9FF">Voir l’atelier Bureautique et IA</a></p></div>
-<div aria-labelledby="t-3" class="panel" hidden="" id="p-3" role="tabpanel"><div class="case-meta"><h3>Le briefing du matin de la directrice générale</h3><span class="status">Cas d’exercice · données fictives</span></div><p class="sub" style="margin:0 0 18px;max-width:70ch">Une boîte de 15 e-mails et un agenda chargé. Une décision attendue avant 16 h se cache entre une newsletter et un dossier déjà traité.</p><div class="ba"><div class="ba-col"><h4>Avant</h4><ul><li>Chaque matin, tout lire pour trouver ce qui compte.</li><li>Un rendez-vous de l’agenda contredit un e-mail : personne ne le voit.</li></ul></div><div class="ba-col after"><h4>Après l’atelier</h4><ul><li>Un briefing court, lu sur mobile avant la première réunion.</li><li>L’écart entre l’e-mail et l’agenda est signalé, les dossiers délégués sont écartés.</li></ul></div><div class="cap"><div class="cap-t"><span>Livrable de l’atelier</span><span>Brief mobile</span></div><h5>Priorité du jour</h5><ul><li><b>Décision avant 16 h :</b> accord sur le devis Lemaire, attendu par Julie.</li><li><b>Écart :</b> le comité est à 14 h dans l’agenda, 15 h dans l’e-mail de Marc.</li></ul><p class="q">Écartés volontairement : 2 dossiers délégués, 1 newsletter.</p></div></div><details class="calc"><summary>Voir le calcul et ses hypothèses <span class="status est">Estimation du support de formation</span></summary><div class="in"><p>Coût horaire d’un dirigeant de 90 €, 210 jours travaillés par an, 10 à 20 minutes de tri évitées par jour.</p><table><tbody><tr><td>Tri du matin supprimé</td><th scope="row">35 à 70 h / an</th></tr><tr><td>Valeur du temps de direction</td><th scope="row">3 150 à 6 300 € / an</th></tr></tbody></table><p>Le gain principal ne se chiffre pas : ne plus découvrir une décision trop tard.</p><p><b>Statut :</b> estimation issue du support, pas un résultat mesuré chez un client. Chaque participant refait le calcul avec ses propres chiffres en fin d’atelier.</p></div></details><p style="margin:14px 0 0"><a class="link" href="/agent-ia" style="color:#B9A9FF">Voir l’atelier Créer son agent IA</a></p></div>
+<div aria-labelledby="t-1" class="panel" id="p-1" role="tabpanel"><div class="case-meta"><h3>Ateliers Marchand : le client qui menace de partir</h3><span class="status">Cas d’exercice · données fictives</span></div><p class="sub" style="margin:0 0 18px;max-width:70ch">Un hôtel de 60 chambres près de Chartres, client depuis huit ans, a reçu 32 armoires sur 40, dont deux abîmées. La facture, elle, en compte 40. Le directeur parle de changer de fournisseur.</p><div class="ba"><div class="ba-col"><h3>Avant</h3><ul><li>Une relance de paiement automatique part, sans un mot sur la livraison.</li><li>Personne ne relit les six e-mails : l’engagement du 12 juin est oublié.</li></ul></div><div class="ba-col after"><h3>Après l’atelier</h3><ul><li>Le fil est résumé en deux minutes, engagements compris.</li><li>La relance reconnaît le problème et propose une facture corrigée, sans exposer de donnée client.</li></ul></div><div class="cap"><div class="cap-t"><span>Livrable de l’exercice</span><span>Synthèse du fil</span></div><p class="cap-h">Ateliers Marchand · ce qu’il faut savoir</p><ul><li>8 armoires manquantes, 2 abîmées</li><li>Livraison du solde promise pour le 12 juin</li><li>Facture à corriger avant toute relance</li></ul><p class="q">« Vous avez raison : la livraison n’est pas complète. Je vous adresse une facture corrigée et je vous confirme la date du solde… »</p></div></div><details class="calc"><summary>Voir le calcul et ses hypothèses <span class="status est">Estimation du support de formation</span></summary><div class="in"><p>Coût horaire chargé de 35 €, 210 jours travaillés par an, gain divisé par trois par prudence.</p><table><tbody><tr><td>Préparer ses rendez-vous</td><th scope="row">101 h / an</th></tr><tr><td>Rédiger et lire</td><th scope="row">87 h / an</th></tr><tr><td>Bien demander du premier coup</td><th scope="row">52 h / an</th></tr><tr><td>Automatiser les tâches répétitives</td><th scope="row">48 h / an</th></tr></tbody></table><p>Environ 96 heures par personne et par an après division par trois, soit environ 3 360 €.</p><p><b>Statut :</b> estimation issue du support, pas un résultat mesuré chez un client. Chaque participant refait le calcul avec ses propres chiffres en fin d’atelier.</p></div></details><p style="margin:14px 0 0"><a class="link" href="/ia-au-quotidien" style="color:#B9A9FF">Voir l’atelier L’IA au quotidien</a></p></div>
+<div aria-labelledby="t-2" class="panel" hidden="" id="p-2" role="tabpanel"><div class="case-meta"><h3>Verdier Distribution : un reporting qui sous-estime les ventes</h3><span class="status">Cas d’exercice · données fictives</span></div><p class="sub" style="margin:0 0 18px;max-width:70ch">Chez ce grossiste orléanais de 22 salariés, la direction trouve le semestre décevant et veut geler les achats. Le chiffre sort d’un export de 500 commandes que personne n’a retraité.</p><div class="ba"><div class="ba-col"><h3>Avant</h3><ul><li>La SOMME ignore les montants saisis en texte, sans aucun message.</li><li>Chaque lundi, les commandes en retard sont cherchées une par une.</li></ul></div><div class="ba-col after"><h3>Après l’atelier</h3><ul><li>Les montants sont nettoyés dans une colonne dédiée, la source reste intacte.</li><li>Un tableau de bord filtrable remplace le fichier refait chaque mois.</li></ul></div><div class="cap"><div class="cap-t"><span>Avant / après</span><span>Reporting du semestre</span></div><table class="mini-tbl"><tbody><tr><th>Commande</th><th>Montant</th></tr><tr><td>C-1042</td><td>1 280 €</td></tr><tr><td>C-1043</td><td class="bad">« 2 450,00 » ignoré</td></tr><tr><td>C-1044</td><td>860 €</td></tr></tbody></table><div aria-hidden="true" class="chart"><i style="height:45%"></i><i style="height:62%"></i><i style="height:55%"></i><i class="hl" style="height:88%"></i><i style="height:70%"></i><i style="height:76%"></i></div><small>Le tableau de bord recalcule le total réel, par mois et par client.</small></div></div><details class="calc"><summary>Voir le calcul et ses hypothèses <span class="status est">Estimation du support de formation</span></summary><div class="in"><p>Coût horaire chargé de 35 €, 210 jours travaillés par an, gain divisé par trois par prudence.</p><table><tbody><tr><td>Repérer les urgences</td><th scope="row">86 h / an</th></tr><tr><td>Préparer le reporting</td><th scope="row">72 h / an</th></tr><tr><td>Traiter ses e-mails</td><th scope="row">70 h / an</th></tr><tr><td>Retrouver ses fichiers</td><th scope="row">35 h / an</th></tr><tr><td>Retraiter un export</td><th scope="row">20 h / an</th></tr></tbody></table><p>Environ 94 heures par personne et par an après division par trois, soit environ 3 300 €.</p><p><b>Statut :</b> estimation issue du support, pas un résultat mesuré chez un client. Chaque participant refait le calcul avec ses propres chiffres en fin d’atelier.</p></div></details><p style="margin:14px 0 0"><a class="link" href="/bureautique" style="color:#B9A9FF">Voir l’atelier Bureautique et IA</a></p></div>
+<div aria-labelledby="t-3" class="panel" hidden="" id="p-3" role="tabpanel"><div class="case-meta"><h3>Le briefing du matin de la directrice générale</h3><span class="status">Cas d’exercice · données fictives</span></div><p class="sub" style="margin:0 0 18px;max-width:70ch">Elle dirige une agence de communication de 15 personnes. Ce lundi, sa boîte contient quinze e-mails, et une décision attendue avant 16 h se cache entre une newsletter et un dossier déjà traité.</p><div class="ba"><div class="ba-col"><h3>Avant</h3><ul><li>Chaque matin, tout lire pour trouver ce qui compte.</li><li>Un rendez-vous de l’agenda contredit un e-mail : personne ne le voit.</li></ul></div><div class="ba-col after"><h3>Après l’atelier</h3><ul><li>Un briefing court, lu sur mobile avant la première réunion.</li><li>L’écart entre l’e-mail et l’agenda est signalé, les dossiers délégués sont écartés.</li></ul></div><div class="cap"><div class="cap-t"><span>Livrable de l’atelier</span><span>Brief mobile</span></div><p class="cap-h">Priorité du jour</p><ul><li><b>Décision avant 16 h :</b> accord sur le devis Lemaire, attendu par Julie.</li><li><b>Écart :</b> le comité est à 14 h dans l’agenda, 15 h dans l’e-mail de Marc.</li></ul><p class="q">Écartés volontairement : 2 dossiers délégués, 1 newsletter.</p></div></div><details class="calc"><summary>Voir le calcul et ses hypothèses <span class="status est">Estimation du support de formation</span></summary><div class="in"><p>Coût horaire d’un dirigeant de 90 €, 210 jours travaillés par an, 10 à 20 minutes de tri évitées par jour.</p><table><tbody><tr><td>Tri du matin supprimé</td><th scope="row">35 à 70 h / an</th></tr><tr><td>Valeur du temps de direction</td><th scope="row">3 150 à 6 300 € / an</th></tr></tbody></table><p>Le gain principal ne se chiffre pas : ne plus découvrir une décision trop tard.</p><p><b>Statut :</b> estimation issue du support, pas un résultat mesuré chez un client. Chaque participant refait le calcul avec ses propres chiffres en fin d’atelier.</p></div></details><p style="margin:14px 0 0"><a class="link" href="/agent-ia" style="color:#B9A9FF">Voir l’atelier Créer son agent IA</a></p></div>
 
 </div>
 </section>
@@ -161,7 +172,7 @@
 <div class="wrap method">
 <div>
 <p class="kick">La méthode</p>
-<h2 class="h2" id="h-meth">Une journée, trois temps.</h2>
+<h2 class="h2" id="h-meth">Comment se déroule une journée.</h2>
 <ol class="steps">
 <li><div><b>Je montre sur un cas réaliste</b><span>Le geste, l’outil et ses limites, en démonstration.</span></div></li>
 <li><div><b>Vous refaites sur le cas d’exercice</b><span>Chronométré, avec un critère de réussite clair.</span></div></li>
@@ -198,7 +209,6 @@
 <p>J’ai créé DAN-IA pour transmettre aux PME, aux managers et aux indépendants ce que j’ai vu fonctionner dans les grandes entreprises, sans le jargon ni les budgets.</p>
 <ul class="ways">
 <li><b>Votre travail d’abord</b>Je pars de vos tâches réelles, jamais de l’outil.</li>
-<li><b>Des preuves</b>Chaque exercice a un critère de réussite vérifiable.</li>
 <li><b>Après l’atelier</b>Je reste joignable et nous refaisons le point à 30 jours.</li>
 </ul>
 
@@ -281,7 +291,8 @@
 <span>© 2026 DAN-IA</span>
 </div>
 </footer>
+<div class="mcta"><a class="btn btn-primary" href="https://calendly.com/dbenouaisch" target="_blank" rel="noopener">Réserver 20 min avec Dan<span class="vh"> (nouvel onglet)</span></a></div>
 </div>
-<script src="/site.js?v=3" defer></script>
+<script src="/site.js?v=4" defer></script>
 </body>
 </html>

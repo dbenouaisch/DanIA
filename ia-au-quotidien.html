@@ -21,20 +21,32 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caladea:wght@400;700&family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/site.css?v=3">
+<link rel="stylesheet" href="/site.css?v=4">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "DAN-IA", "url": "https://dan-ia.vercel.app", "email": "dbenouaisch@gmail.com", "founder": {"@type": "Person", "name": "Dan Benouaisch"}, "description": "Ateliers pratiques d’IA pour dirigeants, managers et indépendants."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Course", "name": "L’IA au quotidien", "description": "Utiliser un assistant IA chaque jour, avec méthode et sans exposer les données de vos clients.", "inLanguage": "fr", "url": "https://dan-ia.vercel.app/ia-au-quotidien", "provider": {"@type": "Organization", "name": "DAN-IA", "url": "https://dan-ia.vercel.app"}}</script>
 </head>
 <body>
 <div class="site" id="site">
 <a class="skip" href="#contenu">Aller au contenu</a>
-<header class="hdr">
+<header class="hdr" id="hdr">
 <div class="hdr-in">
 <a aria-label="DAN-IA, accueil" class="logo" href="/">DAN<span>-IA</span></a>
 <button aria-controls="nav" aria-expanded="false" class="menu-btn" id="menuBtn" type="button"><span aria-hidden="true" class="bars"><i></i></span><span id="menuLbl">Menu</span></button>
 <nav aria-label="Navigation principale" class="nav" id="nav">
-<a data-nav="formations" aria-current="true" href="/#formations">Formations</a>
-<a aria-current="false" data-nav="cas-pratiques" href="/#cas-pratiques">Cas pratiques</a>
-<a aria-current="false" data-nav="a-propos" href="/#a-propos">À propos de Dan</a>
-<a aria-current="false" class="nav-cta" data-nav="contact" href="/#contact">Échanger avec Dan</a>
+<div class="dd">
+<button aria-controls="ddForm" aria-expanded="false" class="dd-btn" data-nav="formations" aria-current="true" type="button">Formations<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></button>
+<div class="dd-panel" id="ddForm">
+<a href="/ia-au-quotidien"><b>L’IA au quotidien</b><span>Préparer, rédiger, vérifier</span></a>
+<a href="/bureautique"><b>Bureautique et IA</b><span>E-mails, documents, tableaux de suivi</span></a>
+<a href="/agent-ia"><b>Créer son agent IA</b><span>Un assistant pour une tâche qui revient</span></a>
+<a class="dd-diag" href="/diagnostic"><b>Vous hésitez ?</b><span>Faites le diagnostic, dix questions</span></a>
+<a class="dd-all" href="/#formations">Comparer les trois ateliers</a>
+</div>
+</div>
+<a data-nav="cas-pratiques" href="/#cas-pratiques">Cas pratiques</a>
+<a data-nav="a-propos" href="/#a-propos">À propos de Dan</a>
+<a class="nav-cta" data-nav="contact" href="/#contact">Échanger avec Dan</a>
+<span aria-hidden="true" class="nav-ind" style="opacity: 0;"></span>
 </nav>
 </div>
 </header>
@@ -52,8 +64,8 @@
 <div class="dbox prereq"><h2>Prérequis</h2><ul><li>Savoir utiliser un ordinateur et une messagerie.</li><li>Un compte sur l’assistant IA validé par votre entreprise (ChatGPT, Claude, Copilot ou Gemini).</li></ul></div>
 </div></div></section>
 <section aria-labelledby="ex-ia-au-quotidien" class="sec"><div class="wrap"><p class="kick">Exemple</p><h2 class="h2" id="ex-ia-au-quotidien">Ateliers Marchand : le client qui menace de partir</h2>
-<div class="case-meta" style="margin-top:12px"><span class="status">Cas d’exercice · données fictives</span></div><p class="sub" style="margin:0 0 20px">Un client clé a reçu 32 armoires sur 40, dont deux abîmées, mais il est facturé pour 40. Il parle de changer de fournisseur.</p>
-<div class="ba"><div class="ba-col"><h4>Avant</h4><ul><li>Une relance de paiement automatique part, sans un mot sur la livraison.</li><li>Personne ne relit les six e-mails : l’engagement du 12 juin est oublié.</li></ul></div><div class="ba-col after"><h4>Après l’atelier</h4><ul><li>Le fil est résumé en deux minutes, engagements compris.</li><li>La relance reconnaît le problème et propose une facture corrigée, sans exposer de donnée client.</li></ul></div><div class="cap"><div class="cap-t"><span>Livrable de l’exercice</span><span>Synthèse du fil</span></div><h5>Ateliers Marchand · ce qu’il faut savoir</h5><ul><li>8 armoires manquantes, 2 abîmées</li><li>Livraison du solde promise pour le 12 juin</li><li>Facture à corriger avant toute relance</li></ul><p class="q">« Vous avez raison : la livraison n’est pas complète. Je vous adresse une facture corrigée et je vous confirme la date du solde… »</p></div></div><details class="calc"><summary>Voir le calcul et ses hypothèses <span class="status est">Estimation du support de formation</span></summary><div class="in"><p>Coût horaire chargé de 35 €, 210 jours travaillés par an, gain divisé par trois par prudence.</p><table><tbody><tr><td>Préparer ses rendez-vous</td><th scope="row">101 h / an</th></tr><tr><td>Rédiger et lire</td><th scope="row">87 h / an</th></tr><tr><td>Bien demander du premier coup</td><th scope="row">52 h / an</th></tr><tr><td>Automatiser les tâches répétitives</td><th scope="row">48 h / an</th></tr></tbody></table><p>Environ 96 heures par personne et par an après division par trois, soit environ 3 360 €.</p><p><b>Statut :</b> estimation issue du support, pas un résultat mesuré chez un client. Chaque participant refait le calcul avec ses propres chiffres en fin d’atelier.</p></div></details>
+<div class="case-meta" style="margin-top:12px"><span class="status">Cas d’exercice · données fictives</span></div><p class="sub" style="margin:0 0 20px">Un hôtel de 60 chambres près de Chartres, client depuis huit ans, a reçu 32 armoires sur 40, dont deux abîmées. La facture, elle, en compte 40. Le directeur parle de changer de fournisseur.</p>
+<div class="ba"><div class="ba-col"><h3>Avant</h3><ul><li>Une relance de paiement automatique part, sans un mot sur la livraison.</li><li>Personne ne relit les six e-mails : l’engagement du 12 juin est oublié.</li></ul></div><div class="ba-col after"><h3>Après l’atelier</h3><ul><li>Le fil est résumé en deux minutes, engagements compris.</li><li>La relance reconnaît le problème et propose une facture corrigée, sans exposer de donnée client.</li></ul></div><div class="cap"><div class="cap-t"><span>Livrable de l’exercice</span><span>Synthèse du fil</span></div><p class="cap-h">Ateliers Marchand · ce qu’il faut savoir</p><ul><li>8 armoires manquantes, 2 abîmées</li><li>Livraison du solde promise pour le 12 juin</li><li>Facture à corriger avant toute relance</li></ul><p class="q">« Vous avez raison : la livraison n’est pas complète. Je vous adresse une facture corrigée et je vous confirme la date du solde… »</p></div></div><details class="calc"><summary>Voir le calcul et ses hypothèses <span class="status est">Estimation du support de formation</span></summary><div class="in"><p>Coût horaire chargé de 35 €, 210 jours travaillés par an, gain divisé par trois par prudence.</p><table><tbody><tr><td>Préparer ses rendez-vous</td><th scope="row">101 h / an</th></tr><tr><td>Rédiger et lire</td><th scope="row">87 h / an</th></tr><tr><td>Bien demander du premier coup</td><th scope="row">52 h / an</th></tr><tr><td>Automatiser les tâches répétitives</td><th scope="row">48 h / an</th></tr></tbody></table><p>Environ 96 heures par personne et par an après division par trois, soit environ 3 360 €.</p><p><b>Statut :</b> estimation issue du support, pas un résultat mesuré chez un client. Chaque participant refait le calcul avec ses propres chiffres en fin d’atelier.</p></div></details>
 </div></section>
 <section aria-labelledby="pg-ia-au-quotidien" class="sec on-surface"><div class="wrap"><p class="kick">Programme</p><h2 class="h2" id="pg-ia-au-quotidien">7 modules sur la journée.</h2>
 <div class="prog"><details class="mod" open=""><summary><span class="n">1</span><b>Comprendre l’IA générative</b><span class="dur">50 min</span></summary><div class="in"><p>Ce qu’elle fait bien, et pourquoi elle peut inventer avec aplomb. <strong>Ce que ça vous apporte : savoir où lui faire confiance, et où vérifier.</strong></p></div></details><details class="mod"><summary><span class="n">2</span><b>Utiliser l’IA en confiance</b><span class="dur">45 min</span></summary><div class="in"><p>RGPD, AI Act, anonymisation, choix de l’outil et de l’offre. <strong>Ce que ça vous apporte : aucune donnée client exposée.</strong></p></div></details><details class="mod"><summary><span class="n">3</span><b>Bien demander : rôle, contexte, tâche, format</b><span class="dur">1 h 30</span></summary><div class="in"><p>Affiner en trois relances courtes, construire sa boîte à prompts. <strong>Ce que ça vous apporte : une réponse utilisable du premier coup.</strong></p></div></details><details class="mod"><summary><span class="n">4</span><b>Rédiger, résumer, traduire</b><span class="dur">1 h</span></summary><div class="in"><p>La relance délicate, la synthèse d’un fil tendu, l’anglais professionnel. <strong>Ce que ça vous apporte : des dossiers compris en deux minutes.</strong></p></div></details><details class="mod"><summary><span class="n">5</span><b>Fichiers, analyse et création</b><span class="dur">1 h</span></summary><div class="in"><p>Un tableur, une note photographiée, une recherche web avec sources. <strong>Ce que ça vous apporte : des décisions prises sur des faits vérifiés.</strong></p></div></details><details class="mod"><summary><span class="n">6</span><b>Automatiser et vérifier</b><span class="dur">40 min</span></summary><div class="in"><p>Briefer un assistant dédié, la check-list avant tout envoi. <strong>Ce que ça vous apporte : un assistant qui travaille pour vous chaque semaine.</strong></p></div></details><details class="mod"><summary><span class="n">7</span><b>Atelier final</b><span class="dur">50 min</span></summary><div class="in"><p>Chacun applique la méthode à un cas de son métier. <strong>Ce que ça vous apporte : un plan d’action daté.</strong></p></div></details></div></div></section>
@@ -74,7 +86,8 @@
 <span>© 2026 DAN-IA</span>
 </div>
 </footer>
+<div class="mcta"><a class="btn btn-primary" href="https://calendly.com/dbenouaisch" target="_blank" rel="noopener">Réserver 20 min avec Dan<span class="vh"> (nouvel onglet)</span></a></div>
 </div>
-<script src="/site.js?v=3" defer></script>
+<script src="/site.js?v=4" defer></script>
 </body>
 </html>

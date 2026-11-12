@@ -21,20 +21,31 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caladea:wght@400;700&family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/site.css?v=3">
+<link rel="stylesheet" href="/site.css?v=4">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "DAN-IA", "url": "https://dan-ia.vercel.app", "email": "dbenouaisch@gmail.com", "founder": {"@type": "Person", "name": "Dan Benouaisch"}, "description": "Ateliers pratiques d’IA pour dirigeants, managers et indépendants."}</script>
 </head>
 <body>
 <div class="site" id="site">
 <a class="skip" href="#contenu">Aller au contenu</a>
-<header class="hdr">
+<header class="hdr" id="hdr">
 <div class="hdr-in">
 <a aria-label="DAN-IA, accueil" class="logo" href="/">DAN<span>-IA</span></a>
 <button aria-controls="nav" aria-expanded="false" class="menu-btn" id="menuBtn" type="button"><span aria-hidden="true" class="bars"><i></i></span><span id="menuLbl">Menu</span></button>
 <nav aria-label="Navigation principale" class="nav" id="nav">
-<a aria-current="false" data-nav="formations" href="/#formations">Formations</a>
-<a aria-current="false" data-nav="cas-pratiques" href="/#cas-pratiques">Cas pratiques</a>
-<a aria-current="false" data-nav="a-propos" href="/#a-propos">À propos de Dan</a>
-<a aria-current="false" class="nav-cta" data-nav="contact" href="/#contact">Échanger avec Dan</a>
+<div class="dd">
+<button aria-controls="ddForm" aria-expanded="false" class="dd-btn" data-nav="formations" type="button">Formations<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></button>
+<div class="dd-panel" id="ddForm">
+<a href="/ia-au-quotidien"><b>L’IA au quotidien</b><span>Préparer, rédiger, vérifier</span></a>
+<a href="/bureautique"><b>Bureautique et IA</b><span>E-mails, documents, tableaux de suivi</span></a>
+<a href="/agent-ia"><b>Créer son agent IA</b><span>Un assistant pour une tâche qui revient</span></a>
+<a class="dd-diag" href="/diagnostic"><b>Vous hésitez ?</b><span>Faites le diagnostic, dix questions</span></a>
+<a class="dd-all" href="/#formations">Comparer les trois ateliers</a>
+</div>
+</div>
+<a data-nav="cas-pratiques" href="/#cas-pratiques">Cas pratiques</a>
+<a data-nav="a-propos" href="/#a-propos">À propos de Dan</a>
+<a class="nav-cta" data-nav="contact" href="/#contact">Échanger avec Dan</a>
+<span aria-hidden="true" class="nav-ind" style="opacity: 0;"></span>
 </nav>
 </div>
 </header>
@@ -61,7 +72,8 @@
 <span>© 2026 DAN-IA</span>
 </div>
 </footer>
+<div class="mcta"><a class="btn btn-primary" href="https://calendly.com/dbenouaisch" target="_blank" rel="noopener">Réserver 20 min avec Dan<span class="vh"> (nouvel onglet)</span></a></div>
 </div>
-<script src="/site.js?v=3" defer></script>
+<script src="/site.js?v=4" defer></script>
 </body>
 </html>

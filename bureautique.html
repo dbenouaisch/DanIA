@@ -21,20 +21,32 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caladea:wght@400;700&family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/site.css?v=3">
+<link rel="stylesheet" href="/site.css?v=4">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "DAN-IA", "url": "https://dan-ia.vercel.app", "email": "dbenouaisch@gmail.com", "founder": {"@type": "Person", "name": "Dan Benouaisch"}, "description": "Ateliers pratiques d’IA pour dirigeants, managers et indépendants."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Course", "name": "Bureautique boostée par l’IA", "description": "Des fichiers qu’on retrouve, des e-mails traités en une décision et un reporting fiable qui se met à jour seul.", "inLanguage": "fr", "url": "https://dan-ia.vercel.app/bureautique", "provider": {"@type": "Organization", "name": "DAN-IA", "url": "https://dan-ia.vercel.app"}}</script>
 </head>
 <body>
 <div class="site" id="site">
 <a class="skip" href="#contenu">Aller au contenu</a>
-<header class="hdr">
+<header class="hdr" id="hdr">
 <div class="hdr-in">
 <a aria-label="DAN-IA, accueil" class="logo" href="/">DAN<span>-IA</span></a>
 <button aria-controls="nav" aria-expanded="false" class="menu-btn" id="menuBtn" type="button"><span aria-hidden="true" class="bars"><i></i></span><span id="menuLbl">Menu</span></button>
 <nav aria-label="Navigation principale" class="nav" id="nav">
-<a data-nav="formations" aria-current="true" href="/#formations">Formations</a>
-<a aria-current="false" data-nav="cas-pratiques" href="/#cas-pratiques">Cas pratiques</a>
-<a aria-current="false" data-nav="a-propos" href="/#a-propos">À propos de Dan</a>
-<a aria-current="false" class="nav-cta" data-nav="contact" href="/#contact">Échanger avec Dan</a>
+<div class="dd">
+<button aria-controls="ddForm" aria-expanded="false" class="dd-btn" data-nav="formations" aria-current="true" type="button">Formations<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></button>
+<div class="dd-panel" id="ddForm">
+<a href="/ia-au-quotidien"><b>L’IA au quotidien</b><span>Préparer, rédiger, vérifier</span></a>
+<a href="/bureautique"><b>Bureautique et IA</b><span>E-mails, documents, tableaux de suivi</span></a>
+<a href="/agent-ia"><b>Créer son agent IA</b><span>Un assistant pour une tâche qui revient</span></a>
+<a class="dd-diag" href="/diagnostic"><b>Vous hésitez ?</b><span>Faites le diagnostic, dix questions</span></a>
+<a class="dd-all" href="/#formations">Comparer les trois ateliers</a>
+</div>
+</div>
+<a data-nav="cas-pratiques" href="/#cas-pratiques">Cas pratiques</a>
+<a data-nav="a-propos" href="/#a-propos">À propos de Dan</a>
+<a class="nav-cta" data-nav="contact" href="/#contact">Échanger avec Dan</a>
+<span aria-hidden="true" class="nav-ind" style="opacity: 0;"></span>
 </nav>
 </div>
 </header>
@@ -52,8 +64,8 @@
 <div class="dbox prereq"><h2>Prérequis et outils</h2><ul><li>Utiliser Excel chaque semaine : filtrer, trier, faire une SOMME.</li><li>Excel 2021 ou Microsoft 365 recommandé. Google Sheets possible avec quelques adaptations.</li></ul></div>
 </div></div></section>
 <section aria-labelledby="ex-bureautique" class="sec"><div class="wrap"><p class="kick">Exemple</p><h2 class="h2" id="ex-bureautique">Verdier Distribution : un reporting qui sous-estime les ventes</h2>
-<div class="case-meta" style="margin-top:12px"><span class="status">Cas d’exercice · données fictives</span></div><p class="sub" style="margin:0 0 20px">La direction trouve le semestre décevant et envisage de geler les achats. Le chiffre vient d’un export de 500 commandes utilisé tel quel.</p>
-<div class="ba"><div class="ba-col"><h4>Avant</h4><ul><li>La SOMME ignore les montants saisis en texte, sans aucun message.</li><li>Chaque lundi, les commandes en retard sont cherchées une par une.</li></ul></div><div class="ba-col after"><h4>Après l’atelier</h4><ul><li>Les montants sont nettoyés dans une colonne dédiée, la source reste intacte.</li><li>Un tableau de bord filtrable remplace le fichier refait chaque mois.</li></ul></div><div class="cap"><div class="cap-t"><span>Avant / après</span><span>Reporting du semestre</span></div><table class="mini-tbl"><tbody><tr><th>Commande</th><th>Montant</th></tr><tr><td>C-1042</td><td>1 280 €</td></tr><tr><td>C-1043</td><td class="bad">« 2 450,00 » ignoré</td></tr><tr><td>C-1044</td><td>860 €</td></tr></tbody></table><div aria-hidden="true" class="chart"><i style="height:45%"></i><i style="height:62%"></i><i style="height:55%"></i><i class="hl" style="height:88%"></i><i style="height:70%"></i><i style="height:76%"></i></div><small>Le tableau de bord recalcule le total réel, par mois et par client.</small></div></div><details class="calc"><summary>Voir le calcul et ses hypothèses <span class="status est">Estimation du support de formation</span></summary><div class="in"><p>Coût horaire chargé de 35 €, 210 jours travaillés par an, gain divisé par trois par prudence.</p><table><tbody><tr><td>Repérer les urgences</td><th scope="row">86 h / an</th></tr><tr><td>Préparer le reporting</td><th scope="row">72 h / an</th></tr><tr><td>Traiter ses e-mails</td><th scope="row">70 h / an</th></tr><tr><td>Retrouver ses fichiers</td><th scope="row">35 h / an</th></tr><tr><td>Retraiter un export</td><th scope="row">20 h / an</th></tr></tbody></table><p>Environ 94 heures par personne et par an après division par trois, soit environ 3 300 €.</p><p><b>Statut :</b> estimation issue du support, pas un résultat mesuré chez un client. Chaque participant refait le calcul avec ses propres chiffres en fin d’atelier.</p></div></details>
+<div class="case-meta" style="margin-top:12px"><span class="status">Cas d’exercice · données fictives</span></div><p class="sub" style="margin:0 0 20px">Chez ce grossiste orléanais de 22 salariés, la direction trouve le semestre décevant et veut geler les achats. Le chiffre sort d’un export de 500 commandes que personne n’a retraité.</p>
+<div class="ba"><div class="ba-col"><h3>Avant</h3><ul><li>La SOMME ignore les montants saisis en texte, sans aucun message.</li><li>Chaque lundi, les commandes en retard sont cherchées une par une.</li></ul></div><div class="ba-col after"><h3>Après l’atelier</h3><ul><li>Les montants sont nettoyés dans une colonne dédiée, la source reste intacte.</li><li>Un tableau de bord filtrable remplace le fichier refait chaque mois.</li></ul></div><div class="cap"><div class="cap-t"><span>Avant / après</span><span>Reporting du semestre</span></div><table class="mini-tbl"><tbody><tr><th>Commande</th><th>Montant</th></tr><tr><td>C-1042</td><td>1 280 €</td></tr><tr><td>C-1043</td><td class="bad">« 2 450,00 » ignoré</td></tr><tr><td>C-1044</td><td>860 €</td></tr></tbody></table><div aria-hidden="true" class="chart"><i style="height:45%"></i><i style="height:62%"></i><i style="height:55%"></i><i class="hl" style="height:88%"></i><i style="height:70%"></i><i style="height:76%"></i></div><small>Le tableau de bord recalcule le total réel, par mois et par client.</small></div></div><details class="calc"><summary>Voir le calcul et ses hypothèses <span class="status est">Estimation du support de formation</span></summary><div class="in"><p>Coût horaire chargé de 35 €, 210 jours travaillés par an, gain divisé par trois par prudence.</p><table><tbody><tr><td>Repérer les urgences</td><th scope="row">86 h / an</th></tr><tr><td>Préparer le reporting</td><th scope="row">72 h / an</th></tr><tr><td>Traiter ses e-mails</td><th scope="row">70 h / an</th></tr><tr><td>Retrouver ses fichiers</td><th scope="row">35 h / an</th></tr><tr><td>Retraiter un export</td><th scope="row">20 h / an</th></tr></tbody></table><p>Environ 94 heures par personne et par an après division par trois, soit environ 3 300 €.</p><p><b>Statut :</b> estimation issue du support, pas un résultat mesuré chez un client. Chaque participant refait le calcul avec ses propres chiffres en fin d’atelier.</p></div></details>
 </div></section>
 <section aria-labelledby="pg-bureautique" class="sec on-surface"><div class="wrap"><p class="kick">Programme</p><h2 class="h2" id="pg-bureautique">6 modules sur la journée.</h2>
 <div class="prog"><details class="mod" open=""><summary><span class="n">1</span><b>Organiser, nommer et collaborer</b><span class="dur">50 min</span></summary><div class="in"><p>Convention de nommage, partage par lien, historique des versions. <strong>Ce que ça vous apporte : une seule version qui fait foi.</strong></p></div></details><details class="mod"><summary><span class="n">2</span><b>Gérer ses e-mails</b><span class="dur">45 min</span></summary><div class="in"><p>Quatre gestes pour décider, règles de tri, objets explicites. <strong>Ce que ça vous apporte : une boîte de réception qui avance.</strong></p></div></details><details class="mod"><summary><span class="n">3</span><b>Fiabiliser ses données Excel</b><span class="dur">1 h</span></summary><div class="in"><p>Repérer les défauts d’un export, tableau structuré, nettoyage. <strong>Ce que ça vous apporte : des totaux justes.</strong></p></div></details><details class="mod"><summary><span class="n">4</span><b>Calculer et alerter</b><span class="dur">1 h 15</span></summary><div class="in"><p>SI, RECHERCHEX, mise en forme conditionnelle. <strong>Ce que ça vous apporte : les urgences visibles le lundi matin.</strong></p></div></details><details class="mod"><summary><span class="n">5</span><b>Analyser et visualiser</b><span class="dur">1 h 15</span></summary><div class="in"><p>Tableaux croisés, contrôle des totaux, graphiques. <strong>Ce que ça vous apporte : les réponses que demande la direction.</strong></p></div></details><details class="mod"><summary><span class="n">6</span><b>Atelier : le tableau de bord</b><span class="dur">1 h</span></summary><div class="in"><p>Segments, tableau de bord interactif, plan d’action. <strong>Ce que ça vous apporte : un outil de pilotage partagé.</strong></p></div></details></div></div></section>
@@ -74,7 +86,8 @@
 <span>© 2026 DAN-IA</span>
 </div>
 </footer>
+<div class="mcta"><a class="btn btn-primary" href="https://calendly.com/dbenouaisch" target="_blank" rel="noopener">Réserver 20 min avec Dan<span class="vh"> (nouvel onglet)</span></a></div>
 </div>
-<script src="/site.js?v=3" defer></script>
+<script src="/site.js?v=4" defer></script>
 </body>
 </html>
