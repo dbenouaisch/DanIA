@@ -2,317 +2,79 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bureautique boostée par l’IA — DAN-IA</title>
-<meta name="description" content="Formation Bureautique boostée par l’IA : fichiers, emails et Excel. 1 journée, 14 exercices.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bureautique boostée par l’IA · Atelier DAN-IA</title>
+<meta name="description" content="Des fichiers qu’on retrouve, des e-mails traités en une décision et un reporting fiable qui se met à jour seul.">
 <link rel="canonical" href="https://dan-ia.vercel.app/bureautique">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Bureautique boostée par l’IA — DAN-IA">
-<meta property="og:description" content="Formation Bureautique boostée par l’IA : fichiers, emails et Excel. 1 journée, 14 exercices.">
+<meta property="og:site_name" content="DAN-IA">
 <meta property="og:url" content="https://dan-ia.vercel.app/bureautique">
+<meta property="og:title" content="Bureautique boostée par l’IA · Atelier DAN-IA">
+<meta property="og:description" content="Des fichiers qu’on retrouve, des e-mails traités en une décision et un reporting fiable qui se met à jour seul.">
+<meta property="og:image" content="https://dan-ia.vercel.app/og-dan-ia.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0E1B3D">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<style>html{scroll-behavior:smooth}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Caladea:wght@400;700&amp;family=Carlito:wght@400;700&amp;display=swap" rel="stylesheet">
-<style>
-body{margin:0}
-a{color:#6D4AFF}a:hover{color:#22356B}
-</style>
-<script>document.documentElement.classList.add("js")</script>
-<link rel="stylesheet" href="/mobile.css">
-<script src="/mobile.js" defer></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caladea:wght@400;700&family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/site.css?v=2">
 </head>
 <body>
-<div style="font-family: Calibri, Carlito, 'Segoe UI', Arial, sans-serif; color: #0E1B3D; background: #FFFFFF; line-height: 1.55; font-size: 18px">
-<header style="background: #0E1B3D; border-bottom: 1px solid #22356B">
-<div style="max-width: 1240px; margin: 0 auto; padding: 18px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
-<a href="/" style="text-decoration: none; color: #FFFFFF; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 28px; letter-spacing: 0.01em">DAN<span style="color: #E8833A">-IA</span></a>
-<nav aria-label="Navigation" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 16px">
-<a href="/" style="color: #D9DFEA; text-decoration: none">← Toutes les formations</a>
-<a href="#programme" style="color: #D9DFEA; text-decoration: none">Programme</a>
-<a href="#gains" style="color: #D9DFEA; text-decoration: none">Ce que ça rapporte</a>
-<a href="#devis" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; background: #E8833A; color: #0E1B3D; text-decoration: none; font-weight: 700; border-radius: 6px">Demander un devis</a>
+<div class="site" id="site">
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="hdr">
+<div class="hdr-in">
+<a aria-label="DAN-IA, accueil" class="logo" href="/">DAN<span>-IA</span></a>
+<button aria-controls="nav" aria-expanded="false" class="menu-btn" id="menuBtn" type="button"><span aria-hidden="true" class="bars"><i></i></span><span id="menuLbl">Menu</span></button>
+<nav aria-label="Navigation principale" class="nav" id="nav">
+<a data-nav="formations" aria-current="true" href="/#formations">Formations</a>
+<a aria-current="false" data-nav="cas-pratiques" href="/#cas-pratiques">Cas pratiques</a>
+<a aria-current="false" data-nav="a-propos" href="/#a-propos">À propos de Dan</a>
+<a aria-current="false" class="nav-cta" data-nav="contact" href="/#contact">Échanger avec Dan</a>
 </nav>
 </div>
 </header>
-<section id="top" style="background: #0E1B3D; color: #FFFFFF">
-<div style="max-width: 1240px; margin: 0 auto; padding: 80px 32px 104px; display: flex; flex-wrap: wrap; gap: 64px; align-items: center">
-<div style="flex: 999 1 600px; min-width: 0; display: flex; flex-direction: column; gap: 26px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #E8833A">Formation 02 · Niveau opérationnel</p>
-<h1 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(42px, 5vw, 66px); line-height: 1.06">Bureautique boostée par l’IA</h1>
-<div aria-hidden="true" style="width: 96px; height: 6px; background: #E8833A; border-radius: 3px"></div>
-<p style="margin: 0; font-size: 22px; color: #D9DFEA; max-width: 640px">Fichiers, emails, Excel : les gestes qui rendent des heures chaque semaine et qui fiabilisent les chiffres sur lesquels vous pilotez l’entreprise.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 10px"><span style="padding: 8px 14px; border: 1px solid #3A4E80; border-radius: 999px; font-size: 15px; color: #D9DFEA">1 journée · 7 h</span><span style="padding: 8px 14px; border: 1px solid #3A4E80; border-radius: 999px; font-size: 15px; color: #D9DFEA">Intra ou inter-entreprises</span><span style="padding: 8px 14px; border: 1px solid #3A4E80; border-radius: 999px; font-size: 15px; color: #D9DFEA">Microsoft 365 · Google Workspace</span></div>
-<div style="display: flex; flex-wrap: wrap; gap: 16px; padding-top: 6px">
-<a href="#devis" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 30px; background: #E8833A; color: #0E1B3D; text-decoration: none; font-weight: 700; border-radius: 6px">Demander un devis</a>
-<a href="#programme" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 30px; border: 1px solid #5A6478; color: #FFFFFF; text-decoration: none; font-weight: 700; border-radius: 6px">Voir le programme</a>
-</div>
-</div>
-<div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
-<div style="background: #22356B; border-radius: 10px; padding: 24px 26px; display: flex; flex-direction: column; gap: 4px">
-<span style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 42px; line-height: 1.05; color: #E8833A">283 h</span>
-<span style="color: #FFFFFF; font-size: 17px">de temps récupérable par an et par personne*</span>
-</div><div style="background: #22356B; border-radius: 10px; padding: 24px 26px; display: flex; flex-direction: column; gap: 4px">
-<span style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 42px; line-height: 1.05; color: #E8833A">56 000 €</span>
-<span style="color: #FFFFFF; font-size: 17px">de chiffre d’affaires « invisible » retrouvé dans le cas pratique</span>
-</div><div style="background: #22356B; border-radius: 10px; padding: 24px 26px; display: flex; flex-direction: column; gap: 4px">
-<span style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 42px; line-height: 1.05; color: #E8833A">14</span>
-<span style="color: #FFFFFF; font-size: 17px">exercices sur un vrai export de ventes</span>
-</div>
-<p style="margin: 0; font-size: 14px; color: #A9B3C6">* Business case du support de formation : coût horaire chargé de 35 €, 210 jours travaillés par an.</p>
-</div>
-</div>
-</section>
-<section style="background: #F3F5F9">
-<div style="max-width: 1240px; margin: 0 auto; padding: 104px 32px; display: flex; flex-direction: column; gap: 44px">
-<div style="display: flex; flex-direction: column; gap: 14px; max-width: 780px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #6D4AFF">Le constat</p>
-<h2 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(32px, 3.4vw, 46px); line-height: 1.12">Le temps perdu ne se voit pas. Les erreurs de chiffres, si.</h2>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px"><div style="background: #FFFFFF; border: 1px solid #D9DFEA; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
-<svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D1433F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 7v5l3 3"></path></svg>
-<strong style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 22px; line-height: 1.25">Cinq versions du même fichier</strong>
-<span style="color: #5A6478; font-size: 17px">Le reporting circule en pièce jointe, et une décision se prend sur une version périmée.</span>
-</div><div style="background: #FFFFFF; border: 1px solid #D9DFEA; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
-<svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D1433F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 7v5l3 3"></path></svg>
-<strong style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 22px; line-height: 1.25">80 emails par jour, relus plusieurs fois</strong>
-<span style="color: #5A6478; font-size: 17px">La boîte de réception sert à la fois de liste de tâches et d’archive. Rien n’avance.</span>
-</div><div style="background: #FFFFFF; border: 1px solid #D9DFEA; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
-<svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D1433F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 7v5l3 3"></path></svg>
-<strong style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 22px; line-height: 1.25">Des totaux faux, sans message d’erreur</strong>
-<span style="color: #5A6478; font-size: 17px">Des montants saisis en texte que la SOMME ignore : le chiffre d’affaires présenté en comité est faux.</span>
-</div></div>
-</div>
-</section>
-<section id="gains" style="max-width: 1240px; margin: 0 auto; padding: 112px 32px; display: flex; flex-direction: column; gap: 48px">
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
-<div style="flex: 1 1 600px; display: flex; flex-direction: column; gap: 14px; max-width: 800px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #6D4AFF">Ce que la journée vous rapporte</p>
-<h2 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(32px, 3.4vw, 46px); line-height: 1.12">Cinq leviers, chiffrés, sur des tâches que chacun fait toutes les semaines.</h2>
-</div>
-<p style="flex: 0 1 360px; margin: 0; color: #5A6478">Les gains ci-dessous sont ceux du business case de la formation. En fin de journée, chaque participant refait le calcul avec ses propres chiffres.</p>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px"><div style="border: 1px solid #D9DFEA; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
-<span style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 44px; line-height: 1; color: #0E1B3D">86<span style="font-size: 20px; color: #5A6478"> h / an</span></span>
-<strong style="font-size: 19px">Repérer les urgences</strong>
-<span style="color: #5A6478; font-size: 16px">Les commandes en retard visibles en 5 minutes au lieu de 2 heures chaque lundi.</span>
-</div><div style="border: 1px solid #D9DFEA; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
-<span style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 44px; line-height: 1; color: #0E1B3D">72<span style="font-size: 20px; color: #5A6478"> h / an</span></span>
-<strong style="font-size: 19px">Préparer le reporting</strong>
-<span style="color: #5A6478; font-size: 16px">Le reporting mensuel en une heure au lieu d’une journée, avec des chiffres contrôlés.</span>
-</div><div style="border: 1px solid #D9DFEA; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
-<span style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 44px; line-height: 1; color: #0E1B3D">70<span style="font-size: 20px; color: #5A6478"> h / an</span></span>
-<strong style="font-size: 19px">Traiter ses emails</strong>
-<span style="color: #5A6478; font-size: 16px">Une décision par email et des règles automatiques : 20 minutes gagnées par jour.</span>
-</div><div style="border: 1px solid #D9DFEA; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
-<span style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 44px; line-height: 1; color: #0E1B3D">35<span style="font-size: 20px; color: #5A6478"> h / an</span></span>
-<strong style="font-size: 19px">Retrouver ses fichiers</strong>
-<span style="color: #5A6478; font-size: 16px">Une convention de nommage partagée : 10 secondes au lieu de 2 minutes.</span>
-</div><div style="border: 1px solid #D9DFEA; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
-<span style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 44px; line-height: 1; color: #0E1B3D">20<span style="font-size: 20px; color: #5A6478"> h / an</span></span>
-<strong style="font-size: 19px">Retraiter un export</strong>
-<span style="color: #5A6478; font-size: 16px">Un tableau structuré qui se met à jour seul, au lieu d’un fichier refait à la main.</span>
-</div></div>
-<div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: stretch">
-<div style="flex: 1 1 340px; background: #0E1B3D; color: #FFFFFF; border-radius: 10px; padding: 36px; display: flex; flex-direction: column; gap: 14px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #E8833A">Le calcul du dirigeant</p>
-<p style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 28px; line-height: 1.2">Environ 3 300 € par personne et par an, en restant prudent.</p>
-<p style="margin: 0; color: #D9DFEA; font-size: 16px">283 heures valent environ 9 900 € à 35 € de l’heure. Nous divisons ce chiffre par trois pour qu’il reste défendable devant n’importe quel comité de direction.</p>
-</div>
-<div style="flex: 999 1 520px; min-width: 0; overflow-x: auto; border: 1px solid #D9DFEA; border-radius: 10px">
-<table style="width: 100%; min-width: 460px; border-collapse: collapse; font-size: 17px">
-<thead><tr><th scope="col" style="text-align: left; padding: 14px 18px; background: #F3F5F9; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Périmètre</th><th scope="col" style="text-align: left; padding: 14px 18px; background: #F3F5F9; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Temps récupéré (prudent)</th><th scope="col" style="text-align: left; padding: 14px 18px; background: #F3F5F9; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Valeur annuelle</th></tr></thead>
-<tbody><tr><th scope="row" style="text-align: left; padding: 14px 18px; border-bottom: 1px solid #D9DFEA; font-weight: 700">1 personne</th><td style="padding: 14px 18px; border-bottom: 1px solid #D9DFEA">94 h</td><td style="padding: 14px 18px; border-bottom: 1px solid #D9DFEA; font-weight: 700">3 300 €</td></tr><tr><th scope="row" style="text-align: left; padding: 14px 18px; border-bottom: 1px solid #D9DFEA; font-weight: 700">Équipe de 5</th><td style="padding: 14px 18px; border-bottom: 1px solid #D9DFEA">470 h</td><td style="padding: 14px 18px; border-bottom: 1px solid #D9DFEA; font-weight: 700">16 500 €</td></tr><tr><th scope="row" style="text-align: left; padding: 14px 18px; border-bottom: 1px solid #D9DFEA; font-weight: 700">Équipe de 10</th><td style="padding: 14px 18px; border-bottom: 1px solid #D9DFEA">940 h</td><td style="padding: 14px 18px; border-bottom: 1px solid #D9DFEA; font-weight: 700">33 000 €</td></tr></tbody>
-</table>
-</div>
-</div>
-</section>
-<section style="background: #F3F5F9">
-<div style="max-width: 1240px; margin: 0 auto; padding: 112px 32px; display: flex; flex-direction: column; gap: 40px">
-<div style="display: flex; flex-direction: column; gap: 14px; max-width: 820px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #6D4AFF">Le business case fil rouge</p>
-<h2 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(32px, 3.4vw, 46px); line-height: 1.12">Verdier Distribution : 56 000 € réapparaissent dans les comptes.</h2>
-<p style="margin: 0; color: #5A6478; font-size: 19px">La direction trouve le chiffre d’affaires du semestre décevant et envisage de geler les achats. Le chiffre vient d’un export de 500 commandes, exploité tel quel.</p>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 20px">
-<div style="flex: 1 1 300px; background: #FFFFFF; border-radius: 10px; padding: 30px; display: flex; flex-direction: column; gap: 14px">
-<span style="display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase"><span aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: #D1433F"></span>Avant</span>
-<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; color: #3A4556; font-size: 17px"><li>La SOMME affiche 412 000 € : 37 montants saisis en texte sont ignorés, sans aucun message.</li><li>Deux heures chaque lundi pour repérer, commande par commande, celles à relancer.</li><li>Un reporting mensuel qui prend une journée, et que personne ne contrôle.</li></ul>
-</div>
-<div style="flex: 1 1 300px; background: #FFFFFF; border-radius: 10px; padding: 30px; display: flex; flex-direction: column; gap: 14px">
-<span style="display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase"><span aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: #15936B"></span>Après la formation</span>
-<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; color: #3A4556; font-size: 17px"><li>Les données sont nettoyées dans une colonne dédiée, la source reste intacte.</li><li>Une formule indique quoi faire de chacune des 500 commandes, et les urgences ressortent en couleur.</li><li>Un tableau de bord que la direction filtre elle-même, en direct, en réunion.</li></ul>
-</div>
-</div>
-<div style="background: #FDF1E8; border-radius: 10px; padding: 22px 26px; font-size: 18px"><strong>Le résultat :</strong> 468 000 € de chiffre d’affaires réel : la décision de geler les achats est évitée, et le reporting tient en une heure.</div>
-</div>
-</section>
-<section id="programme" style="max-width: 1240px; margin: 0 auto; padding: 112px 32px; display: flex; flex-direction: column; gap: 48px">
-<div style="display: flex; flex-wrap: wrap; gap: 48px">
-<div style="flex: 1 1 420px; display: flex; flex-direction: column; gap: 14px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #6D4AFF">Le programme</p>
-<h2 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(32px, 3.4vw, 46px); line-height: 1.12">Six modules, de vos fichiers à votre tableau de bord.</h2>
-<p style="margin: 0; color: #5A6478">Chaque module suit la même méthode : le concept, la démonstration, un exercice chronométré, le niveau « plus loin » et un business case chiffré.</p>
-</div>
-<div style="flex: 1 1 420px; background: #F3F5F9; border-radius: 10px; padding: 30px 32px; display: flex; flex-direction: column; gap: 14px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #0E1B3D; font-size: 13px">À la fin de la journée, vous saurez</p>
-<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 17px"><li style="display: flex; gap: 12px; align-items: flex-start"><span aria-hidden="true" style="flex: none; width: 8px; height: 8px; margin-top: 10px; border-radius: 50%; background: #E8833A"></span><span>Nommer, ranger et partager vos fichiers pour qu’une seule version fasse foi</span></li><li style="display: flex; gap: 12px; align-items: flex-start"><span aria-hidden="true" style="flex: none; width: 8px; height: 8px; margin-top: 10px; border-radius: 50%; background: #E8833A"></span><span>Traiter vos emails en une décision chacun, avec des règles automatiques</span></li><li style="display: flex; gap: 12px; align-items: flex-start"><span aria-hidden="true" style="flex: none; width: 8px; height: 8px; margin-top: 10px; border-radius: 50%; background: #E8833A"></span><span>Repérer et corriger les erreurs invisibles d’un export avant qu’elles ne faussent vos chiffres</span></li><li style="display: flex; gap: 12px; align-items: flex-start"><span aria-hidden="true" style="flex: none; width: 8px; height: 8px; margin-top: 10px; border-radius: 50%; background: #E8833A"></span><span>Écrire les formules SI et RECHERCHEX qui remplacent le tri et le copier-coller</span></li><li style="display: flex; gap: 12px; align-items: flex-start"><span aria-hidden="true" style="flex: none; width: 8px; height: 8px; margin-top: 10px; border-radius: 50%; background: #E8833A"></span><span>Construire des tableaux croisés et un tableau de bord interactif</span></li><li style="display: flex; gap: 12px; align-items: flex-start"><span aria-hidden="true" style="flex: none; width: 8px; height: 8px; margin-top: 10px; border-radius: 50%; background: #E8833A"></span><span>Utiliser l’IA pour écrire la formule ou la règle difficile à votre place</span></li></ul>
-</div>
-</div>
-<ol style="list-style: none; margin: 0; padding: 0; border-bottom: 1px solid #D9DFEA"><li style="display: flex; flex-wrap: wrap; gap: 20px 32px; padding: 28px 0; border-top: 1px solid #D9DFEA">
-<div style="flex: 0 0 64px; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 36px; line-height: 1; color: #E8833A">01</div>
-<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
-<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px"><strong style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 24px">Organiser, nommer et collaborer</strong><span style="font-size: 14px; color: #5A6478; padding: 3px 10px; background: #F3F5F9; border-radius: 999px">50 min</span></div>
-<span style="color: #5A6478; font-size: 17px">Convention de nommage, arborescence par usage, partage par lien avec les bons droits, historique des versions.</span>
-</div>
-<div style="flex: 1 1 300px; min-width: 0; display: flex; gap: 12px; align-items: flex-start">
-<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15936B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 3px"><path d="M20 6L9 17l-5-5"></path></svg>
-<span style="font-size: 17px"><strong>Ce que ça vous apporte :</strong> un fichier retrouvé en 10 secondes, et plus aucune décision prise sur une version périmée.</span>
-</div>
-</li><li style="display: flex; flex-wrap: wrap; gap: 20px 32px; padding: 28px 0; border-top: 1px solid #D9DFEA">
-<div style="flex: 0 0 64px; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 36px; line-height: 1; color: #E8833A">02</div>
-<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
-<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px"><strong style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 24px">Gérer ses emails efficacement</strong><span style="font-size: 14px; color: #5A6478; padding: 3px 10px; background: #F3F5F9; border-radius: 999px">45 min</span></div>
-<span style="color: #5A6478; font-size: 17px">Quatre gestes pour décider de chaque email, des règles de tri automatiques, des objets qui disent qui fait quoi et avant quand.</span>
-</div>
-<div style="flex: 1 1 300px; min-width: 0; display: flex; gap: 12px; align-items: flex-start">
-<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15936B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 3px"><path d="M20 6L9 17l-5-5"></path></svg>
-<span style="font-size: 17px"><strong>Ce que ça vous apporte :</strong> 20 minutes gagnées par jour, et des réponses plus rapides à vos demandes.</span>
-</div>
-</li><li style="display: flex; flex-wrap: wrap; gap: 20px 32px; padding: 28px 0; border-top: 1px solid #D9DFEA">
-<div style="flex: 0 0 64px; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 36px; line-height: 1; color: #E8833A">03</div>
-<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
-<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px"><strong style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 24px">Fiabiliser ses données Excel</strong><span style="font-size: 14px; color: #5A6478; padding: 3px 10px; background: #F3F5F9; border-radius: 999px">1 h</span></div>
-<span style="color: #5A6478; font-size: 17px">Repérer les défauts d’un export, le convertir en tableau structuré, nettoyer noms et montants.</span>
-</div>
-<div style="flex: 1 1 300px; min-width: 0; display: flex; gap: 12px; align-items: flex-start">
-<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15936B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 3px"><path d="M20 6L9 17l-5-5"></path></svg>
-<span style="font-size: 17px"><strong>Ce que ça vous apporte :</strong> des totaux justes et une base qui se met à jour seule.</span>
-</div>
-</li><li style="display: flex; flex-wrap: wrap; gap: 20px 32px; padding: 28px 0; border-top: 1px solid #D9DFEA">
-<div style="flex: 0 0 64px; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 36px; line-height: 1; color: #E8833A">04</div>
-<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
-<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px"><strong style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 24px">Calculer et alerter automatiquement</strong><span style="font-size: 14px; color: #5A6478; padding: 3px 10px; background: #F3F5F9; border-radius: 999px">1 h 15</span></div>
-<span style="color: #5A6478; font-size: 17px">La colonne qui décide (SI), le nom officiel ramené d’un autre tableau (RECHERCHEX), les couleurs qui signalent les urgences.</span>
-</div>
-<div style="flex: 1 1 300px; min-width: 0; display: flex; gap: 12px; align-items: flex-start">
-<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15936B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 3px"><path d="M20 6L9 17l-5-5"></path></svg>
-<span style="font-size: 17px"><strong>Ce que ça vous apporte :</strong> les urgences visibles en 5 minutes au lieu de 2 heures, et les relances le jour même.</span>
-</div>
-</li><li style="display: flex; flex-wrap: wrap; gap: 20px 32px; padding: 28px 0; border-top: 1px solid #D9DFEA">
-<div style="flex: 0 0 64px; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 36px; line-height: 1; color: #E8833A">05</div>
-<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
-<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px"><strong style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 24px">Analyser et visualiser</strong><span style="font-size: 14px; color: #5A6478; padding: 3px 10px; background: #F3F5F9; border-radius: 999px">1 h 15</span></div>
-<span style="color: #5A6478; font-size: 17px">Tableaux croisés dynamiques, contrôle des totaux, affichage en pourcentage, graphiques.</span>
-</div>
-<div style="flex: 1 1 300px; min-width: 0; display: flex; gap: 12px; align-items: flex-start">
-<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15936B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 3px"><path d="M20 6L9 17l-5-5"></path></svg>
-<span style="font-size: 17px"><strong>Ce que ça vous apporte :</strong> les réponses que demande la direction, en quelques clics et avec des chiffres contrôlés.</span>
-</div>
-</li><li style="display: flex; flex-wrap: wrap; gap: 20px 32px; padding: 28px 0; border-top: 1px solid #D9DFEA">
-<div style="flex: 0 0 64px; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 36px; line-height: 1; color: #E8833A">06</div>
-<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
-<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px"><strong style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 24px">Atelier : le tableau de bord</strong><span style="font-size: 14px; color: #5A6478; padding: 3px 10px; background: #F3F5F9; border-radius: 999px">1 h</span></div>
-<span style="color: #5A6478; font-size: 17px">Segments, tableau de bord interactif, démonstrations croisées, calcul de votre gain et plan d’action.</span>
-</div>
-<div style="flex: 1 1 300px; min-width: 0; display: flex; gap: 12px; align-items: flex-start">
-<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15936B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 3px"><path d="M20 6L9 17l-5-5"></path></svg>
-<span style="font-size: 17px"><strong>Ce que ça vous apporte :</strong> un outil de pilotage que la direction explore elle-même, en réunion.</span>
-</div>
-</li></ol>
-</section>
-<section style="background: #0E1B3D; color: #FFFFFF">
-<div style="max-width: 1240px; margin: 0 auto; padding: 104px 32px; display: flex; flex-direction: column; gap: 48px">
-<div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #E8833A">Vous repartez avec</p>
-<h2 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(32px, 3.4vw, 46px); line-height: 1.12; color: #FFFFFF">Un kit complet pour appliquer la méthode dès le lendemain.</h2>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 36px 40px"><div style="display: flex; gap: 16px; align-items: flex-start">
-<span aria-hidden="true" style="flex: none; width: 44px; height: 44px; border-radius: 8px; background: #22356B; color: #E8833A; display: flex; align-items: center; justify-content: center; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 20px">1</span>
-<div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 19px; color: #FFFFFF">Le support de cours</strong><span style="color: #D9DFEA; font-size: 16px">Toutes les notions, méthodes et business cases de la journée.</span></div>
-</div><div style="display: flex; gap: 16px; align-items: flex-start">
-<span aria-hidden="true" style="flex: none; width: 44px; height: 44px; border-radius: 8px; background: #22356B; color: #E8833A; display: flex; align-items: center; justify-content: center; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 20px">2</span>
-<div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 19px; color: #FFFFFF">Le cahier d’exercices</strong><span style="color: #D9DFEA; font-size: 16px">14 fiches avec consigne, durée et critère de réussite.</span></div>
-</div><div style="display: flex; gap: 16px; align-items: flex-start">
-<span aria-hidden="true" style="flex: none; width: 44px; height: 44px; border-radius: 8px; background: #22356B; color: #E8833A; display: flex; align-items: center; justify-content: center; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 20px">3</span>
-<div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 19px; color: #FFFFFF">Le fichier Verdier</strong><span style="color: #D9DFEA; font-size: 16px">L’export de ventes réaliste, pour refaire chaque manipulation.</span></div>
-</div><div style="display: flex; gap: 16px; align-items: flex-start">
-<span aria-hidden="true" style="flex: none; width: 44px; height: 44px; border-radius: 8px; background: #22356B; color: #E8833A; display: flex; align-items: center; justify-content: center; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 20px">4</span>
-<div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 19px; color: #FFFFFF">Le mémo formules et raccourcis</strong><span style="color: #D9DFEA; font-size: 16px">Les formules et les raccourcis clavier qui servent tous les jours.</span></div>
-</div><div style="display: flex; gap: 16px; align-items: flex-start">
-<span aria-hidden="true" style="flex: none; width: 44px; height: 44px; border-radius: 8px; background: #22356B; color: #E8833A; display: flex; align-items: center; justify-content: center; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 20px">5</span>
-<div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 19px; color: #FFFFFF">Quiz d’entrée et de sortie</strong><span style="color: #D9DFEA; font-size: 16px">Votre progression mesurée sur la journée.</span></div>
-</div><div style="display: flex; gap: 16px; align-items: flex-start">
-<span aria-hidden="true" style="flex: none; width: 44px; height: 44px; border-radius: 8px; background: #22356B; color: #E8833A; display: flex; align-items: center; justify-content: center; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 20px">6</span>
-<div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 19px; color: #FFFFFF">Votre gain et votre plan d’action</strong><span style="color: #D9DFEA; font-size: 16px">Calculés en atelier, revus lors du point de suivi à 30 jours.</span></div>
-</div></div>
-</div>
-</section>
-<section style="max-width: 1240px; margin: 0 auto; padding: 104px 32px; display: flex; flex-direction: column; gap: 44px">
-<div style="display: flex; flex-direction: column; gap: 14px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #6D4AFF">Infos pratiques</p>
-<h2 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(32px, 3.4vw, 46px); line-height: 1.12">Pour qui, comment, et à quel prix.</h2>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 36px 32px"><div style="border-top: 2px solid #0E1B3D; padding-top: 18px; display: flex; flex-direction: column; gap: 8px">
-<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5A6478">Pour qui</span>
-<span style="font-size: 17px">Dirigeants, managers, assistants et indépendants qui manipulent fichiers, emails et tableaux chaque semaine.</span>
-</div><div style="border-top: 2px solid #0E1B3D; padding-top: 18px; display: flex; flex-direction: column; gap: 8px">
-<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5A6478">Prérequis</span>
-<span style="font-size: 17px">Utiliser Excel et une messagerie au quotidien. Excel 2021 ou Microsoft 365 recommandé.</span>
-</div><div style="border-top: 2px solid #0E1B3D; padding-top: 18px; display: flex; flex-direction: column; gap: 8px">
-<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5A6478">Format</span>
-<span style="font-size: 17px">1 journée de 7 heures. En intra-entreprise sur vos fichiers types, ou en session inter-entreprises.</span>
-</div><div style="border-top: 2px solid #0E1B3D; padding-top: 18px; display: flex; flex-direction: column; gap: 8px">
-<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5A6478">Évaluation</span>
-<span style="font-size: 17px">Quiz de positionnement en entrée et en sortie, exercices avec critère de réussite, suivi à 30 jours.</span>
-</div><div style="border-top: 2px solid #0E1B3D; padding-top: 18px; display: flex; flex-direction: column; gap: 8px">
-<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5A6478">Environnements</span>
-<span style="font-size: 17px">Outlook comme Gmail, OneDrive comme Google Drive. L’IA intervient à chaque module.</span>
-</div><div style="border-top: 2px solid #0E1B3D; padding-top: 18px; display: flex; flex-direction: column; gap: 8px">
-<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5A6478">Tarif</span>
-<span style="font-size: 17px">Sur demande, selon le format et le nombre de participants.</span>
-</div></div>
-</section>
-<section style="background: #F3F5F9">
-<div style="max-width: 1240px; margin: 0 auto; padding: 80px 32px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
-<img src="/dan-photo.webp" alt="Dan, formateur et fondateur de DAN-IA" style="flex: 0 0 160px; width: 160px; height: 160px; object-fit: cover; border-radius: 50%; border: 4px solid #E8833A">
-<div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #6D4AFF; font-size: 13px">Votre formateur</p>
-<p style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 28px; line-height: 1.2">Dan, 25 ans au cœur des technologies d’entreprise.</p>
-<p style="margin: 0; color: #5A6478">Senior Solution Engineer et fondateur de DAN-IA. Il forme comme il conseille : en partant de vos enjeux, jamais de la technologie. En français ou en anglais.</p>
-</div>
-</div>
-</section>
-<section style="max-width: 1240px; margin: 0 auto; padding: 104px 32px; display: flex; flex-wrap: wrap; gap: 56px">
-<div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 14px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #6D4AFF">Questions fréquentes</p>
-<h2 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(30px, 3vw, 40px); line-height: 1.12">Les questions que posent les dirigeants.</h2>
-</div>
-<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column"><details open="" style="border-top: 1px solid #D9DFEA; padding: 22px 0"><summary style="cursor: pointer; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 21px">Mes équipes n’ont pas toutes le même niveau sur Excel.</summary><p style="margin: 12px 0 0; color: #5A6478">Le quiz de positionnement situe chacun : découverte, pratique ou avancé. Le formateur adapte le niveau des exercices, et les plus avancés vont jusqu’au niveau « pro ».</p></details><details style="border-top: 1px solid #D9DFEA; padding: 22px 0"><summary style="cursor: pointer; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 21px">Nous travaillons sous Google Workspace.</summary><p style="margin: 12px 0 0; color: #5A6478">Les méthodes de fichiers et d’emails sont montrées sur les deux environnements. Les manipulations Excel avancées supposent Excel 2021 ou Microsoft 365.</p></details><details style="border-top: 1px solid #D9DFEA; border-bottom: 1px solid #D9DFEA; padding: 22px 0"><summary style="cursor: pointer; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 21px">Pouvez-vous travailler sur nos propres fichiers ?</summary><p style="margin: 12px 0 0; color: #5A6478">En intra-entreprise, oui : les business cases sont construits à partir de vos exports et de vos tableaux de suivi.</p></details></div>
-</section>
-<section id="devis" style="max-width: 1240px; margin: 0 auto; padding: 0 32px 104px; display: flex; flex-direction: column; gap: 40px">
-<div style="background: #0E1B3D; color: #FFFFFF; border-radius: 12px; padding: 56px 48px; display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between">
-<div style="flex: 1 1 520px; display: flex; flex-direction: column; gap: 14px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #E8833A">Passer à l’action</p>
-<p style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(30px, 3vw, 40px); line-height: 1.15">Des chiffres justes et des heures rendues, dès la semaine prochaine.</p>
-<p style="margin: 0; color: #D9DFEA">Programme détaillé, dates disponibles et proposition adaptée à votre équipe : réponse personnalisée, sans engagement.</p>
-</div>
-<div style="display: flex; flex-direction: column; gap: 12px">
-<a href="/#contact" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 30px; background: #E8833A; color: #0E1B3D; text-decoration: none; font-weight: 700; border-radius: 6px; justify-content: center">Demander un devis</a>
-<a href="mailto:dbenouaisch@gmail.com?subject=Demande%20de%20rappel%20DAN-IA" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 30px; border: 1px solid #5A6478; color: #FFFFFF; text-decoration: none; font-weight: 700; border-radius: 6px; justify-content: center">Être rappelé</a>
-</div>
-</div>
-<div style="display: flex; flex-direction: column; gap: 16px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #5A6478; font-size: 13px">Compléter le parcours</p>
-<div style="display: flex; flex-wrap: wrap; gap: 16px"><a href="/ia-au-quotidien" style="flex: 1 1 280px; display: flex; flex-direction: column; gap: 6px; padding: 24px 26px; border: 1px solid #D9DFEA; border-radius: 10px; text-decoration: none; color: #0E1B3D"><span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5A6478">Formation 01</span><strong style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 22px">L’IA au quotidien →</strong></a><a href="/agent-ia" style="flex: 1 1 280px; display: flex; flex-direction: column; gap: 6px; padding: 24px 26px; border: 1px solid #D9DFEA; border-radius: 10px; text-decoration: none; color: #0E1B3D"><span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5A6478">Formation 03</span><strong style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 22px">Créer son agent IA →</strong></a></div>
-</div>
-</section>
-<footer style="background: #0E1B3D; color: #D9DFEA">
-<div style="max-width: 1240px; margin: 0 auto; padding: 36px 32px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 15px">
-<span><span style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 22px; color: #FFFFFF">DAN<span style="color: #E8833A">-IA</span></span> · © 2026</span>
-<div style="display: flex; flex-wrap: wrap; gap: 24px"><a href="/" style="color: #D9DFEA">Accueil</a><a href="#top" style="color: #D9DFEA">Mentions légales</a><a href="#top" style="color: #D9DFEA">Confidentialité</a></div>
+<main id="contenu">
+<div class="fiche"><section aria-labelledby="h-bureautique" class="f-top"><div class="wrap">
+<a class="crumb" href="/#formations">Toutes les formations</a>
+<p class="f-lvl">Formation 02 · Niveau opérationnel</p>
+<h1 id="h-bureautique">Bureautique boostée par l’IA</h1>
+<p class="f-promise">Des fichiers qu’on retrouve, des e-mails traités en une décision et un reporting fiable qui se met à jour seul.</p>
+<div class="decide">
+<div class="dbox"><h2>Ce que je saurai faire</h2><ul><li>Repérer et corriger les montants mal saisis d’un export</li><li>Écrire les formules SI et RECHERCHEX, avec l’aide de l’IA</li><li>Construire un tableau croisé et un tableau de bord interactif</li><li>Traiter vos e-mails en une décision chacun</li></ul></div>
+<div class="dbox"><h2>Avec quoi je repars</h2><ul><li>Le fichier d’exercice Verdier, pour refaire chaque geste</li><li>Le mémo formules et raccourcis</li><li>Votre plan d’action, revu à 30 jours</li></ul></div>
+<div class="dbox aside"><h2>Format</h2><dl class="facts"><dt>Durée</dt><dd>1 journée, 7 h</dd><dt>Format</dt><dd>Dans votre entreprise</dd><dt>Outils</dt><dd>Excel 2021 ou Microsoft 365, Outlook ou Gmail</dd><dt>Niveau requis</dt><dd>Utiliser Excel chaque semaine : filtres, tris, SOMME</dd><dt>Tarif</dt><dd><span class="ph">Sur devis</span></dd><dt>Suivi</dt><dd>Point à 30 jours</dd></dl>
+<a class="btn btn-primary" href="/?besoin=bureautique#contact">Demander cet atelier</a><a class="btn btn-quiet" href="https://calendly.com/dbenouaisch" rel="noopener" target="_blank">Échanger 20 min avec Dan<span class="vh"> (nouvel onglet)</span></a></div>
+<div class="dbox prereq"><h2>Prérequis et outils</h2><ul><li>Utiliser Excel chaque semaine : filtrer, trier, faire une SOMME.</li><li>Excel 2021 ou Microsoft 365 recommandé. Google Sheets possible avec quelques adaptations.</li></ul></div>
+</div></div></section>
+<section aria-labelledby="ex-bureautique" class="sec"><div class="wrap"><p class="kick">Exemple</p><h2 class="h2" id="ex-bureautique">Verdier Distribution : un reporting qui sous-estime les ventes</h2>
+<div class="case-meta" style="margin-top:12px"><span class="status">Cas d’exercice · données fictives</span></div><p class="sub" style="margin:0 0 20px">La direction trouve le semestre décevant et envisage de geler les achats. Le chiffre vient d’un export de 500 commandes utilisé tel quel.</p>
+<div class="ba"><div class="ba-col"><h4>Avant</h4><ul><li>La SOMME ignore les montants saisis en texte, sans aucun message.</li><li>Chaque lundi, les commandes en retard sont cherchées une par une.</li></ul></div><div class="ba-col after"><h4>Après l’atelier</h4><ul><li>Les montants sont nettoyés dans une colonne dédiée, la source reste intacte.</li><li>Un tableau de bord filtrable remplace le fichier refait chaque mois.</li></ul></div><div class="cap"><div class="cap-t"><span>Avant / après</span><span>Reporting du semestre</span></div><table class="mini-tbl"><tbody><tr><th>Commande</th><th>Montant</th></tr><tr><td>C-1042</td><td>1 280 €</td></tr><tr><td>C-1043</td><td class="bad">« 2 450,00 » ignoré</td></tr><tr><td>C-1044</td><td>860 €</td></tr></tbody></table><div aria-hidden="true" class="chart"><i style="height:45%"></i><i style="height:62%"></i><i style="height:55%"></i><i class="hl" style="height:88%"></i><i style="height:70%"></i><i style="height:76%"></i></div><small>Le tableau de bord recalcule le total réel, par mois et par client.</small></div></div><details class="calc"><summary>Voir le calcul et ses hypothèses <span class="status est">Estimation du support de formation</span></summary><div class="in"><p>Coût horaire chargé de 35 €, 210 jours travaillés par an, gain divisé par trois par prudence.</p><table><tbody><tr><td>Repérer les urgences</td><th scope="row">86 h / an</th></tr><tr><td>Préparer le reporting</td><th scope="row">72 h / an</th></tr><tr><td>Traiter ses e-mails</td><th scope="row">70 h / an</th></tr><tr><td>Retrouver ses fichiers</td><th scope="row">35 h / an</th></tr><tr><td>Retraiter un export</td><th scope="row">20 h / an</th></tr></tbody></table><p>Environ 94 heures par personne et par an après division par trois, soit environ 3 300 €.</p><p><b>Statut :</b> estimation issue du support, pas un résultat mesuré chez un client. Chaque participant refait le calcul avec ses propres chiffres en fin d’atelier.</p></div></details>
+</div></section>
+<section aria-labelledby="pg-bureautique" class="sec on-surface"><div class="wrap"><p class="kick">Programme</p><h2 class="h2" id="pg-bureautique">6 modules sur la journée.</h2>
+<div class="prog"><details class="mod" open=""><summary><span class="n">1</span><b>Organiser, nommer et collaborer</b><span class="dur">50 min</span></summary><div class="in"><p>Convention de nommage, partage par lien, historique des versions. <strong>Ce que ça vous apporte : une seule version qui fait foi.</strong></p></div></details><details class="mod"><summary><span class="n">2</span><b>Gérer ses e-mails</b><span class="dur">45 min</span></summary><div class="in"><p>Quatre gestes pour décider, règles de tri, objets explicites. <strong>Ce que ça vous apporte : une boîte de réception qui avance.</strong></p></div></details><details class="mod"><summary><span class="n">3</span><b>Fiabiliser ses données Excel</b><span class="dur">1 h</span></summary><div class="in"><p>Repérer les défauts d’un export, tableau structuré, nettoyage. <strong>Ce que ça vous apporte : des totaux justes.</strong></p></div></details><details class="mod"><summary><span class="n">4</span><b>Calculer et alerter</b><span class="dur">1 h 15</span></summary><div class="in"><p>SI, RECHERCHEX, mise en forme conditionnelle. <strong>Ce que ça vous apporte : les urgences visibles le lundi matin.</strong></p></div></details><details class="mod"><summary><span class="n">5</span><b>Analyser et visualiser</b><span class="dur">1 h 15</span></summary><div class="in"><p>Tableaux croisés, contrôle des totaux, graphiques. <strong>Ce que ça vous apporte : les réponses que demande la direction.</strong></p></div></details><details class="mod"><summary><span class="n">6</span><b>Atelier : le tableau de bord</b><span class="dur">1 h</span></summary><div class="in"><p>Segments, tableau de bord interactif, plan d’action. <strong>Ce que ça vous apporte : un outil de pilotage partagé.</strong></p></div></details></div></div></section>
+<section aria-labelledby="md-bureautique" class="sec"><div class="wrap"><p class="kick">Modalités</p><h2 class="h2" id="md-bureautique">Comment se passe la journée.</h2>
+<div class="mods"><div><b>Pour qui</b>Dirigeants, managers et indépendants.</div><div><b>Évaluation</b>Quiz en entrée et en sortie, exercices avec critère de réussite.</div><div><b>Suivi</b>Un point à 30 jours sur votre plan d’action.</div><div><b>En intra</b>Sur vos cas et vos fichiers types, jusqu’à <span>10</span> personnes.</div><div><b>Accessibilité</b>Un besoin particulier ? Écrivez-moi à <a href="mailto:dbenouaisch@gmail.com">dbenouaisch@gmail.com</a> avant l’atelier.</div></div>
+<p class="kick" style="margin-top:44px">Questions fréquentes</p><div class="faq"><details><summary>Je ne suis pas à l’aise avec Excel, est-ce pour moi ?</summary><p>Si vous savez filtrer et faire une SOMME, oui. Les formules plus avancées sont construites pas à pas, avec l’IA pour vous aider à les écrire.</p></details><details><summary>Verdier Distribution est-il un vrai client ?</summary><p>Non. C’est un cas d’exercice aux données fictives, avec un export réaliste de 500 commandes.</p></details><details><summary>Et si nous travaillons sous Google Workspace ?</summary><p>L’atelier s’adapte. Prévenez-nous à l’inscription pour recevoir les fichiers au bon format.</p></details></div>
+<div class="endcta" style="margin-top:44px"><div><h2>Cet atelier vous correspond ?</h2><p style="margin:6px 0 0;color:#C3CBDD">Je vous réponds avec les dates et le format adaptés.</p></div><a class="btn btn-primary" href="/?besoin=bureautique#contact">Demander cet atelier</a></div>
+<div class="others"><a class="btn btn-quiet btn-sm" href="/ia-au-quotidien">L’IA au quotidien</a><a class="btn btn-quiet btn-sm" href="/agent-ia">Créer son agent IA</a></div>
+</div></section></div>
+</main>
+<footer class="foot">
+<div class="wrap">
+<a class="logo" href="/">DAN<span>-IA</span></a>
+<a href="/#formations">Formations</a>
+<a href="/#contact">Contact</a>
+<a href="/mentions-legales">Mentions légales</a>
+<a href="/confidentialite">Confidentialité</a>
+<span>© 2026 DAN-IA</span>
 </div>
 </footer>
 </div>
+<script src="/site.js?v=2" defer></script>
 </body>
 </html>

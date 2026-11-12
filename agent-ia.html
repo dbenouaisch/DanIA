@@ -2,313 +2,80 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Créer son agent IA — DAN-IA</title>
-<meta name="description" content="Formation Créer son agent IA : un agent de briefing emails et agenda, construit sans code en une journée.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Créer son agent IA · Atelier DAN-IA</title>
+<meta name="description" content="Concevez sans code un assistant qui lit vos e-mails et votre agenda, et vous dit chaque matin ce qui attend vraiment votre décision.">
 <link rel="canonical" href="https://dan-ia.vercel.app/agent-ia">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Créer son agent IA — DAN-IA">
-<meta property="og:description" content="Formation Créer son agent IA : un agent de briefing emails et agenda, construit sans code en une journée.">
+<meta property="og:site_name" content="DAN-IA">
 <meta property="og:url" content="https://dan-ia.vercel.app/agent-ia">
+<meta property="og:title" content="Créer son agent IA · Atelier DAN-IA">
+<meta property="og:description" content="Concevez sans code un assistant qui lit vos e-mails et votre agenda, et vous dit chaque matin ce qui attend vraiment votre décision.">
+<meta property="og:image" content="https://dan-ia.vercel.app/og-dan-ia.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0E1B3D">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<style>html{scroll-behavior:smooth}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Caladea:wght@400;700&amp;family=Carlito:wght@400;700&amp;display=swap" rel="stylesheet">
-<style>
-body{margin:0}
-a{color:#6D4AFF}a:hover{color:#22356B}
-</style>
-<script>document.documentElement.classList.add("js")</script>
-<link rel="stylesheet" href="/mobile.css">
-<script src="/mobile.js" defer></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caladea:wght@400;700&family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/site.css?v=2">
 </head>
 <body>
-<div style="font-family: Calibri, Carlito, 'Segoe UI', Arial, sans-serif; color: #0E1B3D; background: #FFFFFF; line-height: 1.55; font-size: 18px">
-<header style="background: #0E1B3D; border-bottom: 1px solid #22356B">
-<div style="max-width: 1240px; margin: 0 auto; padding: 18px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
-<a href="/" style="text-decoration: none; color: #FFFFFF; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 28px; letter-spacing: 0.01em">DAN<span style="color: #E8833A">-IA</span></a>
-<nav aria-label="Navigation" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 16px">
-<a href="/" style="color: #D9DFEA; text-decoration: none">← Toutes les formations</a>
-<a href="#programme" style="color: #D9DFEA; text-decoration: none">Programme</a>
-<a href="#gains" style="color: #D9DFEA; text-decoration: none">Ce que ça rapporte</a>
-<a href="#devis" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; background: #E8833A; color: #0E1B3D; text-decoration: none; font-weight: 700; border-radius: 6px">Demander un devis</a>
+<div class="site" id="site">
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="hdr">
+<div class="hdr-in">
+<a aria-label="DAN-IA, accueil" class="logo" href="/">DAN<span>-IA</span></a>
+<button aria-controls="nav" aria-expanded="false" class="menu-btn" id="menuBtn" type="button"><span aria-hidden="true" class="bars"><i></i></span><span id="menuLbl">Menu</span></button>
+<nav aria-label="Navigation principale" class="nav" id="nav">
+<a data-nav="formations" aria-current="true" href="/#formations">Formations</a>
+<a aria-current="false" data-nav="cas-pratiques" href="/#cas-pratiques">Cas pratiques</a>
+<a aria-current="false" data-nav="a-propos" href="/#a-propos">À propos de Dan</a>
+<a aria-current="false" class="nav-cta" data-nav="contact" href="/#contact">Échanger avec Dan</a>
 </nav>
 </div>
 </header>
-<section id="top" style="background: #0E1B3D; color: #FFFFFF">
-<div style="max-width: 1240px; margin: 0 auto; padding: 80px 32px 104px; display: flex; flex-wrap: wrap; gap: 64px; align-items: center">
-<div style="flex: 999 1 600px; min-width: 0; display: flex; flex-direction: column; gap: 26px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #E8833A">Formation 03 · Niveau avancé</p>
-<h1 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(42px, 5vw, 66px); line-height: 1.06">Créer son agent IA</h1>
-<div aria-hidden="true" style="width: 96px; height: 6px; background: #E8833A; border-radius: 3px"></div>
-<p style="margin: 0; font-size: 22px; color: #D9DFEA; max-width: 640px">Chaque matin, un agent lit vos emails et votre agenda, et vous dit ce qui attend vraiment votre réponse, votre validation ou votre décision. Vous le concevez et le construisez en une journée, sans coder.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 10px"><span style="padding: 8px 14px; border: 1px solid #3A4E80; border-radius: 999px; font-size: 15px; color: #D9DFEA">1 journée · 7 h</span><span style="padding: 8px 14px; border: 1px solid #3A4E80; border-radius: 999px; font-size: 15px; color: #D9DFEA">Intra ou inter-entreprises</span><span style="padding: 8px 14px; border: 1px solid #3A4E80; border-radius: 999px; font-size: 15px; color: #D9DFEA">Sans code · Microsoft ou Google</span></div>
-<div style="display: flex; flex-wrap: wrap; gap: 16px; padding-top: 6px">
-<a href="#devis" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 30px; background: #E8833A; color: #0E1B3D; text-decoration: none; font-weight: 700; border-radius: 6px">Demander un devis</a>
-<a href="#programme" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 30px; border: 1px solid #5A6478; color: #FFFFFF; text-decoration: none; font-weight: 700; border-radius: 6px">Voir le programme</a>
-</div>
-</div>
-<div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
-<div style="background: #22356B; border-radius: 10px; padding: 24px 26px; display: flex; flex-direction: column; gap: 4px">
-<span style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 42px; line-height: 1.05; color: #E8833A">35 à 70 h</span>
-<span style="color: #FFFFFF; font-size: 17px">récupérées par an et par dirigeant*</span>
-</div><div style="background: #22356B; border-radius: 10px; padding: 24px 26px; display: flex; flex-direction: column; gap: 4px">
-<span style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 42px; line-height: 1.05; color: #E8833A">3 150 à 6 300 €</span>
-<span style="color: #FFFFFF; font-size: 17px">de temps de direction rendu chaque année*</span>
-</div><div style="background: #22356B; border-radius: 10px; padding: 24px 26px; display: flex; flex-direction: column; gap: 4px">
-<span style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 42px; line-height: 1.05; color: #E8833A">1 agent</span>
-<span style="color: #FFFFFF; font-size: 17px">construit de vos mains, prêt à brancher</span>
-</div>
-<p style="margin: 0; font-size: 14px; color: #A9B3C6">* Business case du support de formation : coût horaire d’un dirigeant de 90 €, 210 jours travaillés par an.</p>
-</div>
-</div>
-</section>
-<section style="background: #F3F5F9">
-<div style="max-width: 1240px; margin: 0 auto; padding: 104px 32px; display: flex; flex-direction: column; gap: 44px">
-<div style="display: flex; flex-direction: column; gap: 14px; max-width: 780px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #6D4AFF">Le constat</p>
-<h2 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(32px, 3.4vw, 46px); line-height: 1.12">Le vrai coût du tri du matin, c’est la décision découverte trop tard.</h2>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px"><div style="background: #FFFFFF; border: 1px solid #D9DFEA; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
-<svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D1433F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 7v5l3 3"></path></svg>
-<strong style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 22px; line-height: 1.25">Une boîte mail et un agenda à trier</strong>
-<span style="color: #5A6478; font-size: 17px">Avant même de commencer la journée, il faut lire, recouper, hiérarchiser.</span>
-</div><div style="background: #FFFFFF; border: 1px solid #D9DFEA; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
-<svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D1433F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 7v5l3 3"></path></svg>
-<strong style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 22px; line-height: 1.25">La décision attendue avant 16 h</strong>
-<span style="color: #5A6478; font-size: 17px">Noyée entre une newsletter et un dossier déjà réglé, elle est découverte à 17 h.</span>
-</div><div style="background: #FFFFFF; border: 1px solid #D9DFEA; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
-<svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D1433F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 7v5l3 3"></path></svg>
-<strong style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 22px; line-height: 1.25">Des dossiers relus pour rien</strong>
-<span style="color: #5A6478; font-size: 17px">Déjà délégués, déjà traités ou en attente d’un tiers : ils mobilisent pourtant votre attention.</span>
-</div></div>
-</div>
-</section>
-<section id="gains" style="max-width: 1240px; margin: 0 auto; padding: 112px 32px; display: flex; flex-direction: column; gap: 48px">
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
-<div style="flex: 1 1 600px; display: flex; flex-direction: column; gap: 14px; max-width: 800px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #6D4AFF">Ce que la journée vous rapporte</p>
-<h2 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(32px, 3.4vw, 46px); line-height: 1.12">Un brief de quelques lignes, qui ne retient que ce qui exige votre intervention.</h2>
-</div>
-<p style="flex: 0 1 360px; margin: 0; color: #5A6478">Le business case de la formation est construit sur la journée réelle d’une directrice générale de PME.</p>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px"><div style="border: 1px solid #D9DFEA; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
-<span style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 44px; line-height: 1; color: #0E1B3D">10 à 20<span style="font-size: 20px; color: #5A6478"> min / jour</span></span>
-<strong style="font-size: 19px">Le tri du matin supprimé</strong>
-<span style="color: #5A6478; font-size: 16px">L’agent lit, recoupe et hiérarchise à votre place, avant votre arrivée.</span>
-</div><div style="border: 1px solid #D9DFEA; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
-<span style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 44px; line-height: 1; color: #0E1B3D">1<span style="font-size: 20px; color: #5A6478"> priorité</span></span>
-<strong style="font-size: 19px">La décision qui ne peut pas attendre</strong>
-<span style="color: #5A6478; font-size: 16px">En tête du brief, avec qui attend, pour quand et le lien vers la source.</span>
-</div><div style="border: 1px solid #D9DFEA; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
-<span style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 44px; line-height: 1; color: #0E1B3D">2<span style="font-size: 20px; color: #5A6478"> actions au plus</span></span>
-<strong style="font-size: 19px">Un brief lisible sur mobile</strong>
-<span style="color: #5A6478; font-size: 16px">Pas un résumé de plus à lire : seulement ce qui vous revient.</span>
-</div><div style="border: 1px solid #D9DFEA; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
-<span style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 44px; line-height: 1; color: #0E1B3D">4<span style="font-size: 20px; color: #5A6478"> pièges testés</span></span>
-<strong style="font-size: 19px">Un agent fiable avant d’être cru</strong>
-<span style="color: #5A6478; font-size: 16px">Décision urgente, dossier délégué, écart entre un email et l’agenda, attente d’un tiers.</span>
-</div></div>
-<div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: stretch">
-<div style="flex: 1 1 340px; background: #0E1B3D; color: #FFFFFF; border-radius: 10px; padding: 36px; display: flex; flex-direction: column; gap: 14px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #E8833A">Le calcul du dirigeant</p>
-<p style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 28px; line-height: 1.2">Pour un comité de direction de 5 personnes : jusqu’à 31 500 € par an.</p>
-<p style="margin: 0; color: #D9DFEA; font-size: 16px">35 à 70 heures par an et par dirigeant, valorisées à 90 € de l’heure. Le gain principal ne se chiffre pas : ne plus découvrir une décision trop tard.</p>
-</div>
-<div style="flex: 999 1 520px; min-width: 0; overflow-x: auto; border: 1px solid #D9DFEA; border-radius: 10px">
-<table style="width: 100%; min-width: 460px; border-collapse: collapse; font-size: 17px">
-<thead><tr><th scope="col" style="text-align: left; padding: 14px 18px; background: #F3F5F9; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Périmètre</th><th scope="col" style="text-align: left; padding: 14px 18px; background: #F3F5F9; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Temps récupéré</th><th scope="col" style="text-align: left; padding: 14px 18px; background: #F3F5F9; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Valeur annuelle</th></tr></thead>
-<tbody><tr><th scope="row" style="text-align: left; padding: 14px 18px; border-bottom: 1px solid #D9DFEA; font-weight: 700">1 dirigeant</th><td style="padding: 14px 18px; border-bottom: 1px solid #D9DFEA">35 à 70 h</td><td style="padding: 14px 18px; border-bottom: 1px solid #D9DFEA; font-weight: 700">3 150 à 6 300 €</td></tr><tr><th scope="row" style="text-align: left; padding: 14px 18px; border-bottom: 1px solid #D9DFEA; font-weight: 700">Comité de direction de 5</th><td style="padding: 14px 18px; border-bottom: 1px solid #D9DFEA">175 à 350 h</td><td style="padding: 14px 18px; border-bottom: 1px solid #D9DFEA; font-weight: 700">15 750 à 31 500 €</td></tr><tr><th scope="row" style="text-align: left; padding: 14px 18px; border-bottom: 1px solid #D9DFEA; font-weight: 700">10 managers</th><td style="padding: 14px 18px; border-bottom: 1px solid #D9DFEA">350 à 700 h</td><td style="padding: 14px 18px; border-bottom: 1px solid #D9DFEA; font-weight: 700">31 500 à 63 000 €</td></tr></tbody>
-</table>
-</div>
-</div>
-</section>
-<section style="background: #F3F5F9">
-<div style="max-width: 1240px; margin: 0 auto; padding: 112px 32px; display: flex; flex-direction: column; gap: 40px">
-<div style="display: flex; flex-direction: column; gap: 14px; max-width: 820px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #6D4AFF">Le business case fil rouge</p>
-<h2 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(32px, 3.4vw, 46px); line-height: 1.12">Le brief de la directrice générale de Verdier Distribution.</h2>
-<p style="margin: 0; color: #5A6478; font-size: 19px">Une boîte mail de 15 emails et un agenda chargé : le matériau de l’atelier, sur des données fictives réalistes. Aucun compte réel n’est connecté en salle.</p>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 20px">
-<div style="flex: 1 1 300px; background: #FFFFFF; border-radius: 10px; padding: 30px; display: flex; flex-direction: column; gap: 14px">
-<span style="display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase"><span aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: #D1433F"></span>Avant</span>
-<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; color: #3A4556; font-size: 17px"><li>Chaque matin, tout lire pour trouver ce qui compte vraiment.</li><li>Une décision attendue avant 16 h se perd entre une newsletter et un dossier déjà traité.</li><li>Un rendez-vous de l’agenda contredit un email : personne ne le voit.</li></ul>
-</div>
-<div style="flex: 1 1 300px; background: #FFFFFF; border-radius: 10px; padding: 30px; display: flex; flex-direction: column; gap: 14px">
-<span style="display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase"><span aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: #15936B"></span>Après la formation</span>
-<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; color: #3A4556; font-size: 17px"><li>Un brief court, lu sur mobile avant la première réunion.</li><li>La priorité du jour en tête, avec qui attend, pour quand et le lien vers l’email.</li><li>L’écart entre l’email et l’agenda est signalé, les dossiers délégués ou déjà traités sont volontairement écartés.</li></ul>
-</div>
-</div>
-<div style="background: #FDF1E8; border-radius: 10px; padding: 22px 26px; font-size: 18px"><strong>Le résultat :</strong> plus aucune décision découverte trop tard, et un agent que la directrice valide avant de lui faire confiance.</div>
-</div>
-</section>
-<section id="programme" style="max-width: 1240px; margin: 0 auto; padding: 112px 32px; display: flex; flex-direction: column; gap: 48px">
-<div style="display: flex; flex-wrap: wrap; gap: 48px">
-<div style="flex: 1 1 420px; display: flex; flex-direction: column; gap: 14px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #6D4AFF">Le programme</p>
-<h2 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(32px, 3.4vw, 46px); line-height: 1.12">Six modules, de la démonstration au déploiement.</h2>
-<p style="margin: 0; color: #5A6478">Chaque module suit la même méthode : le concept, la démonstration, un exercice chronométré, le niveau « plus loin » et un business case chiffré.</p>
-</div>
-<div style="flex: 1 1 420px; background: #F3F5F9; border-radius: 10px; padding: 30px 32px; display: flex; flex-direction: column; gap: 14px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #0E1B3D; font-size: 13px">À la fin de la journée, vous saurez</p>
-<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 17px"><li style="display: flex; gap: 12px; align-items: flex-start"><span aria-hidden="true" style="flex: none; width: 8px; height: 8px; margin-top: 10px; border-radius: 50%; background: #E8833A"></span><span>Expliquer ce qu’est un agent : mission, instructions, sources, outils, déclencheur</span></li><li style="display: flex; gap: 12px; align-items: flex-start"><span aria-hidden="true" style="flex: none; width: 8px; height: 8px; margin-top: 10px; border-radius: 50%; background: #E8833A"></span><span>Rédiger la fiche de conception d’un agent, limites et validation humaine comprises</span></li><li style="display: flex; gap: 12px; align-items: flex-start"><span aria-hidden="true" style="flex: none; width: 8px; height: 8px; margin-top: 10px; border-radius: 50%; background: #E8833A"></span><span>Construire sans code un agent qui croise emails et agenda et distingue ce qui vous revient</span></li><li style="display: flex; gap: 12px; align-items: flex-start"><span aria-hidden="true" style="flex: none; width: 8px; height: 8px; margin-top: 10px; border-radius: 50%; background: #E8833A"></span><span>Produire un brief lisible sur mobile : une priorité, deux actions au plus</span></li><li style="display: flex; gap: 12px; align-items: flex-start"><span aria-hidden="true" style="flex: none; width: 8px; height: 8px; margin-top: 10px; border-radius: 50%; background: #E8833A"></span><span>Tester l’agent sur des cas pièges et fixer ses règles de contrôle</span></li><li style="display: flex; gap: 12px; align-items: flex-start"><span aria-hidden="true" style="flex: none; width: 8px; height: 8px; margin-top: 10px; border-radius: 50%; background: #E8833A"></span><span>Préparer le branchement sur vos vrais comptes, avec votre informatique</span></li></ul>
-</div>
-</div>
-<ol style="list-style: none; margin: 0; padding: 0; border-bottom: 1px solid #D9DFEA"><li style="display: flex; flex-wrap: wrap; gap: 20px 32px; padding: 28px 0; border-top: 1px solid #D9DFEA">
-<div style="flex: 0 0 64px; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 36px; line-height: 1; color: #E8833A">01</div>
-<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
-<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px"><strong style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 24px">C’est quoi, un agent ?</strong><span style="font-size: 14px; color: #5A6478; padding: 3px 10px; background: #F3F5F9; border-radius: 999px">1 h</span></div>
-<span style="color: #5A6478; font-size: 17px">Mission, instructions, sources, outils, déclencheur. Démonstration en direct d’un agent de briefing réel : collecter, analyser, présenter.</span>
-</div>
-<div style="flex: 1 1 300px; min-width: 0; display: flex; gap: 12px; align-items: flex-start">
-<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15936B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 3px"><path d="M20 6L9 17l-5-5"></path></svg>
-<span style="font-size: 17px"><strong>Ce que ça vous apporte :</strong> voir concrètement ce qu’un agent change dans une journée de dirigeant.</span>
-</div>
-</li><li style="display: flex; flex-wrap: wrap; gap: 20px 32px; padding: 28px 0; border-top: 1px solid #D9DFEA">
-<div style="flex: 0 0 64px; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 36px; line-height: 1; color: #E8833A">02</div>
-<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
-<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px"><strong style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 24px">Concevoir avant de construire</strong><span style="font-size: 14px; color: #5A6478; padding: 3px 10px; background: #F3F5F9; border-radius: 999px">1 h 30</span></div>
-<span style="color: #5A6478; font-size: 17px">La fiche de conception appliquée au briefing : quelles sources, comment savoir qui doit agir, quand signaler un écart, à quoi ressemble le brief.</span>
-</div>
-<div style="flex: 1 1 300px; min-width: 0; display: flex; gap: 12px; align-items: flex-start">
-<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15936B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 3px"><path d="M20 6L9 17l-5-5"></path></svg>
-<span style="font-size: 17px"><strong>Ce que ça vous apporte :</strong> un agent qui trie juste du premier coup, au lieu d’un résumé de plus à lire.</span>
-</div>
-</li><li style="display: flex; flex-wrap: wrap; gap: 20px 32px; padding: 28px 0; border-top: 1px solid #D9DFEA">
-<div style="flex: 0 0 64px; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 36px; line-height: 1; color: #E8833A">03</div>
-<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
-<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px"><strong style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 24px">Les outils sans code</strong><span style="font-size: 14px; color: #5A6478; padding: 3px 10px; background: #F3F5F9; border-radius: 999px">1 h</span></div>
-<span style="color: #5A6478; font-size: 17px">Projets Claude, GPTs personnalisés, agents Copilot. Connecteurs messagerie et agenda, déclenchement planifié, coûts, confidentialité.</span>
-</div>
-<div style="flex: 1 1 300px; min-width: 0; display: flex; gap: 12px; align-items: flex-start">
-<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15936B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 3px"><path d="M20 6L9 17l-5-5"></path></svg>
-<span style="font-size: 17px"><strong>Ce que ça vous apporte :</strong> le bon outil pour votre environnement, Microsoft ou Google, sans dépendance inutile.</span>
-</div>
-</li><li style="display: flex; flex-wrap: wrap; gap: 20px 32px; padding: 28px 0; border-top: 1px solid #D9DFEA">
-<div style="flex: 0 0 64px; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 36px; line-height: 1; color: #E8833A">04</div>
-<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
-<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px"><strong style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 24px">Atelier : construire votre agent</strong><span style="font-size: 14px; color: #5A6478; padding: 3px 10px; background: #F3F5F9; border-radius: 999px">2 h 15</span></div>
-<span style="color: #5A6478; font-size: 17px">Construction pas à pas sur la boîte mail et l’agenda de la directrice générale de Verdier. Les indépendants adaptent ensuite la fiche à leur activité.</span>
-</div>
-<div style="flex: 1 1 300px; min-width: 0; display: flex; gap: 12px; align-items: flex-start">
-<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15936B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 3px"><path d="M20 6L9 17l-5-5"></path></svg>
-<span style="font-size: 17px"><strong>Ce que ça vous apporte :</strong> un agent qui fonctionne et un brief au format mobile.</span>
-</div>
-</li><li style="display: flex; flex-wrap: wrap; gap: 20px 32px; padding: 28px 0; border-top: 1px solid #D9DFEA">
-<div style="flex: 0 0 64px; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 36px; line-height: 1; color: #E8833A">05</div>
-<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
-<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px"><strong style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 24px">Le rendre fiable</strong><span style="font-size: 14px; color: #5A6478; padding: 3px 10px; background: #F3F5F9; border-radius: 999px">45 min</span></div>
-<span style="color: #5A6478; font-size: 17px">Jeu de test avec quatre pièges. Lecture seule, validation humaine, transparence exigée par l’AI Act.</span>
-</div>
-<div style="flex: 1 1 300px; min-width: 0; display: flex; gap: 12px; align-items: flex-start">
-<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15936B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 3px"><path d="M20 6L9 17l-5-5"></path></svg>
-<span style="font-size: 17px"><strong>Ce que ça vous apporte :</strong> un agent auquel vous pouvez faire confiance, et qui ne crée aucun risque.</span>
-</div>
-</li><li style="display: flex; flex-wrap: wrap; gap: 20px 32px; padding: 28px 0; border-top: 1px solid #D9DFEA">
-<div style="flex: 0 0 64px; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 36px; line-height: 1; color: #E8833A">06</div>
-<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
-<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px"><strong style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 24px">Démonstration et déploiement</strong><span style="font-size: 14px; color: #5A6478; padding: 3px 10px; background: #F3F5F9; border-radius: 999px">30 min</span></div>
-<span style="color: #5A6478; font-size: 17px">Chacun présente son brief. Plan de branchement sur ses vrais comptes, à mener avec l’informatique. Quiz final.</span>
-</div>
-<div style="flex: 1 1 300px; min-width: 0; display: flex; gap: 12px; align-items: flex-start">
-<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15936B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 3px"><path d="M20 6L9 17l-5-5"></path></svg>
-<span style="font-size: 17px"><strong>Ce que ça vous apporte :</strong> un chemin clair pour passer de la salle à votre quotidien dès la semaine suivante.</span>
-</div>
-</li></ol>
-</section>
-<section style="background: #0E1B3D; color: #FFFFFF">
-<div style="max-width: 1240px; margin: 0 auto; padding: 104px 32px; display: flex; flex-direction: column; gap: 48px">
-<div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #E8833A">Vous repartez avec</p>
-<h2 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(32px, 3.4vw, 46px); line-height: 1.12; color: #FFFFFF">Votre agent, et tout ce qu’il faut pour le mettre en service.</h2>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 36px 40px"><div style="display: flex; gap: 16px; align-items: flex-start">
-<span aria-hidden="true" style="flex: none; width: 44px; height: 44px; border-radius: 8px; background: #22356B; color: #E8833A; display: flex; align-items: center; justify-content: center; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 20px">1</span>
-<div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 19px; color: #FFFFFF">Les instructions de votre agent</strong><span style="color: #D9DFEA; font-size: 16px">Prêtes à coller dans un Projet Claude, un GPT ou un agent Copilot.</span></div>
-</div><div style="display: flex; gap: 16px; align-items: flex-start">
-<span aria-hidden="true" style="flex: none; width: 44px; height: 44px; border-radius: 8px; background: #22356B; color: #E8833A; display: flex; align-items: center; justify-content: center; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 20px">2</span>
-<div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 19px; color: #FFFFFF">La fiche de conception</strong><span style="color: #D9DFEA; font-size: 16px">Le modèle complété, à réutiliser pour vos prochains agents.</span></div>
-</div><div style="display: flex; gap: 16px; align-items: flex-start">
-<span aria-hidden="true" style="flex: none; width: 44px; height: 44px; border-radius: 8px; background: #22356B; color: #E8833A; display: flex; align-items: center; justify-content: center; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 20px">3</span>
-<div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 19px; color: #FFFFFF">Le jeu de test</strong><span style="color: #D9DFEA; font-size: 16px">Les cas pièges pour vérifier l’agent avant chaque évolution.</span></div>
-</div><div style="display: flex; gap: 16px; align-items: flex-start">
-<span aria-hidden="true" style="flex: none; width: 44px; height: 44px; border-radius: 8px; background: #22356B; color: #E8833A; display: flex; align-items: center; justify-content: center; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 20px">4</span>
-<div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 19px; color: #FFFFFF">Le modèle de brief mobile</strong><span style="color: #D9DFEA; font-size: 16px">Le format exact attendu, une priorité et deux actions au plus.</span></div>
-</div><div style="display: flex; gap: 16px; align-items: flex-start">
-<span aria-hidden="true" style="flex: none; width: 44px; height: 44px; border-radius: 8px; background: #22356B; color: #E8833A; display: flex; align-items: center; justify-content: center; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 20px">5</span>
-<div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 19px; color: #FFFFFF">Le plan de branchement</strong><span style="color: #D9DFEA; font-size: 16px">Connecteurs, déclenchement, confidentialité : la feuille de route à partager avec l’informatique.</span></div>
-</div><div style="display: flex; gap: 16px; align-items: flex-start">
-<span aria-hidden="true" style="flex: none; width: 44px; height: 44px; border-radius: 8px; background: #22356B; color: #E8833A; display: flex; align-items: center; justify-content: center; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 20px">6</span>
-<div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 19px; color: #FFFFFF">Support, cahier et quiz</strong><span style="color: #D9DFEA; font-size: 16px">15 exercices, quiz d’entrée et de sortie, point de suivi à 30 jours.</span></div>
-</div></div>
-</div>
-</section>
-<section style="max-width: 1240px; margin: 0 auto; padding: 104px 32px; display: flex; flex-direction: column; gap: 44px">
-<div style="display: flex; flex-direction: column; gap: 14px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #6D4AFF">Infos pratiques</p>
-<h2 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(32px, 3.4vw, 46px); line-height: 1.12">Pour qui, comment, et à quel prix.</h2>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 36px 32px"><div style="border-top: 2px solid #0E1B3D; padding-top: 18px; display: flex; flex-direction: column; gap: 8px">
-<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5A6478">Pour qui</span>
-<span style="font-size: 17px">Dirigeants, managers et indépendants dont la journée commence par une boîte mail et un agenda chargés.</span>
-</div><div style="border-top: 2px solid #0E1B3D; padding-top: 18px; display: flex; flex-direction: column; gap: 8px">
-<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5A6478">Prérequis</span>
-<span style="font-size: 17px">Aucune compétence technique. Utiliser déjà un assistant IA est un plus : la formation 01 y prépare.</span>
-</div><div style="border-top: 2px solid #0E1B3D; padding-top: 18px; display: flex; flex-direction: column; gap: 8px">
-<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5A6478">Format</span>
-<span style="font-size: 17px">1 journée de 7 heures, sur données fictives. Intra-entreprise ou session inter-entreprises.</span>
-</div><div style="border-top: 2px solid #0E1B3D; padding-top: 18px; display: flex; flex-direction: column; gap: 8px">
-<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5A6478">Sécurité</span>
-<span style="font-size: 17px">Agent en lecture seule, validation humaine systématique, aucun compte réel connecté en salle.</span>
-</div><div style="border-top: 2px solid #0E1B3D; padding-top: 18px; display: flex; flex-direction: column; gap: 8px">
-<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5A6478">Outils</span>
-<span style="font-size: 17px">Projets Claude, GPTs personnalisés ou agents Copilot, selon votre environnement Microsoft ou Google.</span>
-</div><div style="border-top: 2px solid #0E1B3D; padding-top: 18px; display: flex; flex-direction: column; gap: 8px">
-<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5A6478">Tarif</span>
-<span style="font-size: 17px">Sur demande, selon le format et le nombre de participants.</span>
-</div></div>
-</section>
-<section style="background: #F3F5F9">
-<div style="max-width: 1240px; margin: 0 auto; padding: 80px 32px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
-<img src="/dan-photo.webp" alt="Dan, formateur et fondateur de DAN-IA" style="flex: 0 0 160px; width: 160px; height: 160px; object-fit: cover; border-radius: 50%; border: 4px solid #E8833A">
-<div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #6D4AFF; font-size: 13px">Votre formateur</p>
-<p style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 28px; line-height: 1.2">Dan, 25 ans au cœur des technologies d’entreprise.</p>
-<p style="margin: 0; color: #5A6478">Senior Solution Engineer et fondateur de DAN-IA. Il forme comme il conseille : en partant de vos enjeux, jamais de la technologie. En français ou en anglais.</p>
-</div>
-</div>
-</section>
-<section style="max-width: 1240px; margin: 0 auto; padding: 104px 32px; display: flex; flex-wrap: wrap; gap: 56px">
-<div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 14px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #6D4AFF">Questions fréquentes</p>
-<h2 style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(30px, 3vw, 40px); line-height: 1.12">Les questions que posent les dirigeants.</h2>
-</div>
-<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column"><details open="" style="border-top: 1px solid #D9DFEA; padding: 22px 0"><summary style="cursor: pointer; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 21px">Faut-il connecter ma messagerie pendant la formation ?</summary><p style="margin: 12px 0 0; color: #5A6478">Non. L’atelier se fait sur une boîte mail et un agenda fictifs. Le branchement sur vos vrais comptes est préparé en fin de journée, pour être réalisé avec votre informatique.</p></details><details style="border-top: 1px solid #D9DFEA; padding: 22px 0"><summary style="cursor: pointer; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 21px">L’agent peut-il envoyer des emails à ma place ?</summary><p style="margin: 12px 0 0; color: #5A6478">Non. Il travaille en lecture seule et vous présente un brief : vous gardez la décision et l’action. C’est un principe de conception enseigné dès le module 2.</p></details><details style="border-top: 1px solid #D9DFEA; border-bottom: 1px solid #D9DFEA; padding: 22px 0"><summary style="cursor: pointer; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 21px">Je suis indépendant, sans service informatique.</summary><p style="margin: 12px 0 0; color: #5A6478">Le module 4 prévoit l’adaptation de la fiche à votre activité, et le plan de branchement détaille chaque étape pour votre propre messagerie et votre agenda.</p></details></div>
-</section>
-<section id="devis" style="max-width: 1240px; margin: 0 auto; padding: 0 32px 104px; display: flex; flex-direction: column; gap: 40px">
-<div style="background: #0E1B3D; color: #FFFFFF; border-radius: 12px; padding: 56px 48px; display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between">
-<div style="flex: 1 1 520px; display: flex; flex-direction: column; gap: 14px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #E8833A">Passer à l’action</p>
-<p style="margin: 0; font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: clamp(30px, 3vw, 40px); line-height: 1.15">Bientôt, votre brief vous attendra chaque matin.</p>
-<p style="margin: 0; color: #D9DFEA">Programme détaillé, dates disponibles et proposition adaptée à votre équipe : réponse personnalisée, sans engagement.</p>
-</div>
-<div style="display: flex; flex-direction: column; gap: 12px">
-<a href="/#contact" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 30px; background: #E8833A; color: #0E1B3D; text-decoration: none; font-weight: 700; border-radius: 6px; justify-content: center">Demander un devis</a>
-<a href="mailto:dbenouaisch@gmail.com?subject=Demande%20de%20rappel%20DAN-IA" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 30px; border: 1px solid #5A6478; color: #FFFFFF; text-decoration: none; font-weight: 700; border-radius: 6px; justify-content: center">Être rappelé</a>
-</div>
-</div>
-<div style="display: flex; flex-direction: column; gap: 16px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #5A6478; font-size: 13px">Compléter le parcours</p>
-<div style="display: flex; flex-wrap: wrap; gap: 16px"><a href="/ia-au-quotidien" style="flex: 1 1 280px; display: flex; flex-direction: column; gap: 6px; padding: 24px 26px; border: 1px solid #D9DFEA; border-radius: 10px; text-decoration: none; color: #0E1B3D"><span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5A6478">Formation 01</span><strong style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 22px">L’IA au quotidien →</strong></a><a href="/bureautique" style="flex: 1 1 280px; display: flex; flex-direction: column; gap: 6px; padding: 24px 26px; border: 1px solid #D9DFEA; border-radius: 10px; text-decoration: none; color: #0E1B3D"><span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5A6478">Formation 02</span><strong style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 22px">Bureautique boostée par l’IA →</strong></a></div>
-</div>
-</section>
-<footer style="background: #0E1B3D; color: #D9DFEA">
-<div style="max-width: 1240px; margin: 0 auto; padding: 36px 32px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 15px">
-<span><span style="font-family: Cambria, Caladea, Georgia, serif; font-weight: 700; font-size: 22px; color: #FFFFFF">DAN<span style="color: #E8833A">-IA</span></span> · © 2026</span>
-<div style="display: flex; flex-wrap: wrap; gap: 24px"><a href="/" style="color: #D9DFEA">Accueil</a><a href="#top" style="color: #D9DFEA">Mentions légales</a><a href="#top" style="color: #D9DFEA">Confidentialité</a></div>
+<main id="contenu">
+<div class="fiche"><section aria-labelledby="h-agent-ia" class="f-top"><div class="wrap">
+<a class="crumb" href="/#formations">Toutes les formations</a>
+<p class="f-lvl">Formation 03 · Niveau avancé</p>
+<h1 id="h-agent-ia">Créer son agent IA</h1>
+<p class="f-promise">Concevez sans code un assistant qui lit vos e-mails et votre agenda, et vous dit chaque matin ce qui attend vraiment votre décision.</p>
+<div class="decide">
+<div class="dbox"><h2>Ce que je saurai faire</h2><ul><li>Rédiger la fiche de conception d’un agent : mission, sources, limites</li><li>Construire sans code un agent qui croise e-mails et agenda</li><li>Le tester sur quatre cas pièges avant de lui faire confiance</li><li>Préparer le branchement sur vos vrais comptes avec votre informatique</li></ul></div>
+<div class="dbox"><h2>Avec quoi je repars</h2><ul><li>Les instructions de votre agent, prêtes à coller</li><li>La fiche de conception et le jeu de test</li><li>Le plan de branchement à partager avec l’informatique</li></ul></div>
+<div class="dbox aside"><h2>Format</h2><dl class="facts"><dt>Durée</dt><dd>1 journée, 7 h</dd><dt>Format</dt><dd>Dans votre entreprise</dd><dt>Outils</dt><dd>Projets Claude, GPT personnalisés ou agents Copilot</dd><dt>Tarif</dt><dd><span class="ph">Sur devis</span></dd><dt>Suivi</dt><dd>Point à 30 jours</dd></dl>
+<a class="btn btn-primary" href="/?besoin=agent-ia#contact">Demander cet atelier</a><a class="btn btn-quiet" href="https://calendly.com/dbenouaisch" rel="noopener" target="_blank">Échanger 20 min avec Dan<span class="vh"> (nouvel onglet)</span></a></div>
+<div class="dbox prereq"><h2>Prérequis</h2><ul><li>Utiliser un assistant IA au moins une fois par semaine. L’atelier « L’IA au quotidien » y prépare.</li><li>Un compte sur Claude, ChatGPT ou Copilot, idéalement en offre professionnelle.</li><li>Aucune compétence en code.</li></ul></div>
+</div></div></section>
+<section aria-labelledby="ex-agent-ia" class="sec"><div class="wrap"><p class="kick">Exemple</p><h2 class="h2" id="ex-agent-ia">Le briefing du matin de la directrice générale</h2>
+<div class="case-meta" style="margin-top:12px"><span class="status">Cas d’exercice · données fictives</span></div><p class="sub" style="margin:0 0 20px">Une boîte de 15 e-mails et un agenda chargé. Une décision attendue avant 16 h se cache entre une newsletter et un dossier déjà traité.</p>
+<div class="ba"><div class="ba-col"><h4>Avant</h4><ul><li>Chaque matin, tout lire pour trouver ce qui compte.</li><li>Un rendez-vous de l’agenda contredit un e-mail : personne ne le voit.</li></ul></div><div class="ba-col after"><h4>Après l’atelier</h4><ul><li>Un briefing court, lu sur mobile avant la première réunion.</li><li>L’écart entre l’e-mail et l’agenda est signalé, les dossiers délégués sont écartés.</li></ul></div><div class="cap"><div class="cap-t"><span>Livrable de l’atelier</span><span>Brief mobile</span></div><h5>Priorité du jour</h5><ul><li><b>Décision avant 16 h :</b> accord sur le devis Lemaire, attendu par Julie.</li><li><b>Écart :</b> le comité est à 14 h dans l’agenda, 15 h dans l’e-mail de Marc.</li></ul><p class="q">Écartés volontairement : 2 dossiers délégués, 1 newsletter.</p></div></div><details class="calc"><summary>Voir le calcul et ses hypothèses <span class="status est">Estimation du support de formation</span></summary><div class="in"><p>Coût horaire d’un dirigeant de 90 €, 210 jours travaillés par an, 10 à 20 minutes de tri évitées par jour.</p><table><tbody><tr><td>Tri du matin supprimé</td><th scope="row">35 à 70 h / an</th></tr><tr><td>Valeur du temps de direction</td><th scope="row">3 150 à 6 300 € / an</th></tr></tbody></table><p>Le gain principal ne se chiffre pas : ne plus découvrir une décision trop tard.</p><p><b>Statut :</b> estimation issue du support, pas un résultat mesuré chez un client. Chaque participant refait le calcul avec ses propres chiffres en fin d’atelier.</p></div></details>
+<div class="split"><div class="col build"><h3>En atelier, vous construisez et testez</h3><ul><li>la fiche de conception de votre agent ;</li><li>ses instructions, dans l’outil de votre choix ;</li><li>le brief mobile : une priorité, deux actions au plus ;</li><li>le jeu de test et ses quatre pièges.</li></ul><p class="note">Sur une boîte e-mail et un agenda de démonstration. Aucun compte réel n’est connecté en salle.</p></div><div class="col later"><h3>Ensuite, vous pourrez connecter</h3><ul><li>votre messagerie et votre agenda, Microsoft 365 ou Google Workspace ;</li><li>un déclenchement automatique chaque matin ;</li><li>d’autres agents sur le même modèle : relances, reporting, veille.</li></ul><p class="note">Selon vos outils, vos licences et les accès accordés par votre informatique. Le plan de branchement liste les étapes.</p><figure class="illu"><img alt="Un dirigeant délègue des tâches à cinq agents IA." decoding="async" height="480" loading="lazy" src="/agents.svg" width="640"/></figure></div></div>
+</div></section>
+<section aria-labelledby="pg-agent-ia" class="sec on-surface"><div class="wrap"><p class="kick">Programme</p><h2 class="h2" id="pg-agent-ia">6 modules sur la journée.</h2>
+<div class="prog"><details class="mod" open=""><summary><span class="n">1</span><b>C’est quoi, un agent ?</b><span class="dur">1 h</span></summary><div class="in"><p>Mission, instructions, sources, outils, déclencheur, avec la démonstration d’un briefing réel. <strong>Ce que ça vous apporte : voir ce qu’un agent change dans une journée.</strong></p></div></details><details class="mod"><summary><span class="n">2</span><b>Concevoir avant de construire</b><span class="dur">1 h 30</span></summary><div class="in"><p>La fiche de conception : sources, qui doit agir, quand signaler un écart. <strong>Ce que ça vous apporte : un agent qui trie juste du premier coup.</strong></p></div></details><details class="mod"><summary><span class="n">3</span><b>Les outils sans code</b><span class="dur">1 h</span></summary><div class="in"><p>Projets Claude, GPT personnalisés, agents Copilot, connecteurs, coûts, confidentialité. <strong>Ce que ça vous apporte : le bon outil pour votre environnement.</strong></p></div></details><details class="mod"><summary><span class="n">4</span><b>Atelier : construire votre agent</b><span class="dur">2 h 15</span></summary><div class="in"><p>Construction pas à pas sur la boîte de démonstration. <strong>Ce que ça vous apporte : un agent qui fonctionne et un brief mobile.</strong></p></div></details><details class="mod"><summary><span class="n">5</span><b>Le rendre fiable</b><span class="dur">45 min</span></summary><div class="in"><p>Quatre pièges, lecture seule, validation humaine, transparence AI Act. <strong>Ce que ça vous apporte : un agent auquel vous pouvez faire confiance.</strong></p></div></details><details class="mod"><summary><span class="n">6</span><b>Démonstration et branchement</b><span class="dur">30 min</span></summary><div class="in"><p>Chacun présente son brief et repart avec son plan de branchement. <strong>Ce que ça vous apporte : un chemin clair vers votre quotidien.</strong></p></div></details></div></div></section>
+<section aria-labelledby="md-agent-ia" class="sec"><div class="wrap"><p class="kick">Modalités</p><h2 class="h2" id="md-agent-ia">Comment se passe la journée.</h2>
+<div class="mods"><div><b>Pour qui</b>Dirigeants, managers et indépendants.</div><div><b>Évaluation</b>Quiz en entrée et en sortie, exercices avec critère de réussite.</div><div><b>Suivi</b>Un point à 30 jours sur votre plan d’action.</div><div><b>En intra</b>Sur vos cas et vos fichiers types, jusqu’à <span>10</span> personnes.</div><div><b>Accessibilité</b>Un besoin particulier ? Écrivez-moi à <a href="mailto:dbenouaisch@gmail.com">dbenouaisch@gmail.com</a> avant l’atelier.</div></div>
+<p class="kick" style="margin-top:44px">Questions fréquentes</p><div class="faq"><details><summary>Mes vrais e-mails sont-ils utilisés en salle ?</summary><p>Non. L’atelier se fait sur une boîte et un agenda de démonstration. Aucun compte réel n’est connecté pendant la journée.</p></details><details><summary>Faut-il savoir coder ?</summary><p>Non. Tout se fait avec des outils sans code. La partie technique se limite au branchement, que vous préparez avec votre informatique.</p></details><details><summary>Et si mon entreprise n’autorise pas ces outils ?</summary><p>Vous construisez et testez l’agent quand même. Le plan de branchement liste ce qu’il faut demander pour l’activer ensuite.</p></details></div>
+<div class="endcta" style="margin-top:44px"><div><h2>Cet atelier vous correspond ?</h2><p style="margin:6px 0 0;color:#C3CBDD">Je vous réponds avec les dates et le format adaptés.</p></div><a class="btn btn-primary" href="/?besoin=agent-ia#contact">Demander cet atelier</a></div>
+<div class="others"><a class="btn btn-quiet btn-sm" href="/ia-au-quotidien">L’IA au quotidien</a><a class="btn btn-quiet btn-sm" href="/bureautique">Bureautique et IA</a></div>
+</div></section></div>
+</main>
+<footer class="foot">
+<div class="wrap">
+<a class="logo" href="/">DAN<span>-IA</span></a>
+<a href="/#formations">Formations</a>
+<a href="/#contact">Contact</a>
+<a href="/mentions-legales">Mentions légales</a>
+<a href="/confidentialite">Confidentialité</a>
+<span>© 2026 DAN-IA</span>
 </div>
 </footer>
 </div>
+<script src="/site.js?v=2" defer></script>
 </body>
 </html>
