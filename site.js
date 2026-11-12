@@ -10,7 +10,7 @@ ddEl.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>ddSet(false
 function moveInd(){const nv=document.getElementById("nav"),el=nv.querySelector('[data-nav][aria-current="true"]:not(.nav-cta)');if(!el||mobileNav()){navInd.style.opacity=0;return}const r=el.getBoundingClientRect(),n=nv.getBoundingClientRect();navInd.style.opacity=1;navInd.style.left=(r.left-n.left+12)+"px";navInd.style.width=(r.width-24)+"px"}
 addEventListener("resize",moveInd);
 const mcta=document.querySelector(".mcta");
-if(mcta&&"IntersectionObserver" in window){const seen=new Set();const mctaObs=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?seen.add(e.target):seen.delete(e.target));mcta.classList.toggle("off",seen.size>0)});document.querySelectorAll(".hero-ctas,.dbox.aside,.endcta,#contact,.res-main").forEach(el=>mctaObs.observe(el))}
+if(mcta&&"IntersectionObserver" in window){const seen=new Set();const mctaObs=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?seen.add(e.target):seen.delete(e.target));mcta.classList.toggle("off",seen.size>0)});document.querySelectorAll(".hero-ctas,.dbox.aside,.endcta,#contact,#diagRoot").forEach(el=>mctaObs.observe(el))}
 
 function onScr(){document.getElementById("site").classList.toggle("scrolled",scrollY>16)}
 addEventListener("scroll",onScr,{passive:true});onScr();

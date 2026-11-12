@@ -517,7 +517,7 @@ body{font-size:16.5px}
 .nav{position:absolute;top:calc(100% + 8px);left:0;right:0;height:calc(100dvh - 88px);max-height:720px;border-radius:16px;border:1px solid rgba(255,255,255,.1);background:#0E1B3D;padding:16px;gap:4px;overflow:auto;flex-direction:column;align-items:stretch}
 .nav > a,.dd-btn{font-family:var(--serif);font-weight:700;font-size:24px;color:#fff;padding:12px 8px;min-height:52px}
 .dd-btn svg,.nav-ind{display:none}
-.dd-panel{position:static;visibility:visible;opacity:1;transform:none;width:auto;background:transparent;border:0;box-shadow:none;padding:0 0 8px 8px;transition:none}
+.dd-panel{position:static;visibility:inherit;opacity:1;transform:none;width:auto;background:transparent;border:0;box-shadow:none;padding:0 0 8px 8px;transition:none}
 .nav .dd-panel a{color:#D5DCEB;padding:8px;font-size:16px;min-height:44px;display:block}
 .nav .dd-panel a:hover{background:rgba(255,255,255,.07);color:#fff}
 .dd-panel b{font-family:var(--sans);font-size:17px;color:#fff}
@@ -529,6 +529,20 @@ body{font-size:16.5px}
 .mcta{display:block;position:sticky;bottom:0;z-index:30;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(244,246,249,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
 .mcta .btn{width:100%}
 .menu-open .mcta,.mcta.off{display:none}
+}
+.diag{padding:calc(72px + clamp(8px,2.4vh,32px)) 0 clamp(24px,4vh,64px)}
+.dq-card{padding:clamp(16px,3vh,32px) clamp(18px,3vw,34px)}
+.dq-bar{margin:8px 0 clamp(12px,2.4vh,26px)}
+.dq-q{font-size:clamp(19px,min(2.6vw,3.4vh),28px);margin-bottom:4px}
+.dq-hint{font-size:15px;margin:0 0 clamp(10px,1.8vh,20px)}
+.dq-opts{gap:clamp(6px,1vh,10px)}
+.dq-opt{min-height:0;padding:clamp(9px,1.6vh,16px) 16px;font-size:16px;line-height:1.4}
+.dq-nav{margin-top:clamp(12px,2.4vh,26px)}
+.dq-nav .btn{min-height:46px}
+@media (max-height:760px) and (min-width:760px){
+.diag-wrap{max-width:980px}
+.dq-card .dq-opts{grid-template-columns:repeat(2,minmax(0,1fr))}
+.dq-card .dq-hint{grid-column:1/-1}
 }
 .site{container-type:inline-size;container-name:site;min-height:100%;overflow-x:clip}
 [id]{scroll-margin-top:72px}
