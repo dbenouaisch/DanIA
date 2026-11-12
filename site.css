@@ -926,6 +926,7 @@ body{font-size:16.5px}
 .oil-result ul{grid-column:1;flex-direction:column}
 }
 .ori-card .ori-t{white-space:normal;text-wrap:balance}
+.hero-crumb{margin:-6px 0 4px;min-height:32px;font-size:14.5px}
 .site{container-type:inline-size;container-name:site;min-height:100%;overflow-x:clip}
 [id]{scroll-margin-top:72px}
 html{scroll-behavior:smooth}

@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caladea:wght@400;700&family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/site.css?v=5">
+<link rel="stylesheet" href="/site.css?v=6">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "DAN-IA", "url": "https://dan-ia.vercel.app", "email": "dbenouaisch@gmail.com", "founder": {"@type": "Person", "name": "Dan Benouaisch"}, "description": "Formation et conseil en IA et données pour dirigeants, managers et indépendants."}</script>
 </head>
 <body>
@@ -56,9 +56,10 @@
 <section aria-labelledby="h-hero" class="hero" id="accueil">
 <div class="hero-in">
 <div class="hero-copy">
+<a class="crumb hero-crumb" href="/">Accueil</a>
 <p class="hero-kick">Formations IA pour dirigeants, managers et indépendants</p>
-<h1 id="h-hero">Formez-vous à l’IA sur le travail que vous faites déjà.</h1>
-<p class="hero-lead">Préparez vos rendez-vous, simplifiez votre reporting ou créez un assistant qui lit vos e-mails et votre agenda. <span class="more">Trois ateliers pratiques d’une journée, à suivre séparément ou en parcours.</span></p>
+<h1 id="h-hero">Trois formations d’une journée pour gagner du temps avec l’IA.</h1>
+<p class="hero-lead">Préparez vos rendez-vous, simplifiez votre reporting ou créez un assistant qui lit vos e-mails et votre agenda. <span class="more">Des ateliers pratiques, à suivre séparément ou en parcours.</span></p>
 <ul aria-label="Les trois ateliers" class="trio">
 <li><a href="/ia-au-quotidien"><b>L’IA au quotidien</b><span>Un dossier client résumé, une relance prête à envoyer</span></a></li>
 <li><a href="/bureautique"><b>Bureautique et IA</b><span>Un reporting fiable qui se met à jour seul</span></a></li>
@@ -66,7 +67,7 @@
 </ul>
 <div class="hero-ctas on-night">
 <a class="btn btn-primary" href="https://calendly.com/dbenouaisch" rel="noopener" target="_blank">Échanger 20 min avec Dan<span class="vh"> (nouvel onglet)</span></a>
-<a class="btn btn-ghost" href="/diagnostic">Faire mon diagnostic IA</a>
+<a class="btn btn-ghost" href="#par-ou-commencer">Choisir ma formation</a>
 </div>
 </div>
 <div aria-labelledby="brief-t" class="brief-wrap" role="group">
@@ -89,8 +90,8 @@
 </section>
 <section aria-labelledby="h-prof" class="sec" id="par-ou-commencer">
 <div class="wrap">
-<p class="kick">Par où commencer ?</p>
-<h2 class="h2" id="h-prof">Partez de ce qui vous prend du temps aujourd’hui.</h2>
+<p class="kick">Par quelle formation commencer ?</p>
+<h2 class="h2" id="h-prof">Choisissez selon votre profil et ce qui vous prend du temps.</h2>
 <div class="profiles">
 <article class="prof">
 <h3>Entrepreneur ou dirigeant</h3>
@@ -148,7 +149,7 @@
 </section>
 <section aria-labelledby="h-csh" class="sec" id="conseil-home">
 <div class="wrap">
-<p class="kick">Conseil et accompagnement</p>
+<p class="kick">Accompagnement pour aller plus loin</p>
 <h2 class="h2" id="h-csh">Vos données et l’IA, au service de vos décisions.</h2>
 <p class="sub">Pour aller plus loin que la formation : je vous aide à fiabiliser vos données, à simplifier votre pilotage et à cadrer un premier projet IA.</p>
 <div class="cs-home">
@@ -245,8 +246,7 @@
 <p class="form-note">Ou par e-mail : <a href="mailto:dbenouaisch@gmail.com">dbenouaisch@gmail.com</a></p>
 </div>
 <div class="formbox" id="formbox">
-<form action="https://formspree.io/f/xrpqgryy" id="leadForm" method="POST" novalidate="">
-<input aria-hidden="true" autocomplete="off" name="_gotcha" style="display:none" tabindex="-1" type="text"/>
+<form id="leadForm" novalidate="">
 <div class="two">
 <div class="field"><label for="f-name">Nom</label><input aria-describedby="e-name" autocomplete="name" class="inp" id="f-name" name="name" required=""/><span class="err-msg" hidden="" id="e-name">Indiquez votre nom.</span></div>
 <div class="field"><label for="f-mail">E-mail</label><input aria-describedby="e-mail" autocomplete="email" class="inp" id="f-mail" name="email" required="" type="email"/><span class="err-msg" hidden="" id="e-mail">Indiquez une adresse e-mail valide, par exemple nom@entreprise.fr.</span></div>
@@ -278,15 +278,20 @@
 <div class="field"><label for="f-msg">Votre message <span class="hint">(facultatif)</span></label><textarea class="inp" id="f-msg" name="message" placeholder="Votre métier, la taille de l’équipe, vos outils…"></textarea></div>
 <label class="check"><input id="f-call" name="callback" type="checkbox"/> Je préfère être rappelé</label>
 <div class="field" hidden="" id="phoneField"><label for="f-tel">Téléphone</label><input aria-describedby="e-tel" autocomplete="tel" class="inp" id="f-tel" name="tel" type="tel"/><span class="err-msg" hidden="" id="e-tel">Indiquez un numéro pour être rappelé.</span></div>
-<div class="alert alert-err" hidden="" id="sendErr" role="alert" tabindex="-1"><b>La demande n’est pas partie.</b><p style="margin:6px 0 0">Vérifiez votre connexion et réessayez, ou écrivez directement à <a href="mailto:dbenouaisch@gmail.com">dbenouaisch@gmail.com</a>.</p></div>
-<button class="btn btn-primary" id="sendBtn" style="margin-top:6px" type="submit">Envoyer ma demande</button>
-<p class="form-note">Votre demande est transmise directement à Dan. Réponse sous <span>48 h ouvrées</span>. Vos données : <a href="/confidentialite">confidentialité</a>.</p>
+<button class="btn btn-primary" id="sendBtn" style="margin-top:6px" type="submit">Préparer mon e-mail</button>
+<p class="form-note">Le bouton ouvre votre messagerie avec la demande déjà rédigée : vous la relisez, puis vous l’envoyez vous-même. Rien n’est enregistré par le site (<a href="/confidentialite">confidentialité</a>). Réponse sous <span>48 h ouvrées</span>.</p>
 </form>
 <div class="done" hidden="" id="done" tabindex="-1">
 <div aria-hidden="true" class="tick"><svg fill="none" height="26" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" viewbox="0 0 24 24" width="26"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div>
-<h3>Votre demande est envoyée</h3>
+<h3>Votre e-mail est prêt</h3>
 <p id="doneTxt"></p>
 <dl class="recap" id="recap"></dl>
+<div class="alert" style="background:var(--paper);border:1px solid var(--line)">
+<b>Votre messagerie ne s’est pas ouverte ?</b>
+<p style="margin:6px 0 10px;color:var(--muted)">Ouvrez-la avec le bouton ci-dessous, ou copiez la demande et collez-la dans un e-mail à <a href="mailto:dbenouaisch@gmail.com">dbenouaisch@gmail.com</a>.</p>
+<div style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn btn-primary btn-sm" href="#" id="mailAgain" target="_top">Ouvrir ma messagerie</a><button class="btn btn-quiet btn-sm" id="copyMail" type="button">Copier la demande</button></div>
+<p class="form-note" id="copyOk" role="status"></p>
+</div>
 <div class="hero-ctas" style="margin-top:6px"><a class="btn btn-quiet btn-sm" href="#formations">Revoir les formations</a><button class="btn btn-quiet btn-sm" id="again" type="button">Faire une autre demande</button></div>
 </div>
 </div>
@@ -308,6 +313,6 @@
 </footer>
 <div class="mcta"><a class="btn btn-primary" href="https://calendly.com/dbenouaisch" target="_blank" rel="noopener">Réserver 20 min avec Dan<span class="vh"> (nouvel onglet)</span></a></div>
 </div>
-<script src="/site.js?v=5" defer></script>
+<script src="/site.js?v=6" defer></script>
 </body>
 </html>
