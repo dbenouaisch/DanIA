@@ -927,6 +927,10 @@ body{font-size:16.5px}
 }
 .ori-card .ori-t{white-space:normal;text-wrap:balance}
 .hero-crumb{margin:-6px 0 4px;min-height:32px;font-size:14.5px}
+.ori-sub{margin:clamp(14px,2.6vh,24px) 0 0;font-family:var(--serif);font-size:clamp(19px,min(2vw,3.4vh),28px);line-height:1.3;color:#DCE2EE;max-width:none}
+.ori-sub span{color:#F3B583;display:block}
+.ori-q{margin-top:clamp(16px,3.4vh,40px)}
+@container site (max-width:760px){.ori-sub{font-size:18px;margin-top:12px}}
 .site{container-type:inline-size;container-name:site;min-height:100%;overflow-x:clip}
 [id]{scroll-margin-top:72px}
 html{scroll-behavior:smooth}
