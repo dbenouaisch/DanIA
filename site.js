@@ -189,7 +189,7 @@ function renderResult(){const R=recommend(),r=root2();const B=benefits(R);
    <div class="rcard soft"><h3>Vos repères</h3><ul class="lv">${["q","b","a"].map(d=>`<li><span>${DOM[d].name}</span><span class="pill ${R.L[d].c}">${R.L[d].lvl}</span></li>`).join("")}</ul><p class="note">Établis à partir de vos réponses. « À préciser » : pas assez de réponses dans ce domaine.</p></div></div>
   ${R.k2?`<div class="next"><p><b>Et ensuite : ${TITLE[R.k2]}</b>${R.k2t}</p><a class="btn btn-quiet btn-sm" href="/${R.k2}">Voir cette formation</a></div>`:""}
   <details class="why"${why?" open":""}><summary>Pourquoi cette recommandation ?</summary><ul>${R.reasons.map(x=>`<li>${x}</li>`).join("")}</ul></details>
-  <div class="res-foot"><button class="btn btn-quiet btn-sm" type="button" id="dqEdit">Modifier mes réponses</button><button class="btn btn-quiet btn-sm" type="button" id="dqRestart">Recommencer</button><span class="sp"></span><a class="link" href="/?besoin=${R.k}#contact">Ou m’écrire via le formulaire</a></div></div>`;
+  <div class="res-foot"><button class="btn btn-quiet btn-sm" type="button" id="dqEdit">Modifier mes réponses</button><button class="btn btn-quiet btn-sm" type="button" id="dqRestart">Recommencer</button><span class="sp"></span><a class="link" href="/formations?besoin=${R.k}#contact">Ou m’écrire via le formulaire</a></div></div>`;
   r.querySelector("#dqEdit").onclick=()=>go(9);r.querySelector("#dqRestart").onclick=()=>{A=Array(10).fill(null);why=false;go(-1)};
   focusH();
 }

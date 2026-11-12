@@ -21,8 +21,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caladea:wght@400;700&family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/site.css?v=4">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "DAN-IA", "url": "https://dan-ia.vercel.app", "email": "dbenouaisch@gmail.com", "founder": {"@type": "Person", "name": "Dan Benouaisch"}, "description": "Ateliers pratiques d’IA pour dirigeants, managers et indépendants."}</script>
+<link rel="stylesheet" href="/site.css?v=5">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "DAN-IA", "url": "https://dan-ia.vercel.app", "email": "dbenouaisch@gmail.com", "founder": {"@type": "Person", "name": "Dan Benouaisch"}, "description": "Formation et conseil en IA et données pour dirigeants, managers et indépendants."}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Course", "name": "Bureautique boostée par l’IA", "description": "Des fichiers qu’on retrouve, des e-mails traités en une décision et un reporting fiable qui se met à jour seul.", "inLanguage": "fr", "url": "https://dan-ia.vercel.app/bureautique", "provider": {"@type": "Organization", "name": "DAN-IA", "url": "https://dan-ia.vercel.app"}}</script>
 </head>
 <body>
@@ -40,19 +40,21 @@
 <a href="/bureautique"><b>Bureautique et IA</b><span>E-mails, documents, tableaux de suivi</span></a>
 <a href="/agent-ia"><b>Créer son agent IA</b><span>Un assistant pour une tâche qui revient</span></a>
 <a class="dd-diag" href="/diagnostic"><b>Vous hésitez ?</b><span>Faites le diagnostic, dix questions</span></a>
-<a class="dd-all" href="/#formations">Comparer les trois ateliers</a>
+<a class="dd-all" href="/formations#formations">Comparer les trois ateliers</a>
 </div>
 </div>
-<a data-nav="cas-pratiques" href="/#cas-pratiques">Cas pratiques</a>
-<a data-nav="a-propos" href="/#a-propos">À propos de Dan</a>
-<a class="nav-cta" data-nav="contact" href="/#contact">Échanger avec Dan</a>
+<a data-nav="conseil" href="/conseil">Conseil</a>
+<a data-nav="cas-pratiques" href="/formations#cas-pratiques">Cas pratiques</a>
+<a data-nav="a-propos" href="/formations#a-propos">À propos de Dan</a>
+<a class="nav-cta" data-nav="contact" href="/formations#contact">Échanger avec Dan</a>
 <span aria-hidden="true" class="nav-ind" style="opacity: 0;"></span>
 </nav>
 </div>
 </header>
 <main id="contenu">
+<div data-view="bureautique">
 <div class="fiche"><section aria-labelledby="h-bureautique" class="f-top"><div class="wrap">
-<a class="crumb" href="/#formations">Toutes les formations</a>
+<a class="crumb" href="/formations#formations">Toutes les formations</a>
 <p class="f-lvl">Formation 02 · Niveau opérationnel</p>
 <h1 id="h-bureautique">Bureautique boostée par l’IA</h1>
 <p class="f-promise">Des fichiers qu’on retrouve, des e-mails traités en une décision et un reporting fiable qui se met à jour seul.</p>
@@ -60,7 +62,7 @@
 <div class="dbox"><h2>Ce que je saurai faire</h2><ul><li>Repérer et corriger les montants mal saisis d’un export</li><li>Écrire les formules SI et RECHERCHEX, avec l’aide de l’IA</li><li>Construire un tableau croisé et un tableau de bord interactif</li><li>Traiter vos e-mails en une décision chacun</li></ul></div>
 <div class="dbox"><h2>Avec quoi je repars</h2><ul><li>Le fichier d’exercice Verdier, pour refaire chaque geste</li><li>Le mémo formules et raccourcis</li><li>Votre plan d’action, revu à 30 jours</li></ul></div>
 <div class="dbox aside"><h2>Format</h2><dl class="facts"><dt>Durée</dt><dd>1 journée, 7 h</dd><dt>Format</dt><dd>Dans votre entreprise</dd><dt>Outils</dt><dd>Excel 2021 ou Microsoft 365, Outlook ou Gmail</dd><dt>Niveau requis</dt><dd>Utiliser Excel chaque semaine : filtres, tris, SOMME</dd><dt>Tarif</dt><dd><span class="ph">Sur devis</span></dd><dt>Suivi</dt><dd>Point à 30 jours</dd></dl>
-<a class="btn btn-primary" href="/?besoin=bureautique#contact">Demander cet atelier</a><a class="btn btn-quiet" href="https://calendly.com/dbenouaisch" rel="noopener" target="_blank">Échanger 20 min avec Dan<span class="vh"> (nouvel onglet)</span></a><a class="btn btn-quiet" href="/diagnostic">Faire mon diagnostic IA</a></div>
+<a class="btn btn-primary" href="/formations?besoin=bureautique#contact">Demander cet atelier</a><a class="btn btn-quiet" href="https://calendly.com/dbenouaisch" rel="noopener" target="_blank">Échanger 20 min avec Dan<span class="vh"> (nouvel onglet)</span></a><a class="btn btn-quiet" href="/diagnostic">Faire mon diagnostic IA</a></div>
 <div class="dbox prereq"><h2>Prérequis et outils</h2><ul><li>Utiliser Excel chaque semaine : filtrer, trier, faire une SOMME.</li><li>Excel 2021 ou Microsoft 365 recommandé. Google Sheets possible avec quelques adaptations.</li></ul></div>
 </div></div></section>
 <section aria-labelledby="ex-bureautique" class="sec"><div class="wrap"><p class="kick">Exemple</p><h2 class="h2" id="ex-bureautique">Verdier Distribution : un reporting qui sous-estime les ventes</h2>
@@ -72,15 +74,17 @@
 <section aria-labelledby="md-bureautique" class="sec"><div class="wrap"><p class="kick">Modalités</p><h2 class="h2" id="md-bureautique">Comment se passe la journée.</h2>
 <div class="mods"><div><b>Pour qui</b>Dirigeants, managers et indépendants.</div><div><b>Évaluation</b>Quiz en entrée et en sortie, exercices avec critère de réussite.</div><div><b>Suivi</b>Un point à 30 jours sur votre plan d’action.</div><div><b>En intra</b>Sur vos cas et vos fichiers types, jusqu’à <span>10</span> personnes.</div><div><b>Accessibilité</b>Un besoin particulier ? Écrivez-moi à <a href="mailto:dbenouaisch@gmail.com">dbenouaisch@gmail.com</a> avant l’atelier.</div></div>
 <p class="kick" style="margin-top:44px">Questions fréquentes</p><div class="faq"><details><summary>Je ne suis pas à l’aise avec Excel, est-ce pour moi ?</summary><p>Si vous savez filtrer et faire une SOMME, oui. Les formules plus avancées sont construites pas à pas, avec l’IA pour vous aider à les écrire.</p></details><details><summary>Verdier Distribution est-il un vrai client ?</summary><p>Non. C’est un cas d’exercice aux données fictives, avec un export réaliste de 500 commandes.</p></details><details><summary>Et si nous travaillons sous Google Workspace ?</summary><p>L’atelier s’adapte. Prévenez-nous à l’inscription pour recevoir les fichiers au bon format.</p></details></div>
-<div class="endcta" style="margin-top:44px"><div><h2>Cet atelier vous correspond ?</h2><p style="margin:6px 0 0;color:#C3CBDD">Je vous réponds avec les dates et le format adaptés.</p></div><a class="btn btn-primary" href="/?besoin=bureautique#contact">Demander cet atelier</a></div>
+<div class="endcta" style="margin-top:44px"><div><h2>Cet atelier vous correspond ?</h2><p style="margin:6px 0 0;color:#C3CBDD">Je vous réponds avec les dates et le format adaptés.</p></div><a class="btn btn-primary" href="/formations?besoin=bureautique#contact">Demander cet atelier</a></div>
 <div class="others"><a class="btn btn-quiet btn-sm" href="/ia-au-quotidien">L’IA au quotidien</a><a class="btn btn-quiet btn-sm" href="/agent-ia">Créer son agent IA</a></div>
 </div></section></div>
+</div>
 </main>
 <footer class="foot">
 <div class="wrap">
 <a class="logo" href="/">DAN<span>-IA</span></a>
-<a href="/#formations">Formations</a>
-<a href="/#contact">Contact</a>
+<a href="/formations#formations">Formations</a>
+<a href="/conseil">Conseil</a>
+<a href="/formations#contact">Contact</a>
 <a href="/mentions-legales">Mentions légales</a>
 <a href="/confidentialite">Confidentialité</a>
 <span>© 2026 DAN-IA</span>
@@ -88,6 +92,6 @@
 </footer>
 <div class="mcta"><a class="btn btn-primary" href="https://calendly.com/dbenouaisch" target="_blank" rel="noopener">Réserver 20 min avec Dan<span class="vh"> (nouvel onglet)</span></a></div>
 </div>
-<script src="/site.js?v=4" defer></script>
+<script src="/site.js?v=5" defer></script>
 </body>
 </html>
