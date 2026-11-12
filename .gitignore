@@ -1,0 +1,5 @@
+# Réglages locaux Claude Code (ne pas versionner)
+.claude/settings.local.json
+# Vercel / système
+.vercel
+.DS_Store
