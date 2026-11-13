@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Confidentialité · DAN-IA</title>
 <meta name="description" content="Comment DAN-IA traite les données envoyées par le formulaire de contact.">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://dan-ia.vercel.app/confidentialite">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DAN-IA">
@@ -14,15 +15,15 @@
 <meta property="og:image" content="https://dan-ia.vercel.app/og-dan-ia.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="627">
+<meta property="og:image:alt" content="DAN-IA · Formation et conseil en IA et données">
 <meta property="og:locale" content="fr_FR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0E1B3D">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caladea:wght@400;700&family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/site.css?v=8">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "DAN-IA", "url": "https://dan-ia.vercel.app", "email": "dbenouaisch@gmail.com", "founder": {"@type": "Person", "name": "Dan Benouaisch"}, "description": "Formation et conseil en IA et données pour dirigeants, managers et indépendants."}</script>
+<link rel="preload" href="/fonts/carlito-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/caladea-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/site.css?v=9">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://dan-ia.vercel.app/#organization","name":"DAN-IA","url":"https://dan-ia.vercel.app","email":"dbenouaisch@gmail.com","description":"Formation et conseil en IA et données pour dirigeants, managers et indépendants.","founder":{"@id":"https://dan-ia.vercel.app/#dan"},"knowsAbout":["Intelligence artificielle","Formation à l’IA","Analyse de données","Qualité des données","Automatisation de tâches de bureau"]}]}</script>
 </head>
 <body>
 <div class="site" id="site">
@@ -62,7 +63,7 @@
 <h2>Conservation</h2>
 <p>Trois ans après notre dernier échange, puis suppression.</p>
 <h2>Transmission</h2>
-<p>Aucun service tiers n’intervient : la demande voyage directement de votre messagerie à celle de Dan. La prise de rendez-vous de 20 minutes passe par Calendly, qui applique sa propre politique de confidentialité.</p>
+<p>Le formulaire n’envoie rien à un service tiers : la demande voyage directement de votre messagerie à celle de Dan. Les polices du site sont hébergées avec le site, sans appel à Google. Le site est hébergé par Vercel, qui conserve des journaux techniques d’accès (adresse IP, page demandée) pour assurer la sécurité du service. La prise de rendez-vous de 20 minutes passe par Calendly : vous quittez alors ce site, et Calendly applique sa propre politique de confidentialité.</p>
 <h2>Vos droits</h2>
 <p>Vous pouvez accéder à vos données, les corriger ou les supprimer en écrivant à <a href="mailto:dbenouaisch@gmail.com">dbenouaisch@gmail.com</a>. Vous pouvez aussi saisir la CNIL.</p>
 </div></section>
@@ -71,8 +72,12 @@
 <footer class="foot">
 <div class="wrap">
 <a class="logo" href="/">DAN<span>-IA</span></a>
-<a href="/formations#formations">Formations</a>
+<a href="/formations">Formations</a>
+<a href="/ia-au-quotidien">L’IA au quotidien</a>
+<a href="/bureautique">Bureautique et IA</a>
+<a href="/agent-ia">Créer son agent IA</a>
 <a href="/conseil">Conseil</a>
+<a href="/diagnostic">Diagnostic IA</a>
 <a href="/formations#contact">Contact</a>
 <a href="/mentions-legales">Mentions légales</a>
 <a href="/confidentialite">Confidentialité</a>
@@ -81,6 +86,6 @@
 </footer>
 <div class="mcta"><a class="btn btn-primary" href="https://calendly.com/dbenouaisch" target="_blank" rel="noopener">Réserver 20 min avec Dan<span class="vh"> (nouvel onglet)</span></a></div>
 </div>
-<script src="/site.js?v=8" defer></script>
+<script src="/site.js?v=9" defer></script>
 </body>
 </html>
