@@ -64,6 +64,11 @@
       "source": "/confidentialite",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/mentions-legales",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
