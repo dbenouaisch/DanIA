@@ -272,7 +272,6 @@ textarea.inp{min-height:96px;resize:vertical}
 .facts dt{color:var(--muted)}.facts dd{margin:0;font-weight:700}
 .dbox.aside .btn{width:100%;margin-top:16px}
 .dbox.aside .btn+.btn{margin-top:10px}
-.prereq{grid-column:1 / 3}
 .fiche .sec:first-of-type{padding-top:110px}
 .prog{margin-top:26px;display:grid;gap:10px}
 .mod{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md)}
@@ -326,7 +325,6 @@ textarea.inp{min-height:96px;resize:vertical}
 @container site (max-width:1000px){
 .decide{grid-template-columns:1fr 1fr}
 .decide .aside{grid-column:1 / 3}
-.prereq{grid-column:1 / 3}
 .ba{grid-template-columns:1fr 1fr}
 .ba .cap{grid-column:1 / 3}
 .forms,.profiles{grid-template-columns:1fr}
@@ -371,7 +369,7 @@ body{font-size:16.5px}
 .sessions td{padding:3px 0;border:0}
 .sessions td[data-l]::before{content:attr(data-l) " : ";color:var(--muted);font-weight:400}
 .decide{grid-template-columns:1fr;transform:translateY(28px)}
-.decide .aside,.prereq{grid-column:auto}
+.decide .aside{grid-column:auto}
 .f-top h1{font-size:34px}
 .fiche .sec:first-of-type{padding-top:80px}
 .mod .in{padding:0 16px 14px}

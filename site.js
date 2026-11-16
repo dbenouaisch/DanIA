@@ -95,7 +95,7 @@ function recommend(){
       R.k2t="C’est l’étape suivante naturelle : vous y construirez l’assistant que vous avez en tête, sans code.";
       why.push(quote(0)+" · la consigne est encore à préciser.");why.push(quote(1)+" · la vérification est encore à installer.");why.push("Ces deux bases manquent : nous recommandons de commencer par L’IA au quotidien.");
     }else{R.k="agent-ia";
-      R.why=["Vous avez déjà les bases pour formuler une demande et vérifier une réponse : vous pouvez passer à la conception d’un assistant.", S[7]===0?"Vous n’avez encore rien configuré ? Ce n’est pas un prérequis : l’atelier part de zéro sur la configuration.":"L’atelier vous fait concevoir, tester et valider un assistant pour une tâche qui revient chaque semaine."];
+      R.why=["Vous avez déjà les bases pour formuler une demande et vérifier une réponse : vous pouvez passer à la conception d’un assistant.", S[7]===0?"Vous n’avez encore rien configuré ? Ce n’est pas un obstacle : l’atelier part de zéro sur la configuration.":"L’atelier vous fait concevoir, tester et valider un assistant pour une tâche qui revient chaque semaine."];
       why.push(S[0]>=1?quote(0)+" · base suffisante pour formuler une demande.":quote(1)+" · base suffisante pour vérifier une réponse.");
       if(S[7]===0)why.push(quote(7)+" · ce n’est pas un frein pour suivre l’atelier.");
     }
