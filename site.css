@@ -171,20 +171,8 @@ p,li{text-wrap:pretty}
 .fiche .ba-col ul{color:var(--ink)}
 .status{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.1);color:#E6EAF2}
 .fiche .status,.on-surface .status{background:var(--violet-soft);color:var(--violet)}
-.status.est{background:var(--copper-soft);color:var(--copper-strong)}
-.on-night .status.est{background:rgba(217,128,62,.18);color:#F3B583}
 .case-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px}
 .case-meta h3{font-size:24px;margin-right:8px}
-.calc{margin-top:16px;border-radius:var(--r-md);border:1px solid rgba(255,255,255,.14)}
-.fiche .calc{border-color:var(--line);background:var(--surface)}
-.calc summary{cursor:pointer;padding:12px 16px;font-weight:700;font-size:15.5px;min-height:44px;display:flex;align-items:center;gap:10px;list-style:none}
-.calc summary::-webkit-details-marker{display:none}
-.calc summary::before{content:"+";font-size:20px;line-height:1;width:16px;color:var(--copper)}
-.calc[open] summary::before{content:"–"}
-.calc .in{padding:0 16px 16px;font-size:15px}
-.calc table{border-collapse:collapse;margin-top:8px;font-size:14.5px}
-.calc td,.calc th{padding:5px 14px 5px 0;text-align:left;border-bottom:1px solid rgba(127,140,170,.25)}
-.calc p{margin:6px 0}
 .cap{border-radius:var(--r-md);background:#fff;color:#13203F;padding:16px 16px 14px;box-shadow:0 18px 40px -22px rgba(0,0,0,.6);font-size:14px;line-height:1.45}
 .fiche .cap{border:1px solid var(--line);box-shadow:none}
 .cap-t{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:13px;color:#5A6478;margin-bottom:8px}
