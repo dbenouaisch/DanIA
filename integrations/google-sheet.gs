@@ -1,5 +1,6 @@
 /**
- * Enregistre chaque demande du site DAN-IA dans la première feuille de ce tableur.
+ * Enregistre chaque demande du site DAN-IA dans l'onglet « Demandes » de ce tableur.
+ * (Le tableur est déjà mis en forme : ne pas renommer l'onglet ni déplacer les colonnes.)
  *
  * Installation (2 minutes) :
  * 1. Ouvrir le tableur « DAN-IA · Demandes de rendez-vous », menu Extensions > Apps Script.
@@ -11,9 +12,13 @@
  *    et la coller dans SHEET_ENDPOINT, en haut de rdv.js.
  *
  * Après toute modification de ce script : Déployer > Gérer les déploiements > Modifier > Nouvelle version.
+ *
+ * Colonnes de l'onglet « Demandes » (A à L) :
+ * Date et heure | Statut | Prénom | E-mail | Téléphone | Sujet | Origine de la visite |
+ * Envoi Formspree | Notes | Message | Code du sujet (masquée) | Page (masquée)
  */
-var HEADERS = ['Date et heure', 'Prénom', 'E-mail', 'Téléphone', 'Sujet', 'Code du sujet',
-               'Origine de la visite', 'Page', 'Envoi Formspree', 'Message'];
+var SHEET_NAME = 'Demandes';
+var DEFAULT_STATUS = 'Nouveau';
 
 function doPost(e) {
   var lock = LockService.getScriptLock();
@@ -24,12 +29,21 @@ function doPost(e) {
     var d = JSON.parse(e.postData.contents);
     var email = clean_(d.email, 200);
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return out_('refusé');
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
-    if (sheet.getLastRow() === 0) sheet.appendRow(HEADERS);
+    var book = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = book.getSheetByName(SHEET_NAME) || book.getSheets()[0];
     sheet.appendRow([
-      new Date(), clean_(d.prenom, 100), email, clean_(d.telephone, 40), clean_(d.sujet, 200),
-      clean_(d.code_sujet, 50), clean_(d.origine, 300), clean_(d.page, 300),
-      clean_(d.formspree, 20), clean_(d.message, 2000)
+      new Date(),                     // A Date et heure
+      DEFAULT_STATUS,                 // B Statut (liste déroulante)
+      clean_(d.prenom, 100),          // C Prénom
+      email,                          // D E-mail
+      text_(d.telephone, 40),         // E Téléphone (texte brut : le « + » est conservé)
+      clean_(d.sujet, 200),           // F Sujet
+      clean_(d.origine, 300),         // G Origine de la visite
+      clean_(d.formspree, 20),        // H Envoi Formspree (ok / échec)
+      '',                             // I Notes (saisies à la main)
+      clean_(d.message, 2000),        // J Message
+      clean_(d.code_sujet, 50),       // K Code du sujet
+      clean_(d.page, 300)             // L Page
     ]);
     return out_('ok');
   } catch (err) {
@@ -39,9 +53,12 @@ function doPost(e) {
   }
 }
 
-/* Coupe les textes trop longs et neutralise les formules (=, +, -, @) saisies par un visiteur. */
+/* Texte brut, limité en taille. */
+function text_(v, max) { return String(v == null ? '' : v).slice(0, max); }
+
+/* Idem, et neutralise les formules (=, +, -, @) saisies par un visiteur. */
 function clean_(v, max) {
-  var s = String(v == null ? '' : v).slice(0, max);
+  var s = text_(v, max);
   if (/^[=+\-@\t\r]/.test(s)) s = "'" + s;
   return s;
 }
