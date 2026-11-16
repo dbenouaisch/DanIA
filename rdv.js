@@ -6,15 +6,19 @@
   var MAIL = "dbenouaisch@gmail.com";
   var KEY = "dania-contact";
   var DAYS30 = 30 * 24 * 3600 * 1000;
+  var BTN_LABEL = "Voir les créneaux";
 
   var form = document.getElementById("rdvForm");
   if (!form) return;
   var $ = function (id) { return document.getElementById(id); };
   var fName = $("r-name"), fMail = $("r-mail"), fTel = $("r-tel"), fNeed = $("r-need"),
-      fTrap = $("r-trap"), btn = $("sendBtn"),
+      fTrap = $("r-trap"), btn = $("sendBtn"), fields = $("contactFields"),
       known = $("known"), done = $("rdvDone"), fail = $("rdvFail");
 
-  /* ---- Mémoire des coordonnées : après un envoi réussi, le nom, l'e-mail et le téléphone
+  function isEmail(s) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s || ""); }
+  function firstName(n) { return (n || "").trim().split(/\s+/)[0] || ""; }
+
+  /* ---- Mémoire des coordonnées : après un envoi réussi, le prénom, l'e-mail et le téléphone
          sont gardés 30 jours dans le navigateur (localStorage) pour préremplir le formulaire.
          Pour ne les garder que le temps de la visite, ne conserver que sessionStorage. ---- */
   function readMem() {
@@ -36,15 +40,20 @@
     try { localStorage.removeItem(KEY); } catch (e) {}
   }
 
-  function firstName(n) { return (n || "").trim().split(/\s+/)[0] || ""; }
+  /* Visiteur déjà connu : « Bonjour Camille, l'agenda vous attend », un seul clic. */
   function showKnown(name) {
-    $("knownName").textContent = firstName(name);
-    known.hidden = !name;
+    $("knownHello").textContent = firstName(name) ? "Bonjour " + firstName(name) + "." : "Bonjour.";
+    known.hidden = false;
+    fields.hidden = true;
+  }
+  function showFields() {
+    known.hidden = true;
+    fields.hidden = false;
   }
 
   var mem = readMem();
-  if (mem) {
-    fName.value = mem.name || ""; fMail.value = mem.email || ""; fTel.value = mem.tel || "";
+  if (mem && isEmail(mem.email)) {
+    fName.value = mem.name || ""; fMail.value = mem.email; fTel.value = mem.tel || "";
     showKnown(mem.name);
   }
 
@@ -54,9 +63,10 @@
   $("forget").addEventListener("click", function () {
     clearMem();
     fName.value = fMail.value = fTel.value = "";
-    known.hidden = true;
-    fName.focus();
+    showFields();
+    fMail.focus();
   });
+  $("edit").addEventListener("click", function () { showFields(); fMail.focus(); });
 
   /* ---- Validation ---- */
   function err(id, eid, bad) {
@@ -67,15 +77,15 @@
 
   /* ---- Texte envoyé : il reflète la demande ---- */
   function needLabel() { return fNeed.options[fNeed.selectedIndex].text; }
-  function buildSubject(name) { return "Demande DAN-IA · " + needLabel().replace(/^(Atelier|Conseil) · /, "$1 : ") + " · " + name; }
+  function buildSubject(who) { return "Demande DAN-IA · " + needLabel().replace(/^(Atelier|Conseil) · /, "$1 : ") + " · " + who; }
   function buildBody(name, mail, tel) {
     var l = ["Bonjour,", "", "Je souhaite échanger à propos de : " + needLabel() + ".", ""];
     if (tel) l.push("Merci de me rappeler au " + tel + ".", "");
-    l.push("Nom : " + name, "E-mail : " + mail, "", "Envoyé depuis la page Rendez-vous du site DAN-IA.");
+    l.push("Prénom : " + (name || "(non renseigné)"), "E-mail : " + mail, "", "Envoyé depuis la page Rendez-vous du site DAN-IA.");
     return l.join("\n");
   }
   function agendaUrl(name, mail) {
-    return AGENDA + "?name=" + encodeURIComponent(name) + "&email=" + encodeURIComponent(mail);
+    return AGENDA + "?email=" + encodeURIComponent(mail) + (name ? "&name=" + encodeURIComponent(name) : "");
   }
 
   function panel(which) {
@@ -87,16 +97,16 @@
   }
   function busy(on) {
     btn.disabled = on;
-    btn.textContent = on ? "Envoi en cours…" : "Choisir un créneau";
+    btn.textContent = on ? "Envoi en cours…" : BTN_LABEL;
   }
 
   function showDone(name, mail, tabOpened) {
-    var url = agendaUrl(name, mail);
-    $("doneName").textContent = firstName(name);
-    $("openAgenda").href = url;
+    var first = firstName(name);
+    $("doneTitle").textContent = first ? "Merci " + first + ", votre demande est envoyée" : "Merci, votre demande est envoyée";
+    $("openAgenda").href = agendaUrl(name, mail);
     $("doneHint").textContent = tabOpened
-      ? "L’agenda vient de s’ouvrir dans un nouvel onglet, votre nom et votre e-mail y sont déjà renseignés."
-      : "Ouvrez l’agenda avec le bouton ci-dessous : votre nom et votre e-mail y seront déjà renseignés.";
+      ? "L’agenda s’est ouvert dans un nouvel onglet, votre e-mail y est déjà renseigné. Vous ne le voyez pas ? Utilisez le bouton « Ouvrir l’agenda »."
+      : "Ouvrez l’agenda avec le bouton ci-dessus : votre e-mail y sera déjà renseigné.";
     var rc = $("recap"); rc.innerHTML = "";
     [["Sujet", needLabel()], ["E-mail", mail]].forEach(function (p) {
       var dt = document.createElement("dt"), dd = document.createElement("dd");
@@ -112,12 +122,11 @@
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     var name = fName.value.trim(), mail = fMail.value.trim(), tel = fTel.value.trim();
-    var bad = [
-      err("r-name", "e-name", !name) && "r-name",
-      err("r-mail", "e-mail", !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail)) && "r-mail",
-      err("r-need", "e-need", !fNeed.value) && "r-need"
-    ].filter(Boolean);
-    if (bad.length) { $(bad[0]).focus(); return; }
+    if (err("r-mail", "e-mail", !isEmail(mail))) {
+      if (fields.hidden) showFields();
+      fMail.focus();
+      return;
+    }
 
     /* Champ piège : un robot l'a rempli, on fait comme si tout allait bien. */
     if (fTrap.value) { showDone(name, mail, false); return; }
@@ -129,7 +138,7 @@
       if (tab) { tab.opener = null; tab.document.title = "Agenda DAN-IA"; tab.document.body.textContent = "Chargement de l’agenda…"; }
     } catch (x) { tab = null; }
 
-    var subject = buildSubject(name), body = buildBody(name, mail, tel);
+    var subject = buildSubject(name || mail), body = buildBody(name, mail, tel);
     var payload = {
       name: name, email: mail, telephone: tel || "(non renseigné)",
       sujet: needLabel(), _subject: subject, message: body,
@@ -158,6 +167,6 @@
     });
   });
 
-  $("retry").addEventListener("click", function () { panel("form"); fName.focus(); });
-  $("again").addEventListener("click", function () { panel("form"); fNeed.value = ""; fNeed.focus(); });
+  $("retry").addEventListener("click", function () { panel("form"); (fields.hidden ? btn : fMail).focus(); });
+  $("again").addEventListener("click", function () { panel("form"); fNeed.focus(); });
 })();
