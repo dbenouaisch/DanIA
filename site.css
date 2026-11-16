@@ -973,3 +973,8 @@ html{scroll-behavior:smooth}
 .hint-line{font-size:14px;color:var(--muted)}
 .known-links{display:flex;flex-wrap:wrap;gap:0 20px;margin-top:2px}
 #known{margin-bottom:16px}
+.pg-lock{margin-top:26px;max-width:720px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:28px}
+.pg-lead{margin:0;font-family:var(--serif);font-weight:700;font-size:clamp(22px,2.4vw,28px);line-height:1.2;color:var(--ink)}
+.pg-sub{margin:8px 0 18px;color:var(--muted);font-size:17px}
+#progBody{margin-top:26px}
+#progBody:focus{outline:none}

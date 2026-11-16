@@ -1,51 +1,21 @@
 (function () {
   "use strict";
-  /* Réglages : identifiant du formulaire Formspree (tableau de bord Formspree), agenda et e-mail de contact. */
-  var FORMSPREE = "https://formspree.io/f/xrpqgryy";
+  /* Réglages de la page : agenda de réservation. L'identifiant Formspree, le tableur Google
+     et l'e-mail de contact se règlent en tête de lead.js. */
   var AGENDA = "https://calendly.com/dbenouaisch";
-  var MAIL = "dbenouaisch@gmail.com";
-  var KEY = "dania-contact";
-  var DAYS30 = 30 * 24 * 3600 * 1000;
-  /* Tableur Google « DAN-IA · Demandes de rendez-vous » : URL de l'application Web Apps Script
-     (voir integrations/google-sheet.gs). Vide = enregistrement désactivé. */
-  var SHEET_ENDPOINT = "";
   var BTN_LABEL = "Voir les créneaux";
 
   var form = document.getElementById("rdvForm");
-  if (!form) return;
+  var L = window.DaniaLead;
+  if (!form || !L) return;
   var $ = function (id) { return document.getElementById(id); };
   var fName = $("r-name"), fMail = $("r-mail"), fTel = $("r-tel"), fNeed = $("r-need"),
       fTrap = $("r-trap"), btn = $("sendBtn"), fields = $("contactFields"),
       known = $("known"), done = $("rdvDone"), fail = $("rdvFail");
 
-  function isEmail(s) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s || ""); }
-  function firstName(n) { return (n || "").trim().split(/\s+/)[0] || ""; }
-
-  /* ---- Mémoire des coordonnées : après un envoi réussi, le prénom, l'e-mail et le téléphone
-         sont gardés 30 jours dans le navigateur (localStorage) pour préremplir le formulaire.
-         Pour ne les garder que le temps de la visite, ne conserver que sessionStorage. ---- */
-  function readMem() {
-    var raw = null, o = null;
-    try { raw = sessionStorage.getItem(KEY); } catch (e) {}
-    if (!raw) { try { raw = localStorage.getItem(KEY); } catch (e) {} }
-    if (!raw) return null;
-    try { o = JSON.parse(raw); } catch (e) { return null; }
-    if (!o || (o.exp && o.exp < Date.now())) { clearMem(); return null; }
-    return o;
-  }
-  function writeMem(d) {
-    var s = JSON.stringify({ name: d.name, email: d.email, tel: d.tel, exp: Date.now() + DAYS30 });
-    try { localStorage.setItem(KEY, s); } catch (e) {}
-    try { sessionStorage.setItem(KEY, s); } catch (e) {}
-  }
-  function clearMem() {
-    try { sessionStorage.removeItem(KEY); } catch (e) {}
-    try { localStorage.removeItem(KEY); } catch (e) {}
-  }
-
   /* Visiteur déjà connu : « Bonjour Camille, l'agenda vous attend », un seul clic. */
   function showKnown(name) {
-    $("knownHello").textContent = firstName(name) ? "Bonjour " + firstName(name) + "." : "Bonjour.";
+    $("knownHello").textContent = L.firstName(name) ? "Bonjour " + L.firstName(name) + "." : "Bonjour.";
     known.hidden = false;
     fields.hidden = true;
   }
@@ -54,8 +24,8 @@
     fields.hidden = false;
   }
 
-  var mem = readMem();
-  if (mem && isEmail(mem.email)) {
+  var mem = L.readMem();
+  if (mem && L.isEmail(mem.email)) {
     fName.value = mem.name || ""; fMail.value = mem.email; fTel.value = mem.tel || "";
     showKnown(mem.name);
   }
@@ -64,7 +34,7 @@
   if (q && [].some.call(fNeed.options, function (o) { return o.value === q; })) fNeed.value = q;
 
   $("forget").addEventListener("click", function () {
-    clearMem();
+    L.clearMem();
     fName.value = fMail.value = fTel.value = "";
     showFields();
     fMail.focus();
@@ -91,22 +61,6 @@
     return AGENDA + "?email=" + encodeURIComponent(mail) + (name ? "&name=" + encodeURIComponent(name) : "");
   }
 
-  /* Chaque demande est aussi inscrite dans le tableur, qu'elle ait atteint Formspree ou non. */
-  function logSheet(status, name, mail, tel, body) {
-    if (!SHEET_ENDPOINT) return;
-    try {
-      fetch(SHEET_ENDPOINT, {
-        method: "POST", mode: "no-cors", keepalive: true,
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({
-          prenom: name, email: mail, telephone: tel, sujet: needLabel(), code_sujet: fNeed.value,
-          origine: document.referrer || "visite directe", page: location.pathname + location.search,
-          formspree: status, message: body
-        })
-      });
-    } catch (e) {}
-  }
-
   function panel(which) {
     form.hidden = which !== "form";
     done.hidden = which !== "done";
@@ -120,7 +74,7 @@
   }
 
   function showDone(name, mail, tabOpened) {
-    var first = firstName(name);
+    var first = L.firstName(name);
     $("doneTitle").textContent = first ? "Merci " + first + ", votre demande est envoyée" : "Merci, votre demande est envoyée";
     $("openAgenda").href = agendaUrl(name, mail);
     $("doneHint").textContent = tabOpened
@@ -134,14 +88,14 @@
     panel("done");
   }
   function showFail(subject, body) {
-    $("failMail").href = "mailto:" + MAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    $("failMail").href = "mailto:" + L.CFG.MAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
     panel("fail");
   }
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     var name = fName.value.trim(), mail = fMail.value.trim(), tel = fTel.value.trim();
-    if (err("r-mail", "e-mail", !isEmail(mail))) {
+    if (err("r-mail", "e-mail", !L.isEmail(mail))) {
       if (fields.hidden) showFields();
       fMail.focus();
       return;
@@ -158,25 +112,11 @@
     } catch (x) { tab = null; }
 
     var subject = buildSubject(name || mail), body = buildBody(name, mail, tel);
-    var payload = {
-      name: name, email: mail, telephone: tel || "(non renseigné)",
-      sujet: needLabel(), _subject: subject, message: body,
-      origine: document.referrer || "visite directe"
-    };
     busy(true);
-    var ctl = ("AbortController" in window) ? new AbortController() : null;
-    var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 12000);
-    fetch(FORMSPREE, {
-      method: "POST",
-      headers: { "Accept": "application/json", "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-      signal: ctl ? ctl.signal : undefined
-    }).then(function (res) { return res.ok; }, function () { return false; }).then(function (sent) {
-      clearTimeout(timer);
+    L.send({ name: name, email: mail, tel: tel, label: needLabel(), code: fNeed.value, subject: subject, body: body }).then(function (sent) {
       busy(false);
-      logSheet(sent ? "ok" : "échec", name, mail, tel, body);
       if (sent) {
-        writeMem({ name: name, email: mail, tel: tel });
+        L.writeMem({ name: name, email: mail, tel: tel });
         var opened = !!(tab && !tab.closed);
         if (opened) { tab.location.href = agendaUrl(name, mail); }
         showDone(name, mail, opened);

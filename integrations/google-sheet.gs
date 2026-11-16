@@ -9,7 +9,7 @@
  *    - Exécuter en tant que : Moi
  *    - Qui a accès : Tout le monde
  * 4. Autoriser l'accès demandé, copier l'URL de l'application Web (elle se termine par /exec)
- *    et la coller dans SHEET_ENDPOINT, en haut de rdv.js.
+ *    et la coller dans SHEET_ENDPOINT, en haut de lead.js.
  *
  * Après toute modification de ce script : Déployer > Gérer les déploiements > Modifier > Nouvelle version.
  *
