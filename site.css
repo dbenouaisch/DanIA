@@ -1004,8 +1004,6 @@ html{scroll-behavior:smooth}
 /* Accueil : en-tête allégé (lien Menu + bouton de réservation) */
 .hdr-cta{display:none}
 .is-entry .hdr-in{background:rgba(14,27,61,.98)}
-.ori-proof{margin:clamp(14px,2.4vh,22px) 0 0;font-size:15.5px;color:#C3CBDD;max-width:70ch}
-.ori-proof a{color:#fff;text-decoration:underline;text-underline-offset:3px;padding:10px 0;display:inline-block}
 @container site (min-width:761px){
 .is-entry .menu-btn{display:inline-flex;margin-left:auto}
 .is-entry .hdr-cta{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:10px;background:var(--copper);color:var(--night);font-weight:700;text-decoration:none}
@@ -1042,4 +1040,24 @@ main p a:not([class]),main li a:not([class]),.mods a:not([class]),.form-note a:n
 .dq-sent{margin:10px 0 0;font-weight:700;color:var(--ok)}
 @container site (max-width:760px){.form-card h3 a{display:inline-block;padding-block:8px}}
 .of-act .btn{padding-inline:12px;font-size:15px}
-.ori-proof{max-width:92ch}
+
+/* Accueil : grandes cartes d'orientation (Formation / Conseil) */
+.ori .ori-cards{max-width:none;gap:clamp(16px,2vw,28px);margin-top:clamp(16px,3vh,28px)}
+.ori .ori-card{min-height:clamp(170px,22vh,230px);padding:clamp(22px,3vh,34px) clamp(22px,2.4vw,36px);column-gap:clamp(16px,1.8vw,26px);border-radius:22px}
+.ori .ori-ic{width:68px;height:68px;border-radius:18px}
+.ori .ori-ic svg{width:34px;height:34px}
+.ori .ori-card .ori-pole{font-size:14px}
+.ori .ori-card .ori-t{font-size:clamp(24px,2vw,30px);line-height:1.15;margin:6px 0 8px}
+.ori .ori-card .ori-d{position:static;width:auto;height:auto;overflow:visible;clip:auto;white-space:normal;font-size:clamp(16px,1.15vw,18px);max-width:none}
+.ori .ori-card{align-items:start}
+.ori .ori-go{align-self:center}
+.ori .ori-go{width:60px;height:60px}
+.ori .ori-go::after{width:22px;height:22px}
+@container site (max-width:760px){
+.ori .ori-card{min-height:0;padding:20px 18px;column-gap:14px}
+.ori .ori-ic{width:52px;height:52px;border-radius:14px}
+.ori .ori-ic svg{width:26px;height:26px}
+.ori .ori-card .ori-t{font-size:20px}
+.ori .ori-card .ori-d{font-size:15px}
+.ori .ori-go{width:44px;height:44px}
+}
