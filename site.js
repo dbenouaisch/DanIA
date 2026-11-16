@@ -35,34 +35,6 @@ function selTab(t){tabs.forEach(function(x){var on=x===t;x.setAttribute("aria-se
 tabs.forEach(function(t,i){t.addEventListener("click",function(){selTab(t)});t.addEventListener("keydown",function(e){var j=null;if(e.key==="ArrowRight")j=(i+1)%tabs.length;if(e.key==="ArrowLeft")j=(i-1+tabs.length)%tabs.length;if(e.key==="Home")j=0;if(e.key==="End")j=tabs.length-1;if(j!==null){e.preventDefault();selTab(tabs[j]);tabs[j].focus()}})});
 
 
-var form=document.getElementById("leadForm");if(!form)return;
-var DAN_MAIL="dbenouaisch@gmail.com",done=document.getElementById("done"),call=document.getElementById("f-call"),phone=document.getElementById("phoneField"),last=null;
-call.addEventListener("change",function(){phone.hidden=!call.checked;if(call.checked)document.getElementById("f-tel").focus()});
-function preselect(need,fmt){form.hidden=false;done.hidden=true;var s=document.getElementById("f-need");if(need&&[].some.call(s.options,function(o){return o.value===need}))s.value=need;if(fmt){var r=form.querySelector('input[name=format][value="'+fmt+'"]');if(r)r.checked=true}}
-document.addEventListener("click",function(e){var a=e.target.closest("a[data-need]");if(a)preselect(a.dataset.need,a.dataset.format)});
-var q=new URLSearchParams(location.search);if(q.get("besoin"))preselect(q.get("besoin"),q.get("format"));
-function err(id,eid,bad){document.getElementById(id).setAttribute("aria-invalid",bad?"true":"false");document.getElementById(eid).hidden=!bad;return bad}
-form.addEventListener("submit",function(e){e.preventDefault();
-  var name=document.getElementById("f-name").value.trim(),mail=document.getElementById("f-mail").value.trim(),need=document.getElementById("f-need").value,tel=document.getElementById("f-tel").value.trim();
-  var bad=[err("f-name","e-name",!name)&&"f-name",err("f-mail","e-mail",!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail))&&"f-mail",err("f-need","e-need",!need)&&"f-need",err("f-tel","e-tel",call.checked&&!tel)&&"f-tel"].filter(Boolean);
-  if(bad.length){document.getElementById(bad[0]).focus();return}
-  var sel=document.getElementById("f-need"),fmt=form.querySelector("input[name=format]:checked");
-  var needTxt=sel.options[sel.selectedIndex].text,fmtTxt=fmt?fmt.nextElementSibling.textContent:"À voir ensemble",msg=document.getElementById("f-msg").value.trim();
-  var subject="Demande DAN-IA · "+needTxt.replace("Atelier · ","")+" · "+name;
-  var body=["Bonjour Dan,","","Besoin : "+needTxt,"Format envisagé : "+fmtTxt,"",msg||"(pas de message)","","Nom : "+name,"E-mail : "+mail];
-  if(call.checked)body.push("Merci de me rappeler au "+tel+".");
-  body.push("","Envoyé depuis le formulaire du site DAN-IA");body=body.join("\n");
-  last={subject:subject,body:body,href:"mailto:"+DAN_MAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body)};
-  document.getElementById("mailAgain").href=last.href;document.getElementById("mailAgain").removeAttribute("target");
-  document.getElementById("doneTxt").textContent="Merci "+name.split(" ")[0]+". Votre messagerie s’ouvre avec la demande déjà rédigée, adressée à "+DAN_MAIL+". Relisez-la, puis cliquez sur Envoyer : Dan vous répond sous 48 h ouvrées"+(call.checked?", ou vous rappelle au "+tel:"")+".";
-  var rc=document.getElementById("recap");rc.innerHTML="";[["Objet",subject],["Besoin",needTxt],["Format",fmtTxt]].forEach(function(p){var dt=document.createElement("dt"),dd=document.createElement("dd");dt.textContent=p[0];dd.textContent=p[1];rc.appendChild(dt);rc.appendChild(dd)});
-  document.getElementById("copyOk").textContent="";
-  form.hidden=true;done.hidden=false;done.focus();
-  window.location.href=last.href;
-});
-document.getElementById("copyMail").addEventListener("click",function(){var ok=document.getElementById("copyOk"),txt="À : "+DAN_MAIL+"\nObjet : "+last.subject+"\n\n"+last.body;
-  if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){ok.textContent="Demande copiée. Collez-la dans un nouvel e-mail."},function(){ok.textContent="La copie automatique est bloquée par le navigateur : sélectionnez le récapitulatif ci-dessus."})}else{ok.textContent="La copie automatique est bloquée par le navigateur : sélectionnez le récapitulatif ci-dessus."}});
-document.getElementById("again").addEventListener("click",function(){form.reset();phone.hidden=true;form.hidden=false;done.hidden=true;document.getElementById("f-name").focus()});
 })();
 moveInd();addEventListener("load",moveInd);
 
@@ -184,12 +156,12 @@ function renderResult(){const R=recommend(),r=root2();const B=benefits(R);
   r.innerHTML=`<div class="res"><div class="res-hello">${agentSVG}<div class="bubble"><p class="kick">Votre profil IA</p><p>${constat(R)}</p></div></div>
   <section class="res-main" aria-labelledby="dq-h"><p class="kick">Votre première étape</p><h2 id="dq-h" tabindex="-1">${TITLE[R.k]}${R.perf?'<span class="tag">Perfectionnement</span>':""}</h2>
    <p class="why2">${R.why.join(" ")}</p>
-   <div class="hero-ctas on-night"><a class="btn btn-primary" href="/${R.k}">Voir la formation recommandée</a><a class="btn btn-ghost" href="https://calendly.com/dbenouaisch" target="_blank" rel="noopener">Prendre rendez-vous avec Dan<span class="vh"> (nouvel onglet)</span></a></div></section>
+   <div class="hero-ctas on-night"><a class="btn btn-primary" href="/${R.k}">Voir la formation recommandée</a><a class="btn btn-ghost" href="/rendez-vous?sujet=${R.k}">Prendre rendez-vous avec nous</a></div></section>
   <div class="res-grid"><div class="rcard"><h3>Ce que vous pourrez faire après l’atelier</h3><ul class="ben">${B.map(b=>`<li>${b}</li>`).join("")}</ul></div>
    <div class="rcard soft"><h3>Vos repères</h3><ul class="lv">${["q","b","a"].map(d=>`<li><span>${DOM[d].name}</span><span class="pill ${R.L[d].c}">${R.L[d].lvl}</span></li>`).join("")}</ul><p class="note">Établis à partir de vos réponses. « À préciser » : pas assez de réponses dans ce domaine.</p></div></div>
   ${R.k2?`<div class="next"><p><b>Et ensuite : ${TITLE[R.k2]}</b>${R.k2t}</p><a class="btn btn-quiet btn-sm" href="/${R.k2}">Voir cette formation</a></div>`:""}
   <details class="why"${why?" open":""}><summary>Pourquoi cette recommandation ?</summary><ul>${R.reasons.map(x=>`<li>${x}</li>`).join("")}</ul></details>
-  <div class="res-foot"><button class="btn btn-quiet btn-sm" type="button" id="dqEdit">Modifier mes réponses</button><button class="btn btn-quiet btn-sm" type="button" id="dqRestart">Recommencer</button><span class="sp"></span><a class="link" href="/formations?besoin=${R.k}#contact">Ou m’écrire via le formulaire</a></div></div>`;
+  <div class="res-foot"><button class="btn btn-quiet btn-sm" type="button" id="dqEdit">Modifier mes réponses</button><button class="btn btn-quiet btn-sm" type="button" id="dqRestart">Recommencer</button><span class="sp"></span><a class="link" href="mailto:dbenouaisch@gmail.com">Ou nous écrire par e-mail</a></div></div>`;
   r.querySelector("#dqEdit").onclick=()=>go(9);r.querySelector("#dqRestart").onclick=()=>{A=Array(10).fill(null);why=false;go(-1)};
   focusH();
 }

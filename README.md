@@ -8,9 +8,12 @@ Site statique de formation et conseil en IA et données (HTML/CSS/JS, sans build
 - `/ia-au-quotidien`, `/bureautique`, `/agent-ia` : pages des ateliers
 - `/conseil` : accompagnement données et IA
 - `/diagnostic` : questionnaire de 10 questions (JavaScript requis)
+- `/rendez-vous` : formulaire (Formspree) puis ouverture de l’agenda Calendly dans un nouvel onglet ; réglages en tête de `rdv.js`
 - `/mentions-legales`, `/confidentialite`
 
 ## Structure
+- `rdv.js` : formulaire de rendez-vous (envoi Formspree, mémoire des coordonnées, agenda). Le formulaire Formspree utilisé est `https://formspree.io/f/xrpqgryy`.
+- `integrations/google-sheet.gs` : script Google à coller dans le tableur « DAN-IA · Demandes de rendez-vous » (onglets « Demandes » et « Tableau de bord », déjà mis en forme) pour y enregistrer chaque demande (mode d’emploi en tête du fichier). L’URL obtenue se colle dans `SHEET_ENDPOINT`, en haut de `rdv.js`.
 - `site.css`, `site.js` : styles et scripts communs. Incrémenter `?v=` dans les pages HTML après modification.
 - `fonts/` : polices Caladea et Carlito auto-hébergées (licence SIL OFL, voir les fichiers `LICENSE-*`).
 - `vercel.json` : URLs propres, en-têtes de sécurité (CSP, etc.) et règles de cache.
