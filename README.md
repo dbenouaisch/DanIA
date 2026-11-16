@@ -10,6 +10,7 @@ Site statique de formation et conseil en IA et données (HTML/CSS/JS, sans build
 - `/diagnostic` : questionnaire de 10 questions (JavaScript requis)
 - `/rendez-vous` : formulaire (Formspree) puis ouverture de l’agenda Calendly dans un nouvel onglet ; réglages en tête de `rdv.js`
 - `/mentions-legales`
+- `/admin` : tableau de bord d'administration (non indexé, protégé par un jeton), voir « Mesure d'audience »
 
 ## Structure
 - `rdv.js` : formulaire de rendez-vous (envoi Formspree, mémoire des coordonnées, agenda). Le formulaire Formspree utilisé est `https://formspree.io/f/xrpqgryy`.
@@ -17,6 +18,14 @@ Site statique de formation et conseil en IA et données (HTML/CSS/JS, sans build
 - `site.css`, `site.js` : styles et scripts communs. Incrémenter `?v=` dans les pages HTML après modification.
 - `fonts/` : polices Caladea et Carlito auto-hébergées (licence SIL OFL, voir les fichiers `LICENSE-*`).
 - `vercel.json` : URLs propres, en-têtes de sécurité (CSP, etc.) et règles de cache.
+
+## Mesure d'audience et tableau de bord `/admin`
+- `config.js` : adresse `endpoint` du script Google (vide = ni mesure ni enregistrement des demandes) et domaines de production.
+- `track.js` : mesure anonyme, sans cookie (pages vues, source/UTM, appareil, clics contact/e-mail/agenda, début de formulaire, Core Web Vitals). Désactivée hors production, pour les navigateurs automatisés, « Do Not Track », et le navigateur exclu via `/admin` (bouton « Exclure ce navigateur » ou `?notrack=1`). Pour tester ailleurs : `localStorage.setItem("dania-test","1")` (données marquées « test », masquées par défaut).
+- `integrations/google-sheet.gs` : collecte les événements (onglet « Événements ») et les demandes (onglet « Demandes ») et sert les données à `/admin`. Mise en place : suivre les étapes 5 à 7 en tête du fichier (fonction `installer`, propriété `ADMIN_TOKEN`, nouvelle version du déploiement), puis coller l'URL `/exec` dans `config.js`.
+- `/admin` + `admin.js` + `admin.css` : lecture avec le jeton `ADMIN_TOKEN` (conservé le temps de la session du navigateur, jamais dans le dépôt). Heure d'affichage : Europe/Paris.
+- Chaque demande reçoit un identifiant unique (`rid`) : elle n'est jamais comptée deux fois. Elle est reliée à sa visite par l'identifiant de session ; sans session (mesure bloquée), elle est comptée avec attribution indisponible.
+- Limites : visiteurs uniques estimés (identifiant par navigateur), bloqueurs de publicité, rendez-vous Calendly non mesurables (domaine tiers : seul le clic l'est).
 
 ## Déploiement
 Toute modification poussée sur la branche de production (`main`) est redéployée automatiquement par Vercel.

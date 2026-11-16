@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Administration · DAN-IA</title>
+<meta name="theme-color" content="#0E1B3D">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/admin.css?v=1">
+</head>
+<body>
+<noscript><p class="wrap">JavaScript est nécessaire pour afficher le tableau de bord.</p></noscript>
+
+<section class="login wrap" id="login" hidden>
+  <h1>Administration DAN-IA</h1>
+  <form id="loginForm" autocomplete="off">
+    <label for="token">Jeton d’administration</label>
+    <input id="token" type="password" autocomplete="current-password" required>
+    <button class="btn" type="submit">Ouvrir le tableau de bord</button>
+    <p class="msg" id="loginMsg" role="alert"></p>
+  </form>
+  <p class="muted">Le jeton est défini dans les propriétés du script Google (ADMIN_TOKEN). Il n’est conservé que le temps de la session de ce navigateur.</p>
+</section>
+
+<main id="app" hidden>
+<header class="top wrap">
+  <div>
+    <h1>Administration DAN-IA</h1>
+    <p class="muted" id="range"></p>
+    <p class="muted" id="refreshed"></p>
+  </div>
+  <div class="top-actions">
+    <button class="btn ghost" id="refresh" type="button">Actualiser</button>
+    <button class="btn ghost" id="selfx" type="button" aria-pressed="false">Exclure ce navigateur</button>
+    <button class="btn ghost" id="logout" type="button">Se déconnecter</button>
+  </div>
+</header>
+
+<section class="wrap controls" aria-label="Période et filtres">
+  <div class="seg" role="group" aria-label="Période" id="periods">
+    <button type="button" data-p="today">Aujourd’hui</button>
+    <button type="button" data-p="7" aria-pressed="true">7 jours</button>
+    <button type="button" data-p="30">30 jours</button>
+    <button type="button" data-p="365">12 mois</button>
+    <button type="button" data-p="custom">Plage personnalisée</button>
+  </div>
+  <form class="custom" id="customForm" hidden>
+    <label>Du <input type="date" id="cFrom" required></label>
+    <label>au <input type="date" id="cTo" required></label>
+    <button class="btn" type="submit">Appliquer</button>
+  </form>
+  <div class="filters">
+    <label>Source <select id="fChan"></select></label>
+    <label>Campagne <select id="fCamp"></select></label>
+    <label>Page d’entrée <select id="fPage"></select></label>
+    <label>Appareil <select id="fDev"></select></label>
+    <label class="chk"><input type="checkbox" id="fTest"> Inclure le trafic de test</label>
+    <button class="btn ghost" type="button" id="fReset">Réinitialiser</button>
+  </div>
+</section>
+
+<p class="wrap banner" id="status" role="status"></p>
+
+<section class="wrap" aria-labelledby="h-over">
+  <h2 id="h-over">Vue d’ensemble</h2>
+  <div class="kpis" id="kpis"></div>
+  <div class="card">
+    <div class="card-h">
+      <h3>Évolution</h3>
+      <div class="seg" role="group" aria-label="Courbe affichée" id="chartMode">
+        <button type="button" data-m="aud" aria-pressed="true">Audience</button>
+        <button type="button" data-m="dem" aria-pressed="false">Demandes de contact</button>
+      </div>
+    </div>
+    <div class="chart" id="chart" tabindex="0" role="group" aria-label="Courbe interactive : survolez, touchez ou utilisez les flèches pour lire les valeurs"></div>
+    <div class="tip" id="tip" hidden></div>
+    <details><summary>Voir les valeurs en tableau</summary><div id="chartTable"></div></details>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-src">
+  <h2 id="h-src">Provenance des visiteurs</h2>
+  <div class="grid2">
+    <div class="card"><h3>Canaux</h3><div class="scroll" id="tChan"></div></div>
+    <div class="card"><h3>Sources et campagnes</h3><div class="scroll" id="tSrc"></div></div>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-fun">
+  <h2 id="h-fun">Parcours de conversion</h2>
+  <div id="funnels" class="grid2"></div>
+</section>
+
+<section class="wrap" aria-labelledby="h-pages">
+  <h2 id="h-pages">Performance des pages</h2>
+  <div class="card"><div class="scroll" id="tPages"></div><p class="muted small" id="pagesNote"></p></div>
+  <div class="card"><h3>Core Web Vitals</h3><div class="scroll" id="tCwv"></div></div>
+</section>
+
+<section class="wrap" aria-labelledby="h-act">
+  <h2 id="h-act">Activité des 7 derniers jours</h2>
+  <div class="card"><h3>Sessions par jour</h3><div class="chart" id="hist"></div><details><summary>Voir les valeurs en tableau</summary><div id="histTable"></div></details></div>
+  <div class="card"><h3>Dernières sessions</h3><div class="scroll" id="tSess"></div><button class="btn ghost" id="moreSess" type="button" hidden>Afficher plus</button></div>
+</section>
+
+<section class="wrap" aria-labelledby="h-q">
+  <h2 id="h-q">Qualité des données</h2>
+  <div class="card"><div class="scroll" id="tQual"></div><ul class="notes" id="qNotes"></ul></div>
+</section>
+</main>
+
+<dialog id="detail" aria-labelledby="dTitle">
+  <form method="dialog"><button class="btn ghost close" aria-label="Fermer">Fermer</button></form>
+  <div id="dBody"></div>
+</dialog>
+
+<script src="/config.js?v=1" defer></script>
+<script src="/admin.js?v=1" defer></script>
+</body>
+</html>
