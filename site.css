@@ -467,7 +467,6 @@ body{font-size:16.5px}
 .hero-in{padding-top:calc(72px + clamp(16px,3.6vh,48px));min-height:100vh;min-height:100svh}
 .f-top{padding-top:108px}
 .diag{padding-top:112px}
-[data-view="mentions-legales"] .sec,[data-view="confidentialite"] .sec{padding-top:150px}
 [id]{scroll-margin-top:84px}
 .nav{position:relative;gap:2px}
 .nav a,.dd-btn{color:#D5DCEB;font:inherit;font-size:15.5px;padding:8px 12px;border-radius:10px;text-decoration:none;background:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:6px;min-height:40px}
@@ -588,7 +587,6 @@ body{font-size:16.5px}
 .dec-head span:nth-child(2),.dec-head span:nth-child(3){color:#AEB8CC;font-weight:700}
 .dec-cap{margin:10px 0 0;font-size:13.5px;color:#AEB8CC}
 .cs-case{margin-top:64px;display:grid;gap:16px}
-.cs-gain{margin:0;font-size:14.5px;color:var(--muted)}
 .cs-cta-row{margin-top:40px;display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between;padding:22px 24px;border-radius:var(--r-lg);background:var(--copper-soft);border:1px solid rgba(217,128,62,.35)}
 .cs-cta-row p{margin:0;max-width:46ch;font-size:17px}
 .cs-cta-row .hero-ctas{margin:0}
