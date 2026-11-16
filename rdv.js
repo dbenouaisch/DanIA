@@ -7,10 +7,8 @@
   var KEY = "dania-contact";
   var DAYS30 = 30 * 24 * 3600 * 1000;
   /* Tableur Google « DAN-IA · Demandes de rendez-vous » : URL de l'application Web Apps Script
-     (voir integrations/google-sheet.gs), réglée dans config.js. Vide = enregistrement désactivé. */
-  var SHEET_ENDPOINT = (window.DANIA_CONFIG && window.DANIA_CONFIG.endpoint) || "";
-  /* Mesure d'audience (track.js) : identifiant de session pour relier la demande à sa visite. */
-  var T = window.daniaTrack || { ev: function () {}, sid: function () { return ""; }, isTest: function () { return false; }, uid: function () { return String(Date.now()) + Math.random().toString(16).slice(2); } };
+     (voir integrations/google-sheet.gs). Vide = enregistrement désactivé. */
+  var SHEET_ENDPOINT = "";
   var BTN_LABEL = "Voir les créneaux";
 
   var form = document.getElementById("rdvForm");
@@ -94,7 +92,7 @@
   }
 
   /* Chaque demande est aussi inscrite dans le tableur, qu'elle ait atteint Formspree ou non. */
-  function logSheet(status, name, mail, tel, body, rid) {
+  function logSheet(status, name, mail, tel, body) {
     if (!SHEET_ENDPOINT) return;
     try {
       fetch(SHEET_ENDPOINT, {
@@ -103,8 +101,7 @@
         body: JSON.stringify({
           prenom: name, email: mail, telephone: tel, sujet: needLabel(), code_sujet: fNeed.value,
           origine: document.referrer || "visite directe", page: location.pathname + location.search,
-          formspree: status, message: body,
-          rid: rid, sid: T.sid(), test: T.isTest() ? 1 : 0
+          formspree: status, message: body
         })
       });
     } catch (e) {}
@@ -141,10 +138,6 @@
     panel("fail");
   }
 
-  /* Début du formulaire : première saisie ou première prise de focus. */
-  var started = false;
-  form.addEventListener("focusin", function () { if (!started) { started = true; T.ev("fs"); } });
-
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     var name = fName.value.trim(), mail = fMail.value.trim(), tel = fTel.value.trim();
@@ -171,7 +164,6 @@
       origine: document.referrer || "visite directe"
     };
     busy(true);
-    var rid = T.uid(8);
     var ctl = ("AbortController" in window) ? new AbortController() : null;
     var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 12000);
     fetch(FORMSPREE, {
@@ -182,11 +174,11 @@
     }).then(function (res) { return res.ok; }, function () { return false; }).then(function (sent) {
       clearTimeout(timer);
       busy(false);
-      logSheet(sent ? "ok" : "échec", name, mail, tel, body, rid);
+      logSheet(sent ? "ok" : "échec", name, mail, tel, body);
       if (sent) {
         writeMem({ name: name, email: mail, tel: tel });
         var opened = !!(tab && !tab.closed);
-        if (opened) { tab.location.href = agendaUrl(name, mail); T.ev("agenda_auto"); }
+        if (opened) { tab.location.href = agendaUrl(name, mail); }
         showDone(name, mail, opened);
       } else {
         if (tab && !tab.closed) { try { tab.close(); } catch (x) {} }
