@@ -1,8 +1,7 @@
 (function () {
   "use strict";
-  /* Réglages : si l'envoi échoue, remplacer FORMSPREE par l'adresse https://formspree.io/f/XXXXXXXX
-     indiquée dans le tableau de bord Formspree. */
-  var FORMSPREE = "https://formspree.io/dbenouaisch@gmail.com";
+  /* Réglages : identifiant du formulaire Formspree (tableau de bord Formspree), agenda et e-mail de contact. */
+  var FORMSPREE = "https://formspree.io/f/xrpqgryy";
   var AGENDA = "https://calendly.com/dbenouaisch";
   var MAIL = "dbenouaisch@gmail.com";
   var KEY = "dania-contact";
