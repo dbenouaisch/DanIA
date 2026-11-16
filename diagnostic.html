@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://dan-ia.vercel.app/diagnostic">
 <meta property="og:title" content="Quel atelier IA vous convient ? Diagnostic gratuit · DAN-IA">
 <meta property="og:description" content="Dix questions sur votre façon de travailler pour savoir quel atelier IA vous sera le plus utile. Résultat immédiat, sans inscription.">
-<meta property="og:image" content="https://dan-ia.vercel.app/og-dan-ia.png">
+<meta property="og:image" content="https://dan-ia.vercel.app/og-dan-ia.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="627">
 <meta property="og:image:alt" content="DAN-IA · Formation et conseil en IA et données">
@@ -22,8 +22,8 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/fonts/carlito-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/caladea-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/site.css?v=23">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://dan-ia.vercel.app/#organization","name":"DAN-IA","url":"https://dan-ia.vercel.app","email":"dbenouaisch@gmail.com","description":"Formation et conseil en IA et données pour dirigeants, managers et indépendants.","founder":{"@id":"https://dan-ia.vercel.app/#dan"},"knowsAbout":["Intelligence artificielle","Formation à l’IA","Analyse de données","Qualité des données","Automatisation de tâches de bureau"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://dan-ia.vercel.app"},{"@type":"ListItem","position":2,"name":"Diagnostic IA","item":"https://dan-ia.vercel.app/diagnostic"}]}]}</script>
+<link rel="stylesheet" href="/site.css?v=24">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://dan-ia.vercel.app/#organization","name":"DAN-IA","url":"https://dan-ia.vercel.app","email":"dbenouaisch@gmail.com","description":"Formation et conseil en IA et données pour dirigeants, managers et indépendants.","founder":{"@id":"https://dan-ia.vercel.app/#dan"},"knowsAbout":["Intelligence artificielle","Formation à l’IA","Analyse de données","Qualité des données","Automatisation de tâches de bureau"],"logo":{"@type":"ImageObject","url":"https://dan-ia.vercel.app/favicon.svg"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://dan-ia.vercel.app"},{"@type":"ListItem","position":2,"name":"Diagnostic IA","item":"https://dan-ia.vercel.app/diagnostic"}]}]}</script>
 </head>
 <body>
 <div class="site" id="site">
@@ -37,16 +37,17 @@
 <button aria-controls="ddForm" aria-expanded="false" class="dd-btn" data-nav="formations" type="button">Formations<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></button>
 <div class="dd-panel" id="ddForm">
 <a href="/ia-au-quotidien"><b>L’IA au quotidien</b><span>Préparer, rédiger, vérifier</span></a>
-<a href="/bureautique"><b>Bureautique et IA</b><span>E-mails, documents, tableaux de suivi</span></a>
+<a href="/bureautique"><b>Bureautique boostée par l’IA</b><span>E-mails, documents, tableaux de suivi</span></a>
 <a href="/agent-ia"><b>Créer son agent IA</b><span>Un assistant pour une tâche qui revient</span></a>
 <a class="dd-diag" href="/diagnostic"><b>Vous hésitez ?</b><span>Faites le diagnostic, dix questions</span></a>
 <a class="dd-all" href="/formations#formations">Comparer les trois ateliers</a>
 </div>
 </div>
 <a data-nav="conseil" href="/conseil">Conseil</a>
+<a data-nav="offres" href="/offres">Offres</a>
 <a data-nav="cas-pratiques" href="/formations#cas-pratiques">Cas pratiques</a>
-<a data-nav="a-propos" href="/formations#a-propos">Qui sommes-nous</a>
-<a class="nav-cta" data-nav="contact" href="/rendez-vous">Échanger avec nous</a>
+<a data-nav="a-propos" href="/a-propos">À propos</a>
+<a class="nav-cta" data-nav="contact" href="/rendez-vous">Réserver 20 min avec nous</a>
 <span aria-hidden="true" class="nav-ind" style="opacity: 0;"></span>
 </nav>
 </div>
@@ -54,7 +55,7 @@
 <main id="contenu">
 <div data-view="diagnostic">
 
-<section aria-label="Diagnostic IA" class="diag"><div aria-live="polite" class="diag-wrap" id="diagRoot"><noscript><div class="dq-card dq-intro"><h1>Quel atelier IA est fait pour vous ?</h1><p>Ce diagnostic de dix questions demande JavaScript. Vous pouvez aussi comparer les trois ateliers ou nous écrire directement.</p><p><a class="btn btn-primary" href="/formations#formations">Comparer les trois ateliers</a> <a class="btn btn-quiet" href="/rendez-vous">Échanger avec nous</a></p></div></noscript></div></section>
+<section aria-label="Diagnostic IA" class="diag"><div aria-live="polite" class="diag-wrap" id="diagRoot"><noscript><div class="dq-card dq-intro"><h1>Quel atelier IA est fait pour vous ?</h1><p>Ce diagnostic de dix questions demande JavaScript. Vous pouvez aussi comparer les trois ateliers ou nous écrire directement.</p><p><a class="btn btn-primary" href="/formations#formations">Comparer les trois ateliers</a> <a class="btn btn-quiet" href="/rendez-vous">Réserver 20 min avec nous</a></p></div></noscript></div></section>
 
 </div>
 </main>
@@ -63,16 +64,21 @@
 <a class="logo" href="/">DAN<span>-IA</span></a>
 <a href="/formations">Formations</a>
 <a href="/ia-au-quotidien">L’IA au quotidien</a>
-<a href="/bureautique">Bureautique et IA</a>
+<a href="/bureautique">Bureautique boostée par l’IA</a>
 <a href="/agent-ia">Créer son agent IA</a>
 <a href="/conseil">Conseil</a>
+<a href="/offres">Offres</a>
 <a href="/diagnostic">Diagnostic IA</a>
+<a href="/a-propos">À propos</a>
 <a href="/rendez-vous">Contact</a>
 <span>© 2026 DAN-IA</span>
 </div>
 </footer>
 <div class="mcta"><a class="btn btn-primary" href="/rendez-vous">Réserver 20 min avec nous</a></div>
 </div>
-<script src="/site.js?v=23" defer></script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script src="/site.js?v=24" defer></script>
+<script src="/lead.js?v=2" defer></script>
+<script src="/diagnostic.js?v=1" defer></script>
 </body>
 </html>

@@ -1,5 +1,6 @@
-/* Carte « Programme détaillé » des fiches ateliers : le programme n'est chargé qu'après l'envoi
-   des coordonnées (ou si le visiteur est déjà connu et clique). Dépend de lead.js. */
+/* Carte « Programme détaillé en PDF » des fiches ateliers : le programme est lisible sur la page ;
+   le PDF (programme/<atelier>.pdf) n'est proposé qu'après l'envoi des coordonnées (ou si le visiteur
+   est déjà connu et clique). Dépend de lead.js. */
 (function () {
   "use strict";
   var gate = document.getElementById("progGate");
@@ -20,13 +21,16 @@
   $("progForget").addEventListener("click", function () { L.clearMem(); fMail.value = fName.value = fTel.value = ""; showFields(); fMail.focus(); });
   $("progEdit").addEventListener("click", function () { showFields(); fMail.focus(); });
 
-  /* Le programme est un fragment HTML de ce site, chargé seulement ici. */
+  /* Le PDF est un fichier de ce site ; on vérifie qu'il existe avant de proposer le lien. */
   function reveal() {
-    return fetch("/programme/" + slug, { credentials: "same-origin" }).then(function (res) {
+    var url = "/programme/" + slug + ".pdf";
+    return fetch(url, { method: "HEAD", credentials: "same-origin" }).then(function (res) {
       if (!res.ok) throw new Error("http " + res.status);
-      return res.text();
-    }).then(function (html) {
-      body.innerHTML = html;
+      body.innerHTML = "";
+      var p = document.createElement("p"); p.className = "pg-lead"; p.textContent = "Merci, votre programme est prêt.";
+      var a = document.createElement("a"); a.className = "btn btn-primary"; a.href = url; a.target = "_blank"; a.rel = "noopener";
+      a.textContent = "Télécharger le programme (PDF)";
+      body.appendChild(p); body.appendChild(a);
       body.hidden = false;
       lock.hidden = true;
       body.focus();
@@ -34,7 +38,7 @@
     }).catch(function () { return false; });
   }
 
-  function busy(on) { btn.disabled = on; btn.textContent = on ? "Un instant…" : "Consulter le programme"; }
+  function busy(on) { btn.disabled = on; btn.textContent = on ? "Un instant…" : "Recevoir le PDF"; }
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -47,7 +51,7 @@
 
     var what = "Programme détaillé · " + label;
     var subject = "Demande DAN-IA · Programme détaillé : " + label + " · " + (name || mail);
-    var lines = ["Bonjour,", "", "Je souhaite consulter le programme détaillé de : " + label + ".", ""];
+    var lines = ["Bonjour,", "", "Je souhaite recevoir le programme détaillé (PDF) de : " + label + ".", ""];
     if (tel) lines.push("Merci de me rappeler au " + tel + ".", "");
     lines.push("Prénom : " + (name || "(non renseigné)"), "E-mail : " + mail, "", "Envoyé depuis la fiche « " + label + " » du site DAN-IA.");
     var text = lines.join("\n");

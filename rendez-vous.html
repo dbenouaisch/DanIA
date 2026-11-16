@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://dan-ia.vercel.app/rendez-vous">
 <meta property="og:title" content="Réserver un échange de 20 minutes · DAN-IA">
 <meta property="og:description" content="Laissez votre nom et votre e-mail, puis choisissez un créneau dans notre agenda : échange de 20 minutes en visio, sans engagement.">
-<meta property="og:image" content="https://dan-ia.vercel.app/og-dan-ia.png">
+<meta property="og:image" content="https://dan-ia.vercel.app/og-dan-ia.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="627">
 <meta property="og:image:alt" content="DAN-IA · Formation et conseil en IA et données">
@@ -22,8 +22,8 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/fonts/carlito-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/caladea-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/site.css?v=23">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://dan-ia.vercel.app/#organization","name":"DAN-IA","url":"https://dan-ia.vercel.app","email":"dbenouaisch@gmail.com","description":"Formation et conseil en IA et données pour dirigeants, managers et indépendants.","founder":{"@id":"https://dan-ia.vercel.app/#dan"},"knowsAbout":["Intelligence artificielle","Formation à l’IA","Analyse de données","Qualité des données","Automatisation de tâches de bureau"]}]}</script>
+<link rel="stylesheet" href="/site.css?v=24">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://dan-ia.vercel.app/#organization","name":"DAN-IA","url":"https://dan-ia.vercel.app","email":"dbenouaisch@gmail.com","description":"Formation et conseil en IA et données pour dirigeants, managers et indépendants.","founder":{"@id":"https://dan-ia.vercel.app/#dan"},"knowsAbout":["Intelligence artificielle","Formation à l’IA","Analyse de données","Qualité des données","Automatisation de tâches de bureau"],"logo":{"@type":"ImageObject","url":"https://dan-ia.vercel.app/favicon.svg"}}]}</script>
 </head>
 <body>
 <div class="site" id="site">
@@ -37,16 +37,17 @@
 <button aria-controls="ddForm" aria-expanded="false" class="dd-btn" data-nav="formations" type="button">Formations<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></button>
 <div class="dd-panel" id="ddForm">
 <a href="/ia-au-quotidien"><b>L’IA au quotidien</b><span>Préparer, rédiger, vérifier</span></a>
-<a href="/bureautique"><b>Bureautique et IA</b><span>E-mails, documents, tableaux de suivi</span></a>
+<a href="/bureautique"><b>Bureautique boostée par l’IA</b><span>E-mails, documents, tableaux de suivi</span></a>
 <a href="/agent-ia"><b>Créer son agent IA</b><span>Un assistant pour une tâche qui revient</span></a>
 <a class="dd-diag" href="/diagnostic"><b>Vous hésitez ?</b><span>Faites le diagnostic, dix questions</span></a>
 <a class="dd-all" href="/formations#formations">Comparer les trois ateliers</a>
 </div>
 </div>
 <a data-nav="conseil" href="/conseil">Conseil</a>
+<a data-nav="offres" href="/offres">Offres</a>
 <a data-nav="cas-pratiques" href="/formations#cas-pratiques">Cas pratiques</a>
-<a data-nav="a-propos" href="/formations#a-propos">Qui sommes-nous</a>
-<a class="nav-cta" data-nav="contact" href="/rendez-vous" aria-current="page">Échanger avec nous</a>
+<a data-nav="a-propos" href="/a-propos">À propos</a>
+<a class="nav-cta" data-nav="contact" href="/rendez-vous" aria-current="page">Réserver 20 min avec nous</a>
 <span aria-hidden="true" class="nav-ind" style="opacity: 0;"></span>
 </nav>
 </div>
@@ -56,22 +57,34 @@
 <section aria-labelledby="h-rdv" class="sec" style="padding-top:clamp(104px,14vw,128px)"><div class="wrap contact">
 <div>
 <p class="kick">Notre agenda</p>
-<h1 class="h2" id="h-rdv">Consultez notre agenda détaillé en nous laissant votre e-mail.</h1>
-<p class="sub">Pour vous proposer un créneau adapté, laissez-nous simplement votre e-mail.</p>
+<h1 class="h2" id="h-rdv">Réservez votre échange de 20 minutes.</h1>
+<p class="sub">Choisissez un créneau : l’invitation avec le lien de la visio vous arrive par e-mail. Sans engagement.</p>
 <div class="slot">
 <h3>Ce qui se passe ensuite</h3>
 <ul class="checks dark">
-<li>Vous nous laissez votre e-mail : rien d’autre n’est obligatoire.</li>
-<li>L’agenda s’ouvre dans un nouvel onglet, votre e-mail déjà renseigné.</li>
-<li>Vous choisissez un créneau et recevez l’invitation avec le lien de la visio.</li>
+<li>Vous choisissez un créneau dans l’agenda.</li>
+<li>Vous recevez l’invitation avec le lien de la visio.</li>
+<li>Nous échangeons 20 minutes sur votre situation, et vous repartez avec une première piste.</li>
 </ul>
 </div>
-<p class="form-note">Vous préférez écrire ? <a href="mailto:dbenouaisch@gmail.com">dbenouaisch@gmail.com</a>. Réponse sous <span>48 h ouvrées</span>.</p>
+<p class="form-note" id="sujetNote" hidden=""></p>
+<p class="form-note">Vous préférez écrire ? <a href="#ecrire">Envoyez-nous un message</a> ou écrivez à <a href="mailto:dbenouaisch@gmail.com">dbenouaisch@gmail.com</a>. Réponse sous <span>48 h ouvrées</span>.</p>
+</div>
+<div class="formbox agenda" id="agenda">
+<iframe class="agenda-frame" id="agendaFrame" title="Agenda de réservation DAN-IA" src="https://calendly.com/dbenouaisch?hide_gdpr_banner=1&amp;primary_color=d9803e&amp;embed_domain=dan-ia.vercel.app&amp;embed_type=Inline" loading="lazy"></iframe>
+<p class="form-note">L’agenda ne s’affiche pas ? <a href="https://calendly.com/dbenouaisch" rel="noopener" target="_blank">Ouvrez-le dans un nouvel onglet<span class="vh"> (nouvel onglet)</span></a>.</p>
+</div>
+</div></section>
+<section aria-labelledby="h-ecrire" class="sec on-surface" id="ecrire"><div class="wrap contact">
+<div>
+<p class="kick">Message</p>
+<h2 class="h2" id="h-ecrire">Vous préférez nous écrire ?</h2>
+<p class="sub">Laissez votre e-mail et votre sujet : nous vous répondons sous 48 h ouvrées, avec des créneaux si vous le souhaitez.</p>
 </div>
 <div class="formbox" id="formbox">
-<noscript><div class="alert alert-err"><b>JavaScript est nécessaire pour consulter l’agenda.</b> Écrivez-nous à <a href="mailto:dbenouaisch@gmail.com">dbenouaisch@gmail.com</a>, nous vous répondons sous 48 h ouvrées.</div></noscript>
+<noscript><div class="alert alert-err"><b>JavaScript est nécessaire pour envoyer le formulaire.</b> Écrivez-nous à <a href="mailto:dbenouaisch@gmail.com">dbenouaisch@gmail.com</a>, nous vous répondons sous 48 h ouvrées.</div></noscript>
 <form id="rdvForm" novalidate="">
-<div class="alert alert-ok" id="known" hidden=""><b id="knownHello"></b> L’agenda vous attend. <span class="known-links"><button class="link link-btn" id="forget" type="button">Ce n’est pas vous ? Effacer</button><button class="link link-btn" id="edit" type="button">Modifier mes informations</button></span></div>
+<div class="alert alert-ok" id="known" hidden=""><b id="knownHello"></b> Vos coordonnées sont déjà remplies. <span class="known-links"><button class="link link-btn" id="forget" type="button">Ce n’est pas vous ? Effacer</button><button class="link link-btn" id="edit" type="button">Modifier mes informations</button></span></div>
 <div id="contactFields">
 <div class="two">
 <div class="field"><label for="r-mail">E-mail</label><input aria-describedby="h-mail e-mail" autocomplete="email" class="inp" id="r-mail" name="email" required="" type="email"/><span class="hint-line" id="h-mail">Pour vous envoyer l’invitation et le lien de la visio.</span><span class="err-msg" hidden="" id="e-mail">Indiquez une adresse e-mail valide, par exemple nom@entreprise.fr.</span></div>
@@ -96,16 +109,15 @@
 </select>
 </div>
 <div class="hp" aria-hidden="true"><label>Ne pas remplir ce champ <input autocomplete="off" id="r-trap" name="_gotcha" tabindex="-1"/></label></div>
-<button class="btn btn-primary" id="sendBtn" style="margin-top:6px" type="submit">Voir les créneaux</button>
-<p class="form-note">L’agenda s’ouvre dans un nouvel onglet. Nous vous écrivons uniquement pour répondre à votre demande. Vos informations transitent par Formspree et vous pouvez les effacer à tout moment.</p>
+<button class="btn btn-primary" id="sendBtn" style="margin-top:6px" type="submit">Envoyer ma demande</button>
+<p class="form-note">Nous vous écrivons uniquement pour répondre à votre demande. Vos informations transitent par Formspree et vous pouvez les effacer à tout moment.</p>
 </form>
 <div class="done" hidden="" id="rdvDone" tabindex="-1">
 <div aria-hidden="true" class="tick"><svg fill="none" height="26" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" viewbox="0 0 24 24" width="26"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div>
 <h3 id="doneTitle">Merci, votre demande est envoyée</h3>
-<p>Nous vous répondons sous 48 h ouvrées. Il reste à choisir un créneau.</p>
+<p>Nous vous répondons sous 48 h ouvrées. Vous pouvez aussi réserver un créneau dès maintenant.</p>
 <dl class="recap" id="recap"></dl>
-<a class="btn btn-primary" href="https://calendly.com/dbenouaisch" id="openAgenda" rel="noopener" target="_blank">Ouvrir l’agenda<span class="vh"> (nouvel onglet)</span></a>
-<p class="form-note" id="doneHint" role="status"></p>
+<a class="btn btn-primary" href="#agenda" id="openAgenda">Choisir un créneau</a>
 <div class="hero-ctas" style="margin-top:14px"><a class="btn btn-quiet btn-sm" href="/formations">Revoir les formations</a><button class="btn btn-quiet btn-sm" id="again" type="button">Faire une autre demande</button></div>
 </div>
 <div class="done" hidden="" id="rdvFail" role="alert" tabindex="-1">
@@ -122,16 +134,19 @@
 <a class="logo" href="/">DAN<span>-IA</span></a>
 <a href="/formations">Formations</a>
 <a href="/ia-au-quotidien">L’IA au quotidien</a>
-<a href="/bureautique">Bureautique et IA</a>
+<a href="/bureautique">Bureautique boostée par l’IA</a>
 <a href="/agent-ia">Créer son agent IA</a>
 <a href="/conseil">Conseil</a>
+<a href="/offres">Offres</a>
 <a href="/diagnostic">Diagnostic IA</a>
+<a href="/a-propos">À propos</a>
 <a href="/rendez-vous">Contact</a>
 <span>© 2026 DAN-IA</span>
 </div>
 </footer>
 </div>
-<script src="/site.js?v=23" defer></script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script src="/site.js?v=24" defer></script>
 <script src="/lead.js?v=2" defer></script>
 <script src="/rdv.js?v=5" defer></script>
 </body>
