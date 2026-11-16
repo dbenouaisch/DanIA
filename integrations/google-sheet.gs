@@ -63,3 +63,15 @@ function clean_(v, max) {
   return s;
 }
 function out_(t) { return ContentService.createTextOutput(t); }
+
+/* Contrôle rapide : ouvrir l'URL /exec dans un navigateur doit afficher ce message. */
+function doGet() { return out_('DAN-IA : le script répond.'); }
+
+/* Test manuel : Exécuter > testEnvoi. Ajoute une ligne « TEST » (à supprimer ensuite) dans l'onglet Demandes. */
+function testEnvoi() {
+  var r = doPost({ postData: { contents: JSON.stringify({
+    prenom: 'TEST', email: 'test@exemple.fr', telephone: '+33 6 00 00 00 00', sujet: 'Test du script',
+    code_sujet: 'test', origine: 'Apps Script', page: '/test', formspree: 'ok', message: 'Ligne de test à supprimer.'
+  }) } });
+  Logger.log(r.getContent());
+}
