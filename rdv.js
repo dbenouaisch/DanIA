@@ -6,6 +6,9 @@
   var MAIL = "dbenouaisch@gmail.com";
   var KEY = "dania-contact";
   var DAYS30 = 30 * 24 * 3600 * 1000;
+  /* Tableur Google « DAN-IA · Demandes de rendez-vous » : URL de l'application Web Apps Script
+     (voir integrations/google-sheet.gs). Vide = enregistrement désactivé. */
+  var SHEET_ENDPOINT = "";
   var BTN_LABEL = "Voir les créneaux";
 
   var form = document.getElementById("rdvForm");
@@ -88,6 +91,22 @@
     return AGENDA + "?email=" + encodeURIComponent(mail) + (name ? "&name=" + encodeURIComponent(name) : "");
   }
 
+  /* Chaque demande est aussi inscrite dans le tableur, qu'elle ait atteint Formspree ou non. */
+  function logSheet(status, name, mail, tel, body) {
+    if (!SHEET_ENDPOINT) return;
+    try {
+      fetch(SHEET_ENDPOINT, {
+        method: "POST", mode: "no-cors", keepalive: true,
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({
+          prenom: name, email: mail, telephone: tel, sujet: needLabel(), code_sujet: fNeed.value,
+          origine: document.referrer || "visite directe", page: location.pathname + location.search,
+          formspree: status, message: body
+        })
+      });
+    } catch (e) {}
+  }
+
   function panel(which) {
     form.hidden = which !== "form";
     done.hidden = which !== "done";
@@ -152,18 +171,19 @@
       headers: { "Accept": "application/json", "Content-Type": "application/json" },
       body: JSON.stringify(payload),
       signal: ctl ? ctl.signal : undefined
-    }).then(function (res) {
-      if (!res.ok) throw new Error("http " + res.status);
-      writeMem({ name: name, email: mail, tel: tel });
-      var opened = !!(tab && !tab.closed);
-      if (opened) { tab.location.href = agendaUrl(name, mail); }
-      showDone(name, mail, opened);
-    }).catch(function () {
-      if (tab && !tab.closed) { try { tab.close(); } catch (x) {} }
-      showFail(subject, body);
-    }).then(function () {
+    }).then(function (res) { return res.ok; }, function () { return false; }).then(function (sent) {
       clearTimeout(timer);
       busy(false);
+      logSheet(sent ? "ok" : "échec", name, mail, tel, body);
+      if (sent) {
+        writeMem({ name: name, email: mail, tel: tel });
+        var opened = !!(tab && !tab.closed);
+        if (opened) { tab.location.href = agendaUrl(name, mail); }
+        showDone(name, mail, opened);
+      } else {
+        if (tab && !tab.closed) { try { tab.close(); } catch (x) {} }
+        showFail(subject, body);
+      }
     });
   });
 
