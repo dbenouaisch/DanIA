@@ -11,11 +11,12 @@
   if (!form) return;
   var $ = function (id) { return document.getElementById(id); };
   var fName = $("r-name"), fMail = $("r-mail"), fTel = $("r-tel"), fNeed = $("r-need"),
-      fKeep = $("r-keep"), fTrap = $("r-trap"), btn = $("sendBtn"),
+      fTrap = $("r-trap"), btn = $("sendBtn"),
       known = $("known"), done = $("rdvDone"), fail = $("rdvFail");
 
-  /* ---- Mémoire des coordonnées : le temps de la visite (sessionStorage),
-         ou 30 jours si le visiteur coche la case (localStorage). ---- */
+  /* ---- Mémoire des coordonnées : après un envoi réussi, le nom, l'e-mail et le téléphone
+         sont gardés 30 jours dans le navigateur (localStorage) pour préremplir le formulaire.
+         Pour ne les garder que le temps de la visite, ne conserver que sessionStorage. ---- */
   function readMem() {
     var raw = null, o = null;
     try { raw = sessionStorage.getItem(KEY); } catch (e) {}
@@ -25,13 +26,10 @@
     if (!o || (o.exp && o.exp < Date.now())) { clearMem(); return null; }
     return o;
   }
-  function writeMem(d, keep) {
-    var o = { name: d.name, email: d.email, tel: d.tel };
-    try { sessionStorage.setItem(KEY, JSON.stringify(o)); } catch (e) {}
-    try {
-      if (keep) { o.exp = Date.now() + DAYS30; o.keep = true; localStorage.setItem(KEY, JSON.stringify(o)); }
-      else { localStorage.removeItem(KEY); }
-    } catch (e) {}
+  function writeMem(d) {
+    var s = JSON.stringify({ name: d.name, email: d.email, tel: d.tel, exp: Date.now() + DAYS30 });
+    try { localStorage.setItem(KEY, s); } catch (e) {}
+    try { sessionStorage.setItem(KEY, s); } catch (e) {}
   }
   function clearMem() {
     try { sessionStorage.removeItem(KEY); } catch (e) {}
@@ -47,7 +45,6 @@
   var mem = readMem();
   if (mem) {
     fName.value = mem.name || ""; fMail.value = mem.email || ""; fTel.value = mem.tel || "";
-    fKeep.checked = !!mem.keep;
     showKnown(mem.name);
   }
 
@@ -57,7 +54,6 @@
   $("forget").addEventListener("click", function () {
     clearMem();
     fName.value = fMail.value = fTel.value = "";
-    fKeep.checked = false;
     known.hidden = true;
     fName.focus();
   });
@@ -149,7 +145,7 @@
       signal: ctl ? ctl.signal : undefined
     }).then(function (res) {
       if (!res.ok) throw new Error("http " + res.status);
-      writeMem({ name: name, email: mail, tel: tel }, fKeep.checked);
+      writeMem({ name: name, email: mail, tel: tel });
       var opened = !!(tab && !tab.closed);
       if (opened) { tab.location.href = agendaUrl(name, mail); }
       showDone(name, mail, opened);
