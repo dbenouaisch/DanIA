@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /programme/
 
 Sitemap: https://dan-ia.vercel.app/sitemap.xml
