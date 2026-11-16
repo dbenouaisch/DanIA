@@ -1,9 +1,9 @@
 (function () {
   "use strict";
-  /* Réglages de la page : agenda de réservation. L'identifiant Formspree, le tableur Google
-     et l'e-mail de contact se règlent en tête de lead.js. */
+  /* Réglages de la page : agenda de réservation (intégré dans la page). L'identifiant Formspree,
+     le tableur Google et l'e-mail de contact se règlent en tête de lead.js. */
   var AGENDA = "https://calendly.com/dbenouaisch";
-  var BTN_LABEL = "Voir les créneaux";
+  var BTN_LABEL = "Envoyer ma demande";
 
   var form = document.getElementById("rdvForm");
   var L = window.DaniaLead;
@@ -13,7 +13,7 @@
       fTrap = $("r-trap"), btn = $("sendBtn"), fields = $("contactFields"),
       known = $("known"), done = $("rdvDone"), fail = $("rdvFail");
 
-  /* Visiteur déjà connu : « Bonjour Camille, l'agenda vous attend », un seul clic. */
+  /* Visiteur déjà connu : « Bonjour Camille », coordonnées déjà remplies. */
   function showKnown(name) {
     $("knownHello").textContent = L.firstName(name) ? "Bonjour " + L.firstName(name) + "." : "Bonjour.";
     known.hidden = false;
@@ -28,10 +28,17 @@
   if (mem && L.isEmail(mem.email)) {
     fName.value = mem.name || ""; fMail.value = mem.email; fTel.value = mem.tel || "";
     showKnown(mem.name);
+    /* L'agenda intégré est prérempli avec le nom et l'e-mail déjà connus. */
+    var fr = $("agendaFrame");
+    if (fr) fr.src = agendaUrl(mem.name, mem.email) + "&hide_gdpr_banner=1&primary_color=d9803e&embed_domain=" + encodeURIComponent(location.hostname) + "&embed_type=Inline";
   }
 
   var q = new URLSearchParams(location.search).get("sujet");
-  if (q && [].some.call(fNeed.options, function (o) { return o.value === q; })) fNeed.value = q;
+  if (q && [].some.call(fNeed.options, function (o) { return o.value === q; })) {
+    fNeed.value = q;
+    var note = $("sujetNote");
+    if (note) { note.textContent = "Sujet choisi : " + fNeed.options[fNeed.selectedIndex].text + ". Mentionnez-le lors de la réservation, ou envoyez-le-nous avec le formulaire ci-dessous."; note.hidden = false; }
+  }
 
   $("forget").addEventListener("click", function () {
     L.clearMem();
@@ -73,13 +80,9 @@
     btn.textContent = on ? "Envoi en cours…" : BTN_LABEL;
   }
 
-  function showDone(name, mail, tabOpened) {
+  function showDone(name, mail) {
     var first = L.firstName(name);
     $("doneTitle").textContent = first ? "Merci " + first + ", votre demande est envoyée" : "Merci, votre demande est envoyée";
-    $("openAgenda").href = agendaUrl(name, mail);
-    $("doneHint").textContent = tabOpened
-      ? "L’agenda s’est ouvert dans un nouvel onglet, votre e-mail y est déjà renseigné. Vous ne le voyez pas ? Utilisez le bouton « Ouvrir l’agenda »."
-      : "Ouvrez l’agenda avec le bouton ci-dessus : votre e-mail y sera déjà renseigné.";
     var rc = $("recap"); rc.innerHTML = "";
     [["Sujet", needLabel()], ["E-mail", mail]].forEach(function (p) {
       var dt = document.createElement("dt"), dd = document.createElement("dd");
@@ -102,14 +105,7 @@
     }
 
     /* Champ piège : un robot l'a rempli, on fait comme si tout allait bien. */
-    if (fTrap.value) { showDone(name, mail, false); return; }
-
-    /* L'onglet est ouvert tout de suite, dans le clic, pour ne pas être bloqué. */
-    var tab = null;
-    try {
-      tab = window.open("", "_blank");
-      if (tab) { tab.opener = null; tab.document.title = "Agenda DAN-IA"; tab.document.body.textContent = "Chargement de l’agenda…"; }
-    } catch (x) { tab = null; }
+    if (fTrap.value) { showDone(name, mail); return; }
 
     var subject = buildSubject(name || mail), body = buildBody(name, mail, tel);
     busy(true);
@@ -117,11 +113,8 @@
       busy(false);
       if (sent) {
         L.writeMem({ name: name, email: mail, tel: tel });
-        var opened = !!(tab && !tab.closed);
-        if (opened) { tab.location.href = agendaUrl(name, mail); }
-        showDone(name, mail, opened);
+        showDone(name, mail);
       } else {
-        if (tab && !tab.closed) { try { tab.close(); } catch (x) {} }
         showFail(subject, body);
       }
     });
