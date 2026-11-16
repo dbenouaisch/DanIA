@@ -7,17 +7,17 @@
   if (!gate || !L) return;
   var $ = function (id) { return document.getElementById(id); };
   var slug = gate.dataset.slug, label = gate.dataset.label;
-  var form = $("progForm"), fMail = $("pg-mail"), fName = $("pg-name"), fTrap = $("pg-trap"), btn = $("progBtn"),
+  var form = $("progForm"), fMail = $("pg-mail"), fName = $("pg-name"), fTel = $("pg-tel"), fTrap = $("pg-trap"), btn = $("progBtn"),
       fields = $("progFields"), known = $("progKnown"), fail = $("progFail"), lock = $("progLock"), body = $("progBody");
 
   function showFields() { known.hidden = true; fields.hidden = false; }
   var mem = L.readMem();
   if (mem && L.isEmail(mem.email)) {
-    fMail.value = mem.email; fName.value = mem.name || "";
+    fMail.value = mem.email; fName.value = mem.name || ""; fTel.value = mem.tel || "";
     $("progHello").textContent = L.firstName(mem.name) ? "Bonjour " + L.firstName(mem.name) + "." : "Bonjour.";
     known.hidden = false; fields.hidden = true;
   }
-  $("progForget").addEventListener("click", function () { L.clearMem(); fMail.value = fName.value = ""; showFields(); fMail.focus(); });
+  $("progForget").addEventListener("click", function () { L.clearMem(); fMail.value = fName.value = fTel.value = ""; showFields(); fMail.focus(); });
   $("progEdit").addEventListener("click", function () { showFields(); fMail.focus(); });
 
   /* Le programme est un fragment HTML de ce site, chargé seulement ici. */
@@ -38,7 +38,7 @@
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    var name = fName.value.trim(), mail = fMail.value.trim();
+    var name = fName.value.trim(), mail = fMail.value.trim(), tel = fTel.value.trim();
     var bad = !L.isEmail(mail);
     fMail.setAttribute("aria-invalid", bad ? "true" : "false");
     $("pg-e-mail").hidden = !bad;
@@ -47,12 +47,14 @@
 
     var what = "Programme détaillé · " + label;
     var subject = "Demande DAN-IA · Programme détaillé : " + label + " · " + (name || mail);
-    var text = ["Bonjour,", "", "Je souhaite consulter le programme détaillé de : " + label + ".", "",
-      "Prénom : " + (name || "(non renseigné)"), "E-mail : " + mail, "", "Envoyé depuis la fiche « " + label + " » du site DAN-IA."].join("\n");
+    var lines = ["Bonjour,", "", "Je souhaite consulter le programme détaillé de : " + label + ".", ""];
+    if (tel) lines.push("Merci de me rappeler au " + tel + ".", "");
+    lines.push("Prénom : " + (name || "(non renseigné)"), "E-mail : " + mail, "", "Envoyé depuis la fiche « " + label + " » du site DAN-IA.");
+    var text = lines.join("\n");
     busy(true);
-    L.send({ name: name, email: mail, tel: "", label: what, code: "programme-" + slug, subject: subject, body: text }).then(function (sent) {
+    L.send({ name: name, email: mail, tel: tel, label: what, code: "programme-" + slug, subject: subject, body: text }).then(function (sent) {
       if (!sent) return false;
-      L.writeMem({ name: name, email: mail, tel: (L.readMem() || {}).tel || "" });
+      L.writeMem({ name: name, email: mail, tel: tel });
       return reveal();
     }).then(function (shown) {
       busy(false);
