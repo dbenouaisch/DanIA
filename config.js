@@ -3,6 +3,6 @@
               Vide = aucune mesure.
    prodHosts : domaines de production. Tout autre domaine (localhost, aperçus Vercel) n'est pas mesuré. */
 window.DANIA_CONFIG = {
-  endpoint: "https://script.google.com/macros/s/AKfycbxcPtrb5SnjAJFGzm52FmuHZGGhMVdNyoJUUZXlmUuW4EDL52MhwHKp2AVWumefO295/exec",
+  endpoint: "https://script.google.com/macros/s/AKfycbxSarto2q9Pu95jPMnk5VaSRdDZQAK31V2KqExx6gvbTtHz-KXPfgJTgZYq5GBNm-rN/exec",
   prodHosts: ["dan-ia.vercel.app"]
 };

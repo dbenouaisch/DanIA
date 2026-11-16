@@ -7,7 +7,7 @@
     FORMSPREE: "https://formspree.io/f/xrpqgryy",
     /* Tableur Google « DAN-IA · Demandes de rendez-vous » : URL de l'application Web Apps Script
        (voir integrations/google-sheet.gs). Vide = enregistrement désactivé. */
-    SHEET_ENDPOINT: "https://script.google.com/macros/s/AKfycbxcPtrb5SnjAJFGzm52FmuHZGGhMVdNyoJUUZXlmUuW4EDL52MhwHKp2AVWumefO295/exec",
+    SHEET_ENDPOINT: "https://script.google.com/macros/s/AKfycbxSarto2q9Pu95jPMnk5VaSRdDZQAK31V2KqExx6gvbTtHz-KXPfgJTgZYq5GBNm-rN/exec",
     MAIL: "dbenouaisch@gmail.com"
   };
   var KEY = "dania-contact";
