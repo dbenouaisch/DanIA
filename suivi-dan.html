@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Suivi · DAN-IA</title>
+<meta name="theme-color" content="#0E1B3D">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/suivi.css?v=1">
+</head>
+<body>
+<noscript><p class="wrap">JavaScript est nécessaire pour afficher le suivi.</p></noscript>
+
+<section class="login wrap" id="login" hidden>
+  <p class="brand">DAN<span>-IA</span></p>
+  <h1>Suivi du site</h1>
+  <form id="loginForm" autocomplete="off">
+    <label for="pwd">Mot de passe</label>
+    <input id="pwd" type="password" autocomplete="current-password" required>
+    <label class="chk"><input type="checkbox" id="showPwd"> Afficher le mot de passe</label>
+    <button class="btn" type="submit">Ouvrir le suivi</button>
+    <p class="msg" id="loginMsg" role="alert"></p>
+  </form>
+</section>
+
+<main id="app" hidden>
+<header class="top wrap">
+  <div>
+    <p class="brand">DAN<span>-IA</span> <span class="brand-sub">Suivi du site</span></p>
+    <p class="muted" id="range"></p>
+    <p class="muted"><span id="refreshed"></span> <span class="live" id="live" role="status"></span></p>
+  </div>
+  <div class="top-actions">
+    <button class="btn ghost" id="refresh" type="button">Actualiser</button>
+    <button class="btn ghost" id="selfx" type="button" aria-pressed="false">Exclure ce navigateur</button>
+    <button class="btn ghost" id="logout" type="button">Se déconnecter</button>
+  </div>
+</header>
+
+<div class="sticky">
+  <div class="wrap controls" aria-label="Période et filtres">
+    <div class="seg" role="group" aria-label="Période" id="periods">
+      <button type="button" data-p="today">Aujourd’hui</button>
+      <button type="button" data-p="7" aria-pressed="true">7 jours</button>
+      <button type="button" data-p="30">30 jours</button>
+      <button type="button" data-p="365">12 mois</button>
+      <button type="button" data-p="custom">Personnalisée</button>
+    </div>
+    <div class="seg" role="group" aria-label="Regrouper par" id="gran">
+      <button type="button" data-g="day" aria-pressed="true">Jour</button>
+      <button type="button" data-g="week" id="granWeek">Semaine</button>
+      <button type="button" data-g="month" id="granMonth">Mois</button>
+    </div>
+    <details class="fdet"><summary>Filtres <span id="fCount" class="muted"></span></summary>
+      <div class="filters">
+        <label>Source <select id="fChan"></select></label>
+        <label>Campagne <select id="fCamp"></select></label>
+        <label>Page d’entrée <select id="fPage"></select></label>
+        <label>Appareil <select id="fDev"></select></label>
+        <label class="chk"><input type="checkbox" id="fTest"> Inclure le trafic de test</label>
+        <button class="btn ghost" type="button" id="fReset">Réinitialiser</button>
+      </div>
+    </details>
+    <form class="custom" id="customForm" hidden>
+      <label>Du <input type="date" id="cFrom" required></label>
+      <label>au <input type="date" id="cTo" required></label>
+      <button class="btn" type="submit">Appliquer</button>
+    </form>
+  </div>
+  <nav class="toc wrap" aria-label="Sections">
+    <a href="#s-vue">Vue d’ensemble</a><a href="#s-ens">Enseignements</a><a href="#s-par">Parcours</a><a href="#s-src">Sources</a><a href="#s-fid">Fidélité</a><a href="#s-pag">Pages</a><a href="#s-qual">Qualité</a>
+  </nav>
+</div>
+
+<p class="wrap banner" id="status" role="status"></p>
+
+<section class="wrap" id="s-vue" aria-labelledby="h-vue">
+  <h2 id="h-vue">Vue d’ensemble</h2>
+  <div class="kpis" id="kpis"></div>
+  <div class="card">
+    <div class="card-h">
+      <h3>Évolution</h3>
+      <div class="seg" role="group" aria-label="Courbe affichée" id="chartMode">
+        <button type="button" data-m="aud" aria-pressed="true">Visiteurs et visites</button>
+        <button type="button" data-m="pv" aria-pressed="false">Pages vues</button>
+        <button type="button" data-m="dem" aria-pressed="false">Demandes</button>
+      </div>
+    </div>
+    <div class="chart" id="chart" tabindex="0" role="group" aria-label="Courbe interactive : survolez, touchez ou utilisez les flèches pour lire les valeurs"></div>
+    <div class="tip" id="tip" hidden></div>
+    <p class="note" id="gnote"></p>
+    <details><summary>Voir les valeurs en tableau</summary><div class="scroll" id="chartTable"></div></details>
+  </div>
+</section>
+
+<section class="wrap" id="s-ens" aria-labelledby="h-ens">
+  <h2 id="h-ens">Enseignements</h2>
+  <p class="sub">Lecture automatique de vos chiffres : ce qu’il faut corriger, garder ou simplement savoir. Rien n’est affiché sans assez de visites (30 au moins).</p>
+  <ul class="insights" id="insights"></ul>
+</section>
+
+<section class="wrap" id="s-par" aria-labelledby="h-par">
+  <h2 id="h-par">Parcours des visiteurs</h2>
+  <div class="card"><h3>Dernières visites <span class="muted small">cliquez sur une ligne pour retracer le parcours, de l’entrée à la sortie</span></h3><div class="scroll" id="tVisits"></div><button class="btn ghost" id="moreVisits" type="button" hidden>Afficher plus</button></div>
+  <div class="card"><h3>Parcours les plus fréquents</h3><div class="scroll" id="tJour"></div></div>
+  <div class="grid2">
+    <div class="card"><h3>Où les visiteurs quittent le site</h3><div class="scroll" id="tExit"></div></div>
+    <div class="card"><h3>D’une page à l’autre</h3><div class="scroll" id="tNext"></div></div>
+  </div>
+  <h3 class="h3s">Entonnoirs de conversion</h3>
+  <div id="funnels" class="grid2"></div>
+</section>
+
+<section class="wrap" id="s-src" aria-labelledby="h-src">
+  <h2 id="h-src">Sources des visites</h2>
+  <div class="grid2">
+    <div class="card"><h3>Canaux</h3><div class="scroll" id="tChan"></div></div>
+    <div class="card"><h3>Sources et campagnes</h3><div class="scroll" id="tSrc"></div></div>
+  </div>
+</section>
+
+<section class="wrap" id="s-fid" aria-labelledby="h-fid">
+  <h2 id="h-fid">Fidélité</h2>
+  <div id="loy"></div>
+  <div class="card"><div class="scroll" id="tLoy"></div></div>
+</section>
+
+<section class="wrap" id="s-pag" aria-labelledby="h-pag">
+  <h2 id="h-pag">Performance des pages</h2>
+  <div class="card"><div class="scroll" id="tPages"></div><p class="muted small" id="pagesNote"></p></div>
+  <div class="card"><h3>Core Web Vitals</h3><div class="scroll" id="tCwv"></div></div>
+</section>
+
+<section class="wrap" id="s-qual" aria-labelledby="h-q">
+  <h2 id="h-q">Qualité des données</h2>
+  <div class="card"><div class="scroll" id="tQual"></div><ul class="notes" id="qNotes"></ul></div>
+</section>
+</main>
+
+<dialog id="detail" aria-labelledby="dTitle"><form method="dialog"><button class="btn ghost close" aria-label="Fermer">Fermer</button></form><div id="dBody"></div></dialog>
+<dialog id="visit" aria-labelledby="vTitle"><form method="dialog"><button class="btn ghost close" aria-label="Fermer">Fermer</button></form><div id="vBody"></div></dialog>
+
+<script src="/config.js?v=2" defer></script>
+<script src="/suivi.js?v=1" defer></script>
+</body>
+</html>
