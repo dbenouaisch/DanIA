@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Réserver un échange de 20 minutes · DAN-IA</title>
+<meta name="description" content="Laissez votre nom et votre e-mail, puis choisissez un créneau dans notre agenda : échange de 20 minutes en visio, sans engagement.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://dan-ia.vercel.app/rendez-vous">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DAN-IA">
+<meta property="og:url" content="https://dan-ia.vercel.app/rendez-vous">
+<meta property="og:title" content="Réserver un échange de 20 minutes · DAN-IA">
+<meta property="og:description" content="Laissez votre nom et votre e-mail, puis choisissez un créneau dans notre agenda : échange de 20 minutes en visio, sans engagement.">
+<meta property="og:image" content="https://dan-ia.vercel.app/og-dan-ia.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta property="og:image:alt" content="DAN-IA · Formation et conseil en IA et données">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0E1B3D">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/carlito-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/caladea-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/site.css?v=11">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://dan-ia.vercel.app/#organization","name":"DAN-IA","url":"https://dan-ia.vercel.app","email":"dbenouaisch@gmail.com","description":"Formation et conseil en IA et données pour dirigeants, managers et indépendants.","founder":{"@id":"https://dan-ia.vercel.app/#dan"},"knowsAbout":["Intelligence artificielle","Formation à l’IA","Analyse de données","Qualité des données","Automatisation de tâches de bureau"]}]}</script>
+</head>
+<body>
+<div class="site" id="site">
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="hdr" id="hdr">
+<div class="hdr-in">
+<a aria-label="DAN-IA, accueil" class="logo" href="/">DAN<span>-IA</span></a>
+<button aria-controls="nav" aria-expanded="false" class="menu-btn" id="menuBtn" type="button"><span aria-hidden="true" class="bars"><i></i></span><span id="menuLbl">Menu</span></button>
+<nav aria-label="Navigation principale" class="nav" id="nav">
+<div class="dd">
+<button aria-controls="ddForm" aria-expanded="false" class="dd-btn" data-nav="formations" type="button">Formations<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></button>
+<div class="dd-panel" id="ddForm">
+<a href="/ia-au-quotidien"><b>L’IA au quotidien</b><span>Préparer, rédiger, vérifier</span></a>
+<a href="/bureautique"><b>Bureautique et IA</b><span>E-mails, documents, tableaux de suivi</span></a>
+<a href="/agent-ia"><b>Créer son agent IA</b><span>Un assistant pour une tâche qui revient</span></a>
+<a class="dd-diag" href="/diagnostic"><b>Vous hésitez ?</b><span>Faites le diagnostic, dix questions</span></a>
+<a class="dd-all" href="/formations#formations">Comparer les trois ateliers</a>
+</div>
+</div>
+<a data-nav="conseil" href="/conseil">Conseil</a>
+<a data-nav="cas-pratiques" href="/formations#cas-pratiques">Cas pratiques</a>
+<a data-nav="a-propos" href="/formations#a-propos">Qui sommes-nous</a>
+<a class="nav-cta" data-nav="contact" href="/rendez-vous" aria-current="page">Échanger avec nous</a>
+<span aria-hidden="true" class="nav-ind" style="opacity: 0;"></span>
+</nav>
+</div>
+</header>
+<main id="contenu">
+<div data-view="rendez-vous">
+<section aria-labelledby="h-rdv" class="sec" style="padding-top:clamp(104px,14vw,128px)"><div class="wrap contact">
+<div>
+<p class="kick">Échanger avec nous</p>
+<h1 class="h2" id="h-rdv">Réservez 20 minutes avec nous.</h1>
+<p class="sub">Laissez-nous votre nom et votre e-mail, puis choisissez un créneau dans notre agenda. Sans engagement.</p>
+<div class="slot">
+<h3>Ce qui se passe ensuite</h3>
+<ul class="checks dark">
+<li>Nous recevons votre demande par e-mail, avec le sujet que vous avez choisi.</li>
+<li>L’agenda s’ouvre dans un nouvel onglet, votre nom et votre e-mail déjà renseignés.</li>
+<li>Vous choisissez un créneau et recevez l’invitation avec le lien de la visio.</li>
+</ul>
+</div>
+<p class="form-note">Vous préférez écrire ? <a href="mailto:dbenouaisch@gmail.com">dbenouaisch@gmail.com</a>. Réponse sous <span>48 h ouvrées</span>.</p>
+</div>
+<div class="formbox" id="formbox">
+<form id="rdvForm" novalidate="">
+<div class="alert alert-ok" id="known" hidden=""><b>Bonjour <span id="knownName"></span>.</b> Nous avons préparé le formulaire avec vos informations. <button class="link link-btn" id="forget" type="button">Ce n’est pas vous ? Effacer</button></div>
+<div class="two">
+<div class="field"><label for="r-name">Nom</label><input aria-describedby="e-name" autocomplete="name" class="inp" id="r-name" name="name" required=""/><span class="err-msg" hidden="" id="e-name">Indiquez votre nom.</span></div>
+<div class="field"><label for="r-mail">E-mail</label><input aria-describedby="e-mail" autocomplete="email" class="inp" id="r-mail" name="email" required="" type="email"/><span class="err-msg" hidden="" id="e-mail">Indiquez une adresse e-mail valide, par exemple nom@entreprise.fr.</span></div>
+</div>
+<div class="field"><label for="r-tel">Téléphone <span class="hint">(facultatif, seulement si vous préférez un rappel)</span></label><input autocomplete="tel" class="inp" id="r-tel" name="tel" type="tel"/></div>
+<div class="field">
+<label for="r-need">Sujet</label>
+<select aria-describedby="e-need" class="inp" id="r-need" name="need" required="">
+<option value="">Choisissez</option>
+<option value="ia-au-quotidien">Atelier · L’IA au quotidien</option>
+<option value="bureautique">Atelier · Bureautique boostée par l’IA</option>
+<option value="agent-ia">Atelier · Créer son agent IA</option>
+<option value="equipe">Former mon équipe</option>
+<option value="premier-usage">Identifier un premier usage de l’IA</option>
+<option value="accompagnement">Accompagnement au déploiement</option>
+<option value="conseil-strategie">Conseil · Stratégie IA et feuille de route</option>
+<option value="conseil-data">Conseil · Organisation et valorisation des données</option>
+<option value="echange">Échanger 20 minutes avec nous</option>
+<option value="hesite">Je ne sais pas encore</option>
+</select>
+<span class="err-msg" hidden="" id="e-need">Choisissez le sujet le plus proche, ou « Je ne sais pas encore ».</span>
+</div>
+<div class="hp" aria-hidden="true"><label>Ne pas remplir ce champ <input autocomplete="off" id="r-trap" name="_gotcha" tabindex="-1"/></label></div>
+<div class="memo">
+<p class="form-note">Nous gardons ces informations dans votre navigateur, le temps de votre visite, pour préremplir un prochain formulaire. Elles ne nous sont envoyées qu’à la validation.</p>
+<label class="check"><input id="r-keep" type="checkbox"/> Me reconnaître lors de ma prochaine visite (30 jours)</label>
+</div>
+<button class="btn btn-primary" id="sendBtn" style="margin-top:6px" type="submit">Choisir un créneau</button>
+<p class="form-note">L’agenda s’ouvre dans un nouvel onglet. En validant, vous acceptez que nous utilisions vos coordonnées pour répondre à votre demande : elles transitent par Formspree (<a href="/confidentialite">confidentialité</a>).</p>
+</form>
+<div class="done" hidden="" id="rdvDone" tabindex="-1">
+<div aria-hidden="true" class="tick"><svg fill="none" height="26" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" viewbox="0 0 24 24" width="26"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div>
+<h3>Merci <span id="doneName"></span>, votre demande est envoyée</h3>
+<p>Nous la recevons par e-mail et vous répondons sous 48 h ouvrées. Il reste à choisir un créneau.</p>
+<dl class="recap" id="recap"></dl>
+<a class="btn btn-primary" href="https://calendly.com/dbenouaisch" id="openAgenda" rel="noopener" target="_blank">Ouvrir l’agenda<span class="vh"> (nouvel onglet)</span></a>
+<p class="form-note" id="doneHint" role="status"></p>
+<div class="hero-ctas" style="margin-top:14px"><a class="btn btn-quiet btn-sm" href="/formations">Revoir les formations</a><button class="btn btn-quiet btn-sm" id="again" type="button">Faire une autre demande</button></div>
+</div>
+<div class="done" hidden="" id="rdvFail" role="alert" tabindex="-1">
+<h3>L’envoi n’a pas abouti</h3>
+<p>Votre demande n’est pas partie. Envoyez-la par e-mail, elle est déjà rédigée, ou réessayez dans un instant.</p>
+<div class="hero-ctas"><a class="btn btn-primary btn-sm" href="mailto:dbenouaisch@gmail.com" id="failMail">Envoyer par e-mail</a><button class="btn btn-quiet btn-sm" id="retry" type="button">Réessayer</button></div>
+</div>
+</div>
+</div></section>
+</div>
+</main>
+<footer class="foot">
+<div class="wrap">
+<a class="logo" href="/">DAN<span>-IA</span></a>
+<a href="/formations">Formations</a>
+<a href="/ia-au-quotidien">L’IA au quotidien</a>
+<a href="/bureautique">Bureautique et IA</a>
+<a href="/agent-ia">Créer son agent IA</a>
+<a href="/conseil">Conseil</a>
+<a href="/diagnostic">Diagnostic IA</a>
+<a href="/rendez-vous">Contact</a>
+<a href="/mentions-legales">Mentions légales</a>
+<a href="/confidentialite">Confidentialité</a>
+<span>© 2026 DAN-IA</span>
+</div>
+</footer>
+</div>
+<script src="/site.js?v=11" defer></script>
+<script src="/rdv.js?v=1" defer></script>
+</body>
+</html>
