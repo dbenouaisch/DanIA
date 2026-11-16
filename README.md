@@ -9,7 +9,7 @@ Site statique de formation et conseil en IA et données (HTML/CSS/JS, sans build
 - `/conseil` : accompagnement données et IA
 - `/diagnostic` : questionnaire de 10 questions (JavaScript requis)
 - `/rendez-vous` : formulaire (Formspree) puis ouverture de l’agenda Calendly dans un nouvel onglet ; réglages en tête de `rdv.js`
-- `/mentions-legales`, `/confidentialite`
+- `/mentions-legales`
 
 ## Structure
 - `rdv.js` : formulaire de rendez-vous (envoi Formspree, mémoire des coordonnées, agenda). Le formulaire Formspree utilisé est `https://formspree.io/f/xrpqgryy`.
