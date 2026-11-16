@@ -49,12 +49,12 @@ form.addEventListener("submit",function(e){e.preventDefault();
   var sel=document.getElementById("f-need"),fmt=form.querySelector("input[name=format]:checked");
   var needTxt=sel.options[sel.selectedIndex].text,fmtTxt=fmt?fmt.nextElementSibling.textContent:"À voir ensemble",msg=document.getElementById("f-msg").value.trim();
   var subject="Demande DAN-IA · "+needTxt.replace("Atelier · ","")+" · "+name;
-  var body=["Bonjour Dan,","","Besoin : "+needTxt,"Format envisagé : "+fmtTxt,"",msg||"(pas de message)","","Nom : "+name,"E-mail : "+mail];
+  var body=["Bonjour,","","Besoin : "+needTxt,"Format envisagé : "+fmtTxt,"",msg||"(pas de message)","","Nom : "+name,"E-mail : "+mail];
   if(call.checked)body.push("Merci de me rappeler au "+tel+".");
   body.push("","Envoyé depuis le formulaire du site DAN-IA");body=body.join("\n");
   last={subject:subject,body:body,href:"mailto:"+DAN_MAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body)};
   document.getElementById("mailAgain").href=last.href;document.getElementById("mailAgain").removeAttribute("target");
-  document.getElementById("doneTxt").textContent="Merci "+name.split(" ")[0]+". Votre messagerie s’ouvre avec la demande déjà rédigée, adressée à "+DAN_MAIL+". Relisez-la, puis cliquez sur Envoyer : Dan vous répond sous 48 h ouvrées"+(call.checked?", ou vous rappelle au "+tel:"")+".";
+  document.getElementById("doneTxt").textContent="Merci "+name.split(" ")[0]+". Votre messagerie s’ouvre avec la demande déjà rédigée, adressée à "+DAN_MAIL+". Relisez-la, puis cliquez sur Envoyer : Nous vous répondons sous 48 h ouvrées"+(call.checked?", ou nous vous rappelons au "+tel:"")+".";
   var rc=document.getElementById("recap");rc.innerHTML="";[["Objet",subject],["Besoin",needTxt],["Format",fmtTxt]].forEach(function(p){var dt=document.createElement("dt"),dd=document.createElement("dd");dt.textContent=p[0];dd.textContent=p[1];rc.appendChild(dt);rc.appendChild(dd)});
   document.getElementById("copyOk").textContent="";
   form.hidden=true;done.hidden=false;done.focus();
@@ -184,7 +184,7 @@ function renderResult(){const R=recommend(),r=root2();const B=benefits(R);
   r.innerHTML=`<div class="res"><div class="res-hello">${agentSVG}<div class="bubble"><p class="kick">Votre profil IA</p><p>${constat(R)}</p></div></div>
   <section class="res-main" aria-labelledby="dq-h"><p class="kick">Votre première étape</p><h2 id="dq-h" tabindex="-1">${TITLE[R.k]}${R.perf?'<span class="tag">Perfectionnement</span>':""}</h2>
    <p class="why2">${R.why.join(" ")}</p>
-   <div class="hero-ctas on-night"><a class="btn btn-primary" href="/${R.k}">Voir la formation recommandée</a><a class="btn btn-ghost" href="https://calendly.com/dbenouaisch" target="_blank" rel="noopener">Prendre rendez-vous avec Dan<span class="vh"> (nouvel onglet)</span></a></div></section>
+   <div class="hero-ctas on-night"><a class="btn btn-primary" href="/${R.k}">Voir la formation recommandée</a><a class="btn btn-ghost" href="https://calendly.com/dbenouaisch" target="_blank" rel="noopener">Prendre rendez-vous avec nous<span class="vh"> (nouvel onglet)</span></a></div></section>
   <div class="res-grid"><div class="rcard"><h3>Ce que vous pourrez faire après l’atelier</h3><ul class="ben">${B.map(b=>`<li>${b}</li>`).join("")}</ul></div>
    <div class="rcard soft"><h3>Vos repères</h3><ul class="lv">${["q","b","a"].map(d=>`<li><span>${DOM[d].name}</span><span class="pill ${R.L[d].c}">${R.L[d].lvl}</span></li>`).join("")}</ul><p class="note">Établis à partir de vos réponses. « À préciser » : pas assez de réponses dans ce domaine.</p></div></div>
   ${R.k2?`<div class="next"><p><b>Et ensuite : ${TITLE[R.k2]}</b>${R.k2t}</p><a class="btn btn-quiet btn-sm" href="/${R.k2}">Voir cette formation</a></div>`:""}
