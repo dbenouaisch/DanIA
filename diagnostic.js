@@ -113,7 +113,7 @@ function render(){const r=root2();if(!r)return;
   r.querySelector("#dqBack").onclick=()=>go(step-1);
   focusH();
 }
-function renderResult(){const R=recommend(),r=root2();const B=benefits(R);
+function renderResult(){const R=recommend(),r=root2();const B=benefits(R);if(window.daniaTrack)window.daniaTrack.ev("diag",{l:"fin:"+R.k});
   r.innerHTML=`<div class="res"><div class="res-hello">${agentSVG}<div class="bubble"><p class="kick">Votre profil IA</p><p>${constat(R)}</p></div></div>
   <section class="res-main" aria-labelledby="dq-h"><p class="kick">Votre première étape</p><h2 id="dq-h" tabindex="-1">${TITLE[R.k]}${R.perf?'<span class="tag">Perfectionnement</span>':""}</h2>
    <p class="why2">${R.why.join(" ")}</p>
@@ -134,7 +134,7 @@ function renderResult(){const R=recommend(),r=root2();const B=benefits(R);
   focusH();
 }
 function focusH(){requestAnimationFrame(()=>{const h=document.getElementById("dq-h");if(h)h.focus({preventScroll:true});window.scrollTo({top:0})})}
-function go(n){step=Math.max(-1,Math.min(10,n));render()}
+function go(n){step=Math.max(-1,Math.min(10,n));if(step===0&&window.daniaTrack)window.daniaTrack.ev("diag",{l:"start"});render()}
 const DEMOS_UNUSED=[
  {n:"1 · L’IA au quotidien",a:[1,1,0,1,1,1,0,0,1,0]},
  {n:"2 · Bureautique (manager)",a:[2,0,1,0,0,0,1,2,0,1]},

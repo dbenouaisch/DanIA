@@ -38,6 +38,12 @@
     try { localStorage.removeItem(KEY); } catch (e) {}
   }
 
+  /* Mesure d'audience (track.js) : identifiant de demande (jamais comptée deux fois) et session d'origine. */
+  function newId() {
+    var T = w.daniaTrack;
+    return T && T.uid ? T.uid(8) : String(Date.now()) + Math.random().toString(16).slice(2, 10);
+  }
+
   /* Chaque demande est aussi inscrite dans le tableur, qu'elle ait atteint Formspree ou non. */
   function logSheet(status, d) {
     if (!CFG.SHEET_ENDPOINT) return;
@@ -48,7 +54,8 @@
         body: JSON.stringify({
           prenom: d.name, email: d.email, telephone: d.tel, sujet: d.label, code_sujet: d.code,
           origine: document.referrer || "visite directe", page: location.pathname + location.search,
-          formspree: status, message: d.body
+          formspree: status, message: d.body,
+          rid: d.rid, sid: w.daniaTrack ? w.daniaTrack.sid() : "", test: w.daniaTrack && w.daniaTrack.isTest() ? 1 : 0
         })
       });
     } catch (e) {}
@@ -56,6 +63,7 @@
 
   /* d : { name, email, tel, label, code, subject, body }. Renvoie une promesse : true si Formspree a répondu. */
   function send(d) {
+    d.rid = newId();
     var payload = {
       name: d.name, email: d.email, telephone: d.tel || "(non renseigné)",
       sujet: d.label, _subject: d.subject, message: d.body,

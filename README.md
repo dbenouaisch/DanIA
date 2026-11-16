@@ -24,6 +24,13 @@ Site statique de formation et conseil en IA et données (HTML/CSS/JS, sans build
 - `fonts/` : polices Caladea et Carlito auto-hébergées (licence SIL OFL, voir les fichiers `LICENSE-*`).
 - `vercel.json` : URLs propres, en-têtes de sécurité (CSP, etc.) et règles de cache.
 
+## Suivi du site (page cachée `/suivi-dan`)
+- Page non liée depuis le site, non indexée (`noindex`, absente du sitemap), protégée par un mot de passe vérifié **côté Google** (propriété de script `ADMIN_TOKEN`, jamais écrite dans le dépôt ; 5 essais ratés verrouillent la lecture 15 minutes).
+- Contenu : visiteurs uniques (jour, semaine, mois), visites, pages vues, demandes, parcours de chaque visite (de l'entrée à la sortie), parcours les plus fréquents, pages de sortie, entonnoirs (rendez-vous, programme PDF, diagnostic), sources et campagnes UTM, fidélité (nouveaux et de retour), performance des pages, Core Web Vitals, enseignements automatiques.
+- Collecte : `config.js` (adresse du script Google, domaines de production) et `track.js` (mesure anonyme sans cookie, chargée sur toutes les pages) ; `lead.js` relie chaque demande confirmée à sa visite. Désactivée hors production, pour les navigateurs automatisés, « Do Not Track », et le navigateur exclu (bouton « Exclure ce navigateur » sur la page de suivi).
+- Données : tableur Google, onglets « Événements » (mesure) et « Demandes ». Mise en place : étapes 5 à 7 en tête de `integrations/google-sheet.gs` (fonction `installer`, propriété `ADMIN_TOKEN`, nouvelle version du déploiement existant : l'URL ne change pas).
+- Limites : visiteurs uniques estimés (un identifiant par navigateur), bloqueurs de publicité, réservations faites dans le calendrier Calendly intégré non mesurables.
+
 ## Déploiement
 Toute modification poussée sur la branche de production (`main`) est redéployée automatiquement par Vercel.
 Pour tester en local : `python3 -m http.server` puis ouvrir http://localhost:8000 (les URLs sans `.html` ne fonctionnent qu'avec Vercel ou `npx vercel dev`).
