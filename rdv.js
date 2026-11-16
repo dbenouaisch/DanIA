@@ -2,7 +2,7 @@
   "use strict";
   /* Réglages de la page : agenda de réservation (intégré dans la page). L'identifiant Formspree,
      le tableur Google et l'e-mail de contact se règlent en tête de lead.js. */
-  var AGENDA = "https://calendly.com/dbenouaisch";
+  var AGENDA = "https://calendly.com/dbenouaisch/echange-20-min";
   var BTN_LABEL = "Envoyer ma demande";
 
   var form = document.getElementById("rdvForm");
